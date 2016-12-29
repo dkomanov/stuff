@@ -1,0 +1,6 @@
+{
+  "name": "Scala Serialization",
+  "tagline": "Performance testing of serialization libraries",
+  "body": "### Prelude\r\nThis page is a base for the [Scala Serialization](https://medium.com/@dkomanov/scala-serialization-419d175c888a) article. Here are the recent results of the benchmark of Scala serialization libraries.\r\n\r\n### Results\r\n\r\n### Things",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

@@ -1,0 +1,5385 @@
+[
+    [
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1"
+            },
+            "primaryMetric" : {
+                "score" : 508.99459761144,
+                "scoreError" : 44.54395268183437,
+                "scoreConfidence" : [
+                    464.45064492960563,
+                    553.5385502932744
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 501.57944408224677,
+                    "50.0" : 504.59889757820383,
+                    "90.0" : 529.4438287453679,
+                    "95.0" : 529.4438287453679,
+                    "99.0" : 529.4438287453679,
+                    "99.9" : 529.4438287453679,
+                    "99.99" : 529.4438287453679,
+                    "99.999" : 529.4438287453679,
+                    "99.9999" : 529.4438287453679,
+                    "100.0" : 529.4438287453679
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        529.4438287453679,
+                        501.57944408224677,
+                        503.0202868996731,
+                        506.3305307517084,
+                        504.59889757820383
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "2"
+            },
+            "primaryMetric" : {
+                "score" : 517.420197303242,
+                "scoreError" : 17.80825160937645,
+                "scoreConfidence" : [
+                    499.6119456938656,
+                    535.2284489126185
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 510.85585699693564,
+                    "50.0" : 519.1127365689074,
+                    "90.0" : 522.1429240407205,
+                    "95.0" : 522.1429240407205,
+                    "99.0" : 522.1429240407205,
+                    "99.9" : 522.1429240407205,
+                    "99.99" : 522.1429240407205,
+                    "99.999" : 522.1429240407205,
+                    "99.9999" : 522.1429240407205,
+                    "100.0" : 522.1429240407205
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        522.1429240407205,
+                        519.1127365689074,
+                        520.4343436524454,
+                        510.85585699693564,
+                        514.5551252572017
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "3"
+            },
+            "primaryMetric" : {
+                "score" : 517.3862044644901,
+                "scoreError" : 18.755500703362813,
+                "scoreConfidence" : [
+                    498.6307037611273,
+                    536.1417051678529
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 512.2860594110115,
+                    "50.0" : 517.8271905254983,
+                    "90.0" : 523.0932554916318,
+                    "95.0" : 523.0932554916318,
+                    "99.0" : 523.0932554916318,
+                    "99.9" : 523.0932554916318,
+                    "99.99" : 523.0932554916318,
+                    "99.999" : 523.0932554916318,
+                    "99.9999" : 523.0932554916318,
+                    "100.0" : 523.0932554916318
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        523.0932554916318,
+                        517.8271905254983,
+                        512.6449625832906,
+                        512.2860594110115,
+                        521.0795543110185
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "4"
+            },
+            "primaryMetric" : {
+                "score" : 542.4140819927673,
+                "scoreError" : 67.49577474815254,
+                "scoreConfidence" : [
+                    474.9183072446147,
+                    609.9098567409198
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 524.9852609493837,
+                    "50.0" : 536.4459592384018,
+                    "90.0" : 561.5451291409321,
+                    "95.0" : 561.5451291409321,
+                    "99.0" : 561.5451291409321,
+                    "99.9" : 561.5451291409321,
+                    "99.99" : 561.5451291409321,
+                    "99.999" : 561.5451291409321,
+                    "99.9999" : 561.5451291409321,
+                    "100.0" : 561.5451291409321
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        561.5451291409321,
+                        524.9852609493837,
+                        536.4459592384018,
+                        560.5861451793722,
+                        528.5079154557463
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "5"
+            },
+            "primaryMetric" : {
+                "score" : 533.1906683583168,
+                "scoreError" : 22.86899807611317,
+                "scoreConfidence" : [
+                    510.3216702822036,
+                    556.0596664344299
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 527.9318553708102,
+                    "50.0" : 532.7856902796271,
+                    "90.0" : 542.7855081344902,
+                    "95.0" : 542.7855081344902,
+                    "99.0" : 542.7855081344902,
+                    "99.9" : 542.7855081344902,
+                    "99.99" : 542.7855081344902,
+                    "99.999" : 542.7855081344902,
+                    "99.9999" : 542.7855081344902,
+                    "100.0" : 542.7855081344902
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        542.7855081344902,
+                        532.7856902796271,
+                        533.8213464104617,
+                        528.6289415961945,
+                        527.9318553708102
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "6"
+            },
+            "primaryMetric" : {
+                "score" : 545.6355754596837,
+                "scoreError" : 29.18440090982932,
+                "scoreConfidence" : [
+                    516.4511745498544,
+                    574.8199763695129
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 535.9699533762058,
+                    "50.0" : 544.0635123742181,
+                    "90.0" : 556.2444849833148,
+                    "95.0" : 556.2444849833148,
+                    "99.0" : 556.2444849833148,
+                    "99.9" : 556.2444849833148,
+                    "99.99" : 556.2444849833148,
+                    "99.999" : 556.2444849833148,
+                    "99.9999" : 556.2444849833148,
+                    "100.0" : 556.2444849833148
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        542.6996920781335,
+                        535.9699533762058,
+                        544.0635123742181,
+                        556.2444849833148,
+                        549.2002344865458
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "7"
+            },
+            "primaryMetric" : {
+                "score" : 615.1654919243375,
+                "scoreError" : 90.53391188242523,
+                "scoreConfidence" : [
+                    524.6315800419122,
+                    705.6994038067628
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 596.6484357291978,
+                    "50.0" : 603.4086126696833,
+                    "90.0" : 654.2018391105297,
+                    "95.0" : 654.2018391105297,
+                    "99.0" : 654.2018391105297,
+                    "99.9" : 654.2018391105297,
+                    "99.99" : 654.2018391105297,
+                    "99.999" : 654.2018391105297,
+                    "99.9999" : 654.2018391105297,
+                    "100.0" : 654.2018391105297
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        603.4086126696833,
+                        596.6484357291978,
+                        601.6244264661655,
+                        619.9441456461109,
+                        654.2018391105297
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "8"
+            },
+            "primaryMetric" : {
+                "score" : 596.7504457198379,
+                "scoreError" : 96.07296006486557,
+                "scoreConfidence" : [
+                    500.6774856549723,
+                    692.8234057847035
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 574.7778681034483,
+                    "50.0" : 585.2869959040374,
+                    "90.0" : 632.3675382427307,
+                    "95.0" : 632.3675382427307,
+                    "99.0" : 632.3675382427307,
+                    "99.9" : 632.3675382427307,
+                    "99.99" : 632.3675382427307,
+                    "99.999" : 632.3675382427307,
+                    "99.9999" : 632.3675382427307,
+                    "100.0" : 632.3675382427307
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        578.2700031801098,
+                        585.2869959040374,
+                        613.049823168863,
+                        632.3675382427307,
+                        574.7778681034483
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "9"
+            },
+            "primaryMetric" : {
+                "score" : 609.0402629267562,
+                "scoreError" : 104.91977186058179,
+                "scoreConfidence" : [
+                    504.1204910661744,
+                    713.960034787338
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 582.5144135119394,
+                    "50.0" : 599.2141926303176,
+                    "90.0" : 651.4989493044823,
+                    "95.0" : 651.4989493044823,
+                    "99.0" : 651.4989493044823,
+                    "99.9" : 651.4989493044823,
+                    "99.99" : 651.4989493044823,
+                    "99.999" : 651.4989493044823,
+                    "99.9999" : 651.4989493044823,
+                    "100.0" : 651.4989493044823
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        619.1798628907459,
+                        582.5144135119394,
+                        651.4989493044823,
+                        592.7938962962963,
+                        599.2141926303176
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "10"
+            },
+            "primaryMetric" : {
+                "score" : 600.3469185995873,
+                "scoreError" : 44.46886958220097,
+                "scoreConfidence" : [
+                    555.8780490173863,
+                    644.8157881817883
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 588.6607651559741,
+                    "50.0" : 597.1286125373134,
+                    "90.0" : 613.2639058859595,
+                    "95.0" : 613.2639058859595,
+                    "99.0" : 613.2639058859595,
+                    "99.9" : 613.2639058859595,
+                    "99.99" : 613.2639058859595,
+                    "99.999" : 613.2639058859595,
+                    "99.9999" : 613.2639058859595,
+                    "100.0" : 613.2639058859595
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        611.7741859327217,
+                        590.9071234859675,
+                        588.6607651559741,
+                        613.2639058859595,
+                        597.1286125373134
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "20"
+            },
+            "primaryMetric" : {
+                "score" : 643.0261265233478,
+                "scoreError" : 19.183882105796563,
+                "scoreConfidence" : [
+                    623.8422444175512,
+                    662.2100086291443
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 637.2330790060529,
+                    "50.0" : 641.95507605905,
+                    "90.0" : 650.6517710569105,
+                    "95.0" : 650.6517710569105,
+                    "99.0" : 650.6517710569105,
+                    "99.9" : 650.6517710569105,
+                    "99.99" : 650.6517710569105,
+                    "99.999" : 650.6517710569105,
+                    "99.9999" : 650.6517710569105,
+                    "100.0" : 650.6517710569105
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        650.6517710569105,
+                        640.8940611983338,
+                        637.2330790060529,
+                        641.95507605905,
+                        644.3966452963917
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "30"
+            },
+            "primaryMetric" : {
+                "score" : 738.9321238531909,
+                "scoreError" : 63.11745301876182,
+                "scoreConfidence" : [
+                    675.8146708344291,
+                    802.0495768719527
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 726.2128319419238,
+                    "50.0" : 730.8514088417976,
+                    "90.0" : 766.818947106171,
+                    "95.0" : 766.818947106171,
+                    "99.0" : 766.818947106171,
+                    "99.9" : 766.818947106171,
+                    "99.99" : 766.818947106171,
+                    "99.999" : 766.818947106171,
+                    "99.9999" : 766.818947106171,
+                    "100.0" : 766.818947106171
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        766.818947106171,
+                        730.8514088417976,
+                        726.2128319419238,
+                        730.653342585829,
+                        740.124088790233
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "40"
+            },
+            "primaryMetric" : {
+                "score" : 752.0424077868084,
+                "scoreError" : 57.52910810891626,
+                "scoreConfidence" : [
+                    694.5132996778922,
+                    809.5715158957247
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 739.7328502218935,
+                    "50.0" : 742.5133262806236,
+                    "90.0" : 770.6302627118644,
+                    "95.0" : 770.6302627118644,
+                    "99.0" : 770.6302627118644,
+                    "99.9" : 770.6302627118644,
+                    "99.99" : 770.6302627118644,
+                    "99.999" : 770.6302627118644,
+                    "99.9999" : 770.6302627118644,
+                    "100.0" : 770.6302627118644
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        765.9093028330781,
+                        770.6302627118644,
+                        742.5133262806236,
+                        739.7328502218935,
+                        741.4262968865827
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "50"
+            },
+            "primaryMetric" : {
+                "score" : 789.1886247896384,
+                "scoreError" : 25.758215108620675,
+                "scoreConfidence" : [
+                    763.4304096810177,
+                    814.9468398982591
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 782.695789514867,
+                    "50.0" : 786.56277467558,
+                    "90.0" : 796.598938271605,
+                    "95.0" : 796.598938271605,
+                    "99.0" : 796.598938271605,
+                    "99.9" : 796.598938271605,
+                    "99.99" : 796.598938271605,
+                    "99.999" : 796.598938271605,
+                    "99.9999" : 796.598938271605,
+                    "100.0" : 796.598938271605
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        796.107641862316,
+                        796.598938271605,
+                        782.695789514867,
+                        783.9779796238245,
+                        786.56277467558
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "60"
+            },
+            "primaryMetric" : {
+                "score" : 821.7046629791769,
+                "scoreError" : 63.25032519403929,
+                "scoreConfidence" : [
+                    758.4543377851376,
+                    884.9549881732162
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 804.6665321802092,
+                    "50.0" : 825.200826320132,
+                    "90.0" : 845.5148499577346,
+                    "95.0" : 845.5148499577346,
+                    "99.0" : 845.5148499577346,
+                    "99.9" : 845.5148499577346,
+                    "99.99" : 845.5148499577346,
+                    "99.999" : 845.5148499577346,
+                    "99.9999" : 845.5148499577346,
+                    "100.0" : 845.5148499577346
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        825.4327669141915,
+                        825.200826320132,
+                        845.5148499577346,
+                        807.7083395236173,
+                        804.6665321802092
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "70"
+            },
+            "primaryMetric" : {
+                "score" : 894.6660374435842,
+                "scoreError" : 74.85805970655123,
+                "scoreConfidence" : [
+                    819.807977737033,
+                    969.5240971501354
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 874.0240899956312,
+                    "50.0" : 898.7632345013477,
+                    "90.0" : 921.5102183325656,
+                    "95.0" : 921.5102183325656,
+                    "99.0" : 921.5102183325656,
+                    "99.9" : 921.5102183325656,
+                    "99.99" : 921.5102183325656,
+                    "99.999" : 921.5102183325656,
+                    "99.9999" : 921.5102183325656,
+                    "100.0" : 921.5102183325656
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        921.5102183325656,
+                        898.7632345013477,
+                        901.6652000901307,
+                        877.3674442982456,
+                        874.0240899956312
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "80"
+            },
+            "primaryMetric" : {
+                "score" : 968.7900967943149,
+                "scoreError" : 268.28251474481925,
+                "scoreConfidence" : [
+                    700.5075820494956,
+                    1237.0726115391342
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 900.8126731202161,
+                    "50.0" : 954.979723150358,
+                    "90.0" : 1052.4298621778012,
+                    "95.0" : 1052.4298621778012,
+                    "99.0" : 1052.4298621778012,
+                    "99.9" : 1052.4298621778012,
+                    "99.99" : 1052.4298621778012,
+                    "99.999" : 1052.4298621778012,
+                    "99.9999" : 1052.4298621778012,
+                    "100.0" : 1052.4298621778012
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        954.979723150358,
+                        1052.4298621778012,
+                        1029.540014925373,
+                        906.1882105978261,
+                        900.8126731202161
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "90"
+            },
+            "primaryMetric" : {
+                "score" : 971.4719519227881,
+                "scoreError" : 136.85885105922097,
+                "scoreConfidence" : [
+                    834.6131008635671,
+                    1108.3308029820091
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 941.2865727058823,
+                    "50.0" : 962.8294971126082,
+                    "90.0" : 1032.9685467217346,
+                    "95.0" : 1032.9685467217346,
+                    "99.0" : 1032.9685467217346,
+                    "99.9" : 1032.9685467217346,
+                    "99.99" : 1032.9685467217346,
+                    "99.999" : 1032.9685467217346,
+                    "99.9999" : 1032.9685467217346,
+                    "100.0" : 1032.9685467217346
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        962.8294971126082,
+                        963.8968318882467,
+                        941.2865727058823,
+                        956.3783111854684,
+                        1032.9685467217346
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "100"
+            },
+            "primaryMetric" : {
+                "score" : 927.3587105235216,
+                "scoreError" : 69.59593041800157,
+                "scoreConfidence" : [
+                    857.76278010552,
+                    996.9546409415232
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 910.3508111919928,
+                    "50.0" : 922.6348597785978,
+                    "90.0" : 955.1603011933174,
+                    "95.0" : 955.1603011933174,
+                    "99.0" : 955.1603011933174,
+                    "99.9" : 955.1603011933174,
+                    "99.99" : 955.1603011933174,
+                    "99.999" : 955.1603011933174,
+                    "99.9999" : 955.1603011933174,
+                    "100.0" : 955.1603011933174
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        955.1603011933174,
+                        934.4164049509575,
+                        922.6348597785978,
+                        914.2311755027422,
+                        910.3508111919928
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "200"
+            },
+            "primaryMetric" : {
+                "score" : 1221.8650353152752,
+                "scoreError" : 239.80623159983907,
+                "scoreConfidence" : [
+                    982.0588037154362,
+                    1461.6712669151143
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1143.9811189251,
+                    "50.0" : 1237.4461706864563,
+                    "90.0" : 1290.727030967742,
+                    "95.0" : 1290.727030967742,
+                    "99.0" : 1290.727030967742,
+                    "99.9" : 1290.727030967742,
+                    "99.99" : 1290.727030967742,
+                    "99.999" : 1290.727030967742,
+                    "99.9999" : 1290.727030967742,
+                    "100.0" : 1290.727030967742
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1171.4606194379392,
+                        1290.727030967742,
+                        1265.7102365591397,
+                        1237.4461706864563,
+                        1143.9811189251
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "300"
+            },
+            "primaryMetric" : {
+                "score" : 1407.625673870611,
+                "scoreError" : 213.68351115863214,
+                "scoreConfidence" : [
+                    1193.9421627119789,
+                    1621.3091850292433
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1361.7240190605855,
+                    "50.0" : 1383.7922157676348,
+                    "90.0" : 1501.020536384096,
+                    "95.0" : 1501.020536384096,
+                    "99.0" : 1501.020536384096,
+                    "99.9" : 1501.020536384096,
+                    "99.99" : 1501.020536384096,
+                    "99.999" : 1501.020536384096,
+                    "99.9999" : 1501.020536384096,
+                    "100.0" : 1501.020536384096
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1501.020536384096,
+                        1413.6895540636042,
+                        1377.902044077135,
+                        1383.7922157676348,
+                        1361.7240190605855
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "400"
+            },
+            "primaryMetric" : {
+                "score" : 1665.5887658161846,
+                "scoreError" : 323.82327035156777,
+                "scoreConfidence" : [
+                    1341.7654954646168,
+                    1989.4120361677524
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1571.2376616954475,
+                    "50.0" : 1705.3284356351237,
+                    "90.0" : 1746.6314729493893,
+                    "95.0" : 1746.6314729493893,
+                    "99.0" : 1746.6314729493893,
+                    "99.9" : 1746.6314729493893,
+                    "99.99" : 1746.6314729493893,
+                    "99.999" : 1746.6314729493893,
+                    "99.9999" : 1746.6314729493893,
+                    "100.0" : 1746.6314729493893
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1705.3284356351237,
+                        1746.6314729493893,
+                        1726.1629188955997,
+                        1578.5833399053627,
+                        1571.2376616954475
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "500"
+            },
+            "primaryMetric" : {
+                "score" : 1884.918290419324,
+                "scoreError" : 77.82871403013816,
+                "scoreConfidence" : [
+                    1807.0895763891858,
+                    1962.747004449462
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1866.168666044776,
+                    "50.0" : 1875.8983880037488,
+                    "90.0" : 1908.7484385128694,
+                    "95.0" : 1908.7484385128694,
+                    "99.0" : 1908.7484385128694,
+                    "99.9" : 1908.7484385128694,
+                    "99.99" : 1908.7484385128694,
+                    "99.999" : 1908.7484385128694,
+                    "99.9999" : 1908.7484385128694,
+                    "100.0" : 1908.7484385128694
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1866.168666044776,
+                        1904.5732331113225,
+                        1869.202726423903,
+                        1908.7484385128694,
+                        1875.8983880037488
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "600"
+            },
+            "primaryMetric" : {
+                "score" : 2117.2824621640634,
+                "scoreError" : 85.20317085341027,
+                "scoreConfidence" : [
+                    2032.0792913106532,
+                    2202.485633017474
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2094.1179769874475,
+                    "50.0" : 2111.605571729958,
+                    "90.0" : 2153.300133333333,
+                    "95.0" : 2153.300133333333,
+                    "99.0" : 2153.300133333333,
+                    "99.9" : 2153.300133333333,
+                    "99.99" : 2153.300133333333,
+                    "99.999" : 2153.300133333333,
+                    "99.9999" : 2153.300133333333,
+                    "100.0" : 2153.300133333333
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2153.300133333333,
+                        2107.9248883034775,
+                        2111.605571729958,
+                        2094.1179769874475,
+                        2119.4637404661016
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "700"
+            },
+            "primaryMetric" : {
+                "score" : 2374.1342568095124,
+                "scoreError" : 253.11631133008592,
+                "scoreConfidence" : [
+                    2121.0179454794265,
+                    2627.2505681395983
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2289.057470251716,
+                    "50.0" : 2403.741781512605,
+                    "90.0" : 2429.9626953883494,
+                    "95.0" : 2429.9626953883494,
+                    "99.0" : 2429.9626953883494,
+                    "99.9" : 2429.9626953883494,
+                    "99.99" : 2429.9626953883494,
+                    "99.999" : 2429.9626953883494,
+                    "99.9999" : 2429.9626953883494,
+                    "100.0" : 2429.9626953883494
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2403.741781512605,
+                        2428.963890776699,
+                        2429.9626953883494,
+                        2318.945446118192,
+                        2289.057470251716
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "800"
+            },
+            "primaryMetric" : {
+                "score" : 2607.9051378985323,
+                "scoreError" : 261.7657344941036,
+                "scoreConfidence" : [
+                    2346.139403404429,
+                    2869.670872392636
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2551.988483418367,
+                    "50.0" : 2600.859303896104,
+                    "90.0" : 2718.6779701086957,
+                    "95.0" : 2718.6779701086957,
+                    "99.0" : 2718.6779701086957,
+                    "99.9" : 2718.6779701086957,
+                    "99.99" : 2718.6779701086957,
+                    "99.999" : 2718.6779701086957,
+                    "99.9999" : 2718.6779701086957,
+                    "100.0" : 2718.6779701086957
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2718.6779701086957,
+                        2551.988483418367,
+                        2614.782460130719,
+                        2553.2174719387754,
+                        2600.859303896104
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "900"
+            },
+            "primaryMetric" : {
+                "score" : 2913.378617797597,
+                "scoreError" : 392.3460557950492,
+                "scoreConfidence" : [
+                    2521.032562002548,
+                    3305.7246735926465
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2830.4242121640737,
+                    "50.0" : 2891.795479768786,
+                    "90.0" : 3089.708885802469,
+                    "95.0" : 3089.708885802469,
+                    "99.0" : 3089.708885802469,
+                    "99.9" : 3089.708885802469,
+                    "99.99" : 3089.708885802469,
+                    "99.999" : 3089.708885802469,
+                    "99.9999" : 3089.708885802469,
+                    "100.0" : 3089.708885802469
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3089.708885802469,
+                        2891.795479768786,
+                        2893.4571950867053,
+                        2830.4242121640737,
+                        2861.5073161659516
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1000"
+            },
+            "primaryMetric" : {
+                "score" : 3147.4279049785137,
+                "scoreError" : 338.8949956706055,
+                "scoreConfidence" : [
+                    2808.532909307908,
+                    3486.322900649119
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3087.7809336419755,
+                    "50.0" : 3112.845024883359,
+                    "90.0" : 3299.3797281713346,
+                    "95.0" : 3299.3797281713346,
+                    "99.0" : 3299.3797281713346,
+                    "99.9" : 3299.3797281713346,
+                    "99.99" : 3299.3797281713346,
+                    "99.999" : 3299.3797281713346,
+                    "99.9999" : 3299.3797281713346,
+                    "100.0" : 3299.3797281713346
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3112.845024883359,
+                        3145.714679245283,
+                        3299.3797281713346,
+                        3087.7809336419755,
+                        3091.419158950617
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1"
+            },
+            "primaryMetric" : {
+                "score" : 1395.5577562948274,
+                "scoreError" : 166.65907908462768,
+                "scoreConfidence" : [
+                    1228.8986772101998,
+                    1562.216835379455
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1347.6521986531986,
+                    "50.0" : 1381.848616712707,
+                    "90.0" : 1452.3979201741654,
+                    "95.0" : 1452.3979201741654,
+                    "99.0" : 1452.3979201741654,
+                    "99.9" : 1452.3979201741654,
+                    "99.99" : 1452.3979201741654,
+                    "99.999" : 1452.3979201741654,
+                    "99.9999" : 1452.3979201741654,
+                    "100.0" : 1452.3979201741654
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1452.3979201741654,
+                        1427.6757894361172,
+                        1381.848616712707,
+                        1347.6521986531986,
+                        1368.214256497948
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "2"
+            },
+            "primaryMetric" : {
+                "score" : 1451.2024051535343,
+                "scoreError" : 208.17279234945298,
+                "scoreConfidence" : [
+                    1243.0296128040814,
+                    1659.3751975029872
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1396.7903782274948,
+                    "50.0" : 1438.6609468008626,
+                    "90.0" : 1517.4228711144806,
+                    "95.0" : 1517.4228711144806,
+                    "99.0" : 1517.4228711144806,
+                    "99.9" : 1517.4228711144806,
+                    "99.99" : 1517.4228711144806,
+                    "99.999" : 1517.4228711144806,
+                    "99.9999" : 1517.4228711144806,
+                    "100.0" : 1517.4228711144806
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1497.3255696107785,
+                        1517.4228711144806,
+                        1438.6609468008626,
+                        1405.8122600140548,
+                        1396.7903782274948
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "3"
+            },
+            "primaryMetric" : {
+                "score" : 1427.6351424831078,
+                "scoreError" : 76.68529011532549,
+                "scoreConfidence" : [
+                    1350.9498523677823,
+                    1504.3204325984332
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1398.456718378756,
+                    "50.0" : 1424.8428938746438,
+                    "90.0" : 1451.4731421319798,
+                    "95.0" : 1451.4731421319798,
+                    "99.0" : 1451.4731421319798,
+                    "99.9" : 1451.4731421319798,
+                    "99.99" : 1451.4731421319798,
+                    "99.999" : 1451.4731421319798,
+                    "99.9999" : 1451.4731421319798,
+                    "100.0" : 1451.4731421319798
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1451.4731421319798,
+                        1424.8428938746438,
+                        1423.766755871886,
+                        1439.6362021582734,
+                        1398.456718378756
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "4"
+            },
+            "primaryMetric" : {
+                "score" : 1488.8134307393007,
+                "scoreError" : 164.29706419686434,
+                "scoreConfidence" : [
+                    1324.5163665424363,
+                    1653.110494936165
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1428.278266238401,
+                    "50.0" : 1491.0082921013413,
+                    "90.0" : 1535.6709800460476,
+                    "95.0" : 1535.6709800460476,
+                    "99.0" : 1535.6709800460476,
+                    "99.9" : 1535.6709800460476,
+                    "99.99" : 1535.6709800460476,
+                    "99.999" : 1535.6709800460476,
+                    "99.9999" : 1535.6709800460476,
+                    "100.0" : 1535.6709800460476
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1535.6709800460476,
+                        1520.5466968085107,
+                        1491.0082921013413,
+                        1428.278266238401,
+                        1468.5629185022026
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "5"
+            },
+            "primaryMetric" : {
+                "score" : 1437.0179367503702,
+                "scoreError" : 118.95475189319947,
+                "scoreConfidence" : [
+                    1318.0631848571707,
+                    1555.9726886435697
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1397.3830230446927,
+                    "50.0" : 1433.216958452722,
+                    "90.0" : 1477.1592361623616,
+                    "95.0" : 1477.1592361623616,
+                    "99.0" : 1477.1592361623616,
+                    "99.9" : 1477.1592361623616,
+                    "99.99" : 1477.1592361623616,
+                    "99.999" : 1477.1592361623616,
+                    "99.9999" : 1477.1592361623616,
+                    "100.0" : 1477.1592361623616
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1456.2034781659388,
+                        1477.1592361623616,
+                        1421.1269879261363,
+                        1397.3830230446927,
+                        1433.216958452722
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "6"
+            },
+            "primaryMetric" : {
+                "score" : 1451.5952146738841,
+                "scoreError" : 79.90227315276138,
+                "scoreConfidence" : [
+                    1371.6929415211227,
+                    1531.4974878266455
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1428.76146,
+                    "50.0" : 1444.765361732852,
+                    "90.0" : 1474.9140420044216,
+                    "95.0" : 1474.9140420044216,
+                    "99.0" : 1474.9140420044216,
+                    "99.9" : 1474.9140420044216,
+                    "99.99" : 1474.9140420044216,
+                    "99.999" : 1474.9140420044216,
+                    "99.9999" : 1474.9140420044216,
+                    "100.0" : 1474.9140420044216
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1474.9140420044216,
+                        1471.9488123620308,
+                        1428.76146,
+                        1437.586397270115,
+                        1444.765361732852
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "7"
+            },
+            "primaryMetric" : {
+                "score" : 1488.7487095501442,
+                "scoreError" : 98.0352410055448,
+                "scoreConfidence" : [
+                    1390.7134685445994,
+                    1586.783950555689
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1454.3054898255814,
+                    "50.0" : 1497.8032821856286,
+                    "90.0" : 1516.9913305534496,
+                    "95.0" : 1516.9913305534496,
+                    "99.0" : 1516.9913305534496,
+                    "99.9" : 1516.9913305534496,
+                    "99.99" : 1516.9913305534496,
+                    "99.999" : 1516.9913305534496,
+                    "99.9999" : 1516.9913305534496,
+                    "100.0" : 1516.9913305534496
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1471.1554985294117,
+                        1516.9913305534496,
+                        1454.3054898255814,
+                        1503.4879466566492,
+                        1497.8032821856286
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "8"
+            },
+            "primaryMetric" : {
+                "score" : 1561.9422142713727,
+                "scoreError" : 733.6445092687246,
+                "scoreConfidence" : [
+                    828.2977050026481,
+                    2295.5867235400974
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1440.5360086393089,
+                    "50.0" : 1466.9469838709676,
+                    "90.0" : 1896.265072985782,
+                    "95.0" : 1896.265072985782,
+                    "99.0" : 1896.265072985782,
+                    "99.9" : 1896.265072985782,
+                    "99.99" : 1896.265072985782,
+                    "99.999" : 1896.265072985782,
+                    "99.9999" : 1896.265072985782,
+                    "100.0" : 1896.265072985782
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1466.9469838709676,
+                        1440.5360086393089,
+                        1466.1625904761904,
+                        1539.8004153846155,
+                        1896.265072985782
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "9"
+            },
+            "primaryMetric" : {
+                "score" : 1496.569216038457,
+                "scoreError" : 127.6151920545154,
+                "scoreConfidence" : [
+                    1368.9540239839416,
+                    1624.1844080929723
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1465.583652014652,
+                    "50.0" : 1483.115361749444,
+                    "90.0" : 1549.044822755418,
+                    "95.0" : 1549.044822755418,
+                    "99.0" : 1549.044822755418,
+                    "99.9" : 1549.044822755418,
+                    "99.99" : 1549.044822755418,
+                    "99.999" : 1549.044822755418,
+                    "99.9999" : 1549.044822755418,
+                    "100.0" : 1549.044822755418
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1477.2821720827178,
+                        1483.115361749444,
+                        1549.044822755418,
+                        1507.8200715900527,
+                        1465.583652014652
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "10"
+            },
+            "primaryMetric" : {
+                "score" : 1487.2863024171252,
+                "scoreError" : 125.51249954441198,
+                "scoreConfidence" : [
+                    1361.773802872713,
+                    1612.7988019615373
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1465.8222717948718,
+                    "50.0" : 1479.3095373244641,
+                    "90.0" : 1544.4753688271605,
+                    "95.0" : 1544.4753688271605,
+                    "99.0" : 1544.4753688271605,
+                    "99.9" : 1544.4753688271605,
+                    "99.99" : 1544.4753688271605,
+                    "99.999" : 1544.4753688271605,
+                    "99.9999" : 1544.4753688271605,
+                    "100.0" : 1544.4753688271605
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1479.3232431633407,
+                        1479.3095373244641,
+                        1465.8222717948718,
+                        1467.5010909757887,
+                        1544.4753688271605
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "20"
+            },
+            "primaryMetric" : {
+                "score" : 1492.8562008589336,
+                "scoreError" : 43.807114270763755,
+                "scoreConfidence" : [
+                    1449.0490865881698,
+                    1536.6633151296974
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1479.086164818921,
+                    "50.0" : 1491.6226467958272,
+                    "90.0" : 1504.7743691729324,
+                    "95.0" : 1504.7743691729324,
+                    "99.0" : 1504.7743691729324,
+                    "99.9" : 1504.7743691729324,
+                    "99.99" : 1504.7743691729324,
+                    "99.999" : 1504.7743691729324,
+                    "99.9999" : 1504.7743691729324,
+                    "100.0" : 1504.7743691729324
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1504.7743691729324,
+                        1503.8796037593986,
+                        1484.9182197475873,
+                        1479.086164818921,
+                        1491.6226467958272
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "30"
+            },
+            "primaryMetric" : {
+                "score" : 1558.3429300056437,
+                "scoreError" : 168.7148118848733,
+                "scoreConfidence" : [
+                    1389.6281181207703,
+                    1727.057741890517
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1513.3861399394857,
+                    "50.0" : 1548.6140379256965,
+                    "90.0" : 1630.101838630807,
+                    "95.0" : 1630.101838630807,
+                    "99.0" : 1630.101838630807,
+                    "99.9" : 1630.101838630807,
+                    "99.99" : 1630.101838630807,
+                    "99.999" : 1630.101838630807,
+                    "99.9999" : 1630.101838630807,
+                    "100.0" : 1630.101838630807
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1561.3834329173167,
+                        1630.101838630807,
+                        1548.6140379256965,
+                        1538.2292006149116,
+                        1513.3861399394857
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "40"
+            },
+            "primaryMetric" : {
+                "score" : 1588.8984782013636,
+                "scoreError" : 105.85993974214429,
+                "scoreConfidence" : [
+                    1483.0385384592194,
+                    1694.7584179435078
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1547.2894516627996,
+                    "50.0" : 1592.9949060509555,
+                    "90.0" : 1613.8097701612903,
+                    "95.0" : 1613.8097701612903,
+                    "99.0" : 1613.8097701612903,
+                    "99.9" : 1613.8097701612903,
+                    "99.99" : 1613.8097701612903,
+                    "99.999" : 1613.8097701612903,
+                    "99.9999" : 1613.8097701612903,
+                    "100.0" : 1613.8097701612903
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1578.2423130914826,
+                        1592.9949060509555,
+                        1612.15595004029,
+                        1613.8097701612903,
+                        1547.2894516627996
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "50"
+            },
+            "primaryMetric" : {
+                "score" : 1711.2559446916027,
+                "scoreError" : 325.44259450009986,
+                "scoreConfidence" : [
+                    1385.8133501915029,
+                    2036.6985391917026
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1624.6585543831168,
+                    "50.0" : 1735.0361127493495,
+                    "90.0" : 1825.0765994525548,
+                    "95.0" : 1825.0765994525548,
+                    "99.0" : 1825.0765994525548,
+                    "99.9" : 1825.0765994525548,
+                    "99.99" : 1825.0765994525548,
+                    "99.999" : 1825.0765994525548,
+                    "99.9999" : 1825.0765994525548,
+                    "100.0" : 1825.0765994525548
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1825.0765994525548,
+                        1629.8450513029316,
+                        1624.6585543831168,
+                        1741.6634055700608,
+                        1735.0361127493495
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "60"
+            },
+            "primaryMetric" : {
+                "score" : 1668.2310605826183,
+                "scoreError" : 100.5582936744579,
+                "scoreConfidence" : [
+                    1567.6727669081604,
+                    1768.7893542570762
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1643.1407939244664,
+                    "50.0" : 1657.467428453267,
+                    "90.0" : 1709.4182749786507,
+                    "95.0" : 1709.4182749786507,
+                    "99.0" : 1709.4182749786507,
+                    "99.9" : 1709.4182749786507,
+                    "99.99" : 1709.4182749786507,
+                    "99.999" : 1709.4182749786507,
+                    "99.9999" : 1709.4182749786507,
+                    "100.0" : 1709.4182749786507
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1709.4182749786507,
+                        1653.9042603305786,
+                        1677.2245452261307,
+                        1657.467428453267,
+                        1643.1407939244664
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "70"
+            },
+            "primaryMetric" : {
+                "score" : 1700.9016393707448,
+                "scoreError" : 126.11218481400542,
+                "scoreConfidence" : [
+                    1574.7894545567394,
+                    1827.01382418475
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1678.2332760067113,
+                    "50.0" : 1687.2360033726814,
+                    "90.0" : 1757.9962284710018,
+                    "95.0" : 1757.9962284710018,
+                    "99.0" : 1757.9962284710018,
+                    "99.9" : 1757.9962284710018,
+                    "99.99" : 1757.9962284710018,
+                    "99.999" : 1757.9962284710018,
+                    "99.9999" : 1757.9962284710018,
+                    "100.0" : 1757.9962284710018
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1687.2360033726814,
+                        1698.0909295415959,
+                        1678.2332760067113,
+                        1682.9517594617325,
+                        1757.9962284710018
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "80"
+            },
+            "primaryMetric" : {
+                "score" : 1767.943591371557,
+                "scoreError" : 205.06742202297133,
+                "scoreConfidence" : [
+                    1562.8761693485856,
+                    1973.0110133945284
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1719.0867276632302,
+                    "50.0" : 1760.0632700087951,
+                    "90.0" : 1857.6175348189415,
+                    "95.0" : 1857.6175348189415,
+                    "99.0" : 1857.6175348189415,
+                    "99.9" : 1857.6175348189415,
+                    "99.99" : 1857.6175348189415,
+                    "99.999" : 1857.6175348189415,
+                    "99.9999" : 1857.6175348189415,
+                    "100.0" : 1857.6175348189415
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1763.9573791887126,
+                        1719.0867276632302,
+                        1738.993045178106,
+                        1857.6175348189415,
+                        1760.0632700087951
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "90"
+            },
+            "primaryMetric" : {
+                "score" : 1859.4280480012699,
+                "scoreError" : 261.35102947205223,
+                "scoreConfidence" : [
+                    1598.0770185292176,
+                    2120.779077473322
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1770.3823017699115,
+                    "50.0" : 1852.2645648148148,
+                    "90.0" : 1960.6277933398628,
+                    "95.0" : 1960.6277933398628,
+                    "99.0" : 1960.6277933398628,
+                    "99.9" : 1960.6277933398628,
+                    "99.99" : 1960.6277933398628,
+                    "99.999" : 1960.6277933398628,
+                    "99.9999" : 1960.6277933398628,
+                    "100.0" : 1960.6277933398628
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1770.3823017699115,
+                        1852.2645648148148,
+                        1847.1310138504155,
+                        1866.7345662313433,
+                        1960.6277933398628
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "100"
+            },
+            "primaryMetric" : {
+                "score" : 1803.3792784176144,
+                "scoreError" : 317.8263405193232,
+                "scoreConfidence" : [
+                    1485.5529378982912,
+                    2121.2056189369378
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1725.1625612068965,
+                    "50.0" : 1787.5562341376228,
+                    "90.0" : 1942.4944310679612,
+                    "95.0" : 1942.4944310679612,
+                    "99.0" : 1942.4944310679612,
+                    "99.9" : 1942.4944310679612,
+                    "99.99" : 1942.4944310679612,
+                    "99.999" : 1942.4944310679612,
+                    "99.9999" : 1942.4944310679612,
+                    "100.0" : 1942.4944310679612
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1764.8218218694885,
+                        1942.4944310679612,
+                        1796.861343806104,
+                        1725.1625612068965,
+                        1787.5562341376228
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "200"
+            },
+            "primaryMetric" : {
+                "score" : 1975.8587346741574,
+                "scoreError" : 172.78398896065252,
+                "scoreConfidence" : [
+                    1803.0747457135049,
+                    2148.64272363481
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1906.541080952381,
+                    "50.0" : 1976.6572915019763,
+                    "90.0" : 2031.385495431472,
+                    "95.0" : 2031.385495431472,
+                    "99.0" : 2031.385495431472,
+                    "99.9" : 2031.385495431472,
+                    "99.99" : 2031.385495431472,
+                    "99.999" : 2031.385495431472,
+                    "99.9999" : 2031.385495431472,
+                    "100.0" : 2031.385495431472
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1976.6572915019763,
+                        2031.385495431472,
+                        1988.7028508946323,
+                        1976.0069545903257,
+                        1906.541080952381
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "300"
+            },
+            "primaryMetric" : {
+                "score" : 2285.338015182656,
+                "scoreError" : 624.8577330234388,
+                "scoreConfidence" : [
+                    1660.480282159217,
+                    2910.195748206095
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2174.7263673913044,
+                    "50.0" : 2232.6488214285714,
+                    "90.0" : 2569.791739130435,
+                    "95.0" : 2569.791739130435,
+                    "99.0" : 2569.791739130435,
+                    "99.9" : 2569.791739130435,
+                    "99.99" : 2569.791739130435,
+                    "99.999" : 2569.791739130435,
+                    "99.9999" : 2569.791739130435,
+                    "100.0" : 2569.791739130435
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2232.6488214285714,
+                        2174.7263673913044,
+                        2192.6148368017525,
+                        2256.9083111612176,
+                        2569.791739130435
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "400"
+            },
+            "primaryMetric" : {
+                "score" : 2417.4356018658414,
+                "scoreError" : 281.98576001242736,
+                "scoreConfidence" : [
+                    2135.449841853414,
+                    2699.4213618782687
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2346.3400093786636,
+                    "50.0" : 2430.1716872727275,
+                    "90.0" : 2519.8961246851386,
+                    "95.0" : 2519.8961246851386,
+                    "99.0" : 2519.8961246851386,
+                    "99.9" : 2519.8961246851386,
+                    "99.99" : 2519.8961246851386,
+                    "99.999" : 2519.8961246851386,
+                    "99.9999" : 2519.8961246851386,
+                    "100.0" : 2519.8961246851386
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2430.1716872727275,
+                        2346.5813833528723,
+                        2346.3400093786636,
+                        2444.188804639805,
+                        2519.8961246851386
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "500"
+            },
+            "primaryMetric" : {
+                "score" : 2650.741466524357,
+                "scoreError" : 251.51907661140834,
+                "scoreConfidence" : [
+                    2399.2223899129485,
+                    2902.260543135765
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2578.8517951030926,
+                    "50.0" : 2664.273454061252,
+                    "90.0" : 2742.7909575342464,
+                    "95.0" : 2742.7909575342464,
+                    "99.0" : 2742.7909575342464,
+                    "99.9" : 2742.7909575342464,
+                    "99.99" : 2742.7909575342464,
+                    "99.999" : 2742.7909575342464,
+                    "99.9999" : 2742.7909575342464,
+                    "100.0" : 2742.7909575342464
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2742.7909575342464,
+                        2664.273454061252,
+                        2578.8517951030926,
+                        2670.462049399199,
+                        2597.329076523995
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "600"
+            },
+            "primaryMetric" : {
+                "score" : 2774.0158564022768,
+                "scoreError" : 93.30822957527181,
+                "scoreConfidence" : [
+                    2680.707626827005,
+                    2867.3240859775487
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2744.5465418381345,
+                    "50.0" : 2773.844141274238,
+                    "90.0" : 2811.5703581460675,
+                    "95.0" : 2811.5703581460675,
+                    "99.0" : 2811.5703581460675,
+                    "99.9" : 2811.5703581460675,
+                    "99.99" : 2811.5703581460675,
+                    "99.999" : 2811.5703581460675,
+                    "99.9999" : 2811.5703581460675,
+                    "100.0" : 2811.5703581460675
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2774.452768377254,
+                        2811.5703581460675,
+                        2744.5465418381345,
+                        2765.6654723756906,
+                        2773.844141274238
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "700"
+            },
+            "primaryMetric" : {
+                "score" : 3169.4510724681363,
+                "scoreError" : 358.70903587772483,
+                "scoreConfidence" : [
+                    2810.7420365904113,
+                    3528.1601083458613
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3079.2161261538463,
+                    "50.0" : 3125.8279328125,
+                    "90.0" : 3272.9301715686274,
+                    "95.0" : 3272.9301715686274,
+                    "99.0" : 3272.9301715686274,
+                    "99.9" : 3272.9301715686274,
+                    "99.99" : 3272.9301715686274,
+                    "99.999" : 3272.9301715686274,
+                    "99.9999" : 3272.9301715686274,
+                    "100.0" : 3272.9301715686274
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3266.790344208809,
+                        3272.9301715686274,
+                        3125.8279328125,
+                        3102.4907875968993,
+                        3079.2161261538463
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "800"
+            },
+            "primaryMetric" : {
+                "score" : 3423.1892791203304,
+                "scoreError" : 420.71830305155424,
+                "scoreConfidence" : [
+                    3002.470976068776,
+                    3843.9075821718848
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3260.8381563517914,
+                    "50.0" : 3477.4391006944443,
+                    "90.0" : 3532.225045855379,
+                    "95.0" : 3532.225045855379,
+                    "99.0" : 3532.225045855379,
+                    "99.9" : 3532.225045855379,
+                    "99.99" : 3532.225045855379,
+                    "99.999" : 3532.225045855379,
+                    "99.9999" : 3532.225045855379,
+                    "100.0" : 3532.225045855379
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3477.4391006944443,
+                        3479.993907826087,
+                        3532.225045855379,
+                        3365.4501848739496,
+                        3260.8381563517914
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "900"
+            },
+            "primaryMetric" : {
+                "score" : 3521.849706069629,
+                "scoreError" : 189.89774928253382,
+                "scoreConfidence" : [
+                    3331.9519567870952,
+                    3711.747455352163
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3435.252982847341,
+                    "50.0" : 3544.1657876106196,
+                    "90.0" : 3553.941440497336,
+                    "95.0" : 3553.941440497336,
+                    "99.0" : 3553.941440497336,
+                    "99.9" : 3553.941440497336,
+                    "99.99" : 3553.941440497336,
+                    "99.999" : 3553.941440497336,
+                    "99.9999" : 3553.941440497336,
+                    "100.0" : 3553.941440497336
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3547.5166985815604,
+                        3544.1657876106196,
+                        3528.3716208112874,
+                        3435.252982847341,
+                        3553.941440497336
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.ConnectorJBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1000"
+            },
+            "primaryMetric" : {
+                "score" : 3739.825297980066,
+                "scoreError" : 518.3174283036192,
+                "scoreConfidence" : [
+                    3221.5078696764467,
+                    4258.142726283685
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3573.6323357142855,
+                    "50.0" : 3708.932312962963,
+                    "90.0" : 3942.5166279527557,
+                    "95.0" : 3942.5166279527557,
+                    "99.0" : 3942.5166279527557,
+                    "99.9" : 3942.5166279527557,
+                    "99.99" : 3942.5166279527557,
+                    "99.999" : 3942.5166279527557,
+                    "99.9999" : 3942.5166279527557,
+                    "100.0" : 3942.5166279527557
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3942.5166279527557,
+                        3774.4423981132077,
+                        3708.932312962963,
+                        3573.6323357142855,
+                        3699.6028151571163
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ]
+
+
+,
+    [
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1"
+            },
+            "primaryMetric" : {
+                "score" : 491.2441521912457,
+                "scoreError" : 36.714454124836436,
+                "scoreConfidence" : [
+                    454.52969806640925,
+                    527.9586063160821
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 481.99986,
+                    "50.0" : 489.5809705093834,
+                    "90.0" : 502.87104575163397,
+                    "95.0" : 502.87104575163397,
+                    "99.0" : 502.87104575163397,
+                    "99.9" : 502.87104575163397,
+                    "99.99" : 502.87104575163397,
+                    "99.999" : 502.87104575163397,
+                    "99.9999" : 502.87104575163397,
+                    "100.0" : 502.87104575163397
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        502.87104575163397,
+                        481.99986,
+                        482.5187411963338,
+                        499.250143498877,
+                        489.5809705093834
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "2"
+            },
+            "primaryMetric" : {
+                "score" : 496.0681347883997,
+                "scoreError" : 30.312093017949717,
+                "scoreConfidence" : [
+                    465.75604177044994,
+                    526.3802278063494
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 489.29283439334637,
+                    "50.0" : 493.80172944951863,
+                    "90.0" : 509.37703692386043,
+                    "95.0" : 509.37703692386043,
+                    "99.0" : 509.37703692386043,
+                    "99.9" : 509.37703692386043,
+                    "99.99" : 509.37703692386043,
+                    "99.999" : 509.37703692386043,
+                    "99.9999" : 509.37703692386043,
+                    "100.0" : 509.37703692386043
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        493.80172944951863,
+                        489.29283439334637,
+                        491.6325797493242,
+                        509.37703692386043,
+                        496.2364934259489
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "3"
+            },
+            "primaryMetric" : {
+                "score" : 513.6777827472205,
+                "scoreError" : 90.96058180693235,
+                "scoreConfidence" : [
+                    422.71720094028814,
+                    604.6383645541529
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 489.6459064871481,
+                    "50.0" : 512.5400125544453,
+                    "90.0" : 538.3381283638321,
+                    "95.0" : 538.3381283638321,
+                    "99.0" : 538.3381283638321,
+                    "99.9" : 538.3381283638321,
+                    "99.99" : 538.3381283638321,
+                    "99.999" : 538.3381283638321,
+                    "99.9999" : 538.3381283638321,
+                    "100.0" : 538.3381283638321
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        491.07482474226805,
+                        512.5400125544453,
+                        536.7900415884089,
+                        538.3381283638321,
+                        489.6459064871481
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "4"
+            },
+            "primaryMetric" : {
+                "score" : 495.50830467231583,
+                "scoreError" : 17.472565254171442,
+                "scoreConfidence" : [
+                    478.0357394181444,
+                    512.9808699264872
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 490.639385822909,
+                    "50.0" : 493.2602648581998,
+                    "90.0" : 500.9493821687954,
+                    "95.0" : 500.9493821687954,
+                    "99.0" : 500.9493821687954,
+                    "99.9" : 500.9493821687954,
+                    "99.99" : 500.9493821687954,
+                    "99.999" : 500.9493821687954,
+                    "99.9999" : 500.9493821687954,
+                    "100.0" : 500.9493821687954
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        499.7069362977767,
+                        500.9493821687954,
+                        492.98555421389847,
+                        493.2602648581998,
+                        490.639385822909
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "5"
+            },
+            "primaryMetric" : {
+                "score" : 520.7978830114874,
+                "scoreError" : 37.14433390965974,
+                "scoreConfidence" : [
+                    483.6535491018277,
+                    557.9422169211472
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 509.1767711885976,
+                    "50.0" : 520.8323426191096,
+                    "90.0" : 535.2093630283574,
+                    "95.0" : 535.2093630283574,
+                    "99.0" : 535.2093630283574,
+                    "99.9" : 535.2093630283574,
+                    "99.99" : 535.2093630283574,
+                    "99.999" : 535.2093630283574,
+                    "99.9999" : 535.2093630283574,
+                    "100.0" : 535.2093630283574
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        535.2093630283574,
+                        522.9540645751634,
+                        509.1767711885976,
+                        515.8168736462094,
+                        520.8323426191096
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "6"
+            },
+            "primaryMetric" : {
+                "score" : 510.5764407925346,
+                "scoreError" : 37.251493507962394,
+                "scoreConfidence" : [
+                    473.3249472845722,
+                    547.827934300497
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 503.7978939813649,
+                    "50.0" : 508.4990175394001,
+                    "90.0" : 527.4076838913788,
+                    "95.0" : 527.4076838913788,
+                    "99.0" : 527.4076838913788,
+                    "99.9" : 527.4076838913788,
+                    "99.99" : 527.4076838913788,
+                    "99.999" : 527.4076838913788,
+                    "99.9999" : 527.4076838913788,
+                    "100.0" : 527.4076838913788
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        503.7978939813649,
+                        508.70951220752795,
+                        504.46809634300126,
+                        508.4990175394001,
+                        527.4076838913788
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "7"
+            },
+            "primaryMetric" : {
+                "score" : 551.3802866660002,
+                "scoreError" : 23.87196982937577,
+                "scoreConfidence" : [
+                    527.5083168366244,
+                    575.252256495376
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 543.5707649456522,
+                    "50.0" : 552.508697321182,
+                    "90.0" : 558.4034307649358,
+                    "95.0" : 558.4034307649358,
+                    "99.0" : 558.4034307649358,
+                    "99.9" : 558.4034307649358,
+                    "99.99" : 558.4034307649358,
+                    "99.999" : 558.4034307649358,
+                    "99.9999" : 558.4034307649358,
+                    "100.0" : 558.4034307649358
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        552.508697321182,
+                        558.4034307649358,
+                        543.5707649456522,
+                        555.796696582384,
+                        546.621843715847
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "8"
+            },
+            "primaryMetric" : {
+                "score" : 563.7437758065919,
+                "scoreError" : 45.46058890729114,
+                "scoreConfidence" : [
+                    518.2831868993007,
+                    609.204364713883
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 554.6446528971444,
+                    "50.0" : 559.3715637583892,
+                    "90.0" : 583.7808619784067,
+                    "95.0" : 583.7808619784067,
+                    "99.0" : 583.7808619784067,
+                    "99.9" : 583.7808619784067,
+                    "99.99" : 583.7808619784067,
+                    "99.999" : 583.7808619784067,
+                    "99.9999" : 583.7808619784067,
+                    "100.0" : 583.7808619784067
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        559.3715637583892,
+                        556.4251770920212,
+                        554.6446528971444,
+                        564.4966233069978,
+                        583.7808619784067
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "9"
+            },
+            "primaryMetric" : {
+                "score" : 584.8585831703468,
+                "scoreError" : 53.50147911764246,
+                "scoreConfidence" : [
+                    531.3571040527044,
+                    638.3600622879893
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 563.8168864148817,
+                    "50.0" : 590.2061012097964,
+                    "90.0" : 600.155294329433,
+                    "95.0" : 600.155294329433,
+                    "99.0" : 600.155294329433,
+                    "99.9" : 600.155294329433,
+                    "99.99" : 600.155294329433,
+                    "99.999" : 600.155294329433,
+                    "99.9999" : 600.155294329433,
+                    "100.0" : 600.155294329433
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        600.155294329433,
+                        590.2061012097964,
+                        590.8354604252805,
+                        579.2791734723429,
+                        563.8168864148817
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "10"
+            },
+            "primaryMetric" : {
+                "score" : 613.1921223437096,
+                "scoreError" : 67.35073241034398,
+                "scoreConfidence" : [
+                    545.8413899333656,
+                    680.5428547540536
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 596.4168899821109,
+                    "50.0" : 603.9310999396135,
+                    "90.0" : 635.6891658722593,
+                    "95.0" : 635.6891658722593,
+                    "99.0" : 635.6891658722593,
+                    "99.9" : 635.6891658722593,
+                    "99.99" : 635.6891658722593,
+                    "99.999" : 635.6891658722593,
+                    "99.9999" : 635.6891658722593,
+                    "100.0" : 635.6891658722593
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        603.9310999396135,
+                        628.0795287284144,
+                        635.6891658722593,
+                        601.8439271961493,
+                        596.4168899821109
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "20"
+            },
+            "primaryMetric" : {
+                "score" : 625.4135299730494,
+                "scoreError" : 21.003439037044135,
+                "scoreConfidence" : [
+                    604.4100909360053,
+                    646.4169690100936
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 619.1654630145466,
+                    "50.0" : 623.0147991279975,
+                    "90.0" : 632.7000009487666,
+                    "95.0" : 632.7000009487666,
+                    "99.0" : 632.7000009487666,
+                    "99.9" : 632.7000009487666,
+                    "99.99" : 632.7000009487666,
+                    "99.999" : 632.7000009487666,
+                    "99.9999" : 632.7000009487666,
+                    "100.0" : 632.7000009487666
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        629.2715290972004,
+                        622.9158576767362,
+                        623.0147991279975,
+                        619.1654630145466,
+                        632.7000009487666
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "30"
+            },
+            "primaryMetric" : {
+                "score" : 689.0285308515954,
+                "scoreError" : 10.811836810315969,
+                "scoreConfidence" : [
+                    678.2166940412794,
+                    699.8403676619114
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 685.4057992463172,
+                    "50.0" : 689.9607633666782,
+                    "90.0" : 692.2331671280277,
+                    "95.0" : 692.2331671280277,
+                    "99.0" : 692.2331671280277,
+                    "99.9" : 692.2331671280277,
+                    "99.99" : 692.2331671280277,
+                    "99.999" : 692.2331671280277,
+                    "99.9999" : 692.2331671280277,
+                    "100.0" : 692.2331671280277
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        692.2331671280277,
+                        685.4057992463172,
+                        689.9607633666782,
+                        690.6608870856354,
+                        686.8820374313187
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "40"
+            },
+            "primaryMetric" : {
+                "score" : 755.8787878267485,
+                "scoreError" : 179.5764260990104,
+                "scoreConfidence" : [
+                    576.3023617277381,
+                    935.4552139257589
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 713.3595952211127,
+                    "50.0" : 738.3199088560885,
+                    "90.0" : 830.5552179327522,
+                    "95.0" : 830.5552179327522,
+                    "99.0" : 830.5552179327522,
+                    "99.9" : 830.5552179327522,
+                    "99.99" : 830.5552179327522,
+                    "99.999" : 830.5552179327522,
+                    "99.9999" : 830.5552179327522,
+                    "100.0" : 830.5552179327522
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        713.3595952211127,
+                        769.7943582146979,
+                        727.3648589090909,
+                        830.5552179327522,
+                        738.3199088560885
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "50"
+            },
+            "primaryMetric" : {
+                "score" : 777.829834632778,
+                "scoreError" : 126.6087593046664,
+                "scoreConfidence" : [
+                    651.2210753281116,
+                    904.4385939374444
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 746.1264360313315,
+                    "50.0" : 764.3969189912114,
+                    "90.0" : 822.8486412998766,
+                    "95.0" : 822.8486412998766,
+                    "99.0" : 822.8486412998766,
+                    "99.9" : 822.8486412998766,
+                    "99.99" : 822.8486412998766,
+                    "99.999" : 822.8486412998766,
+                    "99.9999" : 822.8486412998766,
+                    "100.0" : 822.8486412998766
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        754.307867269985,
+                        764.3969189912114,
+                        746.1264360313315,
+                        822.8486412998766,
+                        801.4693095714858
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "60"
+            },
+            "primaryMetric" : {
+                "score" : 801.6826643499505,
+                "scoreError" : 99.14658095690054,
+                "scoreConfidence" : [
+                    702.53608339305,
+                    900.829245306851
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 778.8959778037383,
+                    "50.0" : 801.511188301282,
+                    "90.0" : 842.2720269473684,
+                    "95.0" : 842.2720269473684,
+                    "99.0" : 842.2720269473684,
+                    "99.9" : 842.2720269473684,
+                    "99.99" : 842.2720269473684,
+                    "99.999" : 842.2720269473684,
+                    "99.9999" : 842.2720269473684,
+                    "100.0" : 842.2720269473684
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        805.7056842529198,
+                        778.8959778037383,
+                        801.511188301282,
+                        842.2720269473684,
+                        780.0284444444444
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "70"
+            },
+            "primaryMetric" : {
+                "score" : 876.3251861610061,
+                "scoreError" : 187.012601499064,
+                "scoreConfidence" : [
+                    689.3125846619421,
+                    1063.33778766007
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 846.1589500846023,
+                    "50.0" : 860.3010589247311,
+                    "90.0" : 961.7340240384615,
+                    "95.0" : 961.7340240384615,
+                    "99.0" : 961.7340240384615,
+                    "99.9" : 961.7340240384615,
+                    "99.99" : 961.7340240384615,
+                    "99.999" : 961.7340240384615,
+                    "99.9999" : 961.7340240384615,
+                    "100.0" : 961.7340240384615
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        860.3010589247311,
+                        866.8244072790295,
+                        846.6074904782057,
+                        846.1589500846023,
+                        961.7340240384615
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "80"
+            },
+            "primaryMetric" : {
+                "score" : 882.6568616184611,
+                "scoreError" : 21.301846007247875,
+                "scoreConfidence" : [
+                    861.3550156112133,
+                    903.9587076257089
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 875.9956589316988,
+                    "50.0" : 883.2434123620309,
+                    "90.0" : 888.5253232682061,
+                    "95.0" : 888.5253232682061,
+                    "99.0" : 888.5253232682061,
+                    "99.9" : 888.5253232682061,
+                    "99.99" : 888.5253232682061,
+                    "99.999" : 888.5253232682061,
+                    "99.9999" : 888.5253232682061,
+                    "100.0" : 888.5253232682061
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        888.5253232682061,
+                        883.2434123620309,
+                        878.1103709394206,
+                        887.4095425909494,
+                        875.9956589316988
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "90"
+            },
+            "primaryMetric" : {
+                "score" : 945.1489982955636,
+                "scoreError" : 244.27510953104178,
+                "scoreConfidence" : [
+                    700.8738887645218,
+                    1189.4241078266055
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 907.3071070294784,
+                    "50.0" : 919.0921520440974,
+                    "90.0" : 1057.3306664904862,
+                    "95.0" : 1057.3306664904862,
+                    "99.0" : 1057.3306664904862,
+                    "99.9" : 1057.3306664904862,
+                    "99.99" : 1057.3306664904862,
+                    "99.999" : 1057.3306664904862,
+                    "99.9999" : 1057.3306664904862,
+                    "100.0" : 1057.3306664904862
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1057.3306664904862,
+                        931.8688211457849,
+                        919.0921520440974,
+                        910.1462447679709,
+                        907.3071070294784
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "100"
+            },
+            "primaryMetric" : {
+                "score" : 895.560178841982,
+                "scoreError" : 76.72575190950243,
+                "scoreConfidence" : [
+                    818.8344269324796,
+                    972.2859307514843
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 882.5434040582268,
+                    "50.0" : 887.3621441241685,
+                    "90.0" : 930.7683020009307,
+                    "95.0" : 930.7683020009307,
+                    "99.0" : 930.7683020009307,
+                    "99.9" : 930.7683020009307,
+                    "99.99" : 930.7683020009307,
+                    "99.999" : 930.7683020009307,
+                    "99.9999" : 930.7683020009307,
+                    "100.0" : 930.7683020009307
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        930.7683020009307,
+                        887.3621441241685,
+                        882.5434040582268,
+                        891.202570155902,
+                        885.924473870682
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "200"
+            },
+            "primaryMetric" : {
+                "score" : 1192.8160578804918,
+                "scoreError" : 530.5221014654763,
+                "scoreConfidence" : [
+                    662.2939564150155,
+                    1723.338159345968
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1060.532769883351,
+                    "50.0" : 1155.0220710161664,
+                    "90.0" : 1409.5579133192389,
+                    "95.0" : 1409.5579133192389,
+                    "99.0" : 1409.5579133192389,
+                    "99.9" : 1409.5579133192389,
+                    "99.99" : 1409.5579133192389,
+                    "99.999" : 1409.5579133192389,
+                    "99.9999" : 1409.5579133192389,
+                    "100.0" : 1409.5579133192389
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1155.0220710161664,
+                        1409.5579133192389,
+                        1236.3217082818294,
+                        1060.532769883351,
+                        1102.6458269018742
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "300"
+            },
+            "primaryMetric" : {
+                "score" : 1348.5770599811362,
+                "scoreError" : 253.1286643880995,
+                "scoreConfidence" : [
+                    1095.4483955930368,
+                    1601.7057243692357
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1311.2466068152032,
+                    "50.0" : 1316.6652671052632,
+                    "90.0" : 1465.2228726207907,
+                    "95.0" : 1465.2228726207907,
+                    "99.0" : 1465.2228726207907,
+                    "99.9" : 1465.2228726207907,
+                    "99.99" : 1465.2228726207907,
+                    "99.999" : 1465.2228726207907,
+                    "99.9999" : 1465.2228726207907,
+                    "100.0" : 1465.2228726207907
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1465.2228726207907,
+                        1333.3470059960027,
+                        1316.403547368421,
+                        1316.6652671052632,
+                        1311.2466068152032
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "400"
+            },
+            "primaryMetric" : {
+                "score" : 1528.9191381719697,
+                "scoreError" : 61.127501453109105,
+                "scoreConfidence" : [
+                    1467.7916367188607,
+                    1590.0466396250788
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1503.0501457550713,
+                    "50.0" : 1532.0605122511486,
+                    "90.0" : 1544.7700640926641,
+                    "95.0" : 1544.7700640926641,
+                    "99.0" : 1544.7700640926641,
+                    "99.9" : 1544.7700640926641,
+                    "99.99" : 1544.7700640926641,
+                    "99.999" : 1544.7700640926641,
+                    "99.9999" : 1544.7700640926641,
+                    "100.0" : 1544.7700640926641
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1537.5557863182169,
+                        1544.7700640926641,
+                        1527.159182442748,
+                        1503.0501457550713,
+                        1532.0605122511486
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "500"
+            },
+            "primaryMetric" : {
+                "score" : 1794.8116017138204,
+                "scoreError" : 129.61038065441466,
+                "scoreConfidence" : [
+                    1665.2012210594057,
+                    1924.4219823682351
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1763.9673447971782,
+                    "50.0" : 1777.6638294849024,
+                    "90.0" : 1844.8632940092166,
+                    "95.0" : 1844.8632940092166,
+                    "99.0" : 1844.8632940092166,
+                    "99.9" : 1844.8632940092166,
+                    "99.99" : 1844.8632940092166,
+                    "99.999" : 1844.8632940092166,
+                    "99.9999" : 1844.8632940092166,
+                    "100.0" : 1844.8632940092166
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1844.8632940092166,
+                        1813.5189773345421,
+                        1777.6638294849024,
+                        1774.0445629432625,
+                        1763.9673447971782
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "600"
+            },
+            "primaryMetric" : {
+                "score" : 2095.651776855617,
+                "scoreError" : 410.13540091281203,
+                "scoreConfidence" : [
+                    1685.5163759428049,
+                    2505.787177768429
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1982.3070693756194,
+                    "50.0" : 2058.4455946502057,
+                    "90.0" : 2225.844149054505,
+                    "95.0" : 2225.844149054505,
+                    "99.0" : 2225.844149054505,
+                    "99.9" : 2225.844149054505,
+                    "99.99" : 2225.844149054505,
+                    "99.999" : 2225.844149054505,
+                    "99.9999" : 2225.844149054505,
+                    "100.0" : 2225.844149054505
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2225.844149054505,
+                        2022.1959858585858,
+                        2189.4660853391683,
+                        2058.4455946502057,
+                        1982.3070693756194
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "700"
+            },
+            "primaryMetric" : {
+                "score" : 2299.097430789311,
+                "scoreError" : 261.8214769700406,
+                "scoreConfidence" : [
+                    2037.2759538192706,
+                    2560.918907759352
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2219.7348503325943,
+                    "50.0" : 2274.730121590909,
+                    "90.0" : 2374.9783214709373,
+                    "95.0" : 2374.9783214709373,
+                    "99.0" : 2374.9783214709373,
+                    "99.9" : 2374.9783214709373,
+                    "99.99" : 2374.9783214709373,
+                    "99.999" : 2374.9783214709373,
+                    "99.9999" : 2374.9783214709373,
+                    "100.0" : 2374.9783214709373
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2274.730121590909,
+                        2374.9783214709373,
+                        2365.2472612293145,
+                        2219.7348503325943,
+                        2260.796599322799
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "800"
+            },
+            "primaryMetric" : {
+                "score" : 2638.9311535660227,
+                "scoreError" : 660.5901603385947,
+                "scoreConfidence" : [
+                    1978.340993227428,
+                    3299.5213139046173
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2488.309934079602,
+                    "50.0" : 2540.614035532995,
+                    "90.0" : 2844.618538352273,
+                    "95.0" : 2844.618538352273,
+                    "99.0" : 2844.618538352273,
+                    "99.9" : 2844.618538352273,
+                    "99.99" : 2844.618538352273,
+                    "99.999" : 2844.618538352273,
+                    "99.9999" : 2844.618538352273,
+                    "100.0" : 2844.618538352273
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2540.614035532995,
+                        2488.309934079602,
+                        2805.6881669004206,
+                        2844.618538352273,
+                        2515.425092964824
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "900"
+            },
+            "primaryMetric" : {
+                "score" : 2987.181712271821,
+                "scoreError" : 553.8907193993882,
+                "scoreConfidence" : [
+                    2433.290992872433,
+                    3541.0724316712094
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 2839.1275730496454,
+                    "50.0" : 2942.430651470588,
+                    "90.0" : 3189.289592356688,
+                    "95.0" : 3189.289592356688,
+                    "99.0" : 3189.289592356688,
+                    "99.9" : 3189.289592356688,
+                    "99.99" : 3189.289592356688,
+                    "99.999" : 3189.289592356688,
+                    "99.9999" : 3189.289592356688,
+                    "100.0" : 3189.289592356688
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        2839.1275730496454,
+                        2887.7927229437228,
+                        2942.430651470588,
+                        3077.2680215384617,
+                        3189.289592356688
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.atOnce",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1000"
+            },
+            "primaryMetric" : {
+                "score" : 4318.062469268106,
+                "scoreError" : 1655.953434880176,
+                "scoreConfidence" : [
+                    2662.1090343879296,
+                    5974.015904148282
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 3844.021255278311,
+                    "50.0" : 4246.664572033898,
+                    "90.0" : 4913.970120098039,
+                    "95.0" : 4913.970120098039,
+                    "99.0" : 4913.970120098039,
+                    "99.9" : 4913.970120098039,
+                    "99.99" : 4913.970120098039,
+                    "99.999" : 4913.970120098039,
+                    "99.9999" : 4913.970120098039,
+                    "100.0" : 4913.970120098039
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        3844.021255278311,
+                        4015.7311683366734,
+                        4246.664572033898,
+                        4569.925230593607,
+                        4913.970120098039
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1"
+            },
+            "primaryMetric" : {
+                "score" : 478.6792071911083,
+                "scoreError" : 18.461777080595528,
+                "scoreConfidence" : [
+                    460.21743011051274,
+                    497.1409842717038
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 472.42975625885686,
+                    "50.0" : 479.837457903574,
+                    "90.0" : 484.5518737887597,
+                    "95.0" : 484.5518737887597,
+                    "99.0" : 484.5518737887597,
+                    "99.9" : 484.5518737887597,
+                    "99.99" : 484.5518737887597,
+                    "99.999" : 484.5518737887597,
+                    "99.9999" : 484.5518737887597,
+                    "100.0" : 484.5518737887597
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        484.5518737887597,
+                        475.3939244296578,
+                        479.837457903574,
+                        481.18302357469327,
+                        472.42975625885686
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "2"
+            },
+            "primaryMetric" : {
+                "score" : 495.568983490267,
+                "scoreError" : 44.13594337684849,
+                "scoreConfidence" : [
+                    451.4330401134185,
+                    539.7049268671154
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 484.4663533543231,
+                    "50.0" : 497.1573106361829,
+                    "90.0" : 512.6016032803691,
+                    "95.0" : 512.6016032803691,
+                    "99.0" : 512.6016032803691,
+                    "99.9" : 512.6016032803691,
+                    "99.99" : 512.6016032803691,
+                    "99.999" : 512.6016032803691,
+                    "99.9999" : 512.6016032803691,
+                    "100.0" : 512.6016032803691
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        497.1573106361829,
+                        484.4663533543231,
+                        498.18723232071716,
+                        512.6016032803691,
+                        485.43241785974277
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "3"
+            },
+            "primaryMetric" : {
+                "score" : 492.7648593042992,
+                "scoreError" : 19.284254119995243,
+                "scoreConfidence" : [
+                    473.48060518430395,
+                    512.0491134242944
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 485.41881485076436,
+                    "50.0" : 492.1171126691267,
+                    "90.0" : 498.1636073207171,
+                    "95.0" : 498.1636073207171,
+                    "99.0" : 498.1636073207171,
+                    "99.9" : 498.1636073207171,
+                    "99.99" : 498.1636073207171,
+                    "99.999" : 498.1636073207171,
+                    "99.9999" : 498.1636073207171,
+                    "100.0" : 498.1636073207171
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        485.41881485076436,
+                        498.1636073207171,
+                        491.4715226044226,
+                        492.1171126691267,
+                        496.65323907646473
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "4"
+            },
+            "primaryMetric" : {
+                "score" : 511.53232329290313,
+                "scoreError" : 27.761115726322718,
+                "scoreConfidence" : [
+                    483.7712075665804,
+                    539.2934390192258
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 505.86807157309056,
+                    "50.0" : 506.8540020268558,
+                    "90.0" : 519.6336176623377,
+                    "95.0" : 519.6336176623377,
+                    "99.0" : 519.6336176623377,
+                    "99.9" : 519.6336176623377,
+                    "99.99" : 519.6336176623377,
+                    "99.999" : 519.6336176623377,
+                    "99.9999" : 519.6336176623377,
+                    "100.0" : 519.6336176623377
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        506.8540020268558,
+                        505.86807157309056,
+                        506.10342195800655,
+                        519.6336176623377,
+                        519.2025032442252
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "5"
+            },
+            "primaryMetric" : {
+                "score" : 525.6093508805436,
+                "scoreError" : 81.64637368954352,
+                "scoreConfidence" : [
+                    443.9629771910001,
+                    607.2557245700872
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 496.73478519990067,
+                    "50.0" : 535.7291772897697,
+                    "90.0" : 545.3821057797164,
+                    "95.0" : 545.3821057797164,
+                    "99.0" : 545.3821057797164,
+                    "99.9" : 545.3821057797164,
+                    "99.99" : 545.3821057797164,
+                    "99.999" : 545.3821057797164,
+                    "99.9999" : 545.3821057797164,
+                    "100.0" : 545.3821057797164
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        509.7594018858308,
+                        540.4412842475007,
+                        496.73478519990067,
+                        535.7291772897697,
+                        545.3821057797164
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "6"
+            },
+            "primaryMetric" : {
+                "score" : 512.3505844266592,
+                "scoreError" : 30.872688279979123,
+                "scoreConfidence" : [
+                    481.4778961466801,
+                    543.2232727066383
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 506.6734592405063,
+                    "50.0" : 507.67303730964466,
+                    "90.0" : 525.490939059627,
+                    "95.0" : 525.490939059627,
+                    "99.0" : 525.490939059627,
+                    "99.9" : 525.490939059627,
+                    "99.99" : 525.490939059627,
+                    "99.999" : 525.490939059627,
+                    "99.9999" : 525.490939059627,
+                    "100.0" : 525.490939059627
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        514.5954350398765,
+                        507.67303730964466,
+                        507.3200514836419,
+                        506.6734592405063,
+                        525.490939059627
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "7"
+            },
+            "primaryMetric" : {
+                "score" : 553.3322059150269,
+                "scoreError" : 28.303536395624793,
+                "scoreConfidence" : [
+                    525.0286695194021,
+                    581.6357423106516
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 545.1531817934042,
+                    "50.0" : 551.1880628272252,
+                    "90.0" : 564.356965303244,
+                    "95.0" : 564.356965303244,
+                    "99.0" : 564.356965303244,
+                    "99.9" : 564.356965303244,
+                    "99.99" : 564.356965303244,
+                    "99.999" : 564.356965303244,
+                    "99.9999" : 564.356965303244,
+                    "100.0" : 564.356965303244
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        564.356965303244,
+                        545.1531817934042,
+                        549.6031939560439,
+                        556.3596256952169,
+                        551.1880628272252
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "8"
+            },
+            "primaryMetric" : {
+                "score" : 580.5960594720866,
+                "scoreError" : 84.30426323891427,
+                "scoreConfidence" : [
+                    496.29179623317236,
+                    664.9003227110009
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 564.1568908629441,
+                    "50.0" : 572.7089204122531,
+                    "90.0" : 619.0561575363664,
+                    "95.0" : 619.0561575363664,
+                    "99.0" : 619.0561575363664,
+                    "99.9" : 619.0561575363664,
+                    "99.99" : 619.0561575363664,
+                    "99.999" : 619.0561575363664,
+                    "99.9999" : 619.0561575363664,
+                    "100.0" : 619.0561575363664
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        572.7089204122531,
+                        575.2314631972398,
+                        619.0561575363664,
+                        571.8268653516295,
+                        564.1568908629441
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "9"
+            },
+            "primaryMetric" : {
+                "score" : 579.2336745151936,
+                "scoreError" : 42.46279303293997,
+                "scoreConfidence" : [
+                    536.7708814822536,
+                    621.6964675481336
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 567.5412465248227,
+                    "50.0" : 575.4678512658228,
+                    "90.0" : 595.1761499553704,
+                    "95.0" : 595.1761499553704,
+                    "99.0" : 595.1761499553704,
+                    "99.9" : 595.1761499553704,
+                    "99.99" : 595.1761499553704,
+                    "99.999" : 595.1761499553704,
+                    "99.9999" : 595.1761499553704,
+                    "100.0" : 595.1761499553704
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        567.5412465248227,
+                        572.6179928428285,
+                        575.4678512658228,
+                        585.3651319871232,
+                        595.1761499553704
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "10"
+            },
+            "primaryMetric" : {
+                "score" : 580.4874580643611,
+                "scoreError" : 11.151773552636387,
+                "scoreConfidence" : [
+                    569.3356845117247,
+                    591.6392316169976
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 577.8394615829001,
+                    "50.0" : 579.0966007527504,
+                    "90.0" : 584.9784289473685,
+                    "95.0" : 584.9784289473685,
+                    "99.0" : 584.9784289473685,
+                    "99.9" : 584.9784289473685,
+                    "99.99" : 584.9784289473685,
+                    "99.999" : 584.9784289473685,
+                    "99.9999" : 584.9784289473685,
+                    "100.0" : 584.9784289473685
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        579.0966007527504,
+                        577.8394615829001,
+                        578.7897120949074,
+                        584.9784289473685,
+                        581.733086943879
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "20"
+            },
+            "primaryMetric" : {
+                "score" : 611.4220092117802,
+                "scoreError" : 44.377747240792985,
+                "scoreConfidence" : [
+                    567.0442619709872,
+                    655.7997564525731
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 602.3636013249021,
+                    "50.0" : 604.3317359516616,
+                    "90.0" : 627.7618089711418,
+                    "95.0" : 627.7618089711418,
+                    "99.0" : 627.7618089711418,
+                    "99.9" : 627.7618089711418,
+                    "99.99" : 627.7618089711418,
+                    "99.999" : 627.7618089711418,
+                    "99.9999" : 627.7618089711418,
+                    "100.0" : 627.7618089711418
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        604.3317359516616,
+                        602.3636013249021,
+                        603.2040633293125,
+                        619.448836481883,
+                        627.7618089711418
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "30"
+            },
+            "primaryMetric" : {
+                "score" : 682.7760372407116,
+                "scoreError" : 34.37690292929197,
+                "scoreConfidence" : [
+                    648.3991343114196,
+                    717.1529401700036
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 672.3624107563026,
+                    "50.0" : 684.0373364102564,
+                    "90.0" : 695.6475615438109,
+                    "95.0" : 695.6475615438109,
+                    "99.0" : 695.6475615438109,
+                    "99.9" : 695.6475615438109,
+                    "99.99" : 695.6475615438109,
+                    "99.999" : 695.6475615438109,
+                    "99.9999" : 695.6475615438109,
+                    "100.0" : 695.6475615438109
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        676.6632422192151,
+                        685.1696352739726,
+                        695.6475615438109,
+                        684.0373364102564,
+                        672.3624107563026
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "40"
+            },
+            "primaryMetric" : {
+                "score" : 711.9335513644703,
+                "scoreError" : 62.896274721252745,
+                "scoreConfidence" : [
+                    649.0372766432175,
+                    774.8298260857231
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 698.2285253054101,
+                    "50.0" : 706.4246405367231,
+                    "90.0" : 736.5721969808542,
+                    "95.0" : 736.5721969808542,
+                    "99.0" : 736.5721969808542,
+                    "99.9" : 736.5721969808542,
+                    "99.99" : 736.5721969808542,
+                    "99.999" : 736.5721969808542,
+                    "99.9999" : 736.5721969808542,
+                    "100.0" : 736.5721969808542
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        698.561906773743,
+                        706.4246405367231,
+                        736.5721969808542,
+                        698.2285253054101,
+                        719.8804872256208
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "50"
+            },
+            "primaryMetric" : {
+                "score" : 755.5114849627892,
+                "scoreError" : 74.95218346069105,
+                "scoreConfidence" : [
+                    680.5593015020982,
+                    830.4636684234802
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 729.360553773241,
+                    "50.0" : 762.5641719405261,
+                    "90.0" : 778.776377968081,
+                    "95.0" : 778.776377968081,
+                    "99.0" : 778.776377968081,
+                    "99.9" : 778.776377968081,
+                    "99.99" : 778.776377968081,
+                    "99.999" : 778.776377968081,
+                    "99.9999" : 778.776377968081,
+                    "100.0" : 778.776377968081
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        742.6584510022271,
+                        764.1978701298701,
+                        778.776377968081,
+                        762.5641719405261,
+                        729.360553773241
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "60"
+            },
+            "primaryMetric" : {
+                "score" : 810.3568478463745,
+                "scoreError" : 115.54368005531208,
+                "scoreConfidence" : [
+                    694.8131677910625,
+                    925.9005279016866
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 788.5198565234529,
+                    "50.0" : 792.8488359096314,
+                    "90.0" : 859.1640193215973,
+                    "95.0" : 859.1640193215973,
+                    "99.0" : 859.1640193215973,
+                    "99.9" : 859.1640193215973,
+                    "99.99" : 859.1640193215973,
+                    "99.999" : 859.1640193215973,
+                    "99.9999" : 859.1640193215973,
+                    "100.0" : 859.1640193215973
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        788.5198565234529,
+                        792.8488359096314,
+                        859.1640193215973,
+                        819.6119643588693,
+                        791.6395631183221
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "70"
+            },
+            "primaryMetric" : {
+                "score" : 843.3093466154412,
+                "scoreError" : 85.13642941270548,
+                "scoreConfidence" : [
+                    758.1729172027357,
+                    928.4457760281467
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 826.073921139554,
+                    "50.0" : 837.2443151946421,
+                    "90.0" : 881.2492332746478,
+                    "95.0" : 881.2492332746478,
+                    "99.0" : 881.2492332746478,
+                    "99.9" : 881.2492332746478,
+                    "99.99" : 881.2492332746478,
+                    "99.999" : 881.2492332746478,
+                    "99.9999" : 881.2492332746478,
+                    "100.0" : 881.2492332746478
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        881.2492332746478,
+                        837.2443151946421,
+                        842.1097777777778,
+                        826.073921139554,
+                        829.8694856905848
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "80"
+            },
+            "primaryMetric" : {
+                "score" : 863.511077205026,
+                "scoreError" : 117.18255711914405,
+                "scoreConfidence" : [
+                    746.328520085882,
+                    980.69363432417
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 837.5567517789871,
+                    "50.0" : 849.5855346072187,
+                    "90.0" : 909.3094122727273,
+                    "95.0" : 909.3094122727273,
+                    "99.0" : 909.3094122727273,
+                    "99.9" : 909.3094122727273,
+                    "99.99" : 909.3094122727273,
+                    "99.999" : 909.3094122727273,
+                    "99.9999" : 909.3094122727273,
+                    "100.0" : 909.3094122727273
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        909.3094122727273,
+                        837.5567517789871,
+                        879.5500281318681,
+                        849.5855346072187,
+                        841.553659234329
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "90"
+            },
+            "primaryMetric" : {
+                "score" : 991.2798279625847,
+                "scoreError" : 245.971486240336,
+                "scoreConfidence" : [
+                    745.3083417222488,
+                    1237.2513142029206
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 907.8444469147006,
+                    "50.0" : 981.3533452672879,
+                    "90.0" : 1080.2812877969761,
+                    "95.0" : 1080.2812877969761,
+                    "99.0" : 1080.2812877969761,
+                    "99.9" : 1080.2812877969761,
+                    "99.99" : 1080.2812877969761,
+                    "99.999" : 1080.2812877969761,
+                    "99.9999" : 1080.2812877969761,
+                    "100.0" : 1080.2812877969761
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        907.8444469147006,
+                        967.6643099613153,
+                        981.3533452672879,
+                        1080.2812877969761,
+                        1019.255749872644
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "100"
+            },
+            "primaryMetric" : {
+                "score" : 892.1666063194067,
+                "scoreError" : 107.07217736146829,
+                "scoreConfidence" : [
+                    785.0944289579384,
+                    999.238783680875
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 874.1638387942332,
+                    "50.0" : 879.5141362637363,
+                    "90.0" : 940.4907404795487,
+                    "95.0" : 940.4907404795487,
+                    "99.0" : 940.4907404795487,
+                    "99.9" : 940.4907404795487,
+                    "99.99" : 940.4907404795487,
+                    "99.999" : 940.4907404795487,
+                    "99.9999" : 940.4907404795487,
+                    "100.0" : 940.4907404795487
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        940.4907404795487,
+                        890.9892048997773,
+                        879.5141362637363,
+                        874.1638387942332,
+                        875.6751111597374
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "200"
+            },
+            "primaryMetric" : {
+                "score" : 2357.28324923067,
+                "scoreError" : 7397.5950966605915,
+                "scoreConfidence" : [
+                    -5040.311847429921,
+                    9754.878345891262
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 1052.484474487112,
+                    "50.0" : 1256.5985590452262,
+                    "90.0" : 5494.39884109589,
+                    "95.0" : 5494.39884109589,
+                    "99.0" : 5494.39884109589,
+                    "99.9" : 5494.39884109589,
+                    "99.99" : 5494.39884109589,
+                    "99.999" : 5494.39884109589,
+                    "99.9999" : 5494.39884109589,
+                    "100.0" : 5494.39884109589
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        1058.7699423280424,
+                        1052.484474487112,
+                        1256.5985590452262,
+                        2924.16442919708,
+                        5494.39884109589
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "300"
+            },
+            "primaryMetric" : {
+                "score" : 8223.395439800159,
+                "scoreError" : 125.5185028559431,
+                "scoreConfidence" : [
+                    8097.876936944216,
+                    8348.913942656101
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 8165.81907755102,
+                    "50.0" : 8235.383493827161,
+                    "90.0" : 8244.43249382716,
+                    "95.0" : 8244.43249382716,
+                    "99.0" : 8244.43249382716,
+                    "99.9" : 8244.43249382716,
+                    "99.99" : 8244.43249382716,
+                    "99.999" : 8244.43249382716,
+                    "99.9999" : 8244.43249382716,
+                    "100.0" : 8244.43249382716
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        8165.81907755102,
+                        8235.383493827161,
+                        8240.544646090535,
+                        8244.43249382716,
+                        8230.797487704918
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "400"
+            },
+            "primaryMetric" : {
+                "score" : 10977.529420032426,
+                "scoreError" : 85.67787987035685,
+                "scoreConfidence" : [
+                    10891.85154016207,
+                    11063.207299902782
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 10938.428803278688,
+                    "50.0" : 10983.593961748635,
+                    "90.0" : 10991.756686813187,
+                    "95.0" : 10991.756686813187,
+                    "99.0" : 10991.756686813187,
+                    "99.9" : 10991.756686813187,
+                    "99.99" : 10991.756686813187,
+                    "99.999" : 10991.756686813187,
+                    "99.9999" : 10991.756686813187,
+                    "100.0" : 10991.756686813187
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        10938.428803278688,
+                        10982.72900546448,
+                        10991.138642857142,
+                        10991.756686813187,
+                        10983.593961748635
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "500"
+            },
+            "primaryMetric" : {
+                "score" : 13713.309124396608,
+                "scoreError" : 125.5481018707678,
+                "scoreConfidence" : [
+                    13587.761022525841,
+                    13838.857226267375
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 13655.916190476191,
+                    "50.0" : 13723.432239726028,
+                    "90.0" : 13734.187801369862,
+                    "95.0" : 13734.187801369862,
+                    "99.0" : 13734.187801369862,
+                    "99.9" : 13734.187801369862,
+                    "99.99" : 13734.187801369862,
+                    "99.999" : 13734.187801369862,
+                    "99.9999" : 13734.187801369862,
+                    "100.0" : 13734.187801369862
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        13655.916190476191,
+                        13720.52108219178,
+                        13732.488308219177,
+                        13734.187801369862,
+                        13723.432239726028
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "600"
+            },
+            "primaryMetric" : {
+                "score" : 16450.89104835399,
+                "scoreError" : 125.05622118439179,
+                "scoreConfidence" : [
+                    16325.8348271696,
+                    16575.947269538385
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 16394.280504065042,
+                    "50.0" : 16463.72225409836,
+                    "90.0" : 16475.171418032787,
+                    "95.0" : 16475.171418032787,
+                    "99.0" : 16475.171418032787,
+                    "99.9" : 16475.171418032787,
+                    "99.99" : 16475.171418032787,
+                    "99.999" : 16475.171418032787,
+                    "99.9999" : 16475.171418032787,
+                    "100.0" : 16475.171418032787
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        16394.280504065042,
+                        16454.72824590164,
+                        16475.171418032787,
+                        16466.55281967213,
+                        16463.72225409836
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "700"
+            },
+            "primaryMetric" : {
+                "score" : 19188.45423238095,
+                "scoreError" : 167.56686239331336,
+                "scoreConfidence" : [
+                    19020.88736998764,
+                    19356.021094774263
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 19111.90580952381,
+                    "50.0" : 19202.919942857145,
+                    "90.0" : 19217.808114285715,
+                    "95.0" : 19217.808114285715,
+                    "99.0" : 19217.808114285715,
+                    "99.9" : 19217.808114285715,
+                    "99.99" : 19217.808114285715,
+                    "99.999" : 19217.808114285715,
+                    "99.9999" : 19217.808114285715,
+                    "100.0" : 19217.808114285715
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        19111.90580952381,
+                        19197.449276190477,
+                        19212.18801904762,
+                        19217.808114285715,
+                        19202.919942857145
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "800"
+            },
+            "primaryMetric" : {
+                "score" : 21915.75238478261,
+                "scoreError" : 307.768682273137,
+                "scoreConfidence" : [
+                    21607.98370250947,
+                    22223.521067055746
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 21773.455630434783,
+                    "50.0" : 21943.622108695654,
+                    "90.0" : 21960.352880434784,
+                    "95.0" : 21960.352880434784,
+                    "99.0" : 21960.352880434784,
+                    "99.9" : 21960.352880434784,
+                    "99.99" : 21960.352880434784,
+                    "99.999" : 21960.352880434784,
+                    "99.9999" : 21960.352880434784,
+                    "100.0" : 21960.352880434784
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        21773.455630434783,
+                        21943.622108695654,
+                        21957.76666304348,
+                        21960.352880434784,
+                        21943.564641304347
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "900"
+            },
+            "primaryMetric" : {
+                "score" : 24669.374675910873,
+                "scoreError" : 185.39181314628027,
+                "scoreConfidence" : [
+                    24483.98286276459,
+                    24854.766489057154
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 24584.698048780487,
+                    "50.0" : 24684.6266097561,
+                    "90.0" : 24699.91848148148,
+                    "95.0" : 24699.91848148148,
+                    "99.0" : 24699.91848148148,
+                    "99.9" : 24699.91848148148,
+                    "99.99" : 24699.91848148148,
+                    "99.999" : 24699.91848148148,
+                    "99.9999" : 24699.91848148148,
+                    "100.0" : 24699.91848148148
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        24584.698048780487,
+                        24684.6266097561,
+                        24699.91848148148,
+                        24698.31464197531,
+                        24679.315597560977
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ,
+        {
+            "benchmark" : "com.komanov.mysql.streaming.jmh.MariaDbBenchmark.stream",
+            "mode" : "avgt",
+            "threads" : 1,
+            "forks" : 1,
+            "warmupIterations" : 1,
+            "warmupTime" : "5 s",
+            "warmupBatchSize" : 1,
+            "measurementIterations" : 5,
+            "measurementTime" : "2 s",
+            "measurementBatchSize" : 1,
+            "params" : {
+                "limit" : "1000"
+            },
+            "primaryMetric" : {
+                "score" : 27386.788346649388,
+                "scoreError" : 207.1683654273572,
+                "scoreConfidence" : [
+                    27179.61998122203,
+                    27593.956712076746
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 27298.773121621623,
+                    "50.0" : 27412.996424657533,
+                    "90.0" : 27433.345246575343,
+                    "95.0" : 27433.345246575343,
+                    "99.0" : 27433.345246575343,
+                    "99.9" : 27433.345246575343,
+                    "99.99" : 27433.345246575343,
+                    "99.999" : 27433.345246575343,
+                    "99.9999" : 27433.345246575343,
+                    "100.0" : 27433.345246575343
+                },
+                "scoreUnit" : "us/op",
+                "rawData" : [
+                    [
+                        27298.773121621623,
+                        27415.159589041097,
+                        27373.667351351352,
+                        27433.345246575343,
+                        27412.996424657533
+                    ]
+                ]
+            },
+            "secondaryMetrics" : {
+            }
+        }
+    ]
+
+
+]

@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package com.komanov.serialization.domain.protos;
+
+enum SiteTypePb {
+    UnknownSiteType = 0;
+    Flash = 1;
+    Silverlight = 2;
+    Html5 = 3;
+}
+
+enum SiteFlagPb {
+    UnknownSiteFlag = 0;
+    Free = 1;
+    Premium = 2;
+}
+
+enum PageComponentTypePb {
+    UnknownPageComponentType = 0;
+    Text = 1;
+    Button = 2;
+    Blog = 3;
+}
+
+message DomainPb {
+    string name = 1;
+    bool primary = 2;
+}
+
+message EntryPointPb {
+    oneof ep {
+        DomainEntryPointPb domain = 1;
+        FreeEntryPointPb free = 2;
+    }
+
+    message DomainEntryPointPb {
+        string domain = 1;
+        bool primary = 2;
+    }
+
+    message FreeEntryPointPb {
+        string userName = 1;
+        string siteName = 2;
+        bool primary = 3;
+    }
+}
+
+message MetaTagPb {
+    string name = 1;
+    string value = 2;
+}
+
+message PageComponentDataPb {
+    oneof data {
+        TextComponentDataPb text = 1;
+        ButtonComponentDataPb button = 2;
+        BlogComponentDataPb blog = 3;
+    }
+
+    message TextComponentDataPb {
+        string text = 1;
+    }
+
+    message ButtonComponentDataPb {
+        string name = 1;
+        string text = 2;
+        bytes action = 3;
+    }
+
+    message BlogComponentDataPb {
+        string name = 1;
+        bool rss = 2;
+        bool tags = 3;
+    }
+}
+
+message PageComponentPositionPb {
+    uint32 x = 1;
+    uint32 y = 2;
+}
+
+message PageComponentPb {
+    bytes id = 1;
+    PageComponentTypePb componentType = 2;
+    PageComponentDataPb data = 3;
+    PageComponentPositionPb position = 4;
+    uint64 dateCreated = 5;
+    uint64 dateUpdated = 6;
+}
+
+message PagePb {
+    string name = 1;
+    string path = 2;
+    repeated MetaTagPb metaTags = 3;
+    repeated PageComponentPb components = 4;
+}
+
+message SitePb {
+    bytes id = 1;
+    bytes ownerId = 2;
+    uint64 revision = 3;
+    SiteTypePb siteType = 4;
+    repeated SiteFlagPb flags = 5;
+    string name = 6;
+    string description = 7;
+    repeated DomainPb domains = 8;
+    repeated MetaTagPb defaultMetaTags = 9;
+    repeated PagePb pages = 10;
+    repeated EntryPointPb entryPoints = 11;
+    bool published = 12;
+    uint64 dateCreated = 13;
+    uint64 dateUpdated = 14;
+}

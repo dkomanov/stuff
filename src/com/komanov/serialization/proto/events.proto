@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+package com.komanov.serialization.domain.protos;
+
+import "src/main/proto/site.proto";
+
+message SiteCreatedPb {
+    bytes id = 1;
+    bytes ownerId = 2;
+    SiteTypePb siteType = 3;
+}
+
+message SiteNameSetPb {
+    string name = 1;
+}
+
+message SiteDescriptionSetPb {
+    string description = 1;
+}
+
+message SiteRevisionSetPb {
+    uint64 revision = 1;
+}
+
+message SitePublishedPb {
+}
+
+message SiteUnpublishedPb {
+}
+
+// SiteFlag
+
+message SiteFlagAddedPb {
+    SiteFlagPb siteFlag = 1;
+}
+
+message SiteFlagRemovedPb {
+    SiteFlagPb siteFlag = 1;
+}
+
+// Domain
+
+message DomainAddedPb {
+    string name = 1;
+}
+
+message DomainRemovedPb {
+    string name = 1;
+}
+
+message PrimaryDomainSetPb {
+    string name = 1;
+}
+
+// DefaultMetaTag
+
+message DefaultMetaTagAddedPb {
+    string name = 1;
+    string value = 2;
+}
+
+message DefaultMetaTagRemovedPb {
+    string name = 1;
+}
+
+// Page
+
+message PageAddedPb {
+    string path = 1;
+}
+
+message PageRemovedPb {
+    string path = 1;
+}
+
+message PageNameSetPb {
+    string path = 1;
+    string name = 2;
+}
+
+message PageMetaTagAddedPb {
+    string path = 1;
+    string name = 2;
+    string value = 3;
+}
+
+message PageMetaTagRemovedPb {
+    string path = 1;
+    string name = 2;
+}
+
+// Page::PageComponent
+
+message PageComponentAddedPb {
+    string pagePath = 1;
+    bytes id = 2;
+    PageComponentTypePb componentType = 3;
+}
+
+message PageComponentRemovedPb {
+    string pagePath = 1;
+    bytes id = 2;
+}
+
+message PageComponentPositionSetPb {
+    bytes id = 1;
+    uint32 x = 2;
+    uint32 y = 3;
+}
+
+message PageComponentPositionResetPb {
+    bytes id = 1;
+}
+
+message TextComponentDataSetPb {
+    bytes id = 1;
+    string text = 2;
+}
+
+message ButtonComponentDataSetPb {
+    bytes id = 1;
+    string name = 2;
+    string text = 3;
+    bytes action = 4;
+}
+
+message BlogComponentDataSetPb {
+    bytes id = 1;
+    string name = 2;
+    bool rss = 3;
+    bool tags = 4;
+}
+
+// EntryPoint
+
+message DomainEntryPointAddedPb {
+    string domain = 1;
+}
+
+message FreeEntryPointAddedPb {
+    string userName = 1;
+    string siteName = 2;
+}
+
+message EntryPointRemovedPb {
+    string lookupKey = 1;
+}
+
+message PrimaryEntryPointSetPb {
+    string lookupKey = 1;
+}
+
+message SiteEventPb {
+    oneof ev {
+        SiteCreatedPb SiteCreatedPb = 1;
+        SiteNameSetPb SiteNameSetPb = 2;
+        SiteDescriptionSetPb SiteDescriptionSetPb = 3;
+        SiteRevisionSetPb SiteRevisionSetPb = 4;
+        SitePublishedPb SitePublishedPb = 5;
+        SiteUnpublishedPb SiteUnpublishedPb = 6;
+        SiteFlagAddedPb SiteFlagAddedPb = 7;
+        SiteFlagRemovedPb SiteFlagRemovedPb = 8;
+        DomainAddedPb DomainAddedPb = 9;
+        DomainRemovedPb DomainRemovedPb = 10;
+        PrimaryDomainSetPb PrimaryDomainSetPb = 11;
+        DefaultMetaTagAddedPb DefaultMetaTagAddedPb = 12;
+        DefaultMetaTagRemovedPb DefaultMetaTagRemovedPb = 13;
+        PageAddedPb PageAddedPb = 14;
+        PageRemovedPb PageRemovedPb = 15;
+        PageNameSetPb PageNameSetPb = 16;
+        PageMetaTagAddedPb PageMetaTagAddedPb = 17;
+        PageMetaTagRemovedPb PageMetaTagRemovedPb = 18;
+        PageComponentAddedPb PageComponentAddedPb = 19;
+        PageComponentRemovedPb PageComponentRemovedPb = 20;
+        PageComponentPositionSetPb PageComponentPositionSetPb = 21;
+        PageComponentPositionResetPb PageComponentPositionResetPb = 22;
+        TextComponentDataSetPb TextComponentDataSetPb = 23;
+        ButtonComponentDataSetPb ButtonComponentDataSetPb = 24;
+        BlogComponentDataSetPb BlogComponentDataSetPb = 25;
+        DomainEntryPointAddedPb DomainEntryPointAddedPb = 26;
+        FreeEntryPointAddedPb FreeEntryPointAddedPb = 27;
+        EntryPointRemovedPb EntryPointRemovedPb = 28;
+        PrimaryEntryPointSetPb PrimaryEntryPointSetPb = 29;
+    }
+}
+
+message SiteEventDataPb {
+    bytes id = 1;
+    SiteEventPb ev = 2;
+    uint64 timestamp = 3;
+}

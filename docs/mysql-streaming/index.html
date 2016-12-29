@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>The Cost of a Streaming Data from MySQL by Dmitry Komanov</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">MySQL Streaming</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="">Actual charts</a></li>
+        <!--<li><a href="https://medium.com/@dkomanov/scala-serialization-419d175c888a">Original article on Medium</a></li>-->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/dkomanov/mysql-streaming">Project on GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <h1>The Cost of a Streaming Data from MySQL</h1>
+
+  <h2>Introduction</h2>
+
+  <p>
+    The performance tests are performed via <a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a>.
+    The configuration of a hardware is Intel® Core™ i7–5600U CPU @ 2.60GHz × 4 (2 core + 2 HT) with 16 GB RAM.
+  </p>
+
+  <h2>Charts</h2>
+
+  <p class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="configuration">
+      <button class="btn disabled">Configuration:</button>
+      <button class="btn btn-default ssa-configuration-btn" data-configuration="local">local</button>
+      <button class="btn btn-default ssa-configuration-btn" data-configuration="wifi">bad network (Wi-Fi)</button>
+      <button class="btn btn-default ssa-configuration-btn" data-configuration="wire">good network (Wire)</button>
+      <button class="btn btn-default ssa-configuration-btn" data-configuration="strange">strange (Strange)</button>
+    </div>
+  </p>
+
+  <p class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="p95">
+      <button class="btn disabled">Time units:</button>
+      <button class="btn btn-default ssa-value-btn" data-property="avg">avg</button>
+      <button class="btn btn-default ssa-value-btn" data-property="p0">p0</button>
+      <button class="btn btn-default ssa-value-btn" data-property="p50">p50</button>
+      <button class="btn btn-default ssa-value-btn" data-property="p95">p95</button>
+      <button class="btn btn-default ssa-value-btn" data-property="p100">p100</button>
+    </div>
+  </p>
+
+  <small class="text-muted">
+    avg - average, p0 - percentile 0 (min), p50 - percentile 50 (median), p95 - percentile 95, p100 - percentile 100
+    (max)
+  </small>
+
+  <h3>
+    <a name="below-100"></a>
+    Limit below 100
+  </h3>
+
+  <div class="below-100 ssa-chart"></div>
+
+  <p>
+    <button class="btn btn-default" type="button" data-toggle="collapse" data-target=".below-100-raw-data">Raw data</button>
+  </p>
+
+  <div class="below-100-raw-data collapse"></div>
+
+  <h3>
+    <a name="all-drivers"></a>
+    Limit above 100
+  </h3>
+
+  <div class="all-drivers ssa-chart"></div>
+
+  <p>
+    <button class="btn btn-default" type="button" data-toggle="collapse" data-target=".all-drivers-raw-data">Raw data</button>
+  </p>
+
+  <div class="all-drivers-raw-data collapse"></div>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <footer>
+    Powered by <a href="https://pages.github.com/">GitHub Pages</a>. &copy; Dmitry Komanov
+  </footer>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//www.gstatic.com/charts/loader.js"></script>
+<script src="js/charts.js"></script>
+</body>
+</html>
