@@ -1,5 +1,6 @@
-package com.komanov.mysql.streaming
+package com.komanov.mysql.streaming.tests
 
+import com.komanov.mysql.streaming._
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.Scope
 import org.specs2.specification.core.Fragments

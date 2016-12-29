@@ -1,4 +1,4 @@
-package com.komanov.mysql.streaming.tests
+package com.komanov.mysql.streaming.bin
 
 import com.komanov.mysql.streaming.{Drivers, MysqlRunner, Query}
 
