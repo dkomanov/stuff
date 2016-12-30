@@ -1,3 +1,4 @@
+workspace(name = "monorepo_of_dkomanov")
 
 git_repository(
     name = "io_bazel",
