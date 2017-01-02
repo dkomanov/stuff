@@ -1,7 +1,9 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.converters.tests
 
 import java.time.Instant
 import java.util.UUID
+
+import com.komanov.serialization.converters._
 
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.Scope

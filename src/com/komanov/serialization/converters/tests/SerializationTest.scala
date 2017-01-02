@@ -1,7 +1,8 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.converters.tests
 
 import java.io.ByteArrayOutputStream
 
+import com.komanov.serialization.converters._
 import com.komanov.serialization.domain.SiteEventData
 import org.apache.commons.io.HexDump
 import org.specs2.mutable.SpecificationWithJUnit
