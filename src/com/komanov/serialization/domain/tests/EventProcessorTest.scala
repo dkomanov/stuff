@@ -1,6 +1,7 @@
-package com.komanov.serialization.domain
+package com.komanov.serialization.domain.tests
 
-import com.komanov.serialization.converters.TestData
+import com.komanov.serialization.domain.EventProcessor
+import com.komanov.serialization.domain.testdata.TestData
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.core.Fragments
 

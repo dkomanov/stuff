@@ -1,5 +1,6 @@
 package com.komanov.serialization.converters
 
+import com.komanov.serialization.domain.testdata.TestData
 import com.komanov.serialization.domain.{EventProcessor, Site, SiteEvent}
 
 trait BasePerfTest[Input, Output] {

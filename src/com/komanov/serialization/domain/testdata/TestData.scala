@@ -1,4 +1,4 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.domain.testdata
 
 import java.time.Instant
 import java.util.UUID

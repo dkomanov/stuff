@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream
 
 import com.komanov.serialization.converters._
 import com.komanov.serialization.domain.SiteEventData
+import com.komanov.serialization.domain.testdata.TestData
 import org.apache.commons.io.HexDump
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.Scope

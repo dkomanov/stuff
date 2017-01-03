@@ -23,6 +23,7 @@ scala_library(
     deps = dependencies + [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain",
+        "//src/com/komanov/serialization/domain/testdata",
         "//third_party:org_specs2_specs2_junit_2_11",
         "//third_party:org_specs2_specs2_matcher_extra_2_11",
         "//third_party:org_specs2_specs2_mock_2_11",
@@ -36,6 +37,7 @@ java_import(
         "//src/com/komanov/serialization/domain:domain.jar",
         "//src/com/komanov/serialization/domain:domain_scala_pb.jar",
         "//src/com/komanov/serialization/domain:domain_scala_thrift.jar",
+        "//src/com/komanov/serialization/domain/testdata:testdata.jar",
     ],
     runtime_deps = [
         "@org_slf4j_slf4j_api//jar",

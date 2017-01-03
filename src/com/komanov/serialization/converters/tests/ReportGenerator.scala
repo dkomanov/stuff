@@ -5,6 +5,7 @@ import java.nio.file.{Files, StandardOpenOption}
 import java.util.zip.GZIPOutputStream
 
 import com.komanov.serialization.converters.IoUtils._
+import com.komanov.serialization.domain.testdata.TestData
 
 /*
 Data Sizes (raw)
