@@ -14,7 +14,6 @@
 # com.fasterxml.jackson.core:jackson-databind:2.7.3
 # com.fasterxml.jackson.core:jackson-core:2.7.3
 # com.fasterxml.jackson.module:jackson-module-scala_2.11:2.7.3
-# com.google.protobuf:protobuf-java:3.0.0
 # com.trueaccord.scalapb:scalapb-runtime_2.11:0.5.46
 # org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2
 # me.chrons:boopickle_2.11:1.2.4
@@ -120,13 +119,13 @@ java_library(
     name = "com_trueaccord_scalapb_scalapb_runtime_2_11",
     visibility = ["//visibility:public"],
     exports = [
-        "@com_google_protobuf_protobuf_java//jar",
         "@com_lihaoyi_fastparse_2_11//jar",
         "@com_lihaoyi_fastparse_utils_2_11//jar",
         "@com_lihaoyi_sourcecode_2_11//jar",
         "@com_trueaccord_lenses_lenses_2_11//jar",
         "@com_trueaccord_scalapb_scalapb_runtime_2_11//jar",
         "@org_scala_lang_scala_library//jar",
+        ":com_google_protobuf_protobuf_java",
     ],
 )
 

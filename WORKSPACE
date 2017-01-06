@@ -1,5 +1,6 @@
 workspace(name = "monorepo_of_dkomanov")
 
+# scala
 git_repository(
     name = "io_bazel",
     remote = "git://github.com/bazelbuild/bazel.git",
@@ -10,8 +11,18 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_scala.git",
     commit = "4f3fc159d64711f2b28d18b507cfe25c3348e4d5",
 )
+
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
+
+# rules_protobuf
+git_repository(
+  name = "org_pubref_rules_protobuf",
+  remote = "https://github.com/pubref/rules_protobuf",
+  tag = "v0.7.1",
+)
+load("@org_pubref_rules_protobuf//java:rules.bzl", "java_proto_repositories")
+java_proto_repositories()
 
 # Command to generate dependencies:
 # ./generate_workspace.sh from bazel git repository
@@ -36,7 +47,6 @@ scala_repositories()
 # com.fasterxml.jackson.core:jackson-databind:2.7.3
 # com.fasterxml.jackson.core:jackson-core:2.7.3
 # com.fasterxml.jackson.module:jackson-module-scala_2.11:2.7.3
-# com.google.protobuf:protobuf-java:3.0.0
 # com.trueaccord.scalapb:scalapb-runtime_2.11:0.5.46
 # org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2
 # me.chrons:boopickle_2.11:1.2.4
@@ -313,12 +323,6 @@ maven_jar(
     name = "org_apache_httpcomponents_httpcore",
     artifact = "org.apache.httpcomponents:httpcore:4.2.4",
     sha1 = "3b7f38df6de5dd8b500e602ae8c2dd5ee446f883",
-)
-
-# com.trueaccord.scalapb:scalapb-runtime_2.11:jar:0.5.46 wanted version 3.1.0
-maven_jar(
-    name = "com_google_protobuf_protobuf_java",
-    artifact = "com.google.protobuf:protobuf-java:3.0.0",
 )
 
 # com.trueaccord.scalapb:scalapb-runtime_2.11:jar:0.5.46

@@ -1,7 +1,7 @@
 dependencies = [
     "@me_chrons_boopickle_2_11//jar",
     "@org_scala_lang_modules_scala_pickling_2_11//jar",
-    "//src/com/komanov/serialization/domain:domain_java_pb",
+    "//src/com/komanov/serialization/proto:protos_java",
     "//src/com/komanov/serialization/domain:domain_java_thrift",
     "//third_party:com_fasterxml_jackson_core_jackson_core",
     "//third_party:com_fasterxml_jackson_core_jackson_databind",

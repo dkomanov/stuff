@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package com.komanov.serialization.domain.protos;
 
-import "src/main/proto/site.proto";
+import "src/com/komanov/serialization/proto/site.proto";
 
 message SiteCreatedPb {
     bytes id = 1;

@@ -6,7 +6,6 @@ SCALA_VERSION=_2.11
 SPECS2_VERSION=3.8.6
 SLF4J_VERSION=1.7.21
 JACKSON_VERSION=2.7.3
-PROTOBUF_VERSION=3.0.0 # TODO use protobuf rules
 SCALAPB_VERSION=0.5.46
 JMH_VERSION=1.16
 
@@ -26,7 +25,6 @@ bazel run //src/tools/generate_workspace -- \
   --artifact=com.fasterxml.jackson.core:jackson-databind:$JACKSON_VERSION \
   --artifact=com.fasterxml.jackson.core:jackson-core:$JACKSON_VERSION \
   --artifact=com.fasterxml.jackson.module:jackson-module-scala$SCALA_VERSION:$JACKSON_VERSION \
-  --artifact=com.google.protobuf:protobuf-java:$PROTOBUF_VERSION \
   --artifact=com.trueaccord.scalapb:scalapb-runtime$SCALA_VERSION:$SCALAPB_VERSION \
   --artifact=org.scala-lang.modules:scala-pickling$SCALA_VERSION:0.11.0-M2 \
   --artifact=me.chrons:boopickle$SCALA_VERSION:1.2.4 \

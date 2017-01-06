@@ -1,11 +1,5 @@
 package(default_visibility = ["//src/com/komanov/serialization:__subpackages__"])
 
-java_library(
-    name = "domain_java_pb",
-    srcs = glob(["protos/*.java"]),
-    deps = ["//third_party:com_google_protobuf_protobuf_java"],
-)
-
 scala_library(
     name = "domain_scala_pb",
     srcs = glob(["protos/**/*.scala"]),
