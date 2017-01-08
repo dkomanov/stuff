@@ -1,7 +1,7 @@
+# dot should be at the end, otherwise, src won't be a Source Root.
 directories:
   src
-  third_party
-  tools
+  .
 
 targets:
   //...
@@ -15,4 +15,4 @@ additional_languages:
 java_language_level: 8
 
 test_sources:
-  */tests/*Test.*
+  **/tests/*Test.*
