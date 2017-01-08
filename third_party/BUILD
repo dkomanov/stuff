@@ -9,7 +9,7 @@
 # org.drizzle.jdbc:drizzle-jdbc:1.3
 # org.mariadb.jdbc:mariadb-java-client:1.4.6
 # mysql:mysql-connector-java:6.0.3
-# com.wix:wix-embedded-mysql:2.0.0
+# com.wix:wix-embedded-mysql:2.1.3
 # commons-io:commons-io:2.4
 # com.fasterxml.jackson.core:jackson-databind:2.7.3
 # com.fasterxml.jackson.core:jackson-core:2.7.3
@@ -381,14 +381,6 @@ java_library(
 )
 
 java_library(
-    name = "com_google_protobuf_protobuf_java",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@com_google_protobuf_protobuf_java//jar",
-    ],
-)
-
-java_library(
     name = "com_lihaoyi_fastparse_2_11",
     visibility = ["//visibility:public"],
     exports = [
@@ -396,6 +388,14 @@ java_library(
         "@com_lihaoyi_fastparse_utils_2_11//jar",
         "@com_lihaoyi_sourcecode_2_11//jar",
         "@org_scala_lang_scala_library//jar",
+    ],
+)
+
+java_library(
+    name = "com_google_protobuf_protobuf_java",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@com_google_protobuf_protobuf_java//jar",
     ],
 )
 
