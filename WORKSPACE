@@ -1,4 +1,4 @@
-workspace(name = "monorepo_of_dkomanov")
+workspace(name = "stuff")
 
 # scala
 git_repository(
