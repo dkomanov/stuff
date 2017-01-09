@@ -12,7 +12,7 @@ before_install:
 
 script:
   - TARGET="//..."
-  - BAZEL_OPTS="--output_base=$HOME/.cache/bazel --batch --host_jvm_args=-Xmx500m --host_jvm_args=-Xms500m"
+  - BAZEL_OPTS="--output_base=$HOME/.cache/bazel --batch --host_jvm_args=-Xmx500m --host_jvm_args=-Xms500m --noshow_loading_progress"
   - BAZEL_BUILD_OPTS="--verbose_failures --worker_verbose --local_resources=400,2,1.0 --strategy=Javac=worker --spawn_strategy=standalone --genrule_strategy=standalone"
   - BAZEL_TEST_OPTS="--test_output=errors --test_strategy=standalone"
   - echo 'fetching dependencies...' && echo -en 'travis_fold:start:fetch\\r'
