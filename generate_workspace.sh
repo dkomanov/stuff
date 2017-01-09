@@ -20,7 +20,7 @@ bazel run //src/tools/generate_workspace -- \
   --artifact=org.drizzle.jdbc:drizzle-jdbc:1.3 \
   --artifact=org.mariadb.jdbc:mariadb-java-client:1.4.6 \
   --artifact=mysql:mysql-connector-java:6.0.3 \
-  --artifact=com.wix:wix-embedded-mysql:2.0.0 \
+  --artifact=com.wix:wix-embedded-mysql:2.1.3 \
   --artifact=commons-io:commons-io:2.4 \
   --artifact=com.fasterxml.jackson.core:jackson-databind:$JACKSON_VERSION \
   --artifact=com.fasterxml.jackson.core:jackson-core:$JACKSON_VERSION \

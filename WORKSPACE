@@ -42,7 +42,7 @@ java_proto_repositories()
 # org.drizzle.jdbc:drizzle-jdbc:1.3
 # org.mariadb.jdbc:mariadb-java-client:1.4.6
 # mysql:mysql-connector-java:6.0.3
-# com.wix:wix-embedded-mysql:2.0.0
+# com.wix:wix-embedded-mysql:2.1.3
 # commons-io:commons-io:2.4
 # com.fasterxml.jackson.core:jackson-databind:2.7.3
 # com.fasterxml.jackson.core:jackson-core:2.7.3
@@ -98,7 +98,7 @@ maven_jar(
     sha1 = "fe1285c9f7b58954c5ef6d80b59063569c065e9a",
 )
 
-# com.wix:wix-embedded-mysql:jar:2.0.0
+# com.wix:wix-embedded-mysql:jar:2.1.3
 maven_jar(
     name = "de_flapdoodle_embed_de_flapdoodle_embed_process",
     artifact = "de.flapdoodle.embed:de.flapdoodle.embed.process:1.50.1",
@@ -476,7 +476,7 @@ maven_jar(
 
 maven_jar(
     name = "com_wix_wix_embedded_mysql",
-    artifact = "com.wix:wix-embedded-mysql:2.0.0",
+    artifact = "com.wix:wix-embedded-mysql:2.1.3",
 )
 
 # com.trueaccord.scalapb:scalapb-runtime_2.11:jar:0.5.46
