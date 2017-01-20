@@ -14,6 +14,8 @@ def _jar_of_dep(dep):
 def scala_specs2_junit(name,
                        srcs,
                        deps=[],
+                       deps_raw=[],
+                       runtime_deps=[],
                        size="small",
                        test_class=None):
 
@@ -29,7 +31,7 @@ def scala_specs2_junit(name,
   scala_library(
       name = test_library_name,
       srcs = srcs,
-      deps = deps + specs2_deps,
+      deps = deps + deps_raw + specs2_deps,
   )
 
   native.java_import(
@@ -37,7 +39,7 @@ def scala_specs2_junit(name,
       jars = _jars_of_deps(deps) + [
         ":" + test_library_name + ".jar",
       ],
-      runtime_deps = specs2_deps,
+      runtime_deps = deps_raw + runtime_deps + specs2_deps,
   )
 
   native.java_test(
