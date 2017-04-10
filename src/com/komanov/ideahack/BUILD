@@ -20,7 +20,6 @@ java_binary(
         "//third_party:org_apache_thrift_libthrift",
         "//third_party:org_drizzle_jdbc_drizzle_jdbc",
         "//third_party:org_mariadb_jdbc_mariadb_java_client",
-        "//third_party:org_openjdk_jmh_jmh_core",
         "//third_party:org_scala_lang_modules_scala_pickling_2_11",
         "//third_party:org_slf4j_slf4j_api",
         "//third_party:org_slf4j_slf4j_nop",

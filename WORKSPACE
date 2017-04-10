@@ -13,6 +13,9 @@ scala_repositories()
 load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
 specs2_junit_repositories()
 
+load("@io_bazel_rules_scala//jmh:jmh.bzl", "jmh_repositories")
+jmh_repositories()
+
 # rules_protobuf
 git_repository(
   name = "org_pubref_rules_protobuf",
@@ -31,7 +34,6 @@ java_proto_repositories()
 
 # The following dependencies were calculated from:
 # org.specs2:specs2-mock_2.11:3.8.6
-# org.openjdk.jmh:jmh-core:1.16
 # org.slf4j:slf4j-api:1.7.21
 # org.slf4j:slf4j-nop:1.7.21
 # org.slf4j:slf4j-simple:1.7.21
@@ -114,13 +116,6 @@ maven_jar(
     sha1 = "deb6bf66918989b50209b8c9aaf3b2561af7f011",
 )
 
-# org.openjdk.jmh:jmh-core:jar:1.16
-maven_jar(
-    name = "net_sf_jopt_simple_jopt_simple",
-    artifact = "net.sf.jopt-simple:jopt-simple:4.6",
-    sha1 = "306816fb57cf94f108a43c95731b08934dcae15c",
-)
-
 maven_jar(
     name = "com_trueaccord_scalapb_scalapb_runtime_2_11",
     artifact = "com.trueaccord.scalapb:scalapb-runtime_2.11:0.5.46",
@@ -163,13 +158,6 @@ maven_jar(
     name = "net_java_dev_jna_jna",
     artifact = "net.java.dev.jna:jna:4.0.0",
     sha1 = "9b3a11c613ec3fd3440af4103b12c3de82d38b6e",
-)
-
-# org.openjdk.jmh:jmh-core:jar:1.16
-maven_jar(
-    name = "org_apache_commons_commons_math3",
-    artifact = "org.apache.commons:commons-math3:3.2",
-    sha1 = "ec2544ab27e110d2d431bdad7d538ed509b21e62",
 )
 
 maven_jar(
@@ -220,11 +208,6 @@ maven_jar(
 maven_jar(
     name = "com_fasterxml_jackson_core_jackson_databind",
     artifact = "com.fasterxml.jackson.core:jackson-databind:2.7.3",
-)
-
-maven_jar(
-    name = "org_openjdk_jmh_jmh_core",
-    artifact = "org.openjdk.jmh:jmh-core:1.16",
 )
 
 # org.specs2:specs2-matcher_2.11:jar:3.8.6

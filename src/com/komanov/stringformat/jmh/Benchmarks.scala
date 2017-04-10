@@ -13,6 +13,7 @@ import org.openjdk.jmh.annotations._
 @Warmup(iterations = 3, time = 3, timeUnit = TimeUnit.SECONDS)
 abstract class BenchmarkBase
 
+@State(Scope.Benchmark)
 class ManyParamsBenchmark extends BenchmarkBase {
 
   @Param

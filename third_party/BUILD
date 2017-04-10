@@ -1,6 +1,5 @@
 # The following dependencies were calculated from:
 # org.specs2:specs2-mock_2.11:3.8.6
-# org.openjdk.jmh:jmh-core:1.16
 # org.slf4j:slf4j-api:1.7.21
 # org.slf4j:slf4j-nop:1.7.21
 # org.slf4j:slf4j-simple:1.7.21
@@ -106,14 +105,6 @@ java_library(
 )
 
 java_library(
-    name = "net_sf_jopt_simple_jopt_simple",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@net_sf_jopt_simple_jopt_simple//jar",
-    ],
-)
-
-java_library(
     name = "com_trueaccord_scalapb_scalapb_runtime_2_11",
     visibility = ["//visibility:public"],
     exports = [
@@ -173,14 +164,6 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@net_java_dev_jna_jna//jar",
-    ],
-)
-
-java_library(
-    name = "org_apache_commons_commons_math3",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@org_apache_commons_commons_math3//jar",
     ],
 )
 
@@ -251,16 +234,6 @@ java_library(
         "@com_fasterxml_jackson_core_jackson_annotations//jar",
         "@com_fasterxml_jackson_core_jackson_core//jar",
         "@com_fasterxml_jackson_core_jackson_databind//jar",
-    ],
-)
-
-java_library(
-    name = "org_openjdk_jmh_jmh_core",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@net_sf_jopt_simple_jopt_simple//jar",
-        "@org_apache_commons_commons_math3//jar",
-        "@org_openjdk_jmh_jmh_core//jar",
     ],
 )
 

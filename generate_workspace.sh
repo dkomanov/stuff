@@ -7,11 +7,9 @@ SPECS2_VERSION=3.8.6
 SLF4J_VERSION=1.7.21
 JACKSON_VERSION=2.7.3
 SCALAPB_VERSION=0.5.46
-JMH_VERSION=1.16
 
 bazel run //src/tools/generate_workspace -- \
   --artifact=org.specs2:specs2-mock$SCALA_VERSION:$SPECS2_VERSION \
-  --artifact=org.openjdk.jmh:jmh-core:$JMH_VERSION \
   --artifact=org.slf4j:slf4j-api:$SLF4J_VERSION \
   --artifact=org.slf4j:slf4j-nop:$SLF4J_VERSION \
   --artifact=org.slf4j:slf4j-simple:$SLF4J_VERSION \
