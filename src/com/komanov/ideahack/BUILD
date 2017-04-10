@@ -7,6 +7,13 @@ java_binary(
     srcs = ["Main.java"],
     main_class = "com.komanov.ideahack.Main",
     deps = [
+        "@io_bazel_rules_scala_org_openjdk_jmh_jmh_core//jar",
+        "@io_bazel_rules_scala_org_scalaz_scalaz_core//jar",
+        "@io_bazel_rules_scala_org_scalaz_scalaz_effect//jar",
+        "@io_bazel_rules_scala_org_specs2_specs2_common//jar",
+        "@io_bazel_rules_scala_org_specs2_specs2_core//jar",
+        "@io_bazel_rules_scala_org_specs2_specs2_junit_2_11//jar",
+        "@io_bazel_rules_scala_org_specs2_specs2_matcher//jar",
         "//third_party:com_fasterxml_jackson_core_jackson_core",
         "//third_party:com_fasterxml_jackson_core_jackson_databind",
         "//third_party:com_fasterxml_jackson_module_jackson_module_scala_2_11",
