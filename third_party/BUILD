@@ -1,6 +1,4 @@
 # The following dependencies were calculated from:
-# org.specs2:specs2-junit_2.11:3.8.6
-# org.specs2:specs2-matcher-extra_2.11:3.8.6
 # org.specs2:specs2-mock_2.11:3.8.6
 # org.openjdk.jmh:jmh-core:1.16
 # org.slf4j:slf4j-api:1.7.21
@@ -119,13 +117,13 @@ java_library(
     name = "com_trueaccord_scalapb_scalapb_runtime_2_11",
     visibility = ["//visibility:public"],
     exports = [
+        "@com_google_protobuf_protobuf_java//jar",
         "@com_lihaoyi_fastparse_2_11//jar",
         "@com_lihaoyi_fastparse_utils_2_11//jar",
         "@com_lihaoyi_sourcecode_2_11//jar",
         "@com_trueaccord_lenses_lenses_2_11//jar",
         "@com_trueaccord_scalapb_scalapb_runtime_2_11//jar",
         "@org_scala_lang_scala_library//jar",
-        ":com_google_protobuf_protobuf_java",
     ],
 )
 
@@ -227,23 +225,6 @@ java_library(
 )
 
 java_library(
-    name = "org_specs2_specs2_matcher_extra_2_11",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@org_scala_lang_modules_scala_parser_combinators_2_11//jar",
-        "@org_scala_lang_modules_scala_xml_2_11//jar",
-        "@org_scala_lang_scala_compiler//jar",
-        "@org_scala_lang_scala_library//jar",
-        "@org_scala_lang_scala_reflect//jar",
-        "@org_specs2_classycle//jar",
-        "@org_specs2_specs2_analysis_2_11//jar",
-        "@org_specs2_specs2_core_2_11//jar",
-        "@org_specs2_specs2_matcher_2_11//jar",
-        "@org_specs2_specs2_matcher_extra_2_11//jar",
-    ],
-)
-
-java_library(
     name = "org_scalaz_scalaz_effect_2_11",
     visibility = ["//visibility:public"],
     exports = [
@@ -284,22 +265,6 @@ java_library(
 )
 
 java_library(
-    name = "org_specs2_specs2_analysis_2_11",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@org_scala_lang_modules_scala_parser_combinators_2_11//jar",
-        "@org_scala_lang_modules_scala_xml_2_11//jar",
-        "@org_scala_lang_scala_compiler//jar",
-        "@org_scala_lang_scala_library//jar",
-        "@org_scala_lang_scala_reflect//jar",
-        "@org_specs2_classycle//jar",
-        "@org_specs2_specs2_analysis_2_11//jar",
-        "@org_specs2_specs2_core_2_11//jar",
-        "@org_specs2_specs2_matcher_2_11//jar",
-    ],
-)
-
-java_library(
     name = "org_scala_lang_scala_library",
     visibility = ["//visibility:public"],
     exports = [
@@ -321,14 +286,6 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@com_fasterxml_jackson_core_jackson_core//jar",
-    ],
-)
-
-java_library(
-    name = "org_specs2_classycle",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@org_specs2_classycle//jar",
     ],
 )
 
@@ -424,27 +381,6 @@ java_library(
 )
 
 java_library(
-    name = "org_specs2_specs2_junit_2_11",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@junit_junit//jar",
-        "@org_hamcrest_hamcrest_core//jar",
-        "@org_scala_lang_modules_scala_parser_combinators_2_11//jar",
-        "@org_scala_lang_modules_scala_xml_2_11//jar",
-        "@org_scala_lang_scala_library//jar",
-        "@org_scala_lang_scala_reflect//jar",
-        "@org_scalaz_scalaz_concurrent_2_11//jar",
-        "@org_scalaz_scalaz_core_2_11//jar",
-        "@org_scalaz_scalaz_effect_2_11//jar",
-        "@org_specs2_specs2_codata_2_11//jar",
-        "@org_specs2_specs2_common_2_11//jar",
-        "@org_specs2_specs2_core_2_11//jar",
-        "@org_specs2_specs2_junit_2_11//jar",
-        "@org_specs2_specs2_matcher_2_11//jar",
-    ],
-)
-
-java_library(
     name = "com_twitter_scrooge_core_2_11",
     visibility = ["//visibility:public"],
     exports = [
@@ -459,15 +395,6 @@ java_library(
     exports = [
         "@org_slf4j_slf4j_api//jar",
         "@org_slf4j_slf4j_nop//jar",
-    ],
-)
-
-java_library(
-    name = "junit_junit",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@junit_junit//jar",
-        "@org_hamcrest_hamcrest_core//jar",
     ],
 )
 
@@ -608,8 +535,17 @@ java_library(
         "@org_hamcrest_hamcrest_core//jar",
         "@org_mockito_mockito_core//jar",
         "@org_objenesis_objenesis//jar",
+        "@org_scala_lang_modules_scala_parser_combinators_2_11//jar",
+        "@org_scala_lang_modules_scala_xml_2_11//jar",
         "@org_scala_lang_scala_library//jar",
+        "@org_scala_lang_scala_reflect//jar",
+        "@org_scalaz_scalaz_concurrent_2_11//jar",
+        "@org_scalaz_scalaz_core_2_11//jar",
+        "@org_scalaz_scalaz_effect_2_11//jar",
+        "@org_specs2_specs2_codata_2_11//jar",
+        "@org_specs2_specs2_common_2_11//jar",
         "@org_specs2_specs2_core_2_11//jar",
+        "@org_specs2_specs2_matcher_2_11//jar",
         "@org_specs2_specs2_mock_2_11//jar",
     ],
 )
@@ -652,6 +588,7 @@ java_library(
     exports = [
         "@org_scala_lang_modules_scala_parser_combinators_2_11//jar",
         "@org_scala_lang_modules_scala_pickling_2_11//jar",
+        "@org_scala_lang_modules_scala_xml_2_11//jar",
         "@org_scala_lang_scala_compiler//jar",
         "@org_scala_lang_scala_library//jar",
         "@org_scala_lang_scala_reflect//jar",

@@ -25,8 +25,5 @@ java_binary(
         "//third_party:org_slf4j_slf4j_api",
         "//third_party:org_slf4j_slf4j_nop",
         "//third_party:org_slf4j_slf4j_simple",
-        "//third_party:org_specs2_specs2_junit_2_11",
-        "//third_party:org_specs2_specs2_matcher_extra_2_11",
-        "//third_party:org_specs2_specs2_mock_2_11",
     ],
 )

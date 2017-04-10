@@ -10,8 +10,6 @@ SCALAPB_VERSION=0.5.46
 JMH_VERSION=1.16
 
 bazel run //src/tools/generate_workspace -- \
-  --artifact=org.specs2:specs2-junit$SCALA_VERSION:$SPECS2_VERSION \
-  --artifact=org.specs2:specs2-matcher-extra$SCALA_VERSION:$SPECS2_VERSION \
   --artifact=org.specs2:specs2-mock$SCALA_VERSION:$SPECS2_VERSION \
   --artifact=org.openjdk.jmh:jmh-core:$JMH_VERSION \
   --artifact=org.slf4j:slf4j-api:$SLF4J_VERSION \

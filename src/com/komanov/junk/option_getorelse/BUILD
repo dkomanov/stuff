@@ -1,5 +1,7 @@
 scala_specs2_junit(
     name = "option_getorelse",
-    srcs = ["GetOrThrowTest.scala"],
-    test_class = "com.komanov.junk.option_getorelse.GetOrThrowTest",
+    srcs = glob(["*.scala"]),
+    deps = [
+        "//third_party:org_specs2_specs2_mock_2_11",
+    ],
 )

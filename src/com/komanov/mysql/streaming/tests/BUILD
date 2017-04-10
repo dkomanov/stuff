@@ -2,10 +2,6 @@ scala_specs2_junit(
     name = "tests",
     size = "large",
     srcs = glob(["*.scala"]),
-    deps_raw = [
-        "//third_party:com_wix_wix_embedded_mysql",
-    ],
-    test_class = "com.komanov.mysql.streaming.tests.QueryTest",
     runtime_deps = [
         "//third_party:mysql_mysql_connector_java",
         "//third_party:org_drizzle_jdbc_drizzle_jdbc",
@@ -13,5 +9,6 @@ scala_specs2_junit(
     ],
     deps = [
         "//src/com/komanov/mysql/streaming",
+        "//third_party:com_wix_wix_embedded_mysql",
     ],
 )

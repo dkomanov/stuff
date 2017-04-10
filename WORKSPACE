@@ -2,18 +2,16 @@ workspace(name = "stuff")
 
 # scala
 git_repository(
-    name = "io_bazel",
-    remote = "git://github.com/bazelbuild/bazel.git",
-    tag = "0.4.3",
-)
-git_repository(
     name = "io_bazel_rules_scala",
     remote = "https://github.com/bazelbuild/rules_scala.git",
-    commit = "4f3fc159d64711f2b28d18b507cfe25c3348e4d5",
+    commit = "b51e54cf0a77f66c269c8c8fa24d62cac388337d",
 )
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
+
+load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
+specs2_junit_repositories()
 
 # rules_protobuf
 git_repository(
@@ -32,8 +30,6 @@ java_proto_repositories()
 #
 
 # The following dependencies were calculated from:
-# org.specs2:specs2-junit_2.11:3.8.6
-# org.specs2:specs2-matcher-extra_2.11:3.8.6
 # org.specs2:specs2-mock_2.11:3.8.6
 # org.openjdk.jmh:jmh-core:1.16
 # org.slf4j:slf4j-api:1.7.21
@@ -63,7 +59,7 @@ maven_jar(
 )
 
 # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.7.3
-# org.scala-lang:scala-compiler:jar:2.11.8
+# org.scala-lang:scala-compiler:jar:2.11.7 wanted version 2.11.7
 # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
 # org.specs2:specs2-common_2.11:jar:3.8.6
 # org.specs2:specs2-core_2.11:jar:3.8.6
@@ -90,12 +86,11 @@ maven_jar(
     artifact = "org.drizzle.jdbc:drizzle-jdbc:1.3",
 )
 
-# org.specs2:specs2-analysis_2.11:jar:3.8.6
-# org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
+# org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2
 maven_jar(
     name = "org_scala_lang_scala_compiler",
-    artifact = "org.scala-lang:scala-compiler:2.11.8",
-    sha1 = "fe1285c9f7b58954c5ef6d80b59063569c065e9a",
+    artifact = "org.scala-lang:scala-compiler:2.11.7",
+    sha1 = "1454c21d39a4d991006a2a47c164f675ea1dafaf",
 )
 
 # com.wix:wix-embedded-mysql:jar:2.1.3
@@ -191,7 +186,6 @@ maven_jar(
 
 # org.mockito:mockito-core:jar:1.9.5 wanted version 1.1
 # org.specs2:specs2-mock_2.11:jar:3.8.6
-# junit:junit:jar:4.12
 maven_jar(
     name = "org_hamcrest_hamcrest_core",
     artifact = "org.hamcrest:hamcrest-core:1.3",
@@ -203,11 +197,6 @@ maven_jar(
     name = "com_twitter_chill_java",
     artifact = "com.twitter:chill-java:0.8.0",
     sha1 = "7ab1c85ae80f25c6e6d4aab720ff9394a5ac4d5d",
-)
-
-maven_jar(
-    name = "org_specs2_specs2_matcher_extra_2_11",
-    artifact = "org.specs2:specs2-matcher-extra_2.11:3.8.6",
 )
 
 # org.scalaz:scalaz-concurrent_2.11:bundle:7.2.7
@@ -238,38 +227,28 @@ maven_jar(
     artifact = "org.openjdk.jmh:jmh-core:1.16",
 )
 
-# org.specs2:specs2-matcher-extra_2.11:jar:3.8.6
-maven_jar(
-    name = "org_specs2_specs2_analysis_2_11",
-    artifact = "org.specs2:specs2-analysis_2.11:3.8.6",
-    sha1 = "9a9ce5233031f71044a5d29815358c467f34ec62",
-)
-
 # org.specs2:specs2-matcher_2.11:jar:3.8.6
 # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.7.3
 # org.scalaz:scalaz-core_2.11:bundle:7.2.7
 # com.trueaccord.scalapb:scalapb-runtime_2.11:jar:0.5.46
-# org.specs2:specs2-junit_2.11:jar:3.8.6
-# org.scala-lang.modules:scala-parser-combinators_2.11:bundle:1.0.4 wanted version 2.11.6
-# com.trueaccord.lenses:lenses_2.11:jar:0.4.9
-# com.lihaoyi:fastparse_2.11:jar:0.4.2
-# org.specs2:specs2-matcher-extra_2.11:jar:3.8.6
-# org.scala-lang:scala-compiler:jar:2.11.8
-# org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
-# org.scala-lang:scala-reflect:jar:2.11.8
-# org.scalaz:scalaz-effect_2.11:bundle:7.2.7
-# org.specs2:specs2-core_2.11:jar:3.8.6
-# com.lihaoyi:fastparse-utils_2.11:jar:0.4.2
-# com.twitter:scrooge-core_2.11:jar:4.7.0 wanted version 2.11.7
 # org.scalaz:scalaz-concurrent_2.11:bundle:7.2.7
 # org.specs2:specs2-codata_2.11:jar:3.8.6
 # me.chrons:boopickle_2.11:jar:1.2.4
+# org.scala-lang.modules:scala-parser-combinators_2.11:bundle:1.0.4 wanted version 2.11.6
+# com.trueaccord.lenses:lenses_2.11:jar:0.4.9
 # com.twitter:chill_2.11:jar:0.8.0 wanted version 2.11.7
+# com.lihaoyi:fastparse_2.11:jar:0.4.2
 # org.scala-lang.modules:scala-xml_2.11:bundle:1.0.5 wanted version 2.11.7
-# org.specs2:specs2-analysis_2.11:jar:3.8.6
 # org.specs2:specs2-mock_2.11:jar:3.8.6
 # com.lihaoyi:sourcecode_2.11:jar:0.1.3
+# org.scala-lang:scala-compiler:jar:2.11.7 wanted version 2.11.7
+# org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
+# org.scala-lang:scala-reflect:jar:2.11.8
+# org.scalaz:scalaz-effect_2.11:bundle:7.2.7
 # org.specs2:specs2-common_2.11:jar:3.8.6
+# org.specs2:specs2-core_2.11:jar:3.8.6
+# com.lihaoyi:fastparse-utils_2.11:jar:0.4.2
+# com.twitter:scrooge-core_2.11:jar:4.7.0 wanted version 2.11.7
 maven_jar(
     name = "org_scala_lang_scala_library",
     artifact = "org.scala-lang:scala-library:2.11.8",
@@ -287,13 +266,6 @@ maven_jar(
     artifact = "com.fasterxml.jackson.core:jackson-core:2.7.3",
 )
 
-# org.specs2:specs2-analysis_2.11:jar:3.8.6
-maven_jar(
-    name = "org_specs2_classycle",
-    artifact = "org.specs2:classycle:1.4.3",
-    sha1 = "b486667aa8d84be2ebd94f76bce402e39c215bc7",
-)
-
 # org.specs2:specs2-common_2.11:jar:3.8.6
 maven_jar(
     name = "org_specs2_specs2_codata_2_11",
@@ -301,8 +273,6 @@ maven_jar(
     sha1 = "703e69d2dc3442c5fe5b3ae6aa608325c3b68b28",
 )
 
-# org.specs2:specs2-junit_2.11:jar:3.8.6
-# org.specs2:specs2-analysis_2.11:jar:3.8.6
 # org.specs2:specs2-mock_2.11:jar:3.8.6
 maven_jar(
     name = "org_specs2_specs2_core_2_11",
@@ -346,11 +316,6 @@ maven_jar(
 )
 
 maven_jar(
-    name = "org_specs2_specs2_junit_2_11",
-    artifact = "org.specs2:specs2-junit_2.11:3.8.6",
-)
-
-maven_jar(
     name = "com_twitter_scrooge_core_2_11",
     artifact = "com.twitter:scrooge-core_2.11:4.7.0",
 )
@@ -358,13 +323,6 @@ maven_jar(
 maven_jar(
     name = "org_slf4j_slf4j_nop",
     artifact = "org.slf4j:slf4j-nop:1.7.21",
-)
-
-# org.specs2:specs2-junit_2.11:jar:3.8.6
-maven_jar(
-    name = "junit_junit",
-    artifact = "junit:junit:4.12",
-    sha1 = "2973d150c0dc1fefe998f834810d68f278ea58ec",
 )
 
 maven_jar(
@@ -388,8 +346,6 @@ maven_jar(
     sha1 = "5043bfebc3db072ed80fbd362e7caf00e885d8ae",
 )
 
-# org.specs2:specs2-matcher-extra_2.11:jar:3.8.6
-# org.specs2:specs2-analysis_2.11:jar:3.8.6
 # org.specs2:specs2-core_2.11:jar:3.8.6
 maven_jar(
     name = "org_specs2_specs2_matcher_2_11",
@@ -420,7 +376,7 @@ maven_jar(
 )
 
 # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 1.0.2
-# org.scala-lang:scala-compiler:jar:2.11.8
+# org.scala-lang:scala-compiler:jar:2.11.7
 # org.specs2:specs2-common_2.11:jar:3.8.6
 maven_jar(
     name = "org_scala_lang_modules_scala_parser_combinators_2_11",
@@ -448,8 +404,8 @@ maven_jar(
     sha1 = "905075e6c80f206bbe6cf1e809d2caa69f420c76",
 )
 
-# org.scala-lang:scala-compiler:jar:2.11.8 wanted version 1.0.4
 # org.specs2:specs2-common_2.11:jar:3.8.6
+# org.scala-lang:scala-compiler:jar:2.11.7 wanted version 1.0.4
 maven_jar(
     name = "org_scala_lang_modules_scala_xml_2_11",
     artifact = "org.scala-lang.modules:scala-xml_2.11:1.0.5",

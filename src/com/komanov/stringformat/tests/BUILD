@@ -1,7 +1,6 @@
 scala_specs2_junit(
     name = "tests",
-    srcs = glob(["*.scala"]) + ["TestSuite.java"],
-    test_class = "com.komanov.stringformat.tests.TestSuite",
+    srcs = glob(["*.scala"]),
     runtime_deps = [
         "@org_slf4j_slf4j_api//jar",
     ],
