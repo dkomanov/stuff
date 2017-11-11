@@ -9,13 +9,12 @@ import com.wix.mysql.distribution.Version
 
 object MysqlRunner {
 
-  System.setProperty("user.home", System.getenv("TEST_TMPDIR"))
-
   private lazy val mysql: EmbeddedMysql = {
     val config = aMysqldConfig(Version.v5_6_latest)
       .withPort(Drivers.Port)
       .withUser(Drivers.UserName, Drivers.Password)
       .withCharset(Charset.UTF8MB4)
+      .withTempDir(System.getenv("TMPDIR"))
       .build()
 
     val mysqld = anEmbeddedMysql(config)
