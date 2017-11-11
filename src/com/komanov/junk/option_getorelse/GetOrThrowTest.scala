@@ -1,9 +1,8 @@
 package com.komanov.junk.option_getorelse
 
-import org.specs2.mock.Mockito
 import org.specs2.mutable.SpecificationWithJUnit
 
-class GetOrThrowTest extends SpecificationWithJUnit with Mockito {
+class GetOrThrowTest extends SpecificationWithJUnit {
   "Option.getOrElse" should {
     "throw on None" in {
       val o = Option[String](null)
