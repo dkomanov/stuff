@@ -8,6 +8,7 @@ scala_library(
     ],
     deps = [
         "//third_party:com_wix_wix_embedded_mysql",
+        "//third_party:de_flapdoodle_embed_de_flapdoodle_embed_process",
         "//third_party:mysql_mysql_connector_java",
         "//third_party:org_drizzle_jdbc_drizzle_jdbc",
         "//third_party:org_mariadb_jdbc_mariadb_java_client",

@@ -283,6 +283,7 @@ public class UuidTest
         }
     }
 
+    @SuppressWarnings("SelfComparison")
     private void compareTo() throws Exception
     {
         UUID id = new UUID(33L, 63L);

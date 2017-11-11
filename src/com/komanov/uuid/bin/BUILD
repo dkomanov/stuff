@@ -5,5 +5,8 @@ scala_binary(
         "UuidTest.java",
     ],
     main_class = "com.komanov.uuid.bin.GuidParserPerformanceTest",
-    deps = ["//src/com/komanov/uuid"],
+    deps = [
+        "//src/com/komanov/uuid",
+        "@scala//:scala-library",
+    ],
 )

@@ -4,5 +4,6 @@ scala_benchmark_jmh(
     deps = [
         "//src/com/komanov/mysql/streaming",
         "//third_party:com_wix_wix_embedded_mysql",
+        "@scala//:scala-library",
     ],
 )

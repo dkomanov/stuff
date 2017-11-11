@@ -1,15 +1,13 @@
 package(default_visibility = ["//src/com/komanov/serialization:__subpackages__"])
 
-scala_library(
-    name = "domain_scala_pb",
-    srcs = glob(["protos/**/*.scala"]),
-    deps = ["//third_party:com_trueaccord_scalapb_scalapb_runtime_2_11"],
-)
-
 java_library(
     name = "domain_java_thrift",
     srcs = glob(["thrift/*.java"]),
-    deps = ["//third_party:org_apache_thrift_libthrift"],
+    deps = [
+        "//third_party:org_apache_thrift_libthrift",
+        "//third_party:org_slf4j_slf4j_api",
+        "//third_party:org_slf4j_slf4j_simple",
+    ],
 )
 
 scala_library(

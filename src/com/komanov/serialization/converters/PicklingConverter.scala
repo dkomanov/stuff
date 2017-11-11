@@ -12,22 +12,6 @@ import scala.pickling.static._
 /** https://github.com/scala/pickling */
 object PicklingConverter extends MyConverter {
 
-  override def toByteArray(site: Site): Array[Byte] = {
-    site.pickle.value
-  }
-
-  override def fromByteArray(bytes: Array[Byte]): Site = {
-    bytes.unpickle[Site]
-  }
-
-  override def toByteArray(event: SiteEvent): Array[Byte] = {
-    event.pickle.value
-  }
-
-  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
-    bytes.unpickle[SiteEvent]
-  }
-
   private implicit val pageComponentTypePickler = new JavaEnumPickler[PageComponentType]
   private implicit val siteFlagPickler = new JavaEnumPickler[SiteFlag]
   private implicit val siteTypePickler = new JavaEnumPickler[SiteType]
@@ -48,4 +32,21 @@ object PicklingConverter extends MyConverter {
 
   private implicit val siteEventPickler = PicklerUnpickler.generate[SiteEvent]
   private implicit val siteEventDataPickler = PicklerUnpickler.generate[SiteEventData]
+
+  override def toByteArray(site: Site): Array[Byte] = {
+    site.pickle.value
+  }
+
+  override def fromByteArray(bytes: Array[Byte]): Site = {
+    bytes.unpickle[Site]
+  }
+
+  override def toByteArray(event: SiteEvent): Array[Byte] = {
+    event.pickle.value
+  }
+
+  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
+    bytes.unpickle[SiteEvent]
+  }
+
 }
