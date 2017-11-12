@@ -1,9 +1,10 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.converters.bin
 
 import java.io.{ByteArrayOutputStream, File}
 import java.nio.file.{Files, StandardOpenOption}
 import java.util.zip.GZIPOutputStream
 
+import com.komanov.serialization.converters.{Converters, ScalaPbConverter, ScroogeConverter}
 import com.komanov.serialization.converters.IoUtils._
 import com.komanov.serialization.domain.testdata.TestData
 

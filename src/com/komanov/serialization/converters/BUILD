@@ -12,6 +12,14 @@ dependencies = [
     "//third_party:com_twitter_chill_2_11",
     "//third_party:com_twitter_chill_java",
     "//third_party:com_twitter_scrooge_core_2_11",
+    "//third_party:io_circe_circe_core_2_11",
+    "@io_circe_circe_generic_2_11//jar:file",
+    "@com_chuusai_shapeless_2_11//jar:file",
+    "//third_party:io_circe_circe_generic_2_11",
+    "//third_party:io_circe_circe_parser_2_11",
+    "//third_party:org_typelevel_cats_core_2_11",
+    "//third_party:org_typelevel_cats_macros_2_11",
+    "//third_party:org_typelevel_machinist_2_11",
     "//third_party:org_apache_thrift_libthrift",
 ]
 
