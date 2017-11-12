@@ -6,6 +6,7 @@ SCALA_VERSION=_2.11
 SPECS2_VERSION=3.8.8
 SLF4J_VERSION=1.7.25
 JACKSON_VERSION=2.9.1
+CIRCE_VERSION=0.9.0-M2
 
 bazel run //generate_workspace -- \
   --artifact=org.specs2:specs2-mock$SCALA_VERSION:$SPECS2_VERSION \
@@ -24,4 +25,7 @@ bazel run //generate_workspace -- \
   --artifact=me.chrons:boopickle$SCALA_VERSION:1.2.5 \
   --artifact=com.twitter:chill$SCALA_VERSION:0.8.0 \
   --artifact=org.apache.thrift:libthrift:0.10.0 \
-  --artifact=com.twitter:scrooge-core$SCALA_VERSION:4.7.0
+  --artifact=com.twitter:scrooge-core$SCALA_VERSION:4.7.0 \
+  --artifact=io.circe:circe-core$SCALA_VERSION:$CIRCE_VERSION \
+  --artifact=io.circe:circe-generic$SCALA_VERSION:$CIRCE_VERSION \
+  --artifact=io.circe:circe-parser$SCALA_VERSION:$CIRCE_VERSION

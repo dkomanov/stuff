@@ -11,7 +11,8 @@ object Converters {
     "Serializable" -> JavaSerializationConverter,
     "Pickling" -> PicklingConverter,
     "BooPickle" -> BoopickleConverter,
-    "Chill" -> ChillConverter
+    "Chill" -> ChillConverter,
+    "Circe" -> CirceConverter
   )
 
 }
