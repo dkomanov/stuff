@@ -24,9 +24,4 @@ bazel run //generate_workspace -- \
   --artifact=me.chrons:boopickle$SCALA_VERSION:1.2.5 \
   --artifact=com.twitter:chill$SCALA_VERSION:0.8.0 \
   --artifact=org.apache.thrift:libthrift:0.10.0 \
-  --artifact=com.twitter:scrooge-core$SCALA_VERSION:4.7.0 \
-  --declare=org.scala-lang:scala-library=@scala\/\/:scala-library \
-  --declare=org.scala-lang:scala-compiler=@scala\/\/:scala-compiler \
-  --declare=org.scala-lang:scala-reflect=@scala\/\/:scala-reflect \
-  --declare=org.scala-lang.modules:scala-parser-combinators$SCALA_VERSION=@scala\/\/:scala-parser-combinators \
-  --declare=org.scala-lang.modules:scala-xml$SCALA_VERSION=@scala\/\/:scala-xml
+  --artifact=com.twitter:scrooge-core$SCALA_VERSION:4.7.0
