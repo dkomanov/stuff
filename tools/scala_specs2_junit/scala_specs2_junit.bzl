@@ -4,8 +4,7 @@ def scala_specs2_junit(name,
                        srcs,
                        deps=[],
                        runtime_deps=[],
-                       size="small",
-                       test_class=None):
+                       size="small"):
   scala_specs2_junit_test(
       name=name,
       srcs=srcs,
