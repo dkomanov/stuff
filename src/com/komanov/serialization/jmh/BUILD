@@ -1,6 +1,9 @@
 scala_benchmark_jmh(
     name = "jmh",
-    srcs = glob(["*.scala"]),
+    srcs = glob([
+        "*.scala",
+        "*.java",
+    ]),
     deps = [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain",
