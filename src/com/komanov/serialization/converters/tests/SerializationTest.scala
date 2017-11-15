@@ -20,7 +20,7 @@ class SerializationTest extends SpecificationWithJUnit {
   doTest("Java Thrift", JavaThriftConverter)
   doTest("Scrooge", ScroogeConverter)
   doTest("Serializable", JavaSerializationConverter)
-  //doTest("Pickling", PicklingConverter)
+  doTest("Pickling", PicklingConverter)
   doTest("BooPickle", BoopickleConverter)
   doTest("Chill", ChillConverter)
   doTest("Circe", CirceConverter)
