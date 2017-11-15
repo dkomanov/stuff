@@ -1,4 +1,5 @@
 startup --batch --host_jvm_args=-Xmx1g --host_jvm_args=-XX:+UseG1GC
+startup --host_jvm_args=-Xss256m # Stack Size
 
 build --verbose_failures
 build --worker_verbose --local_resources=400,2,1.0
