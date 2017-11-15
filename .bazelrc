@@ -1,0 +1,10 @@
+startup --batch --host_jvm_args=-Xmx1g --host_jvm_args=-XX:+UseG1GC
+
+build --verbose_failures --worker_verbose --local_resources=400,2,1.0 --strategy=Javac=worker --spawn_strategy=standalone --genrule_strategy=standalone
+build --verbose_failures --spawn_strategy=standalone --genrule_strategy=standalone
+
+test --verbose_failures --test_output=errors --test_verbose_timeout_warnings
+test --test_strategy=standalone
+test --test_tmpdir=/tmp/bazel
+
+common --color=yes
