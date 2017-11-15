@@ -19,15 +19,15 @@ class ThrottlerTest extends SpecificationWithJUnit {
       invocationCount must be_==(maxCount + 1)
     }
 
-    "throw exception once reached the limit [naive, flaky]" in new ctx {
-      for (i <- 1 to maxCount) {
-        Future {
-          throttler(waitForever())
-        }
-      }
-
-      throttler {} must throwA[ThrottledException]
-    }
+//    "throw exception once reached the limit [naive, flaky]" in new ctx {
+//      for (i <- 1 to maxCount) {
+//        Future {
+//          throttler(waitForever())
+//        }
+//      }
+//
+//      throttler {} must throwA[ThrottledException]
+//    }
 
     "throw exception once reached the limit [naive, bad]" in new ctx {
       for (i <- 1 to maxCount) {
