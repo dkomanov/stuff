@@ -29,6 +29,9 @@ scala_library(
         "*.scala",
         "pickling/*.scala",
     ]),
+    scalac_jvm_flags = [
+        "-Xss256m",
+    ],
     visibility = ["//src/com/komanov/serialization:__subpackages__"],
     exports = dependencies,
     deps = dependencies,
