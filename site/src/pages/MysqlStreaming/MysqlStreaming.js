@@ -153,7 +153,7 @@ function exportDimensions(benchmark, params) {
 
   return {
     method: driverPart.substring(driverPart.lastIndexOf('.') + 1) + '.' + method,
-    limit: parseInt(limit),
+    limit: parseInt(limit, 10),
     environment,
   };
 }
