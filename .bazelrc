@@ -8,4 +8,5 @@ test --verbose_failures --test_output=errors --test_verbose_timeout_warnings
 test --test_strategy=standalone
 test --test_tmpdir=/tmp/bazel
 
+common --experimental_ui
 common --color=yes
