@@ -55,8 +55,9 @@ class ChartAndTable extends React.Component {
 
     function setDefault(path, value) {
       let current = options;
-      path.split('.').forEach((name, index) => {
-        if (index === path.length - 1) {
+      const pathParts = path.split('.');
+      pathParts.forEach((name, index) => {
+        if (index === pathParts.length - 1) {
           if (current[name] === undefined) {
             current[name] = typeof value === 'function' ? value() : value;
           }
