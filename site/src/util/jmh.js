@@ -26,7 +26,10 @@ export function buildData(list, extractByTimeUnitFunc, xDesc, yDesc) {
   const result = [];
 
   const header = [yDesc.title];
-  xDesc.values.forEach(v => header.push(v));
+  xDesc.values.forEach(v => {
+    const {name = v} = v;
+    header.push(name);
+  });
   result.push(header);
 
   yDesc.values.forEach(y => {
@@ -34,7 +37,8 @@ export function buildData(list, extractByTimeUnitFunc, xDesc, yDesc) {
     const dataForThisLine = list.filter(v => v[yDesc.prop] === yValue);
     const line = [yName];
     xDesc.values.forEach(x => {
-      const d = dataForThisLine.find(v => v[xDesc.prop] === x) || {pm: {scorePercentiles: {}}};
+      const {value: xValue = x} = x;
+      const d = dataForThisLine.find(v => v[xDesc.prop] === xValue) || {pm: {scorePercentiles: {}}};
       line.push(Math.floor(extractByTimeUnitFunc(d.pm) || NaN));
     });
     if (line.slice(1).filter(v => !Number.isNaN(v)).length > 0) {

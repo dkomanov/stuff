@@ -7,20 +7,83 @@ import {JmhChartPage} from '..';
 const xDesc = {
   title: 'Converter',
   prop: 'library',
-  values: ['Json', 'ScalaPb', 'JavaPb', 'JavaThrift', 'Scrooge', 'BooPickle', 'Chill', 'Pickling', 'JavaSerialization'],
-  valuesForMax: ['ScalaPb', 'JavaPb', 'JavaThrift', 'Scrooge', 'BooPickle'],
+  values: [
+    {
+      name: 'Json',
+      value: 'JSON',
+    },
+    {
+      name: 'ScalaPb',
+      value: 'SCALA_PB',
+    },
+    {
+      name: 'JavaPb',
+      value: 'JAVA_PB',
+    },
+    {
+      name: 'JavaThrift',
+      value: 'JAVA_THRIFT',
+    },
+    {
+      name: 'Scrooge',
+      value: 'SCROOGE',
+    },
+    {
+      name: 'BooPickle',
+      value: 'BOOPICKLE',
+    },
+    {
+      name: 'Chill',
+      value: 'CHILL',
+    },
+    {
+      name: 'Scrooge',
+      value: 'SCROOGE',
+    },
+    {
+      name: 'Circe',
+      value: 'CIRCE',
+    },
+    {
+      name: 'JavaSerialization',
+      value: 'SERIALIZABLE',
+    },
+  ],
+  valuesForMax: ['SCALA_PB', 'JAVA_PB', 'JAVA_THRIFT', 'SCROOGE', 'BOOPICKLE'],
 };
 
 const yDesc = {
   title: 'data size',
   prop: 'dataSize',
-  values: ['1k', '2k', '4k', '8k'],
+  values: [
+    {
+      name: '1k',
+      value: '_1_K',
+    },
+    {
+      name: '2k',
+      value: '_2_K',
+    },
+    {
+      name: '4k',
+      value: '_4_K',
+    },
+    {
+      name: '8k',
+      value: '_8_K',
+    },
+  ],
 };
+
+function yDescContainValue(v) {
+  return !!yDesc.values.find(({value}) => value === v);
+}
 
 function findMax(data) {
   let max = 0;
+
   data.forEach(v => {
-    if (xDesc.valuesForMax.indexOf(v[xDesc.prop]) !== -1 && yDesc.values.indexOf(v[yDesc.prop]) !== -1) {
+    if (xDesc.valuesForMax.indexOf(v[xDesc.prop]) !== -1 && yDescContainValue(v[yDesc.prop])) {
       const value = v.pm.scorePercentiles['100.0'];
       max = Math.max(value, max);
     }
@@ -74,7 +137,7 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'site' && d.action === 'both'}
+          filter={d => d.dataType === 'Site' && d.action === 'both'}
           title="Two-way times for Site (DTO), nanos"
           xDesc={xDesc}
           yDesc={yDesc}
@@ -86,7 +149,7 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'events' && d.action === 'both'}
+          filter={d => d.dataType === 'Event' && d.action === 'both'}
           title="Two-way times for Events, nanos"
           xDesc={xDesc}
           yDesc={yDesc}
@@ -98,7 +161,7 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'site' && d.action === 'serialization'}
+          filter={d => d.dataType === 'Site' && d.action === 'serialization'}
           title="Serialization times for Site (DTO), nanos"
           xDesc={xDesc}
           yDesc={yDesc}
@@ -110,7 +173,7 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'site' && d.action === 'deserialization'}
+          filter={d => d.dataType === 'Site' && d.action === 'deserialization'}
           title="Deserialization times for Site (DTO), nanos"
           xDesc={xDesc}
           yDesc={yDesc}
@@ -122,7 +185,7 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'events' && d.action === 'serialization'}
+          filter={d => d.dataType === 'Event' && d.action === 'serialization'}
           title="Serialization times for Events, nanos"
           xDesc={xDesc}
           yDesc={yDesc}
@@ -136,36 +199,37 @@ class ScalaSerializationImpl extends React.Component {
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
-          filter={d => d.dataType === 'events' && d.action === 'deserialization'}
+          filter={d => d.dataType === 'Event' && d.action === 'deserialization'}
           title="Deserialization times for Events, nanos"
           xDesc={xDesc}
           yDesc={yDesc}
           findMaxFunc={findMax}
         />
 
+        <p>
+          Full JMH log is <a href="/stuff/data/scala-serialization/jmh.log">here</a>.
+        </p>
+
       </div>
     );
   }
 }
 
-function exportDimensions(benchmark) {
-  //'com.komanov.serialization.jmh.ScalaPbBenchmark.deserialization_events_1k'
+function exportDimensions(benchmark, params) {
+  //'com.komanov.serialization.jmh.EventBenchmark.both'
 
-  const [namePart, typeParts] = benchmark.split('Benchmark.');
-  if (!typeParts) {
+  const [dataTypePart, action, ...otherBenchmark] = benchmark.split('Benchmark.');
+  if (!action || otherBenchmark.length > 0) {
     throw new Error('Expected 2 parts in a benchmark: ' + benchmark);
   }
 
-  const [action, dataType, dataSize, ...other] = typeParts.split('_');
-  if (!action || !dataType || !dataSize || (other && other.length > 0)) {
-    throw new Error('Expected 3 type parts in a benchmark: ' + typeParts);
-  }
+  const dataType = dataTypePart.substring(dataTypePart.lastIndexOf('.') + 1);
 
   return {
-    library: namePart.substring(namePart.lastIndexOf('.') + 1),
+    library: params.converterType,
     action,
     dataType,
-    dataSize
+    dataSize: params.inputType,
   };
 }
 
