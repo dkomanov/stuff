@@ -21,6 +21,9 @@ jmh_repositories()
 load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
 scala_proto_repositories()
 
+load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "twitter_scrooge")
+twitter_scrooge()
+
 # rules_protobuf
 git_repository(
   name = "org_pubref_rules_protobuf",
