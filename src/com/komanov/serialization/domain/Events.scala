@@ -74,8 +74,8 @@ sealed trait SiteEvent {
 }
 
 final case class SiteEventData(id: UUID,
-                         event: SiteEvent,
-                         timestamp: Instant)
+                               event: SiteEvent,
+                               timestamp: Instant)
 
 
 final case class SiteCreated(id: UUID, ownerId: UUID, siteType: SiteType) extends SiteEvent
