@@ -1,6 +1,6 @@
 package com.komanov.serialization.converters
 
-import com.komanov.serialization.domain.{SiteEvent, SiteEventData}
+import com.komanov.serialization.domain.SiteEvent
 
 trait EventConverter {
 
