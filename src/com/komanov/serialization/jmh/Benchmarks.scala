@@ -22,7 +22,7 @@ class SiteBenchmark extends BenchmarkBase {
   @Param
   var converterType: ConverterType = _
 
-  private var converter: MyConverter = _
+  private var converter: SiteConverter = _
   private var input: Site = _
   private var output: Array[Byte] = _
 
@@ -57,7 +57,7 @@ class EventBenchmark extends BenchmarkBase {
   @Param
   var converterType: ConverterType = _
 
-  private var converter: MyConverter = _
+  private var converter: EventConverter = _
   private var input: Seq[SiteEvent] = _
   private var output: Seq[(Class[_], Array[Byte])] = _
 
