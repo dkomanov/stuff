@@ -10,6 +10,10 @@ import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.Scope
 import org.specs2.specification.core.Fragments
 
+import scala.concurrent.ExecutionContext.Implicits._
+import scala.concurrent._
+import scala.concurrent.duration._
+
 class SerializationTest extends SpecificationWithJUnit {
 
   sequential
@@ -85,6 +89,19 @@ class SerializationTest extends SpecificationWithJUnit {
           val parsed = converter.fromByteArray(bytes)
           parsed must be_===(site)
         }
+
+        s"work normally with multi-threading for serialization site of $name" in new ctx {
+          doParallelTest {
+            converter.toByteArray(site)
+          }
+        }
+
+        s"work normally with multi-threading for deserialization site of $name" in new ctx {
+          val bytes = converter.toByteArray(site)
+          doParallelTest {
+            converter.fromByteArray(bytes)
+          }
+        }
       }
 
       Fragments.foreach(TestData.events) { case (name, events) =>
@@ -95,8 +112,30 @@ class SerializationTest extends SpecificationWithJUnit {
             parsed must be_===(event)
           }
         }
+
+        s"work normally with multi-threading for serialization site events of $name" in new ctx {
+          doParallelTest {
+            events.foreach { ed =>
+              converter.toByteArray(ed.event)
+            }
+          }
+        }
+
+        s"work normally with multi-threading for deserialization site events of $name" in new ctx {
+          val classAndBytes = events.map(e => e.event.getClass -> converter.toByteArray(e.event))
+          doParallelTest {
+            classAndBytes.foreach { case (clazz, bytes) =>
+              converter.siteEventFromByteArray(clazz, bytes)
+            }
+          }
+        }
       }
     }
+  }
+
+  def doParallelTest[T](f: => T) = {
+    val futures = (1 to 100).map(_ => Future(f))
+    futures.foreach(f => Await.result(f, 10.seconds))
   }
 
 }

@@ -12,8 +12,9 @@ object ChillConverter extends MyConverter {
     pool.toBytesWithoutClass(site)
   }
 
+  // WOW Chill mutates input array! We need to clone it. https://github.com/twitter/chill/issues/181
   override def fromByteArray(bytes: Array[Byte]): Site = {
-    pool.fromBytes(bytes, classOf[Site])
+    pool.fromBytes(bytes.clone(), classOf[Site])
   }
 
   override def toByteArray(event: SiteEvent): Array[Byte] = {
@@ -21,7 +22,7 @@ object ChillConverter extends MyConverter {
   }
 
   override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
-    pool.fromBytes(bytes, clazz).asInstanceOf[SiteEvent]
+    pool.fromBytes(bytes.clone(), clazz).asInstanceOf[SiteEvent]
   }
 
 }
