@@ -1,8 +1,43 @@
 import React from 'react';
-import {Message} from 'semantic-ui-react';
 import {loadJson} from '../../util';
-import {ChartAndTable, TimeUnits} from '../../components';
+import {Changelog, ChartAndTable, TimeUnits} from '../../components';
 import {JmhChartPage} from '..';
+
+const runs = [
+  {
+    date: '2017-12-01',
+    comment:
+      <ul>
+        <li>
+          Introduced benchmark for <a href="https://github.com/circe/circe">Circe</a> library.
+        </li>
+        <li>
+          Downgrade versions (because using bazel rules): libthrift&nbsp;(0.8.0), scrooge&nbsp;(4.6.0).
+        </li>
+        <li>
+          Upgrade versions of libraries: scala-library&nbsp;(2.11.8), jackson&nbsp;(2.9.1), protobuf&nbsp;(3.4.0),{' '}
+          scalapb&nbsp;(0.6.5), boopickle&nbsp;(1.2.5), chill&nbsp;(0.9.2).
+        </li>
+        <li>Fixed issue with Chill by cloning input array (therefore it's time of Chill + array clone).</li>
+      </ul>,
+  },
+  {
+    date: '2016-06-26',
+    comment:
+      <ul>
+        <li>Initial version of benchmark.</li>
+        <li>
+          Libraries: scala-library&nbsp;(2.11.7), jackson&nbsp;(2.7.3), protobuf&nbsp;(3.0.0-beta-2), scalapb&nbsp;(0.5.31),{' '}
+          scala-pickling&nbsp;(0.11.0-M2), boopickle&nbsp;(1.2.4), chill&nbsp;(0.8.0), libthrift&nbsp;(0.9.1), scrooge&nbsp;(4.7.0).
+        </li>
+        <li>
+          Chill failed with &quot;Buffer underflow&quot; exception on only-deserialization benchmarks,{' '}
+          because of <a href="https://github.com/twitter/chill/issues/181">bug</a>.
+        </li>
+      </ul>,
+  },
+];
+let currentRunDate = runs[0].date;
 
 const xDesc = {
   title: 'Converter',
@@ -43,6 +78,10 @@ const xDesc = {
     {
       name: 'Circe',
       value: 'CIRCE',
+    },
+    {
+      name: 'Pickling',
+      value: 'PICKLING',
     },
     {
       name: 'JavaSerialization',
@@ -119,6 +158,8 @@ class ScalaSerializationImpl extends React.Component {
           The configuration of a hardware is Intel® Core™ i7–5600U CPU @ 2.60GHz × 4 (2 core + 2 HT) with 16 GB RAM.
         </p>
 
+        <Changelog runs={runs} onChange={this.handleRunChange}/>
+
         <h3>Charts</h3>
 
         <ul>
@@ -194,8 +235,6 @@ class ScalaSerializationImpl extends React.Component {
 
         <h3 id="events-deserialization">Events Deserialization</h3>
 
-        <Message warning content="In this benchmark Chill failed with &quot;Buffer underflow&quot; exception."/>
-
         <ChartAndTable
           dataTable={jmhList}
           extractor={extractor}
@@ -207,12 +246,17 @@ class ScalaSerializationImpl extends React.Component {
         />
 
         <p>
-          Full JMH log is <a href="/stuff/data/scala-serialization/jmh.log">here</a>.
+          Full JMH log is <a target="_blank" href={`/stuff/data/scala-serialization/jmh_${currentRunDate}.log`}>here</a>.
         </p>
 
       </div>
     );
   }
+
+  handleRunChange = date => {
+    currentRunDate = date;
+    this.props.refetch();
+  };
 }
 
 function exportDimensions(benchmark, params) {
@@ -236,7 +280,7 @@ function exportDimensions(benchmark, params) {
 const ScalaSerialization = JmhChartPage(
   ScalaSerializationImpl,
   {
-    fetchFunc: () => loadJson('/data/scala-serialization/jmh-result.json'),
+    fetchFunc: () => loadJson(`/data/scala-serialization/jmh_${currentRunDate}.json`),
     exportDimensionsFunc: exportDimensions,
     headerText: 'Scala Serialization',
   }

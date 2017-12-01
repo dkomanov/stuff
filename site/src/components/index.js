@@ -1,4 +1,5 @@
 export {default as App} from './App/App';
+export {default as Changelog} from './Changelog/Changelog';
 export {default as ChartAndTable} from './ChartAndTable/ChartAndTable';
 export {default as Choose} from './Choose/Choose';
 export {default as GoogleChart} from './GoogleChart/GoogleChart';
