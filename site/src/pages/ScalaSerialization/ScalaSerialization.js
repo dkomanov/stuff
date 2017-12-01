@@ -246,7 +246,7 @@ class ScalaSerializationImpl extends React.Component {
         />
 
         <p>
-          Full JMH log is <a target="_blank" href={`/stuff/data/scala-serialization/jmh_${currentRunDate}.log`}>here</a>.
+          Full JMH log is <a target="_blank" href={`/stuff/data/scala-serialization/jmh_${currentRunDate}.log.txt`}>here</a>.
         </p>
 
       </div>
