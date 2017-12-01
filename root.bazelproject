@@ -15,4 +15,4 @@ additional_languages:
 java_language_level: 8
 
 test_sources:
-  **/tests/*Test.*
+  */tests/*
