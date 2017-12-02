@@ -1,14 +1,14 @@
 # The following dependencies were calculated from:
 #
-# generate_workspace --artifact=org.specs2:specs2-mock_2.11:3.8.8 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=org.drizzle.jdbc:drizzle-jdbc:1.4 --artifact=org.mariadb.jdbc:mariadb-java-client:2.2.0 --artifact=mysql:mysql-connector-java:6.0.6 --artifact=com.wix:wix-embedded-mysql:3.0.0 --artifact=commons-io:commons-io:2.6 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.1 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.1 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.1 --artifact=org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2 --artifact=me.chrons:boopickle_2.11:1.2.5 --artifact=com.twitter:chill_2.11:0.9.2 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=io.circe:circe-core_2.11:0.9.0-M2 --artifact=io.circe:circe-generic_2.11:0.9.0-M2 --artifact=io.circe:circe-parser_2.11:0.9.0-M2
+# generate_workspace --artifact=org.specs2:specs2-mock_2.11:3.8.8 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=org.drizzle.jdbc:drizzle-jdbc:1.4 --artifact=org.mariadb.jdbc:mariadb-java-client:2.2.0 --artifact=mysql:mysql-connector-java:6.0.6 --artifact=com.wix:wix-embedded-mysql:3.0.0 --artifact=commons-io:commons-io:2.6 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.2 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.2 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.2 --artifact=org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2 --artifact=me.chrons:boopickle_2.11:1.2.5 --artifact=com.twitter:chill_2.11:0.9.2 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=io.circe:circe-core_2.11:0.9.0-M2 --artifact=io.circe:circe-generic_2.11:0.9.0-M2 --artifact=io.circe:circe-parser_2.11:0.9.0-M2
 
 
 def generated_maven_jars():
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 got requested version
   # org.specs2:specs2-common_2.11:jar:3.8.8
   # org.scala-lang:scala-compiler:jar:2.11.7 wanted version 2.11.7
   # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
   # org.typelevel:machinist_2.11:jar:0.6.2 got requested version
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2 got requested version
   native.maven_jar(
       name = "org_scala_lang_scala_reflect",
       artifact = "org.scala-lang:scala-reflect:2.11.8",
@@ -70,7 +70,7 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.1
+  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.2
   native.maven_jar(
       name = "com_thoughtworks_paranamer_paranamer",
       artifact = "com.thoughtworks.paranamer:paranamer:2.8",
@@ -105,7 +105,7 @@ def generated_maven_jars():
 
   native.maven_jar(
       name = "com_fasterxml_jackson_module_jackson_module_scala_2_11",
-      artifact = "com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.1",
+      artifact = "com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.2",
   )
 
 
@@ -182,11 +182,11 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2
   native.maven_jar(
       name = "com_fasterxml_jackson_module_jackson_module_paranamer",
-      artifact = "com.fasterxml.jackson.module:jackson-module-paranamer:2.9.1",
-      sha1 = "9ef25f50f9bae3813b80296d85f3c267cff722bd",
+      artifact = "com.fasterxml.jackson.module:jackson-module-paranamer:2.9.2",
+      sha1 = "3d8f5dcc16254665da6415f1bae79065c5b5d81a",
   )
 
 
@@ -196,20 +196,20 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 got requested version
-  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.1 got requested version
+  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.2 got requested version
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2 got requested version
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_databind",
-      artifact = "com.fasterxml.jackson.core:jackson-databind:2.9.1",
+      artifact = "com.fasterxml.jackson.core:jackson-databind:2.9.2",
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 got requested version
   # org.scalaz:scalaz-core_2.11:bundle:7.2.7 got requested version
   # me.chrons:boopickle_2.11:jar:1.2.5 got requested version
   # org.typelevel:cats-core_2.11:jar:1.0.0-RC1 wanted version 2.11.11
   # org.typelevel:cats-macros_2.11:jar:1.0.0-RC1 wanted version 2.11.11
   # io.circe:circe-core_2.11:jar:0.9.0-M2 wanted version 2.11.11
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2 got requested version
   # org.scalaz:scalaz-effect_2.11:bundle:7.2.7 got requested version
   # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
   # org.scala-lang.modules:scala-parser-combinators_2.11:bundle:1.0.5 got requested version
@@ -237,10 +237,10 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 got requested version
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2 got requested version
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_core",
-      artifact = "com.fasterxml.jackson.core:jackson-core:2.9.1",
+      artifact = "com.fasterxml.jackson.core:jackson-core:2.9.2",
   )
 
 
@@ -378,8 +378,8 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 wanted version 2.9.1
-  # com.fasterxml.jackson.core:jackson-databind:bundle:2.9.1
+  # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.2 wanted version 2.9.2
+  # com.fasterxml.jackson.core:jackson-databind:bundle:2.9.2
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_annotations",
       artifact = "com.fasterxml.jackson.core:jackson-annotations:2.9.0",
