@@ -23,7 +23,7 @@ bazel run //generate_workspace -- \
   --artifact=org.scala-lang.modules:scala-pickling$SCALA_VERSION:0.11.0-M2 \
   --artifact=me.chrons:boopickle$SCALA_VERSION:1.2.5 \
   --artifact=com.twitter:chill$SCALA_VERSION:0.9.2 \
-  --artifact=org.apache.thrift:libthrift:0.8.0 \
+  --artifact=org.apache.thrift:libthrift:0.10.0 \
   --artifact=io.circe:circe-core$SCALA_VERSION:$CIRCE_VERSION \
   --artifact=io.circe:circe-generic$SCALA_VERSION:$CIRCE_VERSION \
   --artifact=io.circe:circe-parser$SCALA_VERSION:$CIRCE_VERSION

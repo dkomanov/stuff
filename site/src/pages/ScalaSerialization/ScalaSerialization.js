@@ -12,7 +12,7 @@ const runs = [
           Introduced benchmark for <a href="https://github.com/circe/circe">Circe</a> library.
         </li>
         <li>
-          Downgrade versions (because using bazel rules): libthrift&nbsp;(0.8.0), scrooge&nbsp;(4.6.0).
+          Downgrade versions (because using bazel rules): scrooge&nbsp;(4.6.0).
         </li>
         <li>
           Upgrade versions of libraries: scala-library&nbsp;(2.11.8), jackson&nbsp;(2.9.1), protobuf&nbsp;(3.4.0),{' '}

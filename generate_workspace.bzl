@@ -1,6 +1,6 @@
 # The following dependencies were calculated from:
 #
-# generate_workspace --artifact=org.specs2:specs2-mock_2.11:3.8.8 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=org.slf4j:slf4j-simple:1.7.25 --artifact=org.drizzle.jdbc:drizzle-jdbc:1.4 --artifact=org.mariadb.jdbc:mariadb-java-client:2.2.0 --artifact=mysql:mysql-connector-java:6.0.6 --artifact=com.wix:wix-embedded-mysql:3.0.0 --artifact=commons-io:commons-io:2.6 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.1 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.1 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.1 --artifact=org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2 --artifact=me.chrons:boopickle_2.11:1.2.5 --artifact=com.twitter:chill_2.11:0.9.2 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=com.twitter:scrooge-core_2.11:17.11.0 --artifact=io.circe:circe-core_2.11:0.9.0-M2 --artifact=io.circe:circe-generic_2.11:0.9.0-M2 --artifact=io.circe:circe-parser_2.11:0.9.0-M2
+# generate_workspace --artifact=org.specs2:specs2-mock_2.11:3.8.8 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=org.drizzle.jdbc:drizzle-jdbc:1.4 --artifact=org.mariadb.jdbc:mariadb-java-client:2.2.0 --artifact=mysql:mysql-connector-java:6.0.6 --artifact=com.wix:wix-embedded-mysql:3.0.0 --artifact=commons-io:commons-io:2.6 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.1 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.1 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.11:2.9.1 --artifact=org.scala-lang.modules:scala-pickling_2.11:0.11.0-M2 --artifact=me.chrons:boopickle_2.11:1.2.5 --artifact=com.twitter:chill_2.11:0.9.2 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=io.circe:circe-core_2.11:0.9.0-M2 --artifact=io.circe:circe-generic_2.11:0.9.0-M2 --artifact=io.circe:circe-parser_2.11:0.9.0-M2
 
 
 def generated_maven_jars():
@@ -8,7 +8,6 @@ def generated_maven_jars():
   # org.specs2:specs2-common_2.11:jar:3.8.8
   # org.scala-lang:scala-compiler:jar:2.11.7 wanted version 2.11.7
   # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 2.11.7
-  # com.twitter:util-core_2.11:jar:17.11.0 wanted version 2.11.11
   # org.typelevel:machinist_2.11:jar:0.6.2 got requested version
   native.maven_jar(
       name = "org_scala_lang_scala_reflect",
@@ -208,8 +207,6 @@ def generated_maven_jars():
   # com.fasterxml.jackson.module:jackson-module-scala_2.11:bundle:2.9.1 got requested version
   # org.scalaz:scalaz-core_2.11:bundle:7.2.7 got requested version
   # me.chrons:boopickle_2.11:jar:1.2.5 got requested version
-  # com.twitter:scrooge-core_2.11:jar:17.11.0 wanted version 2.11.11
-  # com.twitter:util-core_2.11:jar:17.11.0 wanted version 2.11.11
   # org.typelevel:cats-core_2.11:jar:1.0.0-RC1 wanted version 2.11.11
   # org.typelevel:cats-macros_2.11:jar:1.0.0-RC1 wanted version 2.11.11
   # io.circe:circe-core_2.11:jar:0.9.0-M2 wanted version 2.11.11
@@ -219,7 +216,6 @@ def generated_maven_jars():
   # org.specs2:specs2-core_2.11:jar:3.8.8 got requested version
   # org.specs2:specs2-matcher_2.11:jar:3.8.8 got requested version
   # io.circe:circe-jawn_2.11:jar:0.9.0-M2 wanted version 2.11.11
-  # com.twitter:util-function_2.11:jar:17.11.0 wanted version 2.11.11
   # org.specs2:specs2-common_2.11:jar:3.8.8 got requested version
   # io.circe:circe-generic_2.11:jar:0.9.0-M2 wanted version 2.11.11
   # org.typelevel:machinist_2.11:jar:0.6.2 got requested version
@@ -238,12 +234,6 @@ def generated_maven_jars():
       name = "org_scala_lang_scala_library",
       artifact = "org.scala-lang:scala-library:2.11.8",
       sha1 = "ddd5a8bced249bedd86fb4578a39b9fb71480573",
-  )
-
-
-  native.maven_jar(
-      name = "org_slf4j_slf4j_simple",
-      artifact = "org.slf4j:slf4j-simple:1.7.25",
   )
 
 
@@ -279,28 +269,12 @@ def generated_maven_jars():
   )
 
 
-  # com.twitter:util-core_2.11:jar:17.11.0
-  native.maven_jar(
-      name = "com_twitter_util_function_2_11",
-      artifact = "com.twitter:util-function_2.11:17.11.0",
-      sha1 = "872544f30acb9c1b499658714cd1c62418df9a25",
-  )
-
-
   # com.twitter:chill-java:jar:0.9.2
   # com.twitter:chill_2.11:jar:0.9.2 got requested version
   native.maven_jar(
       name = "com_esotericsoftware_kryo_shaded",
       artifact = "com.esotericsoftware:kryo-shaded:4.0.0",
       sha1 = "4ae3bacfaea6459d8d63c6cf17c3718422fb2def",
-  )
-
-
-  # com.twitter:scrooge-core_2.11:jar:17.11.0
-  native.maven_jar(
-      name = "com_twitter_util_core_2_11",
-      artifact = "com.twitter:util-core_2.11:17.11.0",
-      sha1 = "af7c08d2bef887beda15be87969768c89afddd73",
   )
 
 
@@ -335,12 +309,6 @@ def generated_maven_jars():
   )
 
 
-  native.maven_jar(
-      name = "com_twitter_scrooge_core_2_11",
-      artifact = "com.twitter:scrooge-core_2.11:17.11.0",
-  )
-
-
   # io.circe:circe-core_2.11:jar:0.9.0-M2
   native.maven_jar(
       name = "org_typelevel_cats_core_2_11",
@@ -371,7 +339,6 @@ def generated_maven_jars():
 
   # de.flapdoodle.embed:de.flapdoodle.embed.process:bundle:2.0.1 wanted version 1.7.10
   # org.slf4j:slf4j-nop:jar:1.7.25 got requested version
-  # org.slf4j:slf4j-simple:jar:1.7.25 got requested version
   # org.apache.thrift:libthrift:pom:0.10.0 wanted version 1.7.12
   native.maven_jar(
       name = "org_slf4j_slf4j_api",
@@ -423,7 +390,6 @@ def generated_maven_jars():
   # org.scala-lang.modules:scala-pickling_2.11:jar:0.11.0-M2 wanted version 1.0.2
   # org.specs2:specs2-common_2.11:jar:3.8.8
   # org.scala-lang:scala-compiler:jar:2.11.7 got requested version
-  # com.twitter:util-core_2.11:jar:17.11.0 got requested version
   native.maven_jar(
       name = "org_scala_lang_modules_scala_parser_combinators_2_11",
       artifact = "org.scala-lang.modules:scala-parser-combinators_2.11:1.0.5",
@@ -757,16 +723,6 @@ def generated_java_libraries():
 
 
   native.java_library(
-      name = "org_slf4j_slf4j_simple",
-      visibility = ["//visibility:public"],
-      exports = ["@org_slf4j_slf4j_simple//jar"],
-      runtime_deps = [
-          ":org_slf4j_slf4j_api",
-      ],
-  )
-
-
-  native.java_library(
       name = "com_fasterxml_jackson_core_jackson_core",
       visibility = ["//visibility:public"],
       exports = ["@com_fasterxml_jackson_core_jackson_core//jar"],
@@ -809,35 +765,12 @@ def generated_java_libraries():
 
 
   native.java_library(
-      name = "com_twitter_util_function_2_11",
-      visibility = ["//visibility:public"],
-      exports = ["@com_twitter_util_function_2_11//jar"],
-      runtime_deps = [
-          ":org_scala_lang_scala_library",
-      ],
-  )
-
-
-  native.java_library(
       name = "com_esotericsoftware_kryo_shaded",
       visibility = ["//visibility:public"],
       exports = ["@com_esotericsoftware_kryo_shaded//jar"],
       runtime_deps = [
           ":com_esotericsoftware_minlog",
           ":org_objenesis_objenesis",
-      ],
-  )
-
-
-  native.java_library(
-      name = "com_twitter_util_core_2_11",
-      visibility = ["//visibility:public"],
-      exports = ["@com_twitter_util_core_2_11//jar"],
-      runtime_deps = [
-          ":com_twitter_util_function_2_11",
-          ":org_scala_lang_modules_scala_parser_combinators_2_11",
-          ":org_scala_lang_scala_library",
-          ":org_scala_lang_scala_reflect",
       ],
   )
 
@@ -891,20 +824,6 @@ def generated_java_libraries():
       runtime_deps = [
           ":org_scala_lang_scala_library",
           ":org_typelevel_macro_compat_2_11",
-      ],
-  )
-
-
-  native.java_library(
-      name = "com_twitter_scrooge_core_2_11",
-      visibility = ["//visibility:public"],
-      exports = ["@com_twitter_scrooge_core_2_11//jar"],
-      runtime_deps = [
-          ":com_twitter_util_core_2_11",
-          ":com_twitter_util_function_2_11",
-          ":org_scala_lang_modules_scala_parser_combinators_2_11",
-          ":org_scala_lang_scala_library",
-          ":org_scala_lang_scala_reflect",
       ],
   )
 
