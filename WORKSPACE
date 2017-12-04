@@ -1,7 +1,7 @@
 workspace(name = "stuff")
 
 # scala
-rules_scala_version="85308acbd316477f3072e033e7744debcba4f054"
+rules_scala_version="e0c9124124f1b4c459c436f1209c3d822a545c8d"
 http_archive(
     name = "io_bazel_rules_scala",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
