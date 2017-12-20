@@ -18,6 +18,7 @@ class App extends React.Component {
           <div className="stuff-content">
             <Switch>
               <Route exact path="/" component={page.Home}/>
+              <Route exact path="/read-lines" component={page.ReadLines}/>
               <Route exact path="/mysql-streaming" component={page.MysqlStreaming}/>
               <Route exact path="/scala-serialization" component={page.ScalaSerialization}/>
               <Route exact path="/scala-string-format" component={page.ScalaStringFormat}/>

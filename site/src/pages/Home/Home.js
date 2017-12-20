@@ -27,6 +27,9 @@ class Home extends React.Component {
 
         <List bulleted>
           <List.Item>
+            <Link to="/read-lines">Exploring readLine Performance</Link>.
+          </List.Item>
+          <List.Item>
             <Link to="/scala-string-format">Scala: String Interpolation Performance</Link>.
           </List.Item>
           <List.Item>
