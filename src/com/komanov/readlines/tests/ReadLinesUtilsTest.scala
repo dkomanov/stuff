@@ -33,7 +33,7 @@ class ReadLinesUtilsTest extends SpecificationWithJUnit {
     }
 
     "support all Unicode characters" >> {
-      val codePoints = (40 to 0x1040).filter(Character.isValidCodePoint).toArray[Int]
+      val codePoints = (40 to 0x8040).filter(Character.isValidCodePoint).toArray[Int]
       val s = new String(codePoints, 0, codePoints.length)
       val b = List.newBuilder[String]
       ReadLinesUtils.adHocBytes(
