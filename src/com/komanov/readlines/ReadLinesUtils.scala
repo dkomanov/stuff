@@ -104,7 +104,7 @@ object ReadLinesUtils {
           c &= 0x0F
           2
         } else if ((c & 0xF8) == 0xF0) {
-          c &= 0x0F
+          c &= 0x07
           3
         } else {
           -1
