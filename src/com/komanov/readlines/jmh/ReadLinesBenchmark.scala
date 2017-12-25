@@ -21,9 +21,9 @@ import scala.util.Random
 @Warmup(iterations = 1, time = 10, timeUnit = TimeUnit.SECONDS)
 class ReadLinesBenchmark {
 
-  @Param(Array("1", "10", "100", "1000", "10000", "100000", "1000000"))
+  @Param(Array("1000"))
   var lineCount: Int = _
-  @Param(Array("0", "10", "25", "50", "100", "250", "500", "1000"))
+  @Param(Array("50"))
   var cpuTokens: Long = _
 
   private var path: Path = _

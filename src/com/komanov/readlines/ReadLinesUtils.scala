@@ -52,7 +52,7 @@ object ReadLinesUtils {
   }
 
   def adHocBytes(bytes: Array[Byte], f: String => Unit): Unit = {
-    var lineBuffer: Array[Char] = new Array[Char](80)
+    var lineBuffer: Array[Char] = new Array[Char](85)
     var end: Int = -1
     var index = 0
 
@@ -77,7 +77,7 @@ object ReadLinesUtils {
       var c = bytes(index).toInt
 
       if (end + 1 >= lineBuffer.length) {
-        val newBuffer = new Array[Char](lineBuffer.length + 80)
+        val newBuffer = new Array[Char](lineBuffer.length * 2)
         Array.copy(lineBuffer, 0, newBuffer, 0, end + 1)
         lineBuffer = newBuffer
       }

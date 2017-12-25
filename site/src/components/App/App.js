@@ -19,6 +19,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={page.Home}/>
               <Route exact path="/read-lines" component={page.ReadLines}/>
+              <Route exact path="/read-utf8" component={page.ReadUtf8}/>
               <Route exact path="/mysql-streaming" component={page.MysqlStreaming}/>
               <Route exact path="/scala-serialization" component={page.ScalaSerialization}/>
               <Route exact path="/scala-string-format" component={page.ScalaStringFormat}/>
