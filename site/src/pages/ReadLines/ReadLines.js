@@ -1,6 +1,6 @@
 import React from 'react';
 import {loadJson} from '../../util';
-import {Changelog, ChartAndTable, Choose, MultiChoose, TimeUnits} from '../../components';
+import {Changelog, ChartAndTable, Choose, MultiChoose} from '../../components';
 import {JmhChartPage} from '..';
 
 const runs = [
