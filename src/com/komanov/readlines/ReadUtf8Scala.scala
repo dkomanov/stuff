@@ -171,7 +171,7 @@ object ReadUtf8Scala {
     val buffer = new MyCharBuffer(bytes.length)
     var i = 0
     val length = bytes.length
-    while ( {i < length}) {
+    while (i < length) {
       val c = bytes(i)
       if (c > 0) {
         buffer.putSingle(c)
