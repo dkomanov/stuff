@@ -1,4 +1,4 @@
-#!/bin/sh -e -x
+#!/bin/sh -ex
 
 TS=`date --iso-8601`
 TARGET_DIR=src/com/komanov/readlines
