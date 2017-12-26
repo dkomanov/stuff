@@ -248,11 +248,17 @@ object ReadUtf8Scala {
     buffer.toString
   }
 
-  private class MyCharBuffer(val len: Int) {
+  class MyCharBuffer(len: Int) {
     private var buffer = new Array[Char]((len * 1.1f).toInt)
     private var count = 0
 
     override def toString = new String(buffer, 0, count)
+
+    def getCount = count
+
+    def reset(): Unit = {
+      count = 0
+    }
 
     def putSingle(codePoint: Int): Unit = {
       ensureLength(1)
