@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 TS=`date --iso-8601`
 TARGET_DIR=src/com/komanov/readlines
@@ -12,7 +12,7 @@ then
   exit 1
 fi
 
-bazel run //${TARGET_DIR}/${TARGET_NAME} -- -rf json -rff jmh.json | tee jmh.log
+bazel run //${TARGET_DIR}/${TARGET_NAME} -- -rf json -rff jmh.json ReadLinesBenchmark | tee jmh.log
 mv ./bazel-bin/${TARGET_DIR}/${TARGET_NAME}/${TARGET_NAME}.runfiles/stuff/jmh.json ${DATA_DIR}/jmh_${TS}_${DRIVE_TYPE}.json
 mv ./jmh.log ${DATA_DIR}/jmh_${TS}_${DRIVE_TYPE}.log
 
