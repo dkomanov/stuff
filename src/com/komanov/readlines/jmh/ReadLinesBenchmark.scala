@@ -21,10 +21,12 @@ import scala.util.Random
 @Warmup(iterations = 1, time = 10, timeUnit = TimeUnit.SECONDS)
 class ReadLinesBenchmark {
 
-  @Param(Array("1000"))
+  @Param(Array("1", "10", "100", "1000", "10000", "100000", "1000000"))
   var lineCount: Int = _
-  @Param(Array("50"))
+  @Param(Array("-1", "0", "10", "100"))
   var cpuTokens: Long = _
+  @Param
+  var inputType: InputType = _
 
   private var path: Path = _
   private val lineLengths = List(0, 20, 50, 80, 120, 200, 300)
@@ -35,7 +37,7 @@ class ReadLinesBenchmark {
     Files.write(
       path,
       (1 to lineCount)
-        .map(i => Random.alphanumeric.take(lineLengths(i % lineLengths.length)).mkString)
+        .map(i => mkString(lineLengths(i % lineLengths.length)))
         .asJava,
       StandardCharsets.UTF_8
     )
@@ -54,23 +56,28 @@ class ReadLinesBenchmark {
   }
 
   @Benchmark
-  def filesReadLines(): Unit = {
-    processLines(ReadLinesUtils.nioFiles(path))
+  def readAllLines(): Unit = {
+    processLines(ReadLinesUtils.readAllLines(path))
   }
 
   @Benchmark
-  def filesReadBytes(): Unit = {
-    processLines(ReadLinesUtils.readBytesFirst(path))
+  def readBytesAndThenBufferedReader(): Unit = {
+    processLines(ReadLinesUtils.readBytesAndThenBufferedReader(path))
   }
 
   @Benchmark
-  def filesReadBytes2(): Unit = {
-    processLines(ReadLinesUtils.readBytesFirstCustom(path))
+  def readBytesOwnLineSplit(): Unit = {
+    processLines(ReadLinesUtils.readBytesOwnLineSplit(path))
   }
 
   @Benchmark
-  def adHoc(): Unit = {
-    ReadLinesUtils.adHoc(path, processLine)
+  def readBytesAndCustomUtf8Decoder(): Unit = {
+    ReadLinesUtils.readBytesAndCustomUtf8Decoder(path, processLine)
+  }
+
+  @Benchmark
+  def bufferedInputStreamAndCustomUtf8Decoder(): Unit = {
+    ReadLinesUtils.bufferedInputStreamAndCustomUtf8Decoder(path, processLine)
   }
 
   @Benchmark
@@ -104,6 +111,11 @@ class ReadLinesBenchmark {
   }
 
   private def processLine(line: String): Unit = {
-    Blackhole.consumeCPU(cpuTokens)
+    if (cpuTokens == -1) Blackhole.consumeCPU(line.length) else Blackhole.consumeCPU(cpuTokens)
+  }
+
+  private def mkString(len: Int): String = {
+    val codePoints = inputType.getCodePoints(len)
+    new String(codePoints, 0, codePoints.length)
   }
 }

@@ -26,7 +26,7 @@ object TestApp extends App {
   println(s.toCharArray.map(_.toInt.toHexString).toList)
   println(s.codePoints().toArray.map(_.toHexString).toList)
 
-  ReadLinesUtils.adHocBytes(bytes, s => {
+  ReadLinesUtils.decodeUtf8FromBytes(bytes, s => {
     println(s)
     println(s.codePoints().toArray.map(_.toHexString).toList)
   })

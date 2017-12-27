@@ -1,6 +1,6 @@
 package com.komanov.readlines
 
-import java.io.{BufferedReader, CharArrayReader}
+import java.io.{BufferedInputStream, BufferedReader, CharArrayReader, EOFException}
 import java.nio.charset.{Charset, StandardCharsets}
 import java.nio.file.{Files, Path}
 import java.nio.{ByteBuffer, CharBuffer}
@@ -10,11 +10,11 @@ import com.komanov.readlines.ReadUtf8Scala.MyCharBuffer
 
 object ReadLinesUtils {
 
-  def nioFiles(path: Path): util.List[String] = {
+  def readAllLines(path: Path): util.List[String] = {
     Files.readAllLines(path)
   }
 
-  def readBytesFirst(path: Path): util.ArrayList[String] = {
+  def readBytesAndThenBufferedReader(path: Path): util.ArrayList[String] = {
     val chars = readChars(path, StandardCharsets.UTF_8)
     val result = new util.ArrayList[String](chars.limit() / 80)
     val reader = new BufferedReader(new CharArrayReader(chars.array(), 0, chars.limit()))
@@ -26,7 +26,7 @@ object ReadLinesUtils {
     result
   }
 
-  def readBytesFirstCustom(path: Path): util.ArrayList[String] = {
+  def readBytesOwnLineSplit(path: Path): util.ArrayList[String] = {
     val chars = readChars(path, StandardCharsets.UTF_8)
     val result = new util.ArrayList[String](chars.limit() / 80)
     while (chars.hasRemaining) {
@@ -53,7 +53,7 @@ object ReadLinesUtils {
     result
   }
 
-  def adHocBytes(bytes: Array[Byte], f: String => Unit): Unit = {
+  def decodeUtf8FromBytes(bytes: Array[Byte], f: String => Unit): Unit = {
     val buffer = new MyCharBuffer(85)
     var i = 0
 
@@ -111,9 +111,76 @@ object ReadLinesUtils {
     }
   }
 
-  def adHoc(path: Path, f: String => Unit): Unit = {
+  def readBytesAndCustomUtf8Decoder(path: Path, f: String => Unit): Unit = {
     val bytes = Files.readAllBytes(path)
-    adHocBytes(bytes, f)
+    decodeUtf8FromBytes(bytes, f)
+  }
+
+  private class MyStream(val s: BufferedInputStream) {
+    def nextInt: Int = s.read()
+
+    def nextByteOrThrow: Int = {
+      val b = s.read()
+      if (b == -1) {
+        throw new EOFException("unexpected end of stream")
+      }
+      b.toByte.toInt
+    }
+  }
+
+  def bufferedInputStreamAndCustomUtf8Decoder(path: Path, f: String => Unit): Unit = {
+    val stream = new MyStream(new BufferedInputStream(Files.newInputStream(path)))
+    try {
+      val buffer = new MyCharBuffer(85)
+
+      var currentByte = stream.nextInt
+      while (currentByte != -1) {
+        val b1 = currentByte.toByte.toInt
+        if (b1 > 0) {
+          val ch = b1.toChar
+          if (isNewlineChar(ch)) {
+            if (ch == '\r') {
+              currentByte = stream.nextInt
+              if (currentByte != -1 && currentByte.toByte.toInt.toChar == '\n') {
+                currentByte = stream.nextInt
+              }
+            } else {
+              currentByte = stream.nextInt
+            }
+
+            f(buffer.toString)
+            buffer.reset()
+          } else {
+            buffer.putSingle(b1)
+            currentByte = stream.nextInt
+          }
+        } else if ((b1 >> 5) == -2 && (b1 & 0x1e) != 0) {
+          val b2 = stream.nextByteOrThrow
+          buffer.putSingle((((b1 << 6) ^ b2) ^ ((0xC0.toByte << 6) ^ (0x80.toByte << 0))).toChar)
+          currentByte = stream.nextInt
+        } else if ((b1 >> 4) == -2) {
+          val b2 = stream.nextByteOrThrow
+          val b3 = stream.nextByteOrThrow
+          buffer.putSingle(((b1 << 12) ^ (b2 << 6) ^ (b3 ^ ((0xE0.toByte << 12) ^ (0x80.toByte << 6) ^ (0x80.toByte << 0)))).toChar)
+          currentByte = stream.nextInt
+        } else if ((b1 >> 3) == -2) {
+          val b2 = stream.nextByteOrThrow
+          val b3 = stream.nextByteOrThrow
+          val b4 = stream.nextByteOrThrow
+          buffer.putDouble((b1 << 18) ^ (b2 << 12) ^ (b3 << 6) ^ (b4 ^ ((0xF0.toByte << 18) ^ (0x80.toByte << 12) ^ (0x80.toByte << 6) ^ (0x80.toByte << 0))))
+          currentByte = stream.nextInt
+        } else {
+          buffer.putBadChar()
+          currentByte = stream.nextInt
+        }
+      }
+
+      if (buffer.getCount > 0) {
+        f(buffer.toString)
+      }
+    } finally {
+      stream.s.close()
+    }
   }
 
   private def isNewlineChar(ch: Char): Boolean = {

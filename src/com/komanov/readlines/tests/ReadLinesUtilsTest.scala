@@ -15,12 +15,17 @@ class ReadLinesUtilsTest extends SpecificationWithJUnit {
   sequential
 
   Fragments.foreach(List(
-    IterateTestCase("nioFiles", path => ReadLinesUtils.nioFiles(path).asScala.toList),
-    IterateTestCase("readBytesFirst", path => ReadLinesUtils.readBytesFirst(path).asScala.toList),
-    IterateTestCase("readBytesFirstCustom", path => ReadLinesUtils.readBytesFirstCustom(path).asScala.toList),
-    IterateTestCase("adHoc", path => {
+    IterateTestCase("readAllLines", path => ReadLinesUtils.readAllLines(path).asScala.toList),
+    IterateTestCase("readBytesAndThenBufferedReader", path => ReadLinesUtils.readBytesAndThenBufferedReader(path).asScala.toList),
+    IterateTestCase("readBytesOwnLineSplit", path => ReadLinesUtils.readBytesOwnLineSplit(path).asScala.toList),
+    IterateTestCase("readBytesAndCustomUtf8Decoder", path => {
       val result = List.newBuilder[String]
-      ReadLinesUtils.adHoc(path, result.+=)
+      ReadLinesUtils.readBytesAndCustomUtf8Decoder(path, result.+=)
+      result.result()
+    }),
+    IterateTestCase("bufferedInputStreamAndCustomUtf8Decoder", path => {
+      val result = List.newBuilder[String]
+      ReadLinesUtils.bufferedInputStreamAndCustomUtf8Decoder(path, result.+=)
       result.result()
     }),
     IterateTestCase("forEachLine", path => {
