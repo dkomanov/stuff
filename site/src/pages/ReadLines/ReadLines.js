@@ -63,7 +63,7 @@ class LineCounts extends React.Component {
     // "1", "10", "100", "1000", "10000", "100000", "1000000"
     this.items = [1, 10, 100, 1000, 10000, 100000, 1000000].map(v => {
       return {
-        label: v,
+        label: v.toString(10),
         value: v,
         default: v === 1000
       }
