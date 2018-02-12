@@ -1,7 +1,7 @@
 workspace(name = "stuff")
 
 # scala
-rules_scala_version="e0c9124124f1b4c459c436f1209c3d822a545c8d"
+rules_scala_version="24bc74b2664560fdba27b31da9e6c529dd231e1e"
 http_archive(
     name = "io_bazel_rules_scala",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
@@ -11,6 +11,9 @@ http_archive(
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
+
+load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
+scala_register_toolchains()
 
 load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
 specs2_junit_repositories()
