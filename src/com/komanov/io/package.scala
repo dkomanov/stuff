@@ -5,11 +5,10 @@ import scala.util.control.NonFatal
 package object io {
 
   def withResources[T <: AutoCloseable, V](r: => T)(f: T => V): V = {
-    var resource: T = null.asInstanceOf[T]
+    val resource: T = r
+    require(resource != null, "resource is null")
     var exception: Throwable = null
     try {
-      resource = r
-      require(resource != null, "resource is null")
       f(resource)
     } catch {
       case NonFatal(e) =>
@@ -21,17 +20,15 @@ package object io {
   }
 
   private def closeAndAddSuppressed(e: Throwable, resource: AutoCloseable): Unit = {
-    if (resource != null) {
-      if (e != null) {
-        try {
-          resource.close()
-        } catch {
-          case NonFatal(suppressed) =>
-            e.addSuppressed(suppressed)
-        }
-      } else {
+    if (e != null) {
+      try {
         resource.close()
+      } catch {
+        case NonFatal(suppressed) =>
+          e.addSuppressed(suppressed)
       }
+    } else {
+      resource.close()
     }
   }
 
