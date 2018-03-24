@@ -11,7 +11,7 @@ package object io {
     try {
       f(resource)
     } catch {
-      case NonFatal(e) =>
+      case e: Throwable =>
         exception = e
         throw e
     } finally {
@@ -26,6 +26,14 @@ package object io {
       } catch {
         case NonFatal(suppressed) =>
           e.addSuppressed(suppressed)
+        case fatal: Throwable if NonFatal(e) =>
+          fatal.addSuppressed(e)
+          throw fatal
+        case fatal: InterruptedException =>
+          fatal.addSuppressed(e)
+          throw fatal
+        case fatal: Throwable =>
+          e.addSuppressed(fatal)
       }
     } else {
       resource.close()
