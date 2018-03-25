@@ -41,8 +41,3 @@ java_proto_repositories()
 # https://docs.bazel.build/versions/master/generate-workspace.html
 load("//:generate_workspace.bzl", "generated_maven_jars")
 generated_maven_jars()
-
-local_repository(
-    name = "scala_serialization",
-    path = "projects/scala_serialization",
-)

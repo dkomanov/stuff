@@ -16,7 +16,6 @@ scala_specs2_junit(
         "//third_party:com_fasterxml_jackson_core_jackson_databind",
         "//third_party:com_fasterxml_jackson_module_jackson_module_scala_2_11",
         "//third_party:com_twitter_chill_2_11",
-        "//third_party:commons_io_commons_io",
         "//third_party:org_apache_thrift_libthrift",
         "@me_chrons_boopickle_2_11//jar",
         "@org_scala_lang_modules_scala_pickling_2_11//jar",

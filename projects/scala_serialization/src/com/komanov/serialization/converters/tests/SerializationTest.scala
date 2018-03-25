@@ -1,11 +1,8 @@
 package com.komanov.serialization.converters.tests
 
-import java.io.ByteArrayOutputStream
-
 import com.komanov.serialization.converters._
 import com.komanov.serialization.domain.SiteEventData
 import com.komanov.serialization.domain.testdata.TestData
-import org.apache.commons.io.HexDump
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.Scope
 import org.specs2.specification.core.Fragments
@@ -75,9 +72,20 @@ class SerializationTest extends SpecificationWithJUnit {
     if (arr.isEmpty) {
       ""
     } else {
-      val baos = new ByteArrayOutputStream
-      HexDump.dump(arr, 0, baos, 0)
-      new String(baos.toByteArray)
+      val sb = new StringBuilder(3 * arr.length + arr.length / 16 + 1)
+      for (i <- 0 to arr.length) {
+        val b = arr(i)
+
+        sb.append(java.lang.Integer.toString(b, 16))
+        if (i > 0 && i % 4 == 0) {
+          sb.append(' ')
+        }
+
+        if (i > 0 && i % 16 == 0) {
+          sb.append("\n")
+        }
+      }
+      sb.toString()
     }
   }
 
