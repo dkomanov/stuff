@@ -1,4 +1,4 @@
-workspace(name = "stuff")
+workspace(name = "scala_serialization")
 
 # scala
 rules_scala_version="24bc74b2664560fdba27b31da9e6c529dd231e1e"
