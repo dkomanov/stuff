@@ -1,6 +1,8 @@
 # dot should be at the end, otherwise, src won't be a Source Root.
 directories:
+  projects/mysql_streaming/src
   projects/scala_serialization/src
+  projects/stringformat/src
   src
   .
 
