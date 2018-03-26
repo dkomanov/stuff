@@ -1,4 +1,4 @@
-workspace(name = "scala_serialization")
+workspace(name = "stringformat")
 
 # scala
 rules_scala_version="24bc74b2664560fdba27b31da9e6c529dd231e1e"
@@ -9,7 +9,7 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip" % rules_scala_version,
 )
 
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+load("@//@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
 
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
