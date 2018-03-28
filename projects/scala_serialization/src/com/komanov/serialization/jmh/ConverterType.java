@@ -9,7 +9,6 @@ public enum ConverterType {
     JAVA_THRIFT(JavaThriftConverter$.MODULE$),
     SCROOGE(ScroogeConverter$.MODULE$),
     SERIALIZABLE(JavaSerializationConverter$.MODULE$),
-    PICKLING(PicklingConverter$.MODULE$),
     BOOPICKLE(BoopickleConverter$.MODULE$),
     CHILL(ChillConverter$.MODULE$),
     CIRCE(CirceConverter$.MODULE$),

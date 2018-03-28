@@ -20,6 +20,5 @@ scala_library(
     ],
     deps = [
         "//third_party:com_fasterxml_jackson_core_jackson_annotations",
-        "//third_party:org_scala_lang_modules_scala_pickling_2_11",
     ],
 )

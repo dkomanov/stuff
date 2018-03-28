@@ -16,32 +16,6 @@ object BoopickleConverter extends MyConverter {
 
   BufferPool.disable()
 
-  override def toByteArray(site: Site): Array[Byte] = {
-    val bb = Pickle.intoBytes(site)
-    val a = bbToArray(bb)
-    BufferPool.release(bb)
-    a
-  }
-
-  override def fromByteArray(bytes: Array[Byte]): Site = {
-    Unpickle[Site].fromBytes(ByteBuffer.wrap(bytes))
-  }
-
-  override def toByteArray(event: SiteEvent): Array[Byte] = {
-    val bb = Pickle.intoBytes(event)
-    val a = bbToArray(bb)
-    BufferPool.release(bb)
-    a
-  }
-
-  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
-    Unpickle[SiteEvent].fromBytes(ByteBuffer.wrap(bytes))
-  }
-
-  private def bbToArray(bb: ByteBuffer) = {
-    util.Arrays.copyOfRange(bb.array(), 0, bb.limit())
-  }
-
   implicit val instantPickler = transformPickler[Instant, Long](t => Instant.ofEpochMilli(t))(_.toEpochMilli)
 
   implicit val pageComponentTypePickler = transformPickler(PageComponentType.valueOf)(_.name())
@@ -87,4 +61,30 @@ object BoopickleConverter extends MyConverter {
     .addConcreteType[FreeEntryPointAdded]
     .addConcreteType[EntryPointRemoved]
     .addConcreteType[PrimaryEntryPointSet]
+
+  override def toByteArray(site: Site): Array[Byte] = {
+    val bb = Pickle.intoBytes(site)
+    val a = bbToArray(bb)
+    BufferPool.release(bb)
+    a
+  }
+
+  override def fromByteArray(bytes: Array[Byte]): Site = {
+    Unpickle.apply[Site].fromBytes(ByteBuffer.wrap(bytes))
+  }
+
+  override def toByteArray(event: SiteEvent): Array[Byte] = {
+    val bb = Pickle.intoBytes(event)
+    val a = bbToArray(bb)
+    BufferPool.release(bb)
+    a
+  }
+
+  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
+    Unpickle.apply[SiteEvent].fromBytes(ByteBuffer.wrap(bytes))
+  }
+
+  private def bbToArray(bb: ByteBuffer) = {
+    util.Arrays.copyOfRange(bb.array(), 0, bb.limit())
+  }
 }

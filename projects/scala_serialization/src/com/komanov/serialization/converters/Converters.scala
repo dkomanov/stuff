@@ -9,7 +9,6 @@ object Converters {
     "Java Thrift" -> JavaThriftConverter,
     "Scrooge" -> ScroogeConverter,
     "Serializable" -> JavaSerializationConverter,
-    "Pickling" -> PicklingConverter,
     "BooPickle" -> BoopickleConverter,
     "Chill" -> ChillConverter,
     "Circe" -> CirceConverter
