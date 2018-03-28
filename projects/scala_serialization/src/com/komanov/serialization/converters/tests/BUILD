@@ -14,10 +14,9 @@ scala_specs2_junit(
         "//src/com/komanov/serialization/proto:thrift_scrooge",
         "//third_party:com_fasterxml_jackson_core_jackson_core",
         "//third_party:com_fasterxml_jackson_core_jackson_databind",
-        "//third_party:com_fasterxml_jackson_module_jackson_module_scala_2_11",
-        "//third_party:com_twitter_chill_2_11",
+        "//third_party:com_fasterxml_jackson_module_jackson_module_scala",
+        "//third_party:com_twitter_chill",
         "//third_party:org_apache_thrift_libthrift",
-        "@me_chrons_boopickle_2_11//jar",
-        "@org_scala_lang_modules_scala_pickling_2_11//jar",
+        "@io_suzaku_boopickle//jar",
     ],
 )

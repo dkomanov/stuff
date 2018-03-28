@@ -5,8 +5,6 @@ import java.util.UUID
 
 import com.fasterxml.jackson.annotation.{JsonSubTypes, JsonTypeInfo}
 
-import scala.pickling.directSubclasses
-
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(Array(
   new JsonSubTypes.Type(value = classOf[SiteCreated], name = "SiteCreated"),
@@ -38,37 +36,6 @@ import scala.pickling.directSubclasses
   new JsonSubTypes.Type(value = classOf[FreeEntryPointAdded], name = "FreeEntryPointAdded"),
   new JsonSubTypes.Type(value = classOf[EntryPointRemoved], name = "EntryPointRemoved"),
   new JsonSubTypes.Type(value = classOf[PrimaryEntryPointSet], name = "PrimaryEntryPointSet")
-))
-@directSubclasses(Array(
-  classOf[SiteCreated],
-  classOf[SiteNameSet],
-  classOf[SiteDescriptionSet],
-  classOf[SiteRevisionSet],
-  classOf[SitePublished],
-  classOf[SiteUnpublished],
-  classOf[SiteFlagAdded],
-  classOf[SiteFlagRemoved],
-  classOf[DomainAdded],
-  classOf[DomainRemoved],
-  classOf[PrimaryDomainSet],
-  classOf[DefaultMetaTagAdded],
-  classOf[DefaultMetaTagRemoved],
-  classOf[PageAdded],
-  classOf[PageRemoved],
-  classOf[PageNameSet],
-  classOf[PageMetaTagAdded],
-  classOf[PageMetaTagRemoved],
-  classOf[PageComponentAdded],
-  classOf[PageComponentRemoved],
-  classOf[PageComponentPositionSet],
-  classOf[PageComponentPositionReset],
-  classOf[TextComponentDataSet],
-  classOf[ButtonComponentDataSet],
-  classOf[BlogComponentDataSet],
-  classOf[DomainEntryPointAdded],
-  classOf[FreeEntryPointAdded],
-  classOf[EntryPointRemoved],
-  classOf[PrimaryEntryPointSet]
 ))
 sealed trait SiteEvent {
 }

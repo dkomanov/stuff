@@ -1,7 +1,7 @@
 workspace(name = "scala_serialization")
 
 # scala
-rules_scala_version="24bc74b2664560fdba27b31da9e6c529dd231e1e"
+rules_scala_version="41ac5be57e50ee5433fa40e6a1de86914d92dbfb"
 http_archive(
     name = "io_bazel_rules_scala",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
@@ -39,5 +39,5 @@ java_proto_repositories()
 # Command to generate dependencies:
 # ./generate_workspace.sh from bazel git repository
 # https://docs.bazel.build/versions/master/generate-workspace.html
-load("//:generate_workspace.bzl", "generated_maven_jars")
+load("//:third_party_deps.bzl", "generated_maven_jars")
 generated_maven_jars()
