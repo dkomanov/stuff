@@ -1,7 +1,7 @@
 workspace(name = "scala_serialization")
 
 # scala
-rules_scala_version="41ac5be57e50ee5433fa40e6a1de86914d92dbfb"
+rules_scala_version="4ecc3f7d1f74ade8962dc627457fd3629ada1c5e"
 http_archive(
     name = "io_bazel_rules_scala",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
