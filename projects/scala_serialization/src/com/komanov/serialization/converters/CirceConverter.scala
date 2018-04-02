@@ -5,7 +5,7 @@ import java.time.Instant
 
 import com.komanov.serialization.domain._
 import io.circe._
-import io.circe.generic.semiauto._
+import io.circe.generic.auto._
 import io.circe.parser._
 import io.circe.syntax._
 
@@ -26,35 +26,11 @@ object CirceConverter extends MyConverter {
   implicit val encodeSiteType: Encoder[SiteType] = Encoder.encodeString.contramap[SiteType](_.toString)
   implicit val decodeSiteType: Decoder[SiteType] = decodeString(SiteType.valueOf)
 
-  implicit val encodeDomain: Encoder[Domain] = deriveEncoder[Domain]
-  implicit val decodeDomain: Decoder[Domain] = deriveDecoder[Domain]
-  implicit val encodeMetaTag: Encoder[MetaTag] = deriveEncoder[MetaTag]
-  implicit val decodeMetaTag: Decoder[MetaTag] = deriveDecoder[MetaTag]
-  implicit val encodePage: Encoder[Page] = deriveEncoder[Page]
-  implicit val decodePage: Decoder[Page] = deriveDecoder[Page]
-  implicit val encodeDomainEntryPoint: Encoder[DomainEntryPoint] = deriveEncoder[DomainEntryPoint]
-  implicit val decodeDomainEntryPoint: Decoder[DomainEntryPoint] = deriveDecoder[DomainEntryPoint]
-  implicit val encodeFreeEntryPoint: Encoder[FreeEntryPoint] = deriveEncoder[FreeEntryPoint]
-  implicit val decodeFreeEntryPoint: Decoder[FreeEntryPoint] = deriveDecoder[FreeEntryPoint]
-  implicit val encodeEntryPoint: Encoder[EntryPoint] = deriveEncoder[EntryPoint]
-  implicit val decodeEntryPoint: Decoder[EntryPoint] = deriveDecoder[EntryPoint]
-  implicit val encodeTextComponentData: Encoder[TextComponentData] = deriveEncoder[TextComponentData]
-  implicit val decodeTextComponentData: Decoder[TextComponentData] = deriveDecoder[TextComponentData]
-  implicit val encodeButtonComponentData: Encoder[ButtonComponentData] = deriveEncoder[ButtonComponentData]
-  implicit val decodeButtonComponentData: Decoder[ButtonComponentData] = deriveDecoder[ButtonComponentData]
-  implicit val encodeBlogComponentData: Encoder[BlogComponentData] = deriveEncoder[BlogComponentData]
-  implicit val decodeBlogComponentData: Decoder[BlogComponentData] = deriveDecoder[BlogComponentData]
-  implicit val encodePageComponentData: Encoder[PageComponentData] = deriveEncoder[PageComponentData]
-  implicit val decodePageComponentData: Decoder[PageComponentData] = deriveDecoder[PageComponentData]
-  implicit val encodePageComponentPosition: Encoder[PageComponentPosition] = deriveEncoder[PageComponentPosition]
-  implicit val decodePageComponentPosition: Decoder[PageComponentPosition] = deriveDecoder[PageComponentPosition]
-  implicit val encodePageComponent: Encoder[PageComponent] = deriveEncoder[PageComponent]
-  implicit val decodePageComponent: Decoder[PageComponent] = deriveDecoder[PageComponent]
-  implicit val encodeSite: Encoder[Site] = deriveEncoder[Site]
-  implicit val decodeSite: Decoder[Site] = deriveDecoder[Site]
+  implicit val encodeSite: Encoder[Site] = Encoder[Site]
+  implicit val decodeSite: Decoder[Site] = Decoder[Site]
 
-  implicit val encodeSiteEvent: Encoder[SiteEvent] = deriveEncoder[SiteEvent]
-  implicit val decodeSiteEvent: Decoder[SiteEvent] = deriveDecoder[SiteEvent]
+  implicit val encodeSiteEvent: Encoder[SiteEvent] = Encoder[SiteEvent]
+  implicit val decodeSiteEvent: Decoder[SiteEvent] = Decoder[SiteEvent]
 
   override def toByteArray(site: Site): Array[Byte] =
     site.asJson.noSpaces.getBytes(StandardCharsets.UTF_8)
