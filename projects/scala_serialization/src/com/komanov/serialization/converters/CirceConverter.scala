@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets
 import java.time.Instant
 
 import com.komanov.serialization.converters.CirceImplicits._
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain._
 import io.circe.parser._
 import io.circe.syntax._

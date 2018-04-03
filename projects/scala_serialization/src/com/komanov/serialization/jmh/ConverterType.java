@@ -1,6 +1,7 @@
 package com.komanov.serialization.jmh;
 
 import com.komanov.serialization.converters.*;
+import com.komanov.serialization.converters.api.MyConverter;
 
 public enum ConverterType {
     JSON(JsonConverter$.MODULE$),

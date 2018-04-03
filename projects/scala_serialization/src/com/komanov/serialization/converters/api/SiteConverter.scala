@@ -1,4 +1,4 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.converters.api
 
 import com.komanov.serialization.domain.Site
 

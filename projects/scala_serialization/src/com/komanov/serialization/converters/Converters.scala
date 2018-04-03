@@ -1,5 +1,7 @@
 package com.komanov.serialization.converters
 
+import com.komanov.serialization.converters.api.MyConverter
+
 object Converters {
 
   val all: Seq[(String, MyConverter)] = Seq(

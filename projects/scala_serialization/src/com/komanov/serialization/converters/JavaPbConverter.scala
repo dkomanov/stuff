@@ -1,6 +1,7 @@
 package com.komanov.serialization.converters
 
 import com.google.protobuf.GeneratedMessage
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain._
 import com.komanov.serialization.domain.protos.Events._
 import com.komanov.serialization.domain.protos.Site.EntryPointPb._

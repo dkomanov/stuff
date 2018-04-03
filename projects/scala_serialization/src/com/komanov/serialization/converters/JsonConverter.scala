@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.Module.SetupContext
 import com.fasterxml.jackson.databind._
 import com.fasterxml.jackson.databind.module.{SimpleDeserializers, SimpleSerializers}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain.{Site, SiteEvent, SiteEventData}
 
 /** https://github.com/FasterXML/jackson */
