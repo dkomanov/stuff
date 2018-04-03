@@ -1,7 +1,7 @@
 scala_binary(
     name = "report-generator",
     srcs = ["ReportGenerator.scala"],
-    main_class = "com.komanov.serialization.converters.bin.ReportGenerator",
+    main_class = "com.komanov.serialization.bin.ReportGenerator",
     deps = [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
@@ -12,7 +12,7 @@ scala_binary(
 scala_binary(
     name = "events-report-generator",
     srcs = ["EventsReportGenerator.scala"],
-    main_class = "com.komanov.serialization.converters.bin.EventsReportGenerator",
+    main_class = "com.komanov.serialization.bin.EventsReportGenerator",
     deps = [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
@@ -30,8 +30,8 @@ scala_binary(
         "//src/com/komanov/serialization/domain/testdata",
     ],
 ) for name, main_class in [
-    ("site-serialization-perf", "com.komanov.serialization.converters.bin.SiteSerializationPerfTestApp"),
-    ("site-deserialization-perf", "com.komanov.serialization.converters.bin.SiteDeserializationPerfTestApp"),
-    ("events-serialization-perf", "com.komanov.serialization.converters.bin.EventsSerializationPerfTestApp"),
-    ("events-deserialization-perf", "com.komanov.serialization.converters.bin.EventsDeserializationPerfTestApp"),
+    ("site-serialization-perf", "com.komanov.serialization.bin.SiteSerializationPerfTestApp"),
+    ("site-deserialization-perf", "com.komanov.serialization.bin.SiteDeserializationPerfTestApp"),
+    ("events-serialization-perf", "com.komanov.serialization.bin.EventsSerializationPerfTestApp"),
+    ("events-deserialization-perf", "com.komanov.serialization.bin.EventsDeserializationPerfTestApp"),
 ]]
