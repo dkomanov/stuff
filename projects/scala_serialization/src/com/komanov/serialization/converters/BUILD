@@ -111,7 +111,7 @@ scala_library(
     srcs = ["JavaThriftConverter.scala"],
     deps = [
         ":api",
-        ":conversion_utils",  # TODO FIX IT!!!
+        ":conversion_utils",
         "//src/com/komanov/serialization/domain:domain_java_thrift",
         "//third_party:org_apache_thrift_libthrift",
     ],
@@ -133,7 +133,7 @@ scala_library(
     srcs = ["ScroogeConverter.scala"],
     deps = [
         ":api",
-        ":conversion_utils",  # TODO FIX IT!!!
+        ":conversion_utils",
         ":reflection_utils",
         "//src/com/komanov/serialization/proto:thrift_scrooge",
     ],
