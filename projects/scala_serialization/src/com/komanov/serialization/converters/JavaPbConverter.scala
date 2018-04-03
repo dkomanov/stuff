@@ -8,7 +8,7 @@ import com.komanov.serialization.domain.protos.Site.EntryPointPb._
 import com.komanov.serialization.domain.protos.Site.PageComponentDataPb._
 import com.komanov.serialization.domain.protos.Site._
 
-import scala.collection.JavaConversions._
+import scala.collection.convert.ImplicitConversions._
 import scala.language.existentials
 import scala.reflect.ClassTag
 
