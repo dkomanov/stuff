@@ -5,6 +5,7 @@ scala_binary(
     deps = [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
+        "//src/com/komanov/serialization/io",
     ],
 )
 
@@ -15,6 +16,7 @@ scala_binary(
     deps = [
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
+        "//src/com/komanov/serialization/io",
     ],
 )
 
