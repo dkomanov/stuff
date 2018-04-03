@@ -74,7 +74,14 @@ scala_library(
     name = "protobuf_utils",
     srcs = ["ConversionUtils.scala"],
     visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
+)
+
+scala_library(
+    name = "protobuf_conversion_utils",
+    srcs = ["ProtobufConversionUtils.scala"],
+    visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
     deps = [
+        ":protobuf_utils",
         "@com_google_protobuf_protobuf_java//jar",
     ],
 )
@@ -89,6 +96,7 @@ scala_library(
     srcs = ["JavaPbConverter.scala"],
     deps = [
         ":api",
+        ":protobuf_conversion_utils",
         ":protobuf_utils",
         "//src/com/komanov/serialization/proto:protos_java",
     ],
@@ -99,6 +107,7 @@ scala_library(
     srcs = ["ScalaPbConverter.scala"],
     deps = [
         ":api",
+        ":protobuf_conversion_utils",
         ":protobuf_utils",
         ":reflection_utils",
         "//src/com/komanov/serialization/proto:protos_scala",

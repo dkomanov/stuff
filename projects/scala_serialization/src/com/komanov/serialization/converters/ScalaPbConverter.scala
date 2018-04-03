@@ -15,8 +15,8 @@ object ScalaPbConverter extends MyConverter {
 
   override def toByteArray(site: Site): Array[Byte] = {
     val proto = SitePb(
-      ConversionUtils.uuidToBytes(site.id),
-      ConversionUtils.uuidToBytes(site.ownerId),
+      ProtobufConversionUtils.uuidToBytes(site.id),
+      ProtobufConversionUtils.uuidToBytes(site.ownerId),
       site.revision,
       toSiteTypePb(site.siteType),
       site.flags.map(toSiteFlagPb),
@@ -38,8 +38,8 @@ object ScalaPbConverter extends MyConverter {
   override def fromByteArray(bytes: Array[Byte]): Site = {
     val site = SitePb.parseFrom(bytes)
     Site(
-      ConversionUtils.bytesToUuid(site.id),
-      ConversionUtils.bytesToUuid(site.ownerId),
+      ProtobufConversionUtils.bytesToUuid(site.id),
+      ProtobufConversionUtils.bytesToUuid(site.ownerId),
       site.revision,
       site.siteType match {
         case SiteTypePb.Flash => SiteType.Flash
@@ -82,7 +82,7 @@ object ScalaPbConverter extends MyConverter {
   private def fromMetaTagPb(mt: MetaTagPb) = MetaTag(mt.name, mt.value)
 
   private def toComponentPb(pc: PageComponent) = PageComponentPb(
-    ConversionUtils.uuidToBytes(pc.id),
+    ProtobufConversionUtils.uuidToBytes(pc.id),
     pc.componentType match {
       case PageComponentType.Text => PageComponentTypePb.Text
       case PageComponentType.Button => PageComponentTypePb.Button
@@ -92,7 +92,7 @@ object ScalaPbConverter extends MyConverter {
     Some(PageComponentDataPb(
       pc.data match {
         case text: TextComponentData => Data.Text(TextComponentDataPb(text.text))
-        case button: ButtonComponentData => Data.Button(ButtonComponentDataPb(button.name, button.text, ConversionUtils.uuidToBytes(button.action)))
+        case button: ButtonComponentData => Data.Button(ButtonComponentDataPb(button.name, button.text, ProtobufConversionUtils.uuidToBytes(button.action)))
         case blog: BlogComponentData => Data.Blog(BlogComponentDataPb(blog.name, blog.rss, blog.tags))
       }
     )),
@@ -102,7 +102,7 @@ object ScalaPbConverter extends MyConverter {
   )
 
   private def fromComponentPb(pc: PageComponentPb) = PageComponent(
-    ConversionUtils.bytesToUuid(pc.id),
+    ProtobufConversionUtils.bytesToUuid(pc.id),
     pc.componentType match {
       case PageComponentTypePb.Text => PageComponentType.Text
       case PageComponentTypePb.Button => PageComponentType.Button
@@ -111,7 +111,7 @@ object ScalaPbConverter extends MyConverter {
     },
     pc.data.map(_.data).get match {
       case Data.Text(text) => TextComponentData(text.text)
-      case Data.Button(button) => ButtonComponentData(button.name, button.text, ConversionUtils.bytesToUuid(button.action))
+      case Data.Button(button) => ButtonComponentData(button.name, button.text, ProtobufConversionUtils.bytesToUuid(button.action))
       case Data.Blog(blog) => BlogComponentData(blog.name, blog.rss, blog.tags)
       case Data.Empty => throw new RuntimeException("Expected data")
     },
@@ -193,8 +193,8 @@ object ScalaPbConverter extends MyConverter {
 
   private val descriptorMap: Map[Class[_], EventDescriptor] = Seq[EventDescriptor](
     createEventDescriptor[SiteCreated, SiteCreatedPb](
-      e => SiteCreatedPb(ConversionUtils.uuidToBytes(e.id), ConversionUtils.uuidToBytes(e.ownerId), toSiteTypePb(e.siteType)),
-      e => SiteCreated(ConversionUtils.bytesToUuid(e.id), ConversionUtils.bytesToUuid(e.ownerId), fromSiteTypePb(e.siteType))
+      e => SiteCreatedPb(ProtobufConversionUtils.uuidToBytes(e.id), ProtobufConversionUtils.uuidToBytes(e.ownerId), toSiteTypePb(e.siteType)),
+      e => SiteCreated(ProtobufConversionUtils.bytesToUuid(e.id), ProtobufConversionUtils.bytesToUuid(e.ownerId), fromSiteTypePb(e.siteType))
     ),
     createEventDescriptor[SiteNameSet, SiteNameSetPb](
       e => SiteNameSetPb(e.name),
@@ -265,32 +265,32 @@ object ScalaPbConverter extends MyConverter {
       e => PageMetaTagRemoved(e.path, e.name)
     ),
     createEventDescriptor[PageComponentAdded, PageComponentAddedPb](
-      e => PageComponentAddedPb(e.pagePath, ConversionUtils.uuidToBytes(e.id), toPageComponentTypePb(e.componentType)),
-      e => PageComponentAdded(e.pagePath, ConversionUtils.bytesToUuid(e.id), fromPageComponentTypePb(e.componentType))
+      e => PageComponentAddedPb(e.pagePath, ProtobufConversionUtils.uuidToBytes(e.id), toPageComponentTypePb(e.componentType)),
+      e => PageComponentAdded(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id), fromPageComponentTypePb(e.componentType))
     ),
     createEventDescriptor[PageComponentRemoved, PageComponentRemovedPb](
-      e => PageComponentRemovedPb(e.pagePath, ConversionUtils.uuidToBytes(e.id)),
-      e => PageComponentRemoved(e.pagePath, ConversionUtils.bytesToUuid(e.id))
+      e => PageComponentRemovedPb(e.pagePath, ProtobufConversionUtils.uuidToBytes(e.id)),
+      e => PageComponentRemoved(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id))
     ),
     createEventDescriptor[PageComponentPositionSet, PageComponentPositionSetPb](
-      e => PageComponentPositionSetPb(ConversionUtils.uuidToBytes(e.id), e.position.x, e.position.y),
-      e => PageComponentPositionSet(ConversionUtils.bytesToUuid(e.id), PageComponentPosition(e.x, e.y))
+      e => PageComponentPositionSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.position.x, e.position.y),
+      e => PageComponentPositionSet(ProtobufConversionUtils.bytesToUuid(e.id), PageComponentPosition(e.x, e.y))
     ),
     createEventDescriptor[PageComponentPositionReset, PageComponentPositionResetPb](
-      e => PageComponentPositionResetPb(ConversionUtils.uuidToBytes(e.id)),
-      e => PageComponentPositionReset(ConversionUtils.bytesToUuid(e.id))
+      e => PageComponentPositionResetPb(ProtobufConversionUtils.uuidToBytes(e.id)),
+      e => PageComponentPositionReset(ProtobufConversionUtils.bytesToUuid(e.id))
     ),
     createEventDescriptor[TextComponentDataSet, TextComponentDataSetPb](
-      e => TextComponentDataSetPb(ConversionUtils.uuidToBytes(e.id), e.text),
-      e => TextComponentDataSet(ConversionUtils.bytesToUuid(e.id), e.text)
+      e => TextComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.text),
+      e => TextComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.text)
     ),
     createEventDescriptor[ButtonComponentDataSet, ButtonComponentDataSetPb](
-      e => ButtonComponentDataSetPb(ConversionUtils.uuidToBytes(e.id), e.name, e.text, ConversionUtils.uuidToBytes(e.action)),
-      e => ButtonComponentDataSet(ConversionUtils.bytesToUuid(e.id), e.name, e.text, ConversionUtils.bytesToUuid(e.action))
+      e => ButtonComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.name, e.text, ProtobufConversionUtils.uuidToBytes(e.action)),
+      e => ButtonComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.text, ProtobufConversionUtils.bytesToUuid(e.action))
     ),
     createEventDescriptor[BlogComponentDataSet, BlogComponentDataSetPb](
-      e => BlogComponentDataSetPb(ConversionUtils.uuidToBytes(e.id), e.name, e.rss, e.tags),
-      e => BlogComponentDataSet(ConversionUtils.bytesToUuid(e.id), e.name, e.rss, e.tags)
+      e => BlogComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.name, e.rss, e.tags),
+      e => BlogComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.rss, e.tags)
     ),
     createEventDescriptor[DomainEntryPointAdded, DomainEntryPointAddedPb](
       e => DomainEntryPointAddedPb(e.domain),

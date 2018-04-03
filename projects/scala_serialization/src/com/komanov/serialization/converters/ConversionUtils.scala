@@ -4,14 +4,7 @@ import java.nio.ByteBuffer
 import java.time.Instant
 import java.util.UUID
 
-import com.google.protobuf.ByteString
-
 object ConversionUtils {
-
-  def uuidToBytes(uuid: UUID): ByteString = {
-    val bb = uuidToByteBuffer(uuid)
-    if (bb == null) ByteString.EMPTY else ByteString.copyFrom(bb)
-  }
 
   def uuidToByteBuffer(uuid: UUID): ByteBuffer = {
     if (uuid == null) {
@@ -38,10 +31,6 @@ object ConversionUtils {
     require(length >= 16, s"expected 16 bytes: ${bb.capacity()} / ${bb.limit()}")
 
     new UUID(bb.getLong, bb.getLong)
-  }
-
-  def bytesToUuid(bs: ByteString): UUID = {
-    bytesToUuid(bs.asReadOnlyByteBuffer())
   }
 
   def instantToLong(v: Instant) = v.toEpochMilli
