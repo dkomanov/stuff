@@ -35,6 +35,10 @@ scala_library(
     ],
 )
 
+#
+# Converters by library
+#
+
 scala_library(
     name = "boopickle",
     srcs = ["BoopickleConverter.scala"],
@@ -71,33 +75,12 @@ scala_library(
 )
 
 scala_library(
-    name = "protobuf_utils",
-    srcs = ["ConversionUtils.scala"],
-    visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
-)
-
-scala_library(
-    name = "protobuf_conversion_utils",
-    srcs = ["ProtobufConversionUtils.scala"],
-    visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
-    deps = [
-        ":protobuf_utils",
-        "@com_google_protobuf_protobuf_java//jar",
-    ],
-)
-
-scala_library(
-    name = "reflection_utils",
-    srcs = ["ReflectionUtils.scala"],
-)
-
-scala_library(
     name = "java_pb",
     srcs = ["JavaPbConverter.scala"],
     deps = [
         ":api",
+        ":conversion_utils",
         ":protobuf_conversion_utils",
-        ":protobuf_utils",
         "//src/com/komanov/serialization/proto:protos_java",
     ],
 )
@@ -107,8 +90,8 @@ scala_library(
     srcs = ["ScalaPbConverter.scala"],
     deps = [
         ":api",
+        ":conversion_utils",
         ":protobuf_conversion_utils",
-        ":protobuf_utils",
         ":reflection_utils",
         "//src/com/komanov/serialization/proto:protos_scala",
     ],
@@ -128,7 +111,7 @@ scala_library(
     srcs = ["JavaThriftConverter.scala"],
     deps = [
         ":api",
-        ":protobuf_utils",  # TODO FIX IT!!!
+        ":conversion_utils",  # TODO FIX IT!!!
         "//src/com/komanov/serialization/domain:domain_java_thrift",
         "//third_party:org_apache_thrift_libthrift",
     ],
@@ -150,8 +133,33 @@ scala_library(
     srcs = ["ScroogeConverter.scala"],
     deps = [
         ":api",
-        ":protobuf_utils",  # TODO FIX IT!!!
+        ":conversion_utils",  # TODO FIX IT!!!
         ":reflection_utils",
         "//src/com/komanov/serialization/proto:thrift_scrooge",
     ],
+)
+
+#
+# Support modules
+#
+
+scala_library(
+    name = "conversion_utils",
+    srcs = ["ConversionUtils.scala"],
+    visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
+)
+
+scala_library(
+    name = "protobuf_conversion_utils",
+    srcs = ["ProtobufConversionUtils.scala"],
+    visibility = ["//src/com/komanov/serialization/converters:__subpackages__"],
+    deps = [
+        ":conversion_utils",
+        "@com_google_protobuf_protobuf_java//jar",
+    ],
+)
+
+scala_library(
+    name = "reflection_utils",
+    srcs = ["ReflectionUtils.scala"],
 )

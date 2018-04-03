@@ -6,8 +6,8 @@ scala_specs2_junit(
     ],
     deps = [
         "//src/com/komanov/serialization/converters",
+        "//src/com/komanov/serialization/converters:conversion_utils",
         "//src/com/komanov/serialization/converters:protobuf_conversion_utils",
-        "//src/com/komanov/serialization/converters:protobuf_utils",
         "//src/com/komanov/serialization/domain",
         "//src/com/komanov/serialization/domain:domain_java_thrift",
         "//src/com/komanov/serialization/domain/testdata",
