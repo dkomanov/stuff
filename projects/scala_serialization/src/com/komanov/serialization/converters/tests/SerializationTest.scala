@@ -72,7 +72,7 @@ class SerializationTest extends SpecificationWithJUnit {
       ""
     } else {
       val sb = new StringBuilder(3 * arr.length + arr.length / 16 + 1)
-      for (i <- 0 to arr.length) {
+      for (i <- arr.indices) {
         val b = arr(i)
 
         sb.append(java.lang.Integer.toString(b, 16))
