@@ -2,7 +2,7 @@ package com.komanov.serialization.converters
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, ObjectInputStream, ObjectOutputStream}
 
-import com.komanov.serialization.converters.IoUtils.using
+import com.komanov.serialization.io.IoUtils.using
 import com.komanov.serialization.domain.{Site, SiteEvent, SiteEventData}
 
 object JavaSerializationConverter extends MyConverter {

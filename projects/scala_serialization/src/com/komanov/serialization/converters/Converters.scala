@@ -10,8 +10,8 @@ object Converters {
     "Scrooge" -> ScroogeConverter,
     "Serializable" -> JavaSerializationConverter,
     "BooPickle" -> BoopickleConverter,
-    "Chill" -> ChillConverter,
-    "Circe" -> CirceConverter
+    "Chill" -> ChillConverter
+    //"Circe" -> CirceConverter
   )
 
 }

@@ -11,7 +11,7 @@ public enum ConverterType {
     SERIALIZABLE(JavaSerializationConverter$.MODULE$),
     BOOPICKLE(BoopickleConverter$.MODULE$),
     CHILL(ChillConverter$.MODULE$),
-    CIRCE(CirceConverter$.MODULE$),
+    //CIRCE(CirceConverter$.MODULE$),
     /**/;
 
     public final MyConverter converter;

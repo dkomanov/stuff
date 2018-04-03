@@ -15,15 +15,9 @@ class SerializationTest extends SpecificationWithJUnit {
 
   sequential
 
-  doTest("JSON", JsonConverter)
-  doTest("ScalaPB", ScalaPbConverter)
-  doTest("Java Protobuf", JavaPbConverter)
-  doTest("Java Thrift", JavaThriftConverter)
-  doTest("Scrooge", ScroogeConverter)
-  doTest("Serializable", JavaSerializationConverter)
-  doTest("BooPickle", BoopickleConverter)
-  doTest("Chill", ChillConverter)
-  doTest("Circe", CirceConverter)
+  for ((name, converter) <- Converters.all) {
+    doTest(name, converter)
+  }
 
   "ScalaPB and Java Protobuf" should {
     Fragments.foreach(TestData.sites) { case (name, site) =>

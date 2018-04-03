@@ -1,4 +1,4 @@
-package com.komanov.serialization.converters
+package com.komanov.serialization.io
 
 object IoUtils {
 
