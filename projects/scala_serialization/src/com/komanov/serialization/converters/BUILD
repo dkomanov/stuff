@@ -1,4 +1,4 @@
-dependencies = [
+all_converters = [
     ":api",
     ":boopickle",
     ":chill",
@@ -15,8 +15,8 @@ scala_library(
     name = "converters",
     srcs = ["Converters.scala"],
     visibility = ["//src/com/komanov/serialization:__subpackages__"],
-    exports = dependencies,
-    deps = dependencies,
+    exports = all_converters,
+    deps = all_converters,
 )
 
 scala_library(
