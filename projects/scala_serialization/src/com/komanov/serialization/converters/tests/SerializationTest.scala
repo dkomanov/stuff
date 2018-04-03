@@ -1,6 +1,7 @@
 package com.komanov.serialization.converters.tests
 
 import com.komanov.serialization.converters._
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain.SiteEventData
 import com.komanov.serialization.domain.testdata.TestData
 import org.specs2.mutable.SpecificationWithJUnit

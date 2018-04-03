@@ -1,5 +1,6 @@
 package com.komanov.serialization.converters
 
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain.{Site, SiteEvent}
 import com.twitter.chill.ScalaKryoInstantiator
 

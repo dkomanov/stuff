@@ -6,6 +6,7 @@ import java.util
 
 import boopickle.Default._
 import boopickle.{BufferPool, DecoderSize, EncoderSize}
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain._
 
 /** https://github.com/ochrons/boopickle */

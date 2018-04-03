@@ -3,6 +3,7 @@ package com.komanov.serialization.jmh
 import java.util.concurrent.TimeUnit
 
 import com.komanov.serialization.converters._
+import com.komanov.serialization.converters.api.{EventConverter, SiteConverter}
 import com.komanov.serialization.domain.{EventProcessor, Site, SiteEvent}
 import org.openjdk.jmh.annotations._
 

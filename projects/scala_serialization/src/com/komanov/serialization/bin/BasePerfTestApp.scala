@@ -1,6 +1,7 @@
 package com.komanov.serialization.bin
 
-import com.komanov.serialization.converters.{Converters, MyConverter}
+import com.komanov.serialization.converters.Converters
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain.testdata.TestData
 import com.komanov.serialization.domain.{EventProcessor, Site, SiteEvent}
 

@@ -1,5 +1,6 @@
 package com.komanov.serialization.converters
 
+import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain._
 import com.komanov.serialization.domain.protos.events._
 import com.komanov.serialization.domain.protos.site.EntryPointPb.{DomainEntryPointPb, FreeEntryPointPb}

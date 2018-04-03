@@ -1,5 +1,5 @@
 all_converters = [
-    ":api",
+    "//src/com/komanov/serialization/converters/api",
     ":boopickle",
     ":chill",
     #":circe",
@@ -19,22 +19,6 @@ scala_library(
     deps = all_converters,
 )
 
-scala_library(
-    name = "api",
-    srcs = glob([
-        "EventConverter.scala",
-        "MyConverter.scala",
-        "SiteConverter.scala",
-    ]),
-    visibility = ["//src/com/komanov/serialization:__subpackages__"],
-    exports = [
-        "//src/com/komanov/serialization/domain",
-    ],
-    deps = [
-        "//src/com/komanov/serialization/domain",
-    ],
-)
-
 #
 # Converters by library
 #
@@ -43,7 +27,7 @@ scala_library(
     name = "boopickle",
     srcs = ["BoopickleConverter.scala"],
     deps = [
-        ":api",
+        "//src/com/komanov/serialization/converters/api",
         "@io_suzaku_boopickle//jar:file",
     ],
 )
@@ -52,7 +36,7 @@ scala_library(
     name = "chill",
     srcs = ["ChillConverter.scala"],
     deps = [
-        ":api",
+        "//src/com/komanov/serialization/converters/api",
         "//third_party:com_twitter_chill",
         "//third_party:com_twitter_chill_java",
     ],
@@ -62,7 +46,7 @@ scala_library(
     name = "circe",
     srcs = ["CirceConverter.scala"],
     deps = [
-        ":api",
+        "//src/com/komanov/serialization/converters/api",
         "//third_party:io_circe_circe_core",
         "//third_party:io_circe_circe_generic",
         "//third_party:io_circe_circe_parser",
@@ -78,9 +62,9 @@ scala_library(
     name = "java_pb",
     srcs = ["JavaPbConverter.scala"],
     deps = [
-        ":api",
         ":conversion_utils",
         ":protobuf_conversion_utils",
+        "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_java",
     ],
 )
@@ -89,10 +73,10 @@ scala_library(
     name = "scala_pb",
     srcs = ["ScalaPbConverter.scala"],
     deps = [
-        ":api",
         ":conversion_utils",
         ":protobuf_conversion_utils",
         ":reflection_utils",
+        "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_scala",
     ],
 )
@@ -101,7 +85,7 @@ scala_library(
     name = "java_serialization",
     srcs = ["JavaSerializationConverter.scala"],
     deps = [
-        ":api",
+        "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/io",
     ],
 )
@@ -110,8 +94,8 @@ scala_library(
     name = "java_thrift",
     srcs = ["JavaThriftConverter.scala"],
     deps = [
-        ":api",
         ":conversion_utils",
+        "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/domain:domain_java_thrift",
         "//third_party:org_apache_thrift_libthrift",
     ],
@@ -121,7 +105,7 @@ scala_library(
     name = "jackson",
     srcs = ["JsonConverter.scala"],
     deps = [
-        ":api",
+        "//src/com/komanov/serialization/converters/api",
         "//third_party:com_fasterxml_jackson_core_jackson_core",
         "//third_party:com_fasterxml_jackson_core_jackson_databind",
         "//third_party:com_fasterxml_jackson_module_jackson_module_scala",
@@ -132,9 +116,9 @@ scala_library(
     name = "scrooge",
     srcs = ["ScroogeConverter.scala"],
     deps = [
-        ":api",
         ":conversion_utils",
         ":reflection_utils",
+        "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:thrift_scrooge",
     ],
 )
