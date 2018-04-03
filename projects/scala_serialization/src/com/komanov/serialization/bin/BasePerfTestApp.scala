@@ -1,4 +1,4 @@
-package com.komanov.serialization.converters.bin
+package com.komanov.serialization.bin
 
 import com.komanov.serialization.converters.{Converters, MyConverter}
 import com.komanov.serialization.domain.testdata.TestData

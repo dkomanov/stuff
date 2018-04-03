@@ -1,4 +1,4 @@
-package com.komanov.serialization.converters.bin
+package com.komanov.serialization.bin
 
 import java.io.{ByteArrayOutputStream, File}
 import java.nio.file.{Files, StandardOpenOption}
