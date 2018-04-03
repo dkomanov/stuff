@@ -6,7 +6,7 @@ import com.komanov.serialization.domain.thrift._
 import org.apache.thrift.protocol.TCompactProtocol
 import org.apache.thrift.{TBase, TDeserializer, TSerializer}
 
-import scala.collection.JavaConversions._
+import scala.collection.convert.ImplicitConversions._
 import scala.language.existentials
 import scala.reflect.ClassTag
 
