@@ -1,11 +1,21 @@
 # The following dependencies were calculated from:
 #
-# generate_workspace --repositories http://repo1.maven.org/maven2 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.4 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.4 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.12:2.9.4 --artifact=io.suzaku:boopickle_2.12:1.3.0 --artifact=com.twitter:chill_2.12:0.9.2 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=io.circe:circe-core_2.12:0.9.3 --artifact=io.circe:circe-generic_2.12:0.9.3 --artifact=io.circe:circe-parser_2.12:0.9.3
+# generate_workspace --repositories http://repo1.maven.org/maven2 --artifact=org.slf4j:slf4j-api:1.7.25 --artifact=org.slf4j:slf4j-nop:1.7.25 --artifact=com.fasterxml.jackson.core:jackson-databind:2.9.5 --artifact=com.fasterxml.jackson.core:jackson-core:2.9.5 --artifact=com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.5 --artifact=com.fasterxml.jackson.module:jackson-module-scala_2.12:2.9.5 --artifact=io.suzaku:boopickle_2.12:1.3.0 --artifact=org.apache.thrift:libthrift:0.10.0 --artifact=io.circe:circe-core_2.12:0.9.3 --artifact=io.circe:circe-generic_2.12:0.9.3 --artifact=io.circe:circe-parser_2.12:0.9.3 --artifact=com.github.plokhotnyuk.jsoniter-scala:macros_2.12:0.22.2 --artifact=com.twitter:chill_2.12:0.9.2
 
 
 def generated_maven_jars():
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4
+  # com.github.plokhotnyuk.jsoniter-scala:macros_2.12:jar:0.22.2
+  native.maven_jar(
+      name = "com_github_plokhotnyuk_jsoniter_scala_core",
+      artifact = "com.github.plokhotnyuk.jsoniter-scala:core_2.12:0.22.2",
+      repository = "http://repo1.maven.org/maven2/",
+      sha1 = "95768021f638f196274974b69e1d3f6c95f6afc1",
+  )
+
+
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5
   # org.typelevel:machinist_2.12:jar:0.6.2 wanted version 2.12.0
+  # com.github.plokhotnyuk.jsoniter-scala:macros_2.12:jar:0.22.2 got requested version
   native.maven_jar(
       name = "org_scala_lang_scala_reflect",
       artifact = "org.scala-lang:scala-reflect:2.12.4",
@@ -80,7 +90,7 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.4
+  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.5
   native.maven_jar(
       name = "com_thoughtworks_paranamer_paranamer",
       artifact = "com.thoughtworks.paranamer:paranamer:2.8",
@@ -123,6 +133,14 @@ def generated_maven_jars():
       artifact = "org.typelevel:cats-kernel_2.12:1.0.1",
       repository = "http://repo1.maven.org/maven2/",
       sha1 = "977ec6bbc1677502d0f6c26beeb0e5ee6c0da0ad",
+  )
+
+
+  native.maven_jar(
+      name = "com_github_plokhotnyuk_jsoniter_scala_macros",
+      artifact = "com.github.plokhotnyuk.jsoniter-scala:macros_2.12:0.22.2",
+      repository = "http://repo1.maven.org/maven2/",
+      sha1 = "e588ddb324e44b93e6829345e5c2fba81867641c",
   )
 
 
@@ -182,9 +200,9 @@ def generated_maven_jars():
 
   native.maven_jar(
       name = "com_fasterxml_jackson_module_jackson_module_scala",
-      artifact = "com.fasterxml.jackson.module:jackson-module-scala_2.12:2.9.4",
+      artifact = "com.fasterxml.jackson.module:jackson-module-scala_2.12:2.9.5",
       repository = "http://repo1.maven.org/maven2/",
-      sha1 = "67f80f45d795bca57a74fc128d0839023e30a865",
+      sha1 = "6d25f55a46cd6b74e7e0893719de145c29d00eae",
   )
 
 
@@ -223,17 +241,25 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4
   native.maven_jar(
-      name = "com_fasterxml_jackson_module_jackson_module_paranamer",
-      artifact = "com.fasterxml.jackson.module:jackson-module-paranamer:2.9.4",
+      name = "com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
+      artifact = "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.5",
       repository = "http://repo1.maven.org/maven2/",
-      sha1 = "899b339804d5f9f797e8cca8cf235e0e769fa630",
+      sha1 = "e3ceeb7bbfcc3d36a1abcc5ed9544d5298e65f39",
   )
 
 
-  # com.fasterxml.jackson.core:jackson-databind:bundle:2.9.4
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4 wanted version 2.9.4
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5
+  native.maven_jar(
+      name = "com_fasterxml_jackson_module_jackson_module_paranamer",
+      artifact = "com.fasterxml.jackson.module:jackson-module-paranamer:2.9.5",
+      repository = "http://repo1.maven.org/maven2/",
+      sha1 = "e301616789db265f3bf16b9efa66dd36671e44b3",
+  )
+
+
+  # com.fasterxml.jackson.core:jackson-databind:bundle:2.9.5
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5 wanted version 2.9.5
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_annotations",
       artifact = "com.fasterxml.jackson.core:jackson-annotations:2.9.0",
@@ -268,21 +294,22 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4 got requested version
-  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.4 got requested version
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5 got requested version
+  # com.fasterxml.jackson.module:jackson-module-paranamer:bundle:2.9.5 got requested version
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_databind",
-      artifact = "com.fasterxml.jackson.core:jackson-databind:2.9.4",
+      artifact = "com.fasterxml.jackson.core:jackson-databind:2.9.5",
       repository = "http://repo1.maven.org/maven2/",
-      sha1 = "498bbc3b94f566982c7f7c6d4d303fce365529be",
+      sha1 = "3490508379d065fe3fcb80042b62f630f7588606",
   )
 
 
   # com.chuusai:shapeless_2.12:bundle:2.3.3 got requested version
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5
   # org.typelevel:machinist_2.12:jar:0.6.2 wanted version 2.12.0
-  # com.twitter:chill_2.12:jar:0.9.2 wanted version 2.12.1
   # org.typelevel:macro-compat_2.12:jar:1.1.1 wanted version 2.12.0
+  # com.twitter:chill_2.12:jar:0.9.2 wanted version 2.12.1
+  # com.github.plokhotnyuk.jsoniter-scala:core_2.12:jar:0.22.2 got requested version
   # io.circe:circe-numbers_2.12:jar:0.9.3 wanted version 2.12.5
   # org.typelevel:cats-macros_2.12:jar:1.0.1 got requested version
   # org.spire-math:jawn-parser_2.12:jar:0.11.1 wanted version 2.12.2
@@ -290,6 +317,7 @@ def generated_maven_jars():
   # io.circe:circe-core_2.12:jar:0.9.3 wanted version 2.12.5
   # org.typelevel:cats-kernel_2.12:jar:1.0.1 got requested version
   # io.circe:circe-generic_2.12:jar:0.9.3 wanted version 2.12.5
+  # com.github.plokhotnyuk.jsoniter-scala:macros_2.12:jar:0.22.2 got requested version
   # io.suzaku:boopickle_2.12:jar:1.3.0 got requested version
   # io.circe:circe-parser_2.12:jar:0.9.3 wanted version 2.12.5
   # org.scala-lang:scala-reflect:jar:2.12.4 got requested version
@@ -302,12 +330,13 @@ def generated_maven_jars():
   )
 
 
-  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.4 got requested version
+  # com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:bundle:2.9.5 got requested version
+  # com.fasterxml.jackson.module:jackson-module-scala_2.12:bundle:2.9.5 got requested version
   native.maven_jar(
       name = "com_fasterxml_jackson_core_jackson_core",
-      artifact = "com.fasterxml.jackson.core:jackson-core:2.9.4",
+      artifact = "com.fasterxml.jackson.core:jackson-core:2.9.5",
       repository = "http://repo1.maven.org/maven2/",
-      sha1 = "a9a71ec1aa37da47db168fede9a4a5fb5e374320",
+      sha1 = "a22ac51016944b06fd9ffbc9541c6e7ce5eea117",
   )
 
 
@@ -322,6 +351,16 @@ def generated_maven_jars():
 
 
 def generated_java_libraries():
+  native.java_library(
+      name = "com_github_plokhotnyuk_jsoniter_scala_core",
+      visibility = ["//visibility:public"],
+      exports = ["@com_github_plokhotnyuk_jsoniter_scala_core//jar"],
+      runtime_deps = [
+          ":org_scala_lang_scala_library",
+      ],
+  )
+
+
   native.java_library(
       name = "org_scala_lang_scala_reflect",
       visibility = ["//visibility:public"],
@@ -459,6 +498,18 @@ def generated_java_libraries():
 
 
   native.java_library(
+      name = "com_github_plokhotnyuk_jsoniter_scala_macros",
+      visibility = ["//visibility:public"],
+      exports = ["@com_github_plokhotnyuk_jsoniter_scala_macros//jar"],
+      runtime_deps = [
+          ":com_github_plokhotnyuk_jsoniter_scala_core",
+          ":org_scala_lang_scala_library",
+          ":org_scala_lang_scala_reflect",
+      ],
+  )
+
+
+  native.java_library(
       name = "io_circe_circe_numbers",
       visibility = ["//visibility:public"],
       exports = ["@io_circe_circe_numbers//jar"],
@@ -568,6 +619,16 @@ def generated_java_libraries():
           ":com_esotericsoftware_kryo_shaded",
           ":com_esotericsoftware_minlog",
           ":org_objenesis_objenesis",
+      ],
+  )
+
+
+  native.java_library(
+      name = "com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
+      visibility = ["//visibility:public"],
+      exports = ["@com_fasterxml_jackson_dataformat_jackson_dataformat_cbor//jar"],
+      runtime_deps = [
+          ":com_fasterxml_jackson_core_jackson_core",
       ],
   )
 

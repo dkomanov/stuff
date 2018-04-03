@@ -7,6 +7,7 @@ all_converters = [
     ":java_serialization",
     ":java_thrift",
     ":jackson",
+    #":jsoniter_scala",
     ":scala_pb",
     ":scrooge",
 ]
@@ -108,9 +109,23 @@ scala_library(
         "//src/com/komanov/serialization/converters/api",
         "//third_party:com_fasterxml_jackson_core_jackson_core",
         "//third_party:com_fasterxml_jackson_core_jackson_databind",
+        "//third_party:com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
         "//third_party:com_fasterxml_jackson_module_jackson_module_scala",
     ],
 )
+
+# Doesn't work:
+# java.lang.ClassFormatError: Absent Code attribute in method that is not native or abstract in class file com/github/plokhotnyuk/jsoniter_scala/macros/JsonCodecMaker$Impl$
+#scala_library(
+#    name = "jsoniter_scala",
+#    srcs = ["JsoniterScalaConverter.scala"],
+#    deps = [
+#        "//src/com/komanov/serialization/converters/api",
+#        "@com_github_plokhotnyuk_jsoniter_scala_core//jar",
+#        "@com_github_plokhotnyuk_jsoniter_scala_macros//jar",
+#        "@scala//:scala-reflect",
+#    ],
+#)
 
 scala_library(
     name = "scrooge",

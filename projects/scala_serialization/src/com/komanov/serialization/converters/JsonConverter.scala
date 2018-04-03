@@ -2,16 +2,21 @@ package com.komanov.serialization.converters
 
 import java.time.Instant
 
-import com.fasterxml.jackson.core.{JsonGenerator, JsonParser, Version}
+import com.fasterxml.jackson.core.{JsonFactory, JsonGenerator, JsonParser, Version}
 import com.fasterxml.jackson.databind.Module.SetupContext
 import com.fasterxml.jackson.databind._
 import com.fasterxml.jackson.databind.module.{SimpleDeserializers, SimpleSerializers}
+import com.fasterxml.jackson.dataformat.cbor.{CBORFactory, CBORGenerator}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.komanov.serialization.converters.api.MyConverter
-import com.komanov.serialization.domain.{Site, SiteEvent, SiteEventData}
+import com.komanov.serialization.domain.{Site, SiteEvent}
 
 /** https://github.com/FasterXML/jackson */
-object JsonConverter extends MyConverter {
+object JsonConverter extends JacksonConverterBase(new JsonFactory())
+
+object JacksonCborConverter extends JacksonConverterBase(new CBORFactory().disable(CBORGenerator.Feature.WRITE_MINIMAL_INTS))
+
+abstract class JacksonConverterBase(jsonFactory: JsonFactory) extends MyConverter {
 
   private object InstantModule extends Module {
     override def getModuleName: String = "Instant"
@@ -39,7 +44,7 @@ object JsonConverter extends MyConverter {
   }
 
   private val objectMapper = {
-    val om = new ObjectMapper()
+    val om = new ObjectMapper(jsonFactory)
     om.registerModule(new DefaultScalaModule)
     om.registerModule(InstantModule)
     om
