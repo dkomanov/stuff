@@ -121,9 +121,8 @@ scala_library(
 #    srcs = ["JsoniterScalaConverter.scala"],
 #    deps = [
 #        "//src/com/komanov/serialization/converters/api",
-#        "@com_github_plokhotnyuk_jsoniter_scala_core//jar",
-#        "@com_github_plokhotnyuk_jsoniter_scala_macros//jar",
-#        "@scala//:scala-reflect",
+#        "@com_github_plokhotnyuk_jsoniter_scala_core//jar:file",
+#        "@com_github_plokhotnyuk_jsoniter_scala_macros//jar:file",
 #    ],
 #)
 
