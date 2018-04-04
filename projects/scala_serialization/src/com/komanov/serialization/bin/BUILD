@@ -19,19 +19,3 @@ scala_binary(
         "//src/com/komanov/serialization/io",
     ],
 )
-
-[scala_binary(
-    name = name,
-    srcs = ["BasePerfTestApp.scala"],
-    main_class = main_class,
-    deps = [
-        "//src/com/komanov/serialization/converters",
-        "//src/com/komanov/serialization/domain",
-        "//src/com/komanov/serialization/domain/testdata",
-    ],
-) for name, main_class in [
-    ("site-serialization-perf", "com.komanov.serialization.bin.SiteSerializationPerfTestApp"),
-    ("site-deserialization-perf", "com.komanov.serialization.bin.SiteDeserializationPerfTestApp"),
-    ("events-serialization-perf", "com.komanov.serialization.bin.EventsSerializationPerfTestApp"),
-    ("events-deserialization-perf", "com.komanov.serialization.bin.EventsDeserializationPerfTestApp"),
-]]
