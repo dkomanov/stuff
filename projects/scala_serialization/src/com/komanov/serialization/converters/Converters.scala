@@ -13,7 +13,8 @@ object Converters {
     "Scrooge" -> ScroogeConverter,
     "Serializable" -> JavaSerializationConverter,
     "BooPickle" -> BoopickleConverter,
-    "Chill" -> ChillConverter
+    "Chill" -> ChillConverter,
+    //"Jsoniter" -> JsoniterScalaConverter,
     //"Circe" -> CirceConverter
   )
 
