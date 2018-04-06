@@ -11,17 +11,7 @@ before_install:
   - sudo apt-get install -y bazel
 
 script:
-  - TARGET="//..."
-  - BAZEL_OPTS="--output_base=$HOME/.cache/bazel"
-  - echo 'fetching dependencies...' && echo -en 'travis_fold:start:fetch\\r'
-  - bazel $BAZEL_OPTS fetch --curses=no $TARGET
-  - echo -en 'travis_fold:end:fetch\\r'
-  - echo 'building...' && echo -en 'travis_fold:start:build\\r'
-  - bazel $BAZEL_OPTS build --curses=no $TARGET
-  - echo -en 'travis_fold:end:build\\r'
-  - echo 'running tests...' && echo -en 'travis_fold:start:test\\r'
-  - bazel $BAZEL_OPTS test --curses=no $TARGET
-  - echo -en 'travis_fold:end:test\\r'
+  - ./build.sh
 
 notifications:
   email: false
