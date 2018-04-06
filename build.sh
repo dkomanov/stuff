@@ -5,7 +5,7 @@ export BASE_DIR=`dirname $0`
 build() {
   cd ${BASE_DIR}/$1
 
-  echo 'building $1' && echo -en 'travis_fold:start:$1\\r'
+  echo 'building '$1 && echo -en 'travis_fold:start:'$1'\\r'
 
   TARGET="//..."
   BAZEL_OPTS="--output_base=$HOME/.cache/bazel"
@@ -19,7 +19,7 @@ build() {
   bazel $BAZEL_OPTS test --curses=no $TARGET
   echo -en 'travis_fold:end:test\\r'
 
-  echo 'complete $1' && echo -en 'travis_fold:end:$1\\r'
+  echo 'complete '$1 && echo -en 'travis_fold:end:'$1'\\r'
 }
 
 build .
