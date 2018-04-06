@@ -15,7 +15,7 @@ import org.openjdk.jmh.annotations._
 @Warmup(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS)
 abstract class BenchmarkBase
 
-@State(Scope.Benchmark)
+@State(Scope.Thread) // Kryo modifies bytes during parsing, see: https://github.com/EsotericSoftware/kryo#threading
 class SiteBenchmark extends BenchmarkBase {
 
   @Param
@@ -50,7 +50,7 @@ class SiteBenchmark extends BenchmarkBase {
   }
 }
 
-@State(Scope.Benchmark)
+@State(Scope.Thread) // Kryo modifies bytes during parsing, see: https://github.com/EsotericSoftware/kryo#threading
 class EventBenchmark extends BenchmarkBase {
 
   @Param
