@@ -31,7 +31,7 @@ object ReadLinesUtils {
     val result = new util.ArrayList[String](chars.limit() / 80)
     while (chars.hasRemaining) {
       var end = 0
-      var ch: Char = '\0'
+      var ch: Char = '\u0000'
       do {
         ch = chars.charAt(end)
         end += 1

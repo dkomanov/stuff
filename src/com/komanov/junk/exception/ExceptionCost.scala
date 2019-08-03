@@ -15,9 +15,9 @@ object ExceptionCost extends App {
 
   val scalaTry = scala.util.Failure(new RuntimeException)
 
-  val convertF: ConvertFunc = convertException
-  val ctorF: ConvertFunc = constructorException
-  val createF: ConvertFunc = createException
+  val convertF: ConvertFunc = () => convertException()
+  val ctorF: ConvertFunc = () => constructorException()
+  val createF: ConvertFunc = () => createException()
 
   val algorithms = Map(
     "convert " -> convertF,
