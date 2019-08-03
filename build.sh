@@ -8,7 +8,7 @@ build() {
   echo 'building '$1 && echo -en 'travis_fold:start:'$1'\\r'
 
   TARGET="//..."
-  BAZEL_OPTS="--output_base=$HOME/.cache/bazel"
+  BAZEL_OPTS=""
   echo 'fetching dependencies...' && echo -en 'travis_fold:start:fetch\\r'
   bazel $BAZEL_OPTS fetch --curses=no $TARGET
   echo -en 'travis_fold:end:fetch\\r'
