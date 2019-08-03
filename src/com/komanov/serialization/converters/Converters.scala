@@ -15,7 +15,7 @@ object Converters {
     "BooPickle" -> BoopickleConverter,
     "Chill" -> ChillConverter,
     "Jsoniter" -> JsoniterScalaConverter,
-    //"Circe" -> CirceConverter
+    "Circe" -> CirceConverter
   )
 
 }
