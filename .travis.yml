@@ -15,7 +15,7 @@ before_install:
   - sudo apt-get install -y bazel
 
 script:
-  - sudo bazel test -k --test_output=errors --curses=no //...
+  - bazel test -k --test_output=errors --curses=no //...
 
 notifications:
   email: false

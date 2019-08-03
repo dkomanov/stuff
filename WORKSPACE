@@ -87,10 +87,10 @@ maven_install(
         "org.drizzle.jdbc:drizzle-jdbc:1.4",
         "org.mariadb.jdbc:mariadb-java-client:2.2.0",
         "mysql:mysql-connector-java:6.0.6",
-        "com.wix:wix-embedded-mysql:3.0.0",
+        "com.wix:wix-embedded-mysql:4.2.0",
     ],
     repositories = maven_repositories,
-    fetch_sources = False,
+    fetch_sources = True,
 )
 
 maven_install(
