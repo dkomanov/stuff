@@ -5,8 +5,8 @@ load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "scrooge_scal
 
 java_proto_library(
     name = "protos_java",
-    deps = ["protos"],
     visibility = ["//src/com/komanov/serialization:__subpackages__"],
+    deps = ["protos"],
 )
 
 proto_library(
@@ -23,7 +23,6 @@ scalapb_proto_library(
     deps = ["protos"],
 )
 
-
 thrift_library(
     name = "thrift",
     srcs = [
@@ -35,5 +34,8 @@ thrift_library(
 scrooge_scala_library(
     name = "thrift_scrooge",
     visibility = ["//src/com/komanov/serialization:__subpackages__"],
-    deps = [":thrift"],
+    deps = [
+        ":thrift",
+        "@scala_serialization_maven//:javax_annotation_javax_annotation_api",
+    ],
 )
