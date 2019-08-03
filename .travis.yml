@@ -10,7 +10,7 @@ before_install:
   - sudo apt-get install -y bazel
 
 script:
-  - ./build.sh
+  - bazel test --test_output=errors --curses=no //...
 
 notifications:
   email: false
