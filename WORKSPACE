@@ -110,6 +110,7 @@ maven_install(
         "io.circe:circe-parser_%s:0.9.3" % scala_version,
         "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:0.52.2" % scala_version,
         "com.google.protobuf:protobuf-java:3.9.0",
+        "javax.annotation:javax.annotation-api:1.3.2",
     ],
     repositories = maven_repositories,
     fetch_sources = False,
