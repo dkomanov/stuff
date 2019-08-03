@@ -6,7 +6,7 @@ import com.komanov.serialization.domain.protos.events._
 import com.komanov.serialization.domain.protos.site.EntryPointPb.{DomainEntryPointPb, FreeEntryPointPb}
 import com.komanov.serialization.domain.protos.site.PageComponentDataPb._
 import com.komanov.serialization.domain.protos.site._
-import com.trueaccord.scalapb.{GeneratedMessage, GeneratedMessageCompanion, Message}
+import scalapb.{GeneratedMessage, GeneratedMessageCompanion, Message}
 
 import scala.language.existentials
 import scala.reflect.ClassTag
@@ -210,12 +210,12 @@ object ScalaPbConverter extends MyConverter {
       e => SiteRevisionSet(e.revision)
     ),
     createEventDescriptor[SitePublished, SitePublishedPb](
-      e => SitePublishedPb(),
-      e => SitePublished()
+      _ => SitePublishedPb(),
+      _ => SitePublished()
     ),
     createEventDescriptor[SiteUnpublished, SiteUnpublishedPb](
-      e => SiteUnpublishedPb(),
-      e => SiteUnpublished()
+      _ => SiteUnpublishedPb(),
+      _ => SiteUnpublished()
     ),
     createEventDescriptor[SiteFlagAdded, SiteFlagAddedPb](
       e => SiteFlagAddedPb(toSiteFlagPb(e.siteFlag)),

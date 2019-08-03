@@ -211,12 +211,12 @@ object ScroogeConverter extends MyConverter {
       e => SiteRevisionSet(e.revision.get)
     ),
     createEventDescriptor[SitePublished, SitePublishedPb](
-      e => SitePublishedPb(),
-      e => SitePublished()
+      _ => SitePublishedPb(),
+      _ => SitePublished()
     ),
     createEventDescriptor[SiteUnpublished, SiteUnpublishedPb](
-      e => SiteUnpublishedPb(),
-      e => SiteUnpublished()
+      _ => SiteUnpublishedPb(),
+      _ => SiteUnpublished()
     ),
     createEventDescriptor[SiteFlagAdded, SiteFlagAddedPb](
       e => SiteFlagAddedPb(Some(toSiteFlagPb(e.siteFlag))),

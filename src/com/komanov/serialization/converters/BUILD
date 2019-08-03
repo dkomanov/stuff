@@ -48,13 +48,13 @@ scala_library(
     srcs = ["CirceConverter.scala"],
     deps = [
         "//src/com/komanov/serialization/converters/api",
+        "@scala_serialization_maven//:com_chuusai_shapeless_2_12",
         "@scala_serialization_maven//:io_circe_circe_core_2_12",
         "@scala_serialization_maven//:io_circe_circe_generic_2_12",
         "@scala_serialization_maven//:io_circe_circe_parser_2_12",
         "@scala_serialization_maven//:org_typelevel_cats_core_2_12",
         "@scala_serialization_maven//:org_typelevel_cats_macros_2_12",
         "@scala_serialization_maven//:org_typelevel_machinist_2_12",
-        "@scala_serialization_maven//:com_chuusai_shapeless_2_12",
     ],
 )
 
@@ -79,6 +79,9 @@ scala_library(
         ":reflection_utils",
         "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_scala",
+        "@scala_proto_rules_scalapb_runtime",
+        "@scala_proto_rules_scalapb_runtime_grpc",
+        "@scala_proto_rules_scalapbc",
     ],
 )
 
@@ -132,6 +135,7 @@ scala_library(
         ":reflection_utils",
         "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:thrift_scrooge",
+        "@io_bazel_rules_scala_scrooge_core",
     ],
 )
 
