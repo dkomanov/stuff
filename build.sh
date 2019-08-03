@@ -23,6 +23,3 @@ build() {
 }
 
 build .
-#build projects/mysql_streaming
-build projects/scala_serialization
-build projects/stringformat

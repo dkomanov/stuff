@@ -1,0 +1,24 @@
+scala_specs2_junit(
+    name = "tests",
+    srcs = glob(["*.scala"]),
+    runtime_deps = [
+        "@scala_serialization_maven//:org_slf4j_slf4j_api",
+    ],
+    deps = [
+        "//src/com/komanov/serialization/converters",
+        "//src/com/komanov/serialization/converters:conversion_utils",
+        "//src/com/komanov/serialization/converters:protobuf_conversion_utils",
+        "//src/com/komanov/serialization/domain",
+        "//src/com/komanov/serialization/domain:domain_java_thrift",
+        "//src/com/komanov/serialization/domain/testdata",
+        "//src/com/komanov/serialization/proto:protos_java",
+        "//src/com/komanov/serialization/proto:protos_scala",
+        "//src/com/komanov/serialization/proto:thrift_scrooge",
+        "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_core",
+        "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_databind",
+        "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_12",
+        "@scala_serialization_maven//:com_twitter_chill_2_12",
+        "@scala_serialization_maven//:org_apache_thrift_libthrift",
+        "@scala_serialization_maven//:io_suzaku_boopickle_2_12",
+    ],
+)

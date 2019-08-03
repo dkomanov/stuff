@@ -1,21 +1,13 @@
 # dot should be at the end, otherwise, src won't be a Source Root.
 directories:
-  projects/mysql_streaming/src
-  projects/scala_serialization/src
-  projects/stringformat/src
-  src
   .
 
 targets:
   //...
 
-workspace_type: java
-
 additional_languages:
   javascript
   scala
-
-java_language_level: 8
 
 test_sources:
   */tests/*

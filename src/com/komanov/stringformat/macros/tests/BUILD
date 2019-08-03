@@ -1,7 +1,8 @@
 scala_specs2_junit(
-    name = "mockito",
+    name = "tests",
     srcs = glob(["*.scala"]),
     deps = [
+        "//src/com/komanov/stringformat/macros",
         "@maven//:org_mockito_mockito_core",
         "@maven//:org_specs2_specs2_mock_2_12",
     ],

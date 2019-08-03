@@ -3,7 +3,7 @@ scala_specs2_junit(
     srcs = glob(["*.scala"]),
     deps = [
         "//src/com/komanov/io",
-        "//third_party:org_mockito_mockito_core",
-        "//third_party:org_specs2_specs2_mock_2_11",
+        "@maven//:org_mockito_mockito_core",
+        "@maven//:org_specs2_specs2_mock_2_12",
     ],
 )
