@@ -15,6 +15,7 @@ object MysqlRunner {
       .withUser(Drivers.UserName, Drivers.Password)
       .withCharset(Charset.UTF8MB4)
       .withTempDir("/tmp/embedded-mysql-tmp")
+      .withServerVariable("socket", "/tmp/embedded-mysql.sock")
       .build()
 
     val mysqld = anEmbeddedMysql(config)
