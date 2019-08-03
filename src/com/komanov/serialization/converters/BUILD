@@ -113,6 +113,7 @@ scala_library(
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_core",
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_databind",
         "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
+        "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_smile",
         "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_12",
     ],
 )

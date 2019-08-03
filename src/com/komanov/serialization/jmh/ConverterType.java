@@ -6,6 +6,7 @@ import com.komanov.serialization.converters.api.MyConverter;
 public enum ConverterType {
     JSON(JsonConverter$.MODULE$),
     CBOR(JacksonCborConverter$.MODULE$),
+    SMILE(JacksonSmileConverter$.MODULE$),
     SCALA_PB(ScalaPbConverter$.MODULE$),
     JAVA_PB(JavaPbConverter$.MODULE$),
     JAVA_THRIFT(JavaThriftConverter$.MODULE$),
