@@ -14,7 +14,7 @@ object Converters {
     "Serializable" -> JavaSerializationConverter,
     "BooPickle" -> BoopickleConverter,
     //"Chill" -> ChillConverter,
-    //"Jsoniter" -> JsoniterScalaConverter,
+    "Jsoniter" -> JsoniterScalaConverter,
     //"Circe" -> CirceConverter
   )
 
