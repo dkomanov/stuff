@@ -36,6 +36,5 @@ scrooge_scala_library(
     visibility = ["//src/com/komanov/serialization:__subpackages__"],
     deps = [
         ":thrift",
-        "@scala_serialization_maven//:javax_annotation_javax_annotation_api",
     ],
 )
