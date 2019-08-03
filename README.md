@@ -1,7 +1,7 @@
-# stuff
+# stuff [![Build Status](https://travis-ci.org/dkomanov/stuff.svg?branch=master)](https://travis-ci.org/dkomanov/stuff)
 
 Contains code for different blog posts, benchmarks, test and examples of some ideas.
-Build with [Bazel](https://bazel.build).
+Built with [Bazel](https://bazel.build).
 
 ## Projects
 
