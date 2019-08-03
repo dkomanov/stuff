@@ -12,7 +12,7 @@ public enum ConverterType {
     SCROOGE(ScroogeConverter$.MODULE$),
     SERIALIZABLE(JavaSerializationConverter$.MODULE$),
     BOOPICKLE(BoopickleConverter$.MODULE$),
-    //CHILL(ChillConverter$.MODULE$),
+    CHILL(ChillConverter$.MODULE$),
     JSONITER(JsoniterScalaConverter$.MODULE$),
     //CIRCE(CirceConverter$.MODULE$),
     /**/;

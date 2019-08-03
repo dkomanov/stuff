@@ -101,7 +101,7 @@ class SerializationTest extends SpecificationWithJUnit {
         s"work normally with multi-threading for deserialization site of $name" in new ctx {
           val bytes = converter.toByteArray(site)
           doParallelTest {
-            converter.fromByteArray(bytes)
+            converter.fromByteArray(bytes.clone())
           }
         }
       }
@@ -127,7 +127,7 @@ class SerializationTest extends SpecificationWithJUnit {
           val classAndBytes = events.map(e => e.event.getClass -> converter.toByteArray(e.event))
           doParallelTest {
             classAndBytes.foreach { case (clazz, bytes) =>
-              converter.siteEventFromByteArray(clazz, bytes)
+              converter.siteEventFromByteArray(clazz, bytes.clone())
             }
           }
         }
