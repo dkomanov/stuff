@@ -1,5 +1,6 @@
 scala_specs2_junit(
     name = "tests",
+    size = "medium",
     srcs = glob(["*.scala"]),
     runtime_deps = [
         "@scala_serialization_maven//:org_slf4j_slf4j_api",
