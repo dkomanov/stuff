@@ -1,12 +1,19 @@
 workspace(name = "stuff")
 
 scala_version = "2.12"
+
 scala_full_version = "%s.8" % scala_version
+
 rules_scala_version = "acac888c86e79110d1d08ab5578a7d0101c97963"
+
 rules_jvm_external_tag = "2.5"
+
 rules_jvm_external_sha = "249e8129914be6d987ca57754516be35a14ea866c616041ff0cd32ea94d2f3a1"
-protobuf_version="09745575a923640154bcf307fba8aedff47f240a"
-protobuf_version_sha256="416212e14481cff8fd4849b1c1c1200a7f34808a54377e22d7447efdf54ad758"
+
+protobuf_version = "09745575a923640154bcf307fba8aedff47f240a"
+
+protobuf_version_sha256 = "416212e14481cff8fd4849b1c1c1200a7f34808a54377e22d7447efdf54ad758"
+
 skylib_version = "0.9.0"
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -28,21 +35,22 @@ http_archive(
 
 http_archive(
     name = "com_google_protobuf",
-    url = "https://github.com/protocolbuffers/protobuf/archive/%s.tar.gz" % protobuf_version,
-    strip_prefix = "protobuf-%s" % protobuf_version,
     sha256 = protobuf_version_sha256,
+    strip_prefix = "protobuf-%s" % protobuf_version,
+    url = "https://github.com/protocolbuffers/protobuf/archive/%s.tar.gz" % protobuf_version,
 )
 
 http_archive(
     name = "bazel_skylib",
-    type = "tar.gz",
-    url = "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel_skylib-{}.tar.gz".format (skylib_version, skylib_version),
     sha256 = "1dde365491125a3db70731e25658dfdd3bc5dbdfd11b840b3e987ecf043c7ca0",
+    type = "tar.gz",
+    url = "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel_skylib-{}.tar.gz".format(skylib_version, skylib_version),
 )
 
 register_toolchains("//tools:default_scala_toolchain")
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+
 scala_repositories((
     scala_full_version,
     {
@@ -53,18 +61,23 @@ scala_repositories((
 ))
 
 load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
+
 specs2_junit_repositories(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//jmh:jmh.bzl", "jmh_repositories")
+
 jmh_repositories()
 
 load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
+
 scala_proto_repositories(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_toolchains")
+
 scala_proto_register_toolchains()
 
 load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "twitter_scrooge")
+
 twitter_scrooge(scala_version = scala_full_version)
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
@@ -76,8 +89,8 @@ maven_install(
         "org.specs2:specs2-mock_%s:4.6.0" % scala_version,
         "org.slf4j:slf4j-api:1.7.25",
     ],
-    repositories = maven_repositories,
     fetch_sources = True,
+    repositories = maven_repositories,
 )
 
 maven_install(
@@ -88,8 +101,8 @@ maven_install(
         "mysql:mysql-connector-java:6.0.6",
         "com.wix:wix-embedded-mysql:4.2.0",
     ],
-    repositories = maven_repositories,
     fetch_sources = True,
+    repositories = maven_repositories,
 )
 
 maven_install(
@@ -111,7 +124,8 @@ maven_install(
         "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:0.52.2" % scala_version,
         "com.google.protobuf:protobuf-java:3.9.0",
         "javax.annotation:javax.annotation-api:1.3.2",
+        "com.evolutiongaming:kryo-macros_%s:1.1.0" % scala_version,
     ],
-    repositories = maven_repositories,
-    fetch_sources = False,
+    fetch_sources = True,
+    repositories = maven_repositories + ["https://dl.bintray.com/evolutiongaming/maven/"],
 )

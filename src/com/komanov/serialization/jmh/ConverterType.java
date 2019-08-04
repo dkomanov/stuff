@@ -14,6 +14,7 @@ public enum ConverterType {
     SERIALIZABLE(JavaSerializationConverter$.MODULE$),
     BOOPICKLE(BoopickleConverter$.MODULE$),
     CHILL(ChillConverter$.MODULE$),
+    KRYO_MACROS(KryoMacrosConverter$.MODULE$),
     JSONITER(JsoniterScalaConverter$.MODULE$),
     CIRCE(CirceConverter$.MODULE$),
     /**/;

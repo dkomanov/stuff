@@ -8,6 +8,7 @@ all_converters = [
     ":java_thrift",
     ":jackson",
     ":jsoniter_scala",
+    ":kryo_macros",
     ":scala_pb",
     ":scrooge",
 ]
@@ -125,6 +126,17 @@ scala_macro_library(
         "//src/com/komanov/serialization/converters/api",
         "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_core_2_12",
         "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_macros_2_12",
+    ],
+)
+
+scala_library(
+    name = "kryo_macros",
+    srcs = ["KryoMacrosConverter.scala"],
+    deps = [
+        "//src/com/komanov/serialization/converters/api",
+        "@scala_serialization_maven//:com_esotericsoftware_kryo",
+        "@scala_serialization_maven//:com_evolutiongaming_kryo_macros_2_12",
+        "@scala_serialization_maven//:joda_time_joda_time",
     ],
 )
 
