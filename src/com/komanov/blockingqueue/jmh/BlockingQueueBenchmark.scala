@@ -9,11 +9,11 @@ import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
 
 @State(Scope.Thread)
-@BenchmarkMode(Array(Mode.AverageTime))
+@BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 1, jvmArgs = Array("-Xmx2G"))
-@Measurement(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS)
-@Warmup(iterations = 1, time = 5, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 1, time = 2, timeUnit = TimeUnit.SECONDS)
 class BlockingQueueBenchmark {
 
   @Param
@@ -29,12 +29,22 @@ class BlockingQueueBenchmark {
   @Param(Array("0", "10"))
   var consumerTokens: Long = _
 
+  private var blockingQueue: BlockingQueue[String] = _
+  private var barrier: CountDownLatch = _
+
+  @Setup(Level.Invocation)
+  def setup(): Unit = {
+    blockingQueue = queueType.create(capacity)
+    barrier = new CountDownLatch(1)
+    setupProducers()
+    Thread.sleep(0)
+  }
+
   @Benchmark
   def take(): Unit = {
-    val blockingQueue = queueType.create(capacity)
+    barrier.countDown()
 
-    startProducers(blockingQueue)
-
+    val blockingQueue = this.blockingQueue
     val tokens = consumerTokens
     var stopCount = producerThreadCount
     while (stopCount > 0) {
@@ -48,11 +58,12 @@ class BlockingQueueBenchmark {
 
   @Benchmark
   def drain(c: Counters): Unit = {
+    c.incrementInvocations()
+
     val list = new util.ArrayList[String](capacity)
-    val blockingQueue = new ArrayBlockingQueue[String](capacity)
+    barrier.countDown()
 
-    startProducers(blockingQueue)
-
+    val blockingQueue = this.blockingQueue
     val tokens = consumerTokens
     var stopCount = producerThreadCount
     var iteration = 0
@@ -79,12 +90,11 @@ class BlockingQueueBenchmark {
     }
 
     val avg = (producerThreadCount * messagesPerProducer) / iteration
-    c.averageSize = if (c.averageSize == 0) avg else (avg + c.averageSize) / 2
-    c.blockedCount = if (c.blockedCount == 0) blockedCount else (blockedCount + c.blockedCount) / 2
+    c.addSize(avg)
+    c.addBlockedCount(blockedCount)
   }
 
-  private def startProducers(blockingQueue: BlockingQueue[String]): Unit = {
-    val barrier = new CountDownLatch(1)
+  private def setupProducers(): Unit = {
     val tokens = producerTokens
     for (i <- 1 to producerThreadCount) {
       threadPool.submit(() => {
@@ -98,7 +108,6 @@ class BlockingQueueBenchmark {
         true
       })
     }
-    barrier.countDown()
   }
 }
 
@@ -118,6 +127,22 @@ object SharedState {
 @AuxCounters(AuxCounters.Type.EVENTS)
 @State(Scope.Thread)
 class Counters {
-  var averageSize: Int = 0
-  var blockedCount: Int = 0
+  private var invocations = 0
+  private var totalSize: Int = 0
+  private var totalBlockedCount: Int = 0
+
+  def getAverageSize = totalSize / invocations
+  def getBlockedCount = totalBlockedCount / invocations
+
+  def incrementInvocations(): Unit = {
+    invocations += 1
+  }
+
+  def addSize(size: Int): Unit = {
+    totalSize += size
+  }
+
+  def addBlockedCount(count: Int): Unit = {
+    totalBlockedCount += count
+  }
 }
