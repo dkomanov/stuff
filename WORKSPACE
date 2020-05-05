@@ -1,26 +1,21 @@
 workspace(name = "stuff")
 
 scala_version = "2.12"
+scala_full_version = "%s.10" % scala_version
 
-scala_full_version = "%s.8" % scala_version
+rules_scala_version = "2aba2cd5499f2f926c903cb5ef7c023b8cb28508"
 
-rules_scala_version = "acac888c86e79110d1d08ab5578a7d0101c97963"
+rules_jvm_external_tag = "3.2"
+rules_jvm_external_sha = "82262ff4223c5fda6fb7ff8bd63db8131b51b413d26eb49e3131037e79e324af"
 
-rules_jvm_external_tag = "2.5"
-
-rules_jvm_external_sha = "249e8129914be6d987ca57754516be35a14ea866c616041ff0cd32ea94d2f3a1"
-
-protobuf_version = "09745575a923640154bcf307fba8aedff47f240a"
-
-protobuf_version_sha256 = "416212e14481cff8fd4849b1c1c1200a7f34808a54377e22d7447efdf54ad758"
-
-skylib_version = "0.9.0"
+protobuf_version = "204f99488ce1ef74565239cf3963111ae4c774b7"
+protobuf_version_sha256 = "98e76e0d31146bf878160db65b2ec2d98db333db8730573c4efec987da83c877"
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "io_bazel_rules_scala",
-    sha256 = "b58e588152b3d42ef2a274e7211bec89ccc134b920861277c87f644fe746cbed",
+    sha256 = "f0c7b96e3e778cec41125501782734ea41ecb42f3e00c05786818438a434b4c7",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
     type = "zip",
     url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip" % rules_scala_version,
@@ -42,46 +37,43 @@ http_archive(
 
 http_archive(
     name = "bazel_skylib",
-    sha256 = "1dde365491125a3db70731e25658dfdd3bc5dbdfd11b840b3e987ecf043c7ca0",
-    type = "tar.gz",
-    url = "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel_skylib-{}.tar.gz".format(skylib_version, skylib_version),
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+    ],
+    sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
 )
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+bazel_skylib_workspace()
 
 register_toolchains("//tools:default_scala_toolchain")
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
-
 scala_repositories((
     scala_full_version,
     {
-        "scala_compiler": "f34e9119f45abd41e85b9e121ba19dd9288b3b4af7f7047e86dc70236708d170",
-        "scala_library": "321fb55685635c931eba4bc0d7668349da3f2c09aee2de93a70566066ff25c28",
-        "scala_reflect": "4d6405395c4599ce04cea08ba082339e3e42135de9aae2923c9f5367e957315a",
+        "scala_compiler": "cedc3b9c39d215a9a3ffc0cc75a1d784b51e9edc7f13051a1b4ad5ae22cfbc0c",
+        "scala_library": "0a57044d10895f8d3dd66ad4286891f607169d948845ac51e17b4c1cf0ab569d",
+        "scala_reflect": "56b609e1bab9144fb51525bfa01ccd72028154fc40a58685a1e9adcbe7835730",
     },
 ))
 
 load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
-
 specs2_junit_repositories(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//jmh:jmh.bzl", "jmh_repositories")
-
 jmh_repositories()
 
 load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
-
 scala_proto_repositories(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_toolchains")
-
 scala_proto_register_toolchains()
 
 load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "twitter_scrooge")
-
 twitter_scrooge(scala_version = scala_full_version)
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-
 maven_repositories = ["https://repo1.maven.org/maven2"]
 
 maven_install(
@@ -123,7 +115,7 @@ maven_install(
         "io.circe:circe-generic_%s:0.11.1" % scala_version,
         "io.circe:circe-parser_%s:0.11.1" % scala_version,
         "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:0.52.2" % scala_version,
-        "com.google.protobuf:protobuf-java:3.9.0",
+        "com.google.protobuf:protobuf-java:3.10.0",
         "javax.annotation:javax.annotation-api:1.3.2",
         "com.evolutiongaming:kryo-macros_%s:1.1.0" % scala_version,
     ],
