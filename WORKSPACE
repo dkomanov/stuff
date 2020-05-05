@@ -88,6 +88,7 @@ maven_install(
     artifacts = [
         "org.specs2:specs2-mock_%s:4.6.0" % scala_version,
         "org.slf4j:slf4j-api:1.7.25",
+        "org.scala-lang.modules:scala-async_%s:0.10.0" % scala_version,
     ],
     fetch_sources = True,
     repositories = maven_repositories,
