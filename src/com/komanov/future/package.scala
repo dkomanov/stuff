@@ -4,13 +4,17 @@ import com.komanov.future.SupportTypes.BooleanOrFutureOfBoolean._
 import com.komanov.future.SupportTypes._
 
 import scala.annotation.implicitNotFound
-import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future, Promise}
 import scala.language.implicitConversions
-import scala.util.Try
 import scala.util.control.NonFatal
+import scala.util.{Failure, Success, Try}
 
 package object future {
 
+  // Exception that is used only for filter+recover in future transformations.
+  // It's not supposed to escape Future transformation - if it was returned in flatMap/transformWith,
+  // it's expected that it should be recovered in recoverWith method.
+  // Also, it's a singleton + there's no stack trace for performance reasons.
   object ControlException extends Throwable("control", null, false, false) {
     def unapply(e: Throwable): Boolean = e.isInstanceOf[ControlException.type]
   }
@@ -75,22 +79,22 @@ package object future {
 
   implicit class FutureOfBooleanExtensions(val v: Future[Boolean]) extends AnyVal {
     /**
-    EXAMPLE:
-      <pre>
-      (for {
-        _ <- Future.successful(false).orFilterOut
-      } yield something)
-        .recoverFilter(somethingElse)
-      </pre>
-
-    Simplification of:
-      <pre>
-      (for {
-        value <- Future.successful(false)
-        if value
-      } yield something)
-        .recoverFilter(somethingElse)
-      </pre>
+      * EXAMPLE:
+      * <pre>
+      * (for {
+      * _ <- Future.successful(false).orFilterOut
+      * } yield something)
+      * .recoverFilter(somethingElse)
+      * </pre>
+      * *
+      * Simplification of:
+      * <pre>
+      * (for {
+      * value <- Future.successful(false)
+      * if value
+      * } yield something)
+      * .recoverFilter(somethingElse)
+      * </pre>
       */
     def orFilterOut: Future[Unit] = orFail(ControlException)
 
@@ -209,6 +213,28 @@ package object future {
       }
     }
     future
+  }
+
+  def executeLazily[T](list: List[() => Future[Option[T]]])
+                      (implicit ec: ExecutionContext): Future[Option[T]] = {
+    val promise = Promise[Option[T]]()
+    val iterator = list.iterator
+
+    def completeWith(t: Try[Option[T]]): Unit = t match {
+      case Success(value) =>
+        if (value.isDefined || !iterator.hasNext)
+          promise.success(value)
+        else
+        //             ↓ DANGER IS HERE
+          iterator.next().apply().onComplete(completeWith)
+
+      case Failure(exception) =>
+        promise.failure(exception)
+    }
+
+    completeWith(Success(None))
+
+    promise.future
   }
 
   object SupportTypes {
