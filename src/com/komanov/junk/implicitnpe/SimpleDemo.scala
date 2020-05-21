@@ -22,5 +22,8 @@ object anotherpackage {
 }
 
 object SimpleDemo extends App {
-  implicit val myContext: MyContext = aMyContext("name")
+  implicit val myContext: MyContext = {
+    val myContext = null
+    aMyContext("name")
+  }
 }
