@@ -217,5 +217,18 @@ package object examples {
       executeLazily(handlers.map(handler => () => handler(r)))
         .map(_.getOrElse(throw new IllegalStateException("Hadoop should always return Some!")))
     }
+
+    object trivial {
+      def rpcCall: Future[Option[String]] = ???
+      def reportException(e: Throwable): Unit = e.printStackTrace()
+
+      def getUrlSafe: Future[Option[String]] = {
+        rpcCall.recover {
+          case e: Throwable =>
+            reportException(e)
+            None
+        }
+      }
+    }
   }
 }
