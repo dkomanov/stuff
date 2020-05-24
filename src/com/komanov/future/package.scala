@@ -130,15 +130,13 @@ package object future {
     /** recover for NoSuchElementException and ControlException. */
     def recoverFilter(f: => T): Future[T] =
       future.recover {
-        case _: NoSuchElementException => f
-        case ControlException => f
+        case _: NoSuchElementException | ControlException => f
       }
 
     /** recoverWith for NoSuchElementException and ControlException. */
     def recoverFilterWith(f: => Future[T]): Future[T] =
       future.recoverWith {
-        case _: NoSuchElementException => f
-        case ControlException => f
+        case _: NoSuchElementException | ControlException => f
       }
 
     def filterOrFail(f: T => Boolean, e: => Throwable): Future[T] =
