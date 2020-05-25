@@ -1,5 +1,7 @@
 package com.komanov
 
+import java.util.concurrent.Executor
+
 import com.komanov.future.SupportTypes.BooleanOrFutureOfBoolean._
 import com.komanov.future.SupportTypes._
 
@@ -19,11 +21,16 @@ package object future {
     def unapply(e: Throwable): Boolean = e.isInstanceOf[ControlException.type]
   }
 
-  val directExecutionContext: ExecutionContextExecutor =
-    ExecutionContext.fromExecutor((runnable: Runnable) => runnable.run())
+  val directExecutionContext: ExecutionContextExecutor = {
+    ExecutionContext.fromExecutor(new DirectExecutor)
+  }
+
+  private class DirectExecutor extends Executor {
+    override def execute(command: Runnable): Unit = command.run()
+  }
 
   object Implicits {
-    implicit def direct: ExecutionContext = directExecutionContext
+    implicit val direct: ExecutionContext = directExecutionContext
   }
 
   // All utility functions here shouldn't require rescheduling of tasks, so it will be executed immediately.
@@ -141,6 +148,16 @@ package object future {
 
     def filterOrFail(f: T => Boolean, e: => Throwable): Future[T] =
       future.flatMap(value => if (f(value)) Future.successful(value) else Future.failed(e))
+
+    def smartMap[U](f: T => U)(implicit ec: ExecutionContext): Future[U] =
+      if (future.isCompleted) {
+        if (future.value.get.isSuccess)
+          wrap(f(future.value.get.get))
+        else
+          future.asInstanceOf[Future[U]]
+      } else {
+        future.map(f)(ec)
+      }
   }
 
   /**
@@ -224,7 +241,7 @@ package object future {
           promise.success(value)
         else
         //             ↓ DANGER IS HERE
-          iterator.next().apply().onComplete(completeWith)
+          iterator.next().apply().onComplete(completeWith)(ec)
 
       case Failure(exception) =>
         promise.failure(exception)

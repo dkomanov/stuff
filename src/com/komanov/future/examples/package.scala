@@ -1,5 +1,7 @@
 package com.komanov.future.examples
 
+import java.util.concurrent.Executors
+
 import com.komanov.future._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -229,6 +231,79 @@ package object examples {
             None
         }
       }
+    }
+  }
+
+  object blocking {
+    trait ResultSet {
+      def getString(index: Int): String
+    }
+    trait JdbcTemplate {
+      def queryForObject[T](sql: String, arguments: Array[Any], mapper: ResultSet => T): Option[T]
+    }
+    case class RichDomainObject()
+    val blockingExecutionContext = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(50))
+
+    class MyDao(jdbcTemplate: JdbcTemplate)(implicit ec: ExecutionContext) {
+      private val global = ??? // hide import global
+
+      def get(id: String): Future[Option[RichDomainObject]] =
+        Future(getBlocking(id))
+
+      private def getBlocking(id: String): Option[RichDomainObject] =
+        jdbcTemplate.queryForObject(
+          "SELECT blob FROM table WHERE id = ?",
+          Array(id),
+          rs => parseJson(rs.getString(1))
+        )
+
+      private def parseJson(s: String): RichDomainObject = ???
+    }
+
+    class RobustDao(jdbcTemplate: JdbcTemplate, blockingEc: ExecutionContext, applicationEc: ExecutionContext) {
+      def get(id: String): Future[Option[RichDomainObject]] = {
+        Future(getBlocking(id))(blockingEc)
+          .map(blob => blob.map(parseJson))(applicationEc)
+      }
+
+      private def getBlocking(id: String): Option[String] =
+        jdbcTemplate.queryForObject(
+          "SELECT blob FROM table WHERE id = ?",
+          Array(id),
+          rs => rs.getString(1) // no parsing, just simple data extraction
+        )
+
+      private def parseJson(s: String): RichDomainObject = ???
+    }
+  }
+
+  object directExample {
+    def rpcCall: Future[String] = ???
+    def daoCall(id: String): Future[Int] = ???
+    def extractId(idStr: String): Future[String] = ???
+    def convertDbValue(value: Int): Future[Int] = ???
+
+    for {
+      idStr <- rpcCall
+      id <- extractId(idStr) // executed in RPC execution context
+      valueFromDb <- daoCall(id)
+      value <- convertDbValue(valueFromDb) // executed in DAO execution context
+    } yield value // executed in DAO execution context
+
+    rpcCall
+      .map(_.split('_'))
+      .filter(_.length < 4)
+      .map {
+        case Array(single) => single
+        case Array(first, second@_) => first
+        case Array(first@_, second, third@_) => third
+        case _ => ""
+      }
+      .map(value => s"<p>$value</p>")
+      .recoverFilter("<p>invalid</p>")
+
+    class RpcClient(ownEc: ExecutionContext, appEc: ExecutionContext) {
+      def call: Future[String] = Future("a")(ownEc).map(identity)(appEc)
     }
   }
 }
