@@ -1,7 +1,5 @@
 package com.komanov.future.examples
 
-import java.io.{PrintWriter, StringWriter}
-
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 
