@@ -16,12 +16,12 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 @Warmup(iterations = 1, time = 2, timeUnit = TimeUnit.SECONDS)
 class FutureMapBenchmark {
 
-  val executor = Executors.newSingleThreadExecutor(new ThreadFactory {
-    override def newThread(r: Runnable) = {
-      val thread = new Thread(r, "single")
-      thread.setDaemon(true)
-      thread
-    }
+  val N = 100
+
+  val executor = Executors.newSingleThreadExecutor((r: Runnable) => {
+    val thread = new Thread(r, "single")
+    thread.setDaemon(true)
+    thread
   })
   val singleThreadExecutionContext = ExecutionContext.fromExecutorService(executor)
 
@@ -30,10 +30,10 @@ class FutureMapBenchmark {
     implicit def ec: ExecutionContext = directExecutionContext
 
     var future = Future.successful(0)
-    for (_ <- 1 to 100) {
+    for (_ <- 1 to N) {
       future = future.map(v => v + 1)
     }
-    require(Await.result(future, 10.seconds) == 100)
+    require(Await.result(future, 10.seconds) == N)
   }
 
   @Benchmark
@@ -41,10 +41,10 @@ class FutureMapBenchmark {
     import FutureMapBenchmark.Implicits.throwingEc
 
     var future = Future.successful(0)
-    for (_ <- 1 to 100) {
+    for (_ <- 1 to N) {
       future = future.smartMap(v => v + 1)
     }
-    require(Await.result(future, 10.seconds) == 100)
+    require(Await.result(future, 10.seconds) == N)
   }
 
   @Benchmark
@@ -52,10 +52,10 @@ class FutureMapBenchmark {
     implicit def ec: ExecutionContext = singleThreadExecutionContext
 
     var future = Future.successful(0)
-    for (_ <- 1 to 100) {
+    for (_ <- 1 to N) {
       future = future.map(v => v + 1)
     }
-    require(Await.result(future, 10.seconds) == 100)
+    require(Await.result(future, 10.seconds) == N)
   }
 
   @Benchmark
@@ -63,10 +63,10 @@ class FutureMapBenchmark {
     import scala.concurrent.ExecutionContext.Implicits.global
 
     var future = Future.successful(0)
-    for (_ <- 1 to 100) {
+    for (_ <- 1 to N) {
       future = future.map(v => v + 1)
     }
-    require(Await.result(future, 10.seconds) == 100)
+    require(Await.result(future, 10.seconds) == N)
   }
 }
 
