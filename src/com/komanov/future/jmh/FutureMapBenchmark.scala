@@ -1,8 +1,8 @@
 package com.komanov.future.jmh
 
-import java.util.concurrent.{Executors, ThreadFactory, TimeUnit}
+import java.util.concurrent.{Executors, TimeUnit}
 
-import com.komanov.future._
+import com.komanov.future.{trampoline => trampolineExecutionContext, _}
 import org.openjdk.jmh.annotations._
 
 import scala.concurrent.duration._
@@ -28,6 +28,17 @@ class FutureMapBenchmark {
   @Benchmark
   def direct(): Unit = {
     implicit def ec: ExecutionContext = directExecutionContext
+
+    var future = Future.successful(0)
+    for (_ <- 1 to N) {
+      future = future.map(v => v + 1)
+    }
+    require(Await.result(future, 10.seconds) == N)
+  }
+
+  @Benchmark
+  def trampoline(): Unit = {
+    implicit def ec: ExecutionContext = trampolineExecutionContext
 
     var future = Future.successful(0)
     for (_ <- 1 to N) {

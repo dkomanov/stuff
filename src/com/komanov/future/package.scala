@@ -1,5 +1,6 @@
 package com.komanov
 
+import java.util
 import java.util.concurrent.Executor
 
 import com.komanov.future.SupportTypes.BooleanOrFutureOfBoolean._
@@ -27,6 +28,46 @@ package object future {
 
   private class DirectExecutor extends Executor {
     override def execute(command: Runnable): Unit = command.run()
+  }
+
+  object trampoline extends ExecutionContextExecutor {
+    private class State {
+      val buffer = new util.ArrayDeque[Runnable]()
+      var within = false
+
+      def clear(): Unit = {
+        buffer.clear()
+        within = false
+      }
+    }
+
+    private val local = new ThreadLocal[State] {
+      override def initialValue() = new State
+    }
+
+    def execute(runnable: Runnable): Unit = {
+      val state = local.get()
+      if (state.within) {
+        state.buffer.addLast(runnable)
+      } else {
+        try {
+          state.within = true
+          runnable.run()
+          executeBuffered(state.buffer)
+        } finally {
+          state.clear()
+        }
+      }
+    }
+
+    private def executeBuffered(buffer: util.ArrayDeque[Runnable]): Unit = {
+      while (!buffer.isEmpty) {
+        val current = buffer.removeFirst()
+        current.run()
+      }
+    }
+
+    def reportFailure(t: Throwable): Unit = t.printStackTrace()
   }
 
   object Implicits {
