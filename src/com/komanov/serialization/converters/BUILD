@@ -80,9 +80,6 @@ scala_library(
         ":reflection_utils",
         "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_scala",
-        "@scala_proto_rules_scalapb_runtime",
-        "@scala_proto_rules_scalapb_runtime_grpc",
-        "@scala_proto_rules_scalapbc",
     ],
 )
 

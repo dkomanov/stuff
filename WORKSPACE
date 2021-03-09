@@ -3,7 +3,7 @@ workspace(name = "stuff")
 scala_version = "2.12"
 scala_full_version = "%s.10" % scala_version
 
-rules_scala_version = "2aba2cd5499f2f926c903cb5ef7c023b8cb28508"
+rules_scala_version = "d921053fb7204fa831ef474c55f9d06bf95a014b"
 
 rules_jvm_external_tag = "3.2"
 rules_jvm_external_sha = "82262ff4223c5fda6fb7ff8bd63db8131b51b413d26eb49e3131037e79e324af"
@@ -15,7 +15,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "io_bazel_rules_scala",
-    sha256 = "f0c7b96e3e778cec41125501782734ea41ecb42f3e00c05786818438a434b4c7",
+    #sha256 = "f0c7b96e3e778cec41125501782734ea41ecb42f3e00c05786818438a434b4c7",
     strip_prefix = "rules_scala-%s" % rules_scala_version,
     type = "zip",
     url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip" % rules_scala_version,
@@ -35,43 +35,42 @@ http_archive(
     url = "https://github.com/protocolbuffers/protobuf/archive/%s.tar.gz" % protobuf_version,
 )
 
+skylib_version = "1.0.3"
 http_archive(
     name = "bazel_skylib",
-    urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
-        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
-    ],
-    sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
+    sha256 = "1c531376ac7e5a180e0237938a2536de0c54d93f5c278634818e0efc952dd56c",
+    type = "tar.gz",
+    url = "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
 )
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
 register_toolchains("//tools:default_scala_toolchain")
 
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
-scala_repositories((
-    scala_full_version,
-    {
-        "scala_compiler": "cedc3b9c39d215a9a3ffc0cc75a1d784b51e9edc7f13051a1b4ad5ae22cfbc0c",
-        "scala_library": "0a57044d10895f8d3dd66ad4286891f607169d948845ac51e17b4c1cf0ab569d",
-        "scala_reflect": "56b609e1bab9144fb51525bfa01ccd72028154fc40a58685a1e9adcbe7835730",
-    },
-))
+load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
+scala_config()
 
-load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
-specs2_junit_repositories(scala_version = scala_full_version)
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+scala_repositories()
+
+load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
+scala_register_toolchains()
+
+load("@io_bazel_rules_scala//testing:specs2_junit.bzl", "specs2_junit_repositories", "specs2_junit_toolchain")
+specs2_junit_repositories()
+specs2_junit_toolchain()
 
 load("@io_bazel_rules_scala//jmh:jmh.bzl", "jmh_repositories")
 jmh_repositories()
 
 load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
-scala_proto_repositories(scala_version = scala_full_version)
+scala_proto_repositories()
 
 load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_toolchains")
 scala_proto_register_toolchains()
 
 load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "twitter_scrooge")
-twitter_scrooge(scala_version = scala_full_version)
+twitter_scrooge()
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 maven_repositories = ["https://repo1.maven.org/maven2"]
