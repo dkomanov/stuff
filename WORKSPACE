@@ -3,7 +3,7 @@ workspace(name = "stuff")
 scala_version = "2.12"
 scala_full_version = "%s.10" % scala_version
 
-rules_scala_version = "d921053fb7204fa831ef474c55f9d06bf95a014b"
+rules_scala_version = "3dd5d8110d56cfc19722532866cbfc039a6a9612"
 
 rules_jvm_external_tag = "3.2"
 rules_jvm_external_sha = "82262ff4223c5fda6fb7ff8bd63db8131b51b413d26eb49e3131037e79e324af"
@@ -20,6 +20,20 @@ http_archive(
     type = "zip",
     url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip" % rules_scala_version,
 )
+
+http_archive(
+    name = "rules_proto",
+    sha256 = "66bfdf8782796239d3875d37e7de19b1d94301e8972b3cbd2446b332429b4df1",
+    strip_prefix = "rules_proto-4.0.0",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
+        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
+    ],
+)
+
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+rules_proto_dependencies()
+rules_proto_toolchains()
 
 http_archive(
     name = "rules_jvm_external",
@@ -48,7 +62,7 @@ bazel_skylib_workspace()
 register_toolchains("//tools:default_scala_toolchain")
 
 load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
-scala_config()
+scala_config(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
