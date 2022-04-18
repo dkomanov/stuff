@@ -7,7 +7,8 @@ import java.lang.reflect.Field;
 
 public class FastStringFactory {
 
-    private static final MethodHandle stringBuilderValueGetter = getValueHandler();
+    private static final MethodHandle stringBuilderValueGetter = getFieldHandler(getValueField());
+    private static final MethodHandle stringBuilderCoderGetter = getFieldHandler(getCoderField());
     private static final MethodHandle newString = getNewStringHandler();
 
     public static String fastNewString(StringBuilder sb) throws Throwable {
@@ -15,40 +16,50 @@ public class FastStringFactory {
             throw new IllegalArgumentException("Expected filled StringBuilder!");
         }
 
-        return fastNewString(getValue(sb));
+        return fastNewString(
+                (byte[]) stringBuilderValueGetter.invoke(sb),
+                (byte) stringBuilderCoderGetter.invoke(sb)
+        );
     }
 
-    public static char[] getValue(StringBuilder sb) throws Throwable {
-        return (char[]) stringBuilderValueGetter.invoke(sb);
+    public static String fastNewString(byte[] value, byte coder) throws Throwable {
+        return (String) newString.invokeExact(value, coder);
     }
 
-    public static String fastNewString(char[] chars) throws Throwable {
-        return (String) newString.invokeExact(chars, true);
-    }
-
-    private static MethodHandle getValueHandler() {
+    private static MethodHandle getFieldHandler(Field field) {
         try {
-            Field field = getValueField();
             return MethodHandles.lookup().unreflectGetter(field);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static Field getValueField() throws NoSuchFieldException {
-        Field field = StringBuilder.class.getSuperclass().getDeclaredField("value");
-        field.setAccessible(true);
-        return field;
+    private static Field getValueField() {
+        try {
+            Field field = StringBuilder.class.getSuperclass().getDeclaredField("value");
+            field.setAccessible(true);
+            return field;
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static Field getCoderField() {
+        try {
+            Field field = StringBuilder.class.getSuperclass().getDeclaredField("coder");
+            field.setAccessible(true);
+            return field;
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static MethodHandle getNewStringHandler() {
         try {
-            Constructor<String> constructor = String.class.getDeclaredConstructor(char[].class, boolean.class);
+            Constructor<String> constructor = String.class.getDeclaredConstructor(byte[].class, byte.class);
             constructor.setAccessible(true);
             return MethodHandles.lookup().unreflectConstructor(constructor);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

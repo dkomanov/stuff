@@ -7,6 +7,7 @@ object NewStringBenchmarkData {
   val chars = new Array[Char](1006)
   val sb = new java.lang.StringBuilder(chars.length)
     .append(chars)
+  val (bytes, coder) = (sb.toString.getBytes, 0.toByte)
 }
 
 class NewStringBenchmark extends BenchmarkBase {
@@ -23,7 +24,7 @@ class NewStringBenchmark extends BenchmarkBase {
 
   @Benchmark
   def fastString: String = {
-    FastStringFactory.fastNewString(NewStringBenchmarkData.chars)
+    FastStringFactory.fastNewString(NewStringBenchmarkData.bytes, NewStringBenchmarkData.coder)
   }
 
   @Benchmark
