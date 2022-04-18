@@ -2,6 +2,11 @@ scala_specs2_junit(
     name = "tests",
     size = "medium",
     srcs = glob(["*.scala"]),
+    jvm_flags = [
+        "--add-opens java.base/java.lang=ALL-UNNAMED",
+        "--add-opens java.base/java.util=ALL-UNNAMED",
+        "--add-opens java.base/java.lang.invoke=ALL-UNNAMED",
+    ],
     runtime_deps = [
         "@scala_serialization_maven//:org_slf4j_slf4j_api",
     ],

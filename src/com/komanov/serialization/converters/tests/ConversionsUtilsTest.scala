@@ -23,7 +23,7 @@ class ConversionsUtilsTest extends SpecWithJUnit {
       val zero = Instant.ofEpochMilli(0)
       val now = Instant.now()
       ConversionUtils.longToInstance(ConversionUtils.instantToLong(zero)) must be_===(zero)
-      ConversionUtils.longToInstance(ConversionUtils.instantToLong(now)) must be_===(now)
+      ConversionUtils.longToInstance(ConversionUtils.instantToLong(now)) must be_===(Instant.ofEpochMilli(now.toEpochMilli))
     }
   }
 
