@@ -130,8 +130,7 @@ maven_install(
         "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:0.52.2" % scala_version,
         "com.google.protobuf:protobuf-java:3.10.0",
         "javax.annotation:javax.annotation-api:1.3.2",
-        "com.evolutiongaming:kryo-macros_%s:1.1.0" % scala_version,
     ],
     fetch_sources = True,
-    repositories = maven_repositories + ["https://dl.bintray.com/evolutiongaming/maven/"],
+    repositories = maven_repositories,
 )
