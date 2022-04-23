@@ -46,6 +46,12 @@ RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  15.535 ±  0.74
 RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  26.481 ± 19.558  ns/op
 RegionMatchesBenchmarks.middle_regionMatches          avgt    3  15.239 ±  1.310  ns/op
 RegionMatchesBenchmarks.middle_substringEquals        avgt    3  15.655 ±  7.562  ns/op
+
+How to run:
+
+$ bazel build //src/com/komanov/str/jmh:jmh_deploy.jar
+$ /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -jar bazel-bin/src/com/komanov/str/jmh/jmh_deploy.jar -rf json -rff jdk8.log.json | tee jdk8.txt && /usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar bazel-bin/src/com/komanov/str/jmh/jmh_deploy.jar -rf json -rff jdk11.json | tee jdk11.log.txt && /usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar bazel-bin/src/com/komanov/str/jmh/jmh_deploy.jar -rf json -rff jdk17.json | tee jdk17.log.txt
+$ tail -n13 jdk*.txt
  */
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
