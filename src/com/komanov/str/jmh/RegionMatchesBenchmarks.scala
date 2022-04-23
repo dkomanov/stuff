@@ -10,42 +10,42 @@ Benchmarks on 2022-04-23.
 
 ==> jdk8.txt <==
 Benchmark                                             Mode  Cnt   Score    Error  Units
-RegionMatchesBenchmarks.begin_regionMatches           avgt    3  10.304 ±  2.645  ns/op
-RegionMatchesBenchmarks.begin_startsWith              avgt    3   9.230 ±  1.078  ns/op
-RegionMatchesBenchmarks.begin_substringEquals         avgt    3  16.614 ±  7.549  ns/op
-RegionMatchesBenchmarks.end_endsWith                  avgt    3  15.824 ±  0.493  ns/op
-RegionMatchesBenchmarks.end_regionMatches             avgt    3  17.419 ±  1.110  ns/op
-RegionMatchesBenchmarks.end_substringEquals           avgt    3  17.658 ±  3.065  ns/op
-RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  12.772 ±  1.425  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  26.953 ± 16.167  ns/op
-RegionMatchesBenchmarks.middle_regionMatches          avgt    3  13.539 ± 10.458  ns/op
-RegionMatchesBenchmarks.middle_substringEquals        avgt    3  18.547 ± 13.792  ns/op
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  13.967 ± 22.152  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3  13.692 ±  1.249  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  15.604 ±  3.514  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  15.769 ± 14.764  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  17.155 ± 17.123  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  17.472 ±  2.146  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  18.261 ± 43.213  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  25.975 ± 17.724  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  16.988 ±  0.189  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  18.663 ±  9.666  ns/op
 
-==> jdk11.txt <==
+==> jdk11.log.txt <==
 Benchmark                                             Mode  Cnt   Score    Error  Units
-RegionMatchesBenchmarks.begin_regionMatches           avgt    3  19.805 ±  3.764  ns/op
-RegionMatchesBenchmarks.begin_startsWith              avgt    3   9.563 ±  0.303  ns/op
-RegionMatchesBenchmarks.begin_substringEquals         avgt    3  19.113 ± 39.820  ns/op
-RegionMatchesBenchmarks.end_endsWith                  avgt    3  19.369 ± 73.462  ns/op
-RegionMatchesBenchmarks.end_regionMatches             avgt    3  33.213 ± 42.291  ns/op
-RegionMatchesBenchmarks.end_substringEquals           avgt    3  18.069 ± 22.753  ns/op
-RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  27.385 ±  2.929  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  27.966 ± 21.588  ns/op
-RegionMatchesBenchmarks.middle_regionMatches          avgt    3  14.823 ±  1.400  ns/op
-RegionMatchesBenchmarks.middle_substringEquals        avgt    3  18.743 ±  5.262  ns/op
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  27.508 ± 25.079  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3  12.398 ±  0.304  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  20.012 ±  9.165  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  15.306 ±  0.700  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  26.858 ± 44.689  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  16.702 ± 15.542  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  27.727 ± 33.234  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  31.912 ± 30.710  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  26.697 ± 27.258  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  21.990 ±  9.910  ns/op
 
-==> jdk17.txt <==
-Benchmark                                             Mode  Cnt   Score    Error  Units
-RegionMatchesBenchmarks.begin_regionMatches           avgt    3  18.439 ±  1.304  ns/op
-RegionMatchesBenchmarks.begin_startsWith              avgt    3  14.220 ± 62.512  ns/op
-RegionMatchesBenchmarks.begin_substringEquals         avgt    3  15.628 ±  4.725  ns/op
-RegionMatchesBenchmarks.end_endsWith                  avgt    3  18.340 ± 92.010  ns/op
-RegionMatchesBenchmarks.end_regionMatches             avgt    3  27.380 ±  2.431  ns/op
-RegionMatchesBenchmarks.end_substringEquals           avgt    3  16.799 ±  7.159  ns/op
-RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  15.535 ±  0.747  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  26.481 ± 19.558  ns/op
-RegionMatchesBenchmarks.middle_regionMatches          avgt    3  15.239 ±  1.310  ns/op
-RegionMatchesBenchmarks.middle_substringEquals        avgt    3  15.655 ±  7.562  ns/op
+==> jdk17.log.txt <==
+Benchmark                                             Mode  Cnt   Score     Error  Units
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  33.613 ± 224.578  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3  12.834 ±  11.896  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  18.158 ±  30.074  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  14.799 ±   2.148  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  26.565 ±   1.306  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  15.663 ±  11.616  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  46.804 ±   7.244  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  29.616 ±  46.455  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  26.995 ±  31.092  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  17.853 ±  30.165  ns/op
 
 How to run:
 
@@ -119,10 +119,10 @@ class RegionMatchesBenchmarks {
 
 object RegionMatchesBenchmarks {
   val uri = "/site/section/blog/2022-04-17/the-title-of-the-post"
-  val begin = "/site/section"
-  val middle = "2022-04-17"
+  val begin = "/site/section/blog/2"
+  val middle = "/blog/2022-04-17/the"
   val middle2Sides = s"-$middle-"
   val middleIndex: Int = uri.indexOf(middle)
-  val end = "/the-title-of-the-post"
+  val end = "he-title-of-the-post"
   val endIndex: Int = uri.indexOf(end)
 }
