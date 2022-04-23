@@ -1,179 +1,122 @@
 package com.komanov.str.jmh
 
-import java.util.concurrent.TimeUnit
+import com.komanov.str.jmh.RegionMatchesBenchmarks._
 import org.openjdk.jmh.annotations._
-import RegionMatchesBenchmarks._
 
-import java.util
-import scala.util.Random
+import java.util.concurrent.TimeUnit
 
 /*
-In my blog post I omit "misses", because it has basically the same performance.
+Benchmarks on 2022-04-23.
 
-Benchmark                                                 Mode  Cnt   Score   Error  Units
-RegionMatchesBenchmarks.begin_regionMatchesHit            avgt    3  17.360 ± 4.994  ns/op
-RegionMatchesBenchmarks.begin_regionMatchesMiss           avgt    3  17.831 ± 5.630  ns/op
-RegionMatchesBenchmarks.begin_startsWithHit               avgt    3   9.057 ± 1.467  ns/op
-RegionMatchesBenchmarks.begin_startsWithMiss              avgt    3   8.914 ± 0.982  ns/op
-RegionMatchesBenchmarks.begin_substringEqualsHit          avgt    3  14.261 ± 1.629  ns/op
-RegionMatchesBenchmarks.begin_substringEqualsMiss         avgt    3  14.239 ± 2.423  ns/op
-RegionMatchesBenchmarks.end_endsWithHit                   avgt    3  13.825 ± 0.222  ns/op
-RegionMatchesBenchmarks.end_endsWithMiss                  avgt    3  14.086 ± 8.813  ns/op
-RegionMatchesBenchmarks.end_regionMatchesHit              avgt    3  30.767 ± 2.473  ns/op
-RegionMatchesBenchmarks.end_regionMatchesMiss             avgt    3  27.112 ± 1.620  ns/op
-RegionMatchesBenchmarks.end_substringEqualsHit            avgt    3  14.802 ± 4.790  ns/op
-RegionMatchesBenchmarks.end_substringEqualsMiss           avgt    3  14.497 ± 1.054  ns/op
-RegionMatchesBenchmarks.middle2Sides_regionMatchesHit     avgt    3  16.447 ± 4.702  ns/op
-RegionMatchesBenchmarks.middle2Sides_regionMatchesMiss    avgt    3  15.358 ± 1.033  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEqualsHit   avgt    3  23.763 ± 7.375  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEqualsMiss  avgt    3  23.284 ± 3.485  ns/op
-RegionMatchesBenchmarks.middle_regionMatchesHit           avgt    3  15.296 ± 3.549  ns/op
-RegionMatchesBenchmarks.middle_regionMatchesMiss          avgt    3  15.155 ± 2.140  ns/op
-RegionMatchesBenchmarks.middle_substringEqualsHit         avgt    3  13.883 ± 2.026  ns/op
-RegionMatchesBenchmarks.middle_substringEqualsMiss        avgt    3  13.854 ± 0.906  ns/op
+==> jdk8.txt <==
+Benchmark                                             Mode  Cnt   Score    Error  Units
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  10.304 ±  2.645  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3   9.230 ±  1.078  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  16.614 ±  7.549  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  15.824 ±  0.493  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  17.419 ±  1.110  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  17.658 ±  3.065  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  12.772 ±  1.425  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  26.953 ± 16.167  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  13.539 ± 10.458  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  18.547 ± 13.792  ns/op
 
-Benchmark                                              Mode  Cnt   Score   Error  Units
-RegionMatchesBenchmarks.begin_regionMatches            avgt    3  17.360 ± 4.994  ns/op
-RegionMatchesBenchmarks.begin_startsWith               avgt    3   9.057 ± 1.467  ns/op
-RegionMatchesBenchmarks.begin_substringEquals          avgt    3  14.261 ± 1.629  ns/op
+==> jdk11.txt <==
+Benchmark                                             Mode  Cnt   Score    Error  Units
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  19.805 ±  3.764  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3   9.563 ±  0.303  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  19.113 ± 39.820  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  19.369 ± 73.462  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  33.213 ± 42.291  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  18.069 ± 22.753  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  27.385 ±  2.929  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  27.966 ± 21.588  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  14.823 ±  1.400  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  18.743 ±  5.262  ns/op
 
-Benchmark                                              Mode  Cnt   Score   Error  Units
-RegionMatchesBenchmarks.end_endsWith                   avgt    3  13.825 ± 0.222  ns/op
-RegionMatchesBenchmarks.end_regionMatches              avgt    3  30.767 ± 2.473  ns/op
-RegionMatchesBenchmarks.end_substringEquals            avgt    3  14.802 ± 4.790  ns/op
-
-Benchmark                                              Mode  Cnt   Score   Error  Units
-RegionMatchesBenchmarks.middle_regionMatches           avgt    3  15.296 ± 3.549  ns/op
-RegionMatchesBenchmarks.middle_substringEquals         avgt    3  13.883 ± 2.026  ns/op
-
-Benchmark                                              Mode  Cnt   Score   Error  Units
-RegionMatchesBenchmarks.middle2Sides_regionMatches     avgt    3  16.447 ± 4.702  ns/op
-RegionMatchesBenchmarks.middle2Sides_substringEquals   avgt    3  23.763 ± 7.375  ns/op
+==> jdk17.txt <==
+Benchmark                                             Mode  Cnt   Score    Error  Units
+RegionMatchesBenchmarks.begin_regionMatches           avgt    3  18.439 ±  1.304  ns/op
+RegionMatchesBenchmarks.begin_startsWith              avgt    3  14.220 ± 62.512  ns/op
+RegionMatchesBenchmarks.begin_substringEquals         avgt    3  15.628 ±  4.725  ns/op
+RegionMatchesBenchmarks.end_endsWith                  avgt    3  18.340 ± 92.010  ns/op
+RegionMatchesBenchmarks.end_regionMatches             avgt    3  27.380 ±  2.431  ns/op
+RegionMatchesBenchmarks.end_substringEquals           avgt    3  16.799 ±  7.159  ns/op
+RegionMatchesBenchmarks.middle2Sides_regionMatches    avgt    3  15.535 ±  0.747  ns/op
+RegionMatchesBenchmarks.middle2Sides_substringEquals  avgt    3  26.481 ± 19.558  ns/op
+RegionMatchesBenchmarks.middle_regionMatches          avgt    3  15.239 ±  1.310  ns/op
+RegionMatchesBenchmarks.middle_substringEquals        avgt    3  15.655 ±  7.562  ns/op
  */
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Fork(value = 1, jvmArgs = Array("-Xmx2G"))
-@Threads(1)
+@Threads(2)
 @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
 @Warmup(iterations = 2, time = 3, timeUnit = TimeUnit.SECONDS)
 class RegionMatchesBenchmarks {
 
   @Setup // instead of separate test :D
   def check(): Unit = {
-    require(begin_startsWithHit())
-    require(!begin_startsWithMiss())
-    require(begin_regionMatchesHit())
-    require(!begin_regionMatchesMiss())
-    require(begin_substringEqualsHit())
-    require(!begin_substringEqualsMiss())
-    require(middle_regionMatchesHit())
-    require(!middle_regionMatchesMiss())
-    require(middle_substringEqualsHit())
-    require(!middle_substringEqualsMiss())
-    require(middle2Sides_regionMatchesHit())
-    require(!middle2Sides_regionMatchesMiss())
-    require(middle2Sides_substringEqualsHit())
-    require(!middle2Sides_substringEqualsMiss())
-    require(end_endsWithHit())
-    require(!end_endsWithMiss())
-    require(end_regionMatchesHit())
-    require(!end_regionMatchesMiss())
-    require(end_substringEqualsHit())
-    require(!end_substringEqualsMiss())
+    require(begin_startsWith())
+    require(begin_regionMatches())
+    require(begin_substringEquals())
+    require(middle_regionMatches())
+    require(middle_substringEquals())
+    require(middle2Sides_regionMatches())
+    require(middle2Sides_substringEquals())
+    require(end_endsWith())
+    require(end_regionMatches())
+    require(end_substringEquals())
   }
 
   @Benchmark
-  def begin_startsWithHit(): Boolean =
-    uri.startsWith(beginHit)
+  def begin_startsWith(): Boolean =
+    uri.startsWith(begin)
 
   @Benchmark
-  def begin_startsWithMiss(): Boolean =
-    uri.startsWith(beginMiss)
+  def begin_regionMatches(): Boolean =
+    uri.regionMatches(0, begin, 0, begin.length)
 
   @Benchmark
-  def begin_regionMatchesHit(): Boolean =
-    uri.regionMatches(0, beginHit, 0, beginHit.length)
+  def begin_substringEquals(): Boolean =
+    uri.substring(0, begin.length) == begin
 
   @Benchmark
-  def begin_regionMatchesMiss(): Boolean =
-    uri.regionMatches(0, beginMiss, 0, beginMiss.length)
+  def middle_regionMatches(): Boolean =
+    uri.regionMatches(middleIndex, middle, 0, middle.length)
 
   @Benchmark
-  def begin_substringEqualsHit(): Boolean =
-    uri.substring(0, beginHit.length) == beginHit
+  def middle_substringEquals(): Boolean =
+    uri.substring(middleIndex, middleIndex + middle.length) == middle
 
   @Benchmark
-  def begin_substringEqualsMiss(): Boolean =
-    uri.substring(0, beginMiss.length) == beginMiss
+  def middle2Sides_regionMatches(): Boolean =
+    uri.regionMatches(middleIndex, middle2Sides, 1, middle2Sides.length - 2)
 
   @Benchmark
-  def middle_regionMatchesHit(): Boolean =
-    uri.regionMatches(middleIndex, middleHit, 0, middleHit.length)
+  def middle2Sides_substringEquals(): Boolean =
+    uri.substring(middleIndex, middleIndex + middle.length) == middle2Sides.substring(1, middle2Sides.length - 1)
 
   @Benchmark
-  def middle_regionMatchesMiss(): Boolean =
-    uri.regionMatches(middleIndex, middleMiss, 0, middleMiss.length)
+  def end_endsWith(): Boolean =
+    uri.endsWith(end)
 
   @Benchmark
-  def middle_substringEqualsHit(): Boolean =
-    uri.substring(middleIndex, middleIndex + middleHit.length) == middleHit
+  def end_regionMatches(): Boolean =
+    uri.regionMatches(endIndex, end, 0, end.length)
 
   @Benchmark
-  def middle_substringEqualsMiss(): Boolean =
-    uri.substring(middleIndex, middleIndex + middleMiss.length) == middleMiss
-
-  @Benchmark
-  def middle2Sides_regionMatchesHit(): Boolean =
-    uri.regionMatches(middleIndex, middleHit2Sides, 1, middleHit2Sides.length - 2)
-
-  @Benchmark
-  def middle2Sides_regionMatchesMiss(): Boolean =
-    uri.regionMatches(middleIndex, middleMiss2Sides, 1, middleMiss2Sides.length - 2)
-
-  @Benchmark
-  def middle2Sides_substringEqualsHit(): Boolean =
-    uri.substring(middleIndex, middleIndex + middleHit.length) == middleHit2Sides.substring(1, middleHit2Sides.length - 1)
-
-  @Benchmark
-  def middle2Sides_substringEqualsMiss(): Boolean =
-    uri.substring(middleIndex, middleIndex + middleMiss.length) == middleMiss2Sides.substring(1, middleMiss2Sides.length - 1)
-
-  @Benchmark
-  def end_endsWithHit(): Boolean =
-    uri.endsWith(endHit)
-
-  @Benchmark
-  def end_endsWithMiss(): Boolean =
-    uri.endsWith(endMiss)
-
-  @Benchmark
-  def end_regionMatchesHit(): Boolean =
-    uri.regionMatches(endIndex, endHit, 0, endHit.length)
-
-  @Benchmark
-  def end_regionMatchesMiss(): Boolean =
-    uri.regionMatches(endIndex, endMiss, 0, endMiss.length)
-
-  @Benchmark
-  def end_substringEqualsHit(): Boolean =
-    uri.substring(endIndex) == endHit
-
-  @Benchmark
-  def end_substringEqualsMiss(): Boolean =
-    uri.substring(endIndex) == endMiss
+  def end_substringEquals(): Boolean =
+    uri.substring(endIndex) == end
 }
 
 object RegionMatchesBenchmarks {
   val uri = "/site/section/blog/2022-04-17/the-title-of-the-post"
-  val beginHit = "/site/section"
-  val beginMiss = "/site/sectioW"
-  val middleHit = "2022-04-17"
-  val middleHit2Sides = s"-$middleHit-"
-  val middleMiss = "2022-04-19"
-  val middleMiss2Sides = s"-$middleMiss-"
-  val middleIndex: Int = uri.indexOf(middleHit)
-  val endHit = "/the-title-of-the-post"
-  val endMiss = "/the-title-of-the-posW"
-  val endIndex: Int = uri.indexOf(endHit)
+  val begin = "/site/section"
+  val middle = "2022-04-17"
+  val middle2Sides = s"-$middle-"
+  val middleIndex: Int = uri.indexOf(middle)
+  val end = "/the-title-of-the-post"
+  val endIndex: Int = uri.indexOf(end)
 }
