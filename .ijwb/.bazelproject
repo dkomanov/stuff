@@ -1,7 +1,7 @@
 directories:
-  .
+  src
 
-derive_targets_from_directories: true
+#derive_targets_from_directories: true
 
 targets:
   //...
