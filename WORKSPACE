@@ -65,7 +65,7 @@ load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
 scala_config(scala_version = scala_full_version)
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
-scala_repositories()
+scala_repositories(fetch_sources = True)
 
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
 scala_register_toolchains()
