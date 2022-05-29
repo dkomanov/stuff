@@ -59,7 +59,7 @@ SimpleEnumBenchmark.reverseLookup         all  avgt    2   24.527          ns/op
 @Warmup(iterations = 2, time = 2, timeUnit = TimeUnit.SECONDS)
 class SimpleEnumBenchmark {
 
-  @Param(Array("4", "5", "all"))
+  @Param(Array("1", "2", "3", "4", "5", "all"))
   var idStr = ""
   var ids = Seq(0)
 
@@ -102,8 +102,18 @@ class SimpleEnumBenchmark {
   }
 
   @Benchmark
+  def byIndexLocalCopy = {
+    ids.foreach { id => SimpleEnum.fromIndexOverLocalCopy(id) }
+  }
+
+  @Benchmark
   def byIndexOverCopy = {
     ids.foreach { id => SimpleEnum.fromIndexOverCopy(id) }
+  }
+
+  @Benchmark
+  def bySwitch = {
+    ids.foreach { id => SimpleEnum.fromSwitch(id) }
   }
 
 }

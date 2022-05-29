@@ -52,11 +52,34 @@ public enum SimpleEnum {
         return UNKNOWN;
     }
 
+    public static SimpleEnum fromIndexOverLocalCopy(final int id) {
+        SimpleEnum[] copy = values();
+        if (id >= 0 && id < copy.length) {
+            return copy[id];
+        }
+        return UNKNOWN;
+    }
+
     public static SimpleEnum fromIndexOverCopy(final int id) {
         if (id >= 0 && id < valuesCopy.length) {
             return valuesCopy[id];
         }
         return UNKNOWN;
+    }
+
+    public static SimpleEnum fromSwitch(final int id) {
+        switch (id) {
+            case 1:
+                return FIRST;
+            case 2:
+                return SECOND;
+            case 3:
+                return THIRD;
+            case 4:
+                return FOURTH;
+            default:
+                return UNKNOWN;
+        }
     }
 
 }
