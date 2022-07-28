@@ -1,4 +1,4 @@
-# stuff [![Build Status](https://travis-ci.org/dkomanov/stuff.svg?branch=master)](https://travis-ci.org/dkomanov/stuff)
+# stuff [![Build Status](https://app.travis-ci.com/dkomanov/stuff.svg?branch=master)](https://travis-ci.org/dkomanov/stuff)
 
 Contains code for different blog posts, benchmarks, test and examples of some ideas.
 Built with [Bazel](https://bazel.build).
