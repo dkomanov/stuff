@@ -5,7 +5,7 @@ import org.openjdk.jmh.annotations._
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 import java.util.stream.{Collectors, IntStream}
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.collection.mutable
 import scala.util.Random
 

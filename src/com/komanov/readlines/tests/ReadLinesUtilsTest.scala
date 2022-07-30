@@ -20,17 +20,17 @@ class ReadLinesUtilsTest extends SpecificationWithJUnit {
     IterateTestCase("readBytesOwnLineSplit", path => ReadLinesUtils.readBytesOwnLineSplit(path).asScala.toList),
     IterateTestCase("readBytesAndCustomUtf8Decoder", path => {
       val result = List.newBuilder[String]
-      ReadLinesUtils.readBytesAndCustomUtf8Decoder(path, result.+=)
+      ReadLinesUtils.readBytesAndCustomUtf8Decoder(path, s => result += s)
       result.result()
     }),
     IterateTestCase("bufferedInputStreamAndCustomUtf8Decoder", path => {
       val result = List.newBuilder[String]
-      ReadLinesUtils.bufferedInputStreamAndCustomUtf8Decoder(path, result.+=)
+      ReadLinesUtils.bufferedInputStreamAndCustomUtf8Decoder(path, s => result += s)
       result.result()
     }),
     IterateTestCase("forEachLine", path => {
       val result = List.newBuilder[String]
-      ReadLinesUtils.forEachLine(path, result.+=)
+      ReadLinesUtils.forEachLine(path, s => result += s)
       result.result()
     }),
     IterateTestCase("forEachJava", path => {

@@ -22,9 +22,9 @@ scala_specs2_junit(
         "//src/com/komanov/serialization/proto:thrift_scrooge",
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_core",
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_databind",
-        "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_12",
-        "@scala_serialization_maven//:com_twitter_chill_2_12",
-        "@scala_serialization_maven//:io_suzaku_boopickle_2_12",
+        "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_13",
+        "@scala_serialization_maven//:com_twitter_chill_2_13",
+        "@scala_serialization_maven//:io_suzaku_boopickle_2_13",
         "@scala_serialization_maven//:org_apache_thrift_libthrift",
     ],
 )

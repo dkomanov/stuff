@@ -53,15 +53,15 @@ object JavaPbConverter extends MyConverter {
       ProtobufConversionUtils.bytesToUuid(site.getOwnerId),
       site.getRevision,
       fromSiteTypePb(site.getSiteType),
-      site.getFlagsList.map(fromSiteFlagPb),
+      site.getFlagsList.map(fromSiteFlagPb).toSeq,
       site.getName,
       site.getDescription,
-      site.getDomainsList.map(d => Domain(d.getName, d.getPrimary)),
-      site.getDefaultMetaTagsList.map(fromMetaTagPb),
+      site.getDomainsList.map(d => Domain(d.getName, d.getPrimary)).toSeq,
+      site.getDefaultMetaTagsList.map(fromMetaTagPb).toSeq,
       site.getPagesList.map { p =>
-        Page(p.getName, p.getPath, p.getMetaTagsList.map(fromMetaTagPb), p.getComponentsList.map(fromComponentPb))
-      },
-      site.getEntryPointsList.map(fromEntryPointPb),
+        Page(p.getName, p.getPath, p.getMetaTagsList.map(fromMetaTagPb).toSeq, p.getComponentsList.map(fromComponentPb).toSeq)
+      }.toSeq,
+      site.getEntryPointsList.map(fromEntryPointPb).toSeq,
       site.getPublished,
       ConversionUtils.longToInstance(site.getDateCreated),
       ConversionUtils.longToInstance(site.getDateUpdated)

@@ -6,7 +6,7 @@ import com.komanov.serialization.domain.thrift._
 import org.apache.thrift.protocol.TCompactProtocol
 import org.apache.thrift.{TBase, TDeserializer, TSerializer}
 
-import scala.collection.convert.ImplicitConversions._
+import scala.jdk.CollectionConverters._
 import scala.language.existentials
 import scala.reflect.ClassTag
 
@@ -19,23 +19,23 @@ object JavaThriftConverter extends MyConverter {
       .setOwnerId(ConversionUtils.uuidToByteBuffer(site.ownerId))
       .setRevision(site.revision)
       .setSiteType(toSiteTypePb(site.siteType))
-      .setFlags(site.flags.map(toSiteFlagPb))
+      .setFlags(site.flags.map(toSiteFlagPb).asJava)
       .setName(site.name)
       .setDescription(site.description)
       .setDomains(site.domains.map { d =>
         new DomainPb()
           .setName(d.name)
           .setPrimary(d.primary)
-      })
-      .setDefaultMetaTags(site.defaultMetaTags.map(toMetaTagPb))
+      }.asJava)
+      .setDefaultMetaTags(site.defaultMetaTags.map(toMetaTagPb).asJava)
       .setPages(site.pages.map { p =>
         new PagePb()
           .setName(p.name)
           .setPath(p.path)
-          .setMetaTags(p.metaTags.map(toMetaTagPb))
-          .setComponents(p.components.map(toComponentPb))
-      })
-      .setEntryPoints(site.entryPoints.map(toEntryPointPb))
+          .setMetaTags(p.metaTags.map(toMetaTagPb).asJava)
+          .setComponents(p.components.map(toComponentPb).asJava)
+      }.asJava)
+      .setEntryPoints(site.entryPoints.map(toEntryPointPb).asJava)
       .setPublished(site.published)
       .setDateCreated(ConversionUtils.instantToLong(site.dateCreated))
       .setDateUpdated(ConversionUtils.instantToLong(site.dateUpdated))
@@ -52,15 +52,15 @@ object JavaThriftConverter extends MyConverter {
       ConversionUtils.bytesToUuid(site.ownerId),
       site.revision,
       fromSiteTypePb(site.siteType),
-      site.flags.map(fromSiteFlagPb),
+      site.flags.asScala.map(fromSiteFlagPb).toSeq,
       site.name,
       site.description,
-      site.domains.map(d => Domain(d.name, d.primary)),
-      site.defaultMetaTags.map(fromMetaTagPb),
-      site.pages.map { p =>
-        Page(p.name, p.path, p.metaTags.map(fromMetaTagPb), p.components.map(fromComponentPb))
-      },
-      site.entryPoints.map(fromEntryPointPb),
+      site.domains.asScala.map(d => Domain(d.name, d.primary)).toSeq,
+      site.defaultMetaTags.asScala.map(fromMetaTagPb).toSeq,
+      site.pages.asScala.map { p =>
+        Page(p.name, p.path, p.metaTags.asScala.map(fromMetaTagPb).toSeq, p.components.asScala.map(fromComponentPb).toSeq)
+      }.toSeq,
+      site.entryPoints.asScala.map(fromEntryPointPb).toSeq,
       site.published,
       ConversionUtils.longToInstance(site.dateCreated),
       ConversionUtils.longToInstance(site.dateUpdated)

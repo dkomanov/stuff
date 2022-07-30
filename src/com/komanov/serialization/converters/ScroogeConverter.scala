@@ -47,15 +47,15 @@ object ScroogeConverter extends MyConverter {
       ConversionUtils.bytesToUuid(site.ownerId.get),
       site.revision.get,
       fromSiteTypePb(site.siteType.get),
-      site.flags.get.map(fromSiteFlagPb),
+      site.flags.get.map(fromSiteFlagPb).toSeq,
       site.name.get,
       site.description.get,
-      site.domains.get.map(d => Domain(d.name.get, d.primary.get)),
-      site.defaultMetaTags.get.map(fromMetaTagPb),
+      site.domains.get.map(d => Domain(d.name.get, d.primary.get)).toSeq,
+      site.defaultMetaTags.get.map(fromMetaTagPb).toSeq,
       site.pages.get.map { p =>
-        Page(p.name.get, p.path.get, p.metaTags.get.map(fromMetaTagPb), p.components.get.map(fromComponentPb))
-      },
-      site.entryPoints.get.map(fromEntryPointPb),
+        Page(p.name.get, p.path.get, p.metaTags.get.map(fromMetaTagPb).toSeq, p.components.get.map(fromComponentPb).toSeq)
+      }.toSeq,
+      site.entryPoints.get.map(fromEntryPointPb).toSeq,
       site.published.get,
       ConversionUtils.longToInstance(site.dateCreated.get),
       ConversionUtils.longToInstance(site.dateUpdated.get)

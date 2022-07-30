@@ -29,7 +29,7 @@ scala_macro_library(
     srcs = ["BoopickleConverter.scala"],
     deps = [
         "//src/com/komanov/serialization/converters/api",
-        "@scala_serialization_maven//:io_suzaku_boopickle_2_12",
+        "@scala_serialization_maven//:io_suzaku_boopickle_2_13",
     ],
 )
 
@@ -38,7 +38,7 @@ scala_library(
     srcs = ["ChillConverter.scala"],
     deps = [
         "//src/com/komanov/serialization/converters/api",
-        "@scala_serialization_maven//:com_twitter_chill_2_12",
+        "@scala_serialization_maven//:com_twitter_chill_2_13",
         "@scala_serialization_maven//:com_twitter_chill_java",
     ],
 )
@@ -48,13 +48,11 @@ scala_library(
     srcs = ["CirceConverter.scala"],
     deps = [
         "//src/com/komanov/serialization/converters/api",
-        "@scala_serialization_maven//:com_chuusai_shapeless_2_12",
-        "@scala_serialization_maven//:io_circe_circe_core_2_12",
-        "@scala_serialization_maven//:io_circe_circe_generic_2_12",
-        "@scala_serialization_maven//:io_circe_circe_parser_2_12",
-        "@scala_serialization_maven//:org_typelevel_cats_core_2_12",
-        "@scala_serialization_maven//:org_typelevel_cats_macros_2_12",
-        "@scala_serialization_maven//:org_typelevel_machinist_2_12",
+        "@scala_serialization_maven//:com_chuusai_shapeless_2_13",
+        "@scala_serialization_maven//:io_circe_circe_core_2_13",
+        "@scala_serialization_maven//:io_circe_circe_generic_2_13",
+        "@scala_serialization_maven//:io_circe_circe_parser_2_13",
+        "@scala_serialization_maven//:org_typelevel_cats_core_2_13",
     ],
 )
 
@@ -111,7 +109,7 @@ scala_library(
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_databind",
         "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
         "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_smile",
-        "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_12",
+        "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_13",
     ],
 )
 
@@ -120,8 +118,8 @@ scala_macro_library(
     srcs = ["JsoniterScalaConverter.scala"],
     deps = [
         "//src/com/komanov/serialization/converters/api",
-        "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_core_2_12",
-        "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_macros_2_12",
+        "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_core_2_13",
+        "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_macros_2_13",
     ],
 )
 

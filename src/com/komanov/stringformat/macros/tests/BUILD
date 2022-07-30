@@ -4,6 +4,6 @@ scala_specs2_junit(
     deps = [
         "//src/com/komanov/stringformat/macros",
         "@maven//:org_mockito_mockito_core",
-        "@maven//:org_specs2_specs2_mock_2_12",
+        "@maven//:org_specs2_specs2_mock_2_13",
     ],
 )

@@ -23,7 +23,7 @@ class MockitoAndMutableTest extends SpecificationWithJUnit with Mockito {
     "replace 'a' with 'ab' in a JMock way" in new ctx {
       override def makeDao = mock[ContainerDao].defaultAnswer(i => throw new IllegalStateException(s"Unexpected call: $i"))
 
-      doAnswer(_ => {}).when(dao).update(beModifiedContainer)
+      doAnswer((_: Any) => {}).when(dao).update(beModifiedContainer)
 
       manager.doBusiness(container)
       container must beModifiedContainer
