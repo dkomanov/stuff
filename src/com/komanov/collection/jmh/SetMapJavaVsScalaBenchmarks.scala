@@ -4,6 +4,7 @@ import org.openjdk.jmh.annotations._
 
 import java.util.UUID
 import java.util.concurrent.TimeUnit
+import java.util.stream.{Collectors, IntStream}
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 import scala.util.Random
@@ -97,8 +98,8 @@ class SetMapJavaVsScalaBenchmarks {
   private var javaWrappedMap: mutable.Map[UUID, Int] = _
   private var scalaMap: Map[UUID, Int] = _
   private var scalaMutableMap: mutable.Map[UUID, Int] = _
-  private var hitKeys: Seq[UUID] = _
-  private var missKeys: Seq[UUID] = _
+  private var hitKeys: java.util.List[UUID] = _
+  private var missKeys: java.util.List[UUID] = _
 
   @Setup
   def setup(): Unit = {
@@ -117,151 +118,55 @@ class SetMapJavaVsScalaBenchmarks {
     javaWrappedMap = javaMap.asScala
     scalaMutableMap = mutable.Map(uuidsPlusIndex: _*)
 
-    hitKeys = (1 to 10).map(_ => uuids(Random.nextInt(uuids.size)))
-    missKeys = (1 to 10).map(_ => UUID.randomUUID)
+    hitKeys = IntStream.range(0, 10).mapToObj(_ => uuids(Random.nextInt(uuids.size))).collect(Collectors.toList[UUID])
+    missKeys = IntStream.range(0, 10).mapToObj(_ => UUID.randomUUID).collect(Collectors.toList[UUID])
   }
 
   @Benchmark
-  def javaSetHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += (if (javaSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def javaSetHit: Int = JavaHelper.run(javaSet, hitKeys)
 
   @Benchmark
-  def javaSetMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += (if (javaSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def javaSetMiss: Int = JavaHelper.run(javaSet, missKeys)
 
   @Benchmark
-  def javaWrappedSetHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += (if (javaWrappedSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def javaWrappedSetHit: Int = JavaHelper.run(javaWrappedSet, hitKeys)
 
   @Benchmark
-  def javaWrappedSetMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += (if (javaWrappedSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def javaWrappedSetMiss: Int = JavaHelper.run(javaWrappedSet, missKeys)
 
   @Benchmark
-  def scalaSetHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += (if (scalaSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def scalaSetHit: Int = JavaHelper.run(scalaSet, hitKeys)
 
   @Benchmark
-  def scalaSetMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += (if (scalaSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def scalaSetMiss: Int = JavaHelper.run(scalaSet, missKeys)
 
   @Benchmark
-  def scalaMutableSetHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += (if (scalaMutableSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def scalaMutableSetHit: Int = JavaHelper.run(scalaMutableSet, hitKeys)
 
   @Benchmark
-  def scalaMutableSetMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += (if (scalaMutableSet.contains(v)) 1 else 0)
-    }
-    r
-  }
+  def scalaMutableSetMiss: Int = JavaHelper.run(scalaMutableSet, missKeys)
 
   @Benchmark
-  def javaMapHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += javaMap.getOrDefault(v, 0)
-    }
-    r
-  }
+  def javaMapHit: Int = JavaHelper.run(javaMap, hitKeys)
 
   @Benchmark
-  def javaMapMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += javaMap.getOrDefault(v, 0)
-    }
-    r
-  }
+  def javaMapMiss: Int = JavaHelper.run(javaMap, missKeys)
 
   @Benchmark
-  def javaWrappedMapHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += javaWrappedMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def javaWrappedMapHit: Int = JavaHelper.run(javaWrappedMap, hitKeys)
 
   @Benchmark
-  def javaWrappedMapMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += javaWrappedMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def javaWrappedMapMiss: Int = JavaHelper.run(javaWrappedMap, missKeys)
 
   @Benchmark
-  def scalaMapHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += scalaMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def scalaMapHit: Int = JavaHelper.run(scalaMap, hitKeys)
 
   @Benchmark
-  def scalaMapMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += scalaMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def scalaMapMiss: Int = JavaHelper.run(scalaMap, missKeys)
 
   @Benchmark
-  def scalaMutableMapHit: Int = {
-    var r = 0
-    for (v <- hitKeys) {
-      r += scalaMutableMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def scalaMutableMapHit: Int = JavaHelper.run(scalaMutableMap, hitKeys)
 
   @Benchmark
-  def scalaMutableMapMiss: Int = {
-    var r = 0
-    for (v <- missKeys) {
-      r += scalaMutableMap.getOrElse(v, 0)
-    }
-    r
-  }
+  def scalaMutableMapMiss: Int = JavaHelper.run(scalaMutableMap, missKeys)
 }
