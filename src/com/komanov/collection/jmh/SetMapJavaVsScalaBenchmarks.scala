@@ -5,79 +5,79 @@ import org.openjdk.jmh.annotations._
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 import java.util.stream.{Collectors, IntStream}
-import scala.jdk.CollectionConverters._
 import scala.collection.mutable
+import scala.jdk.CollectionConverters._
 import scala.util.Random
 
 /*
 openjdk-17, scala 2.13
 
-Benchmark                                         (size)  Mode  Cnt    Score    Error  Units
-SetMapJavaVsScalaBenchmarks.javaMapHit              1000  avgt    3   69.770 ± 19.038  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapHit             10000  avgt    3   82.177 ± 20.698  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapHit            100000  avgt    3   70.014 ± 15.682  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapHit           1000000  avgt    3   83.138 ± 12.338  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapMiss             1000  avgt    3   51.844 ±  0.943  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapMiss            10000  avgt    3   48.276 ±  0.425  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapMiss           100000  avgt    3   48.035 ±  2.777  ns/op
-SetMapJavaVsScalaBenchmarks.javaMapMiss          1000000  avgt    3   47.262 ±  1.254  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetHit              1000  avgt    3   63.249 ±  0.134  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetHit             10000  avgt    3   57.679 ±  0.576  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetHit            100000  avgt    3   61.693 ±  0.317  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetHit           1000000  avgt    3   68.099 ± 23.567  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetMiss             1000  avgt    3   52.512 ±  0.533  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetMiss            10000  avgt    3   58.961 ±  6.630  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetMiss           100000  avgt    3   57.118 ±  0.640  ns/op
-SetMapJavaVsScalaBenchmarks.javaSetMiss          1000000  avgt    3   55.691 ±  3.469  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapHit       1000  avgt    3   84.162 ±  0.530  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapHit      10000  avgt    3   92.049 ± 32.066  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapHit     100000  avgt    3   98.779 ±  3.900  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapHit    1000000  avgt    3   91.808 ± 21.236  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss      1000  avgt    3   98.599 ±  6.601  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss     10000  avgt    3  103.863 ±  0.720  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss    100000  avgt    3   94.607 ± 36.463  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss   1000000  avgt    3   97.531 ± 57.599  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetHit       1000  avgt    3   73.588 ±  0.571  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetHit      10000  avgt    3   71.278 ±  0.371  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetHit     100000  avgt    3   70.498 ±  7.583  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetHit    1000000  avgt    3   71.983 ± 19.224  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss      1000  avgt    3   64.189 ±  1.095  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss     10000  avgt    3   63.669 ±  1.100  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss    100000  avgt    3   65.234 ±  0.698  ns/op
-SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss   1000000  avgt    3   62.436 ±  0.191  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapHit             1000  avgt    3  272.135 ± 13.338  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapHit            10000  avgt    3  355.651 ± 40.011  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapHit           100000  avgt    3  519.041 ±  9.469  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapHit          1000000  avgt    3  603.001 ± 91.917  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapMiss            1000  avgt    3  198.755 ± 11.578  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapMiss           10000  avgt    3  257.854 ±  7.071  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapMiss          100000  avgt    3  407.580 ±  2.240  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMapMiss         1000000  avgt    3  522.165 ±  8.261  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapHit      1000  avgt    3   76.938 ±  0.250  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapHit     10000  avgt    3   86.969 ± 20.157  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapHit    100000  avgt    3   91.331 ±  0.417  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapHit   1000000  avgt    3   90.308 ±  2.453  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss     1000  avgt    3   52.402 ±  0.889  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss    10000  avgt    3   45.881 ±  0.680  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss   100000  avgt    3   47.598 ±  0.710  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss  1000000  avgt    3   45.246 ±  2.381  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetHit      1000  avgt    3   66.387 ±  0.642  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetHit     10000  avgt    3   67.232 ±  0.417  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetHit    100000  avgt    3   71.104 ± 17.204  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetHit   1000000  avgt    3   68.068 ±  0.341  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss     1000  avgt    3   46.297 ± 11.167  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss    10000  avgt    3   48.549 ±  0.280  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss   100000  avgt    3   45.661 ±  2.376  ns/op
-SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss  1000000  avgt    3   46.600 ±  0.426  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetHit             1000  avgt    3  267.368 ±  0.558  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetHit            10000  avgt    3  300.492 ± 14.763  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetHit           100000  avgt    3  380.558 ±  5.655  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetHit          1000000  avgt    3  493.270 ± 52.964  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetMiss            1000  avgt    3  177.311 ± 11.554  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetMiss           10000  avgt    3  263.542 ±  0.643  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetMiss          100000  avgt    3  324.326 ±  4.825  ns/op
-SetMapJavaVsScalaBenchmarks.scalaSetMiss         1000000  avgt    3  430.694 ± 57.067  ns/op
- */
+Benchmark                                         (size)  Mode  Cnt    Score     Error  Units
+SetMapJavaVsScalaBenchmarks.javaMapHit              1000  avgt    3   95.318 ±  53.363  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapHit             10000  avgt    3  109.439 ±  35.512  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapHit            100000  avgt    3  114.341 ±  29.184  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapHit           1000000  avgt    3   90.545 ±  19.529  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapMiss             1000  avgt    3   82.930 ±  23.468  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapMiss            10000  avgt    3   89.087 ±  39.302  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapMiss           100000  avgt    3   89.570 ±  18.720  ns/op
+SetMapJavaVsScalaBenchmarks.javaMapMiss          1000000  avgt    3   92.031 ±  47.545  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetHit              1000  avgt    3   80.191 ±  11.223  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetHit             10000  avgt    3   86.387 ±  42.422  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetHit            100000  avgt    3   83.591 ±  15.767  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetHit           1000000  avgt    3   89.951 ±  17.596  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetMiss             1000  avgt    3   91.106 ±  20.903  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetMiss            10000  avgt    3   90.176 ±  22.625  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetMiss           100000  avgt    3   93.580 ±   4.822  ns/op
+SetMapJavaVsScalaBenchmarks.javaSetMiss          1000000  avgt    3   96.194 ±  37.862  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapHit       1000  avgt    3   89.343 ±  19.059  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapHit      10000  avgt    3   85.877 ±  17.992  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapHit     100000  avgt    3   96.506 ±  17.052  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapHit    1000000  avgt    3  140.923 ±  67.170  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss      1000  avgt    3  149.476 ±  30.819  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss     10000  avgt    3  155.249 ±  27.231  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss    100000  avgt    3  158.987 ±  25.757  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedMapMiss   1000000  avgt    3  111.668 ±  38.480  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetHit       1000  avgt    3   84.806 ±   2.271  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetHit      10000  avgt    3   92.755 ±  10.404  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetHit     100000  avgt    3   83.447 ±   5.710  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetHit    1000000  avgt    3   92.945 ±  42.114  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss      1000  avgt    3   92.446 ±  17.896  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss     10000  avgt    3  101.300 ±  21.129  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss    100000  avgt    3   96.100 ±   7.376  ns/op
+SetMapJavaVsScalaBenchmarks.javaWrappedSetMiss   1000000  avgt    3   99.698 ±  52.244  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapHit             1000  avgt    3  273.606 ±  28.148  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapHit            10000  avgt    3  320.009 ±  10.867  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapHit           100000  avgt    3  496.183 ±  56.322  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapHit          1000000  avgt    3  591.056 ± 147.294  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapMiss            1000  avgt    3  185.589 ±  29.002  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapMiss           10000  avgt    3  271.888 ±  24.015  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapMiss          100000  avgt    3  354.449 ±  82.990  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMapMiss         1000000  avgt    3  463.019 ±  83.502  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapHit      1000  avgt    3   76.163 ±   0.656  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapHit     10000  avgt    3   80.117 ±   3.001  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapHit    100000  avgt    3   82.846 ±   1.224  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapHit   1000000  avgt    3   77.787 ±   3.743  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss     1000  avgt    3   59.160 ±   6.160  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss    10000  avgt    3   55.420 ±   0.958  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss   100000  avgt    3   49.415 ±   0.637  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableMapMiss  1000000  avgt    3   52.119 ±   0.536  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetHit      1000  avgt    3   65.453 ±   1.760  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetHit     10000  avgt    3   77.620 ±  17.163  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetHit    100000  avgt    3   83.233 ±   0.761  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetHit   1000000  avgt    3   88.002 ±  14.134  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss     1000  avgt    3   51.189 ±   0.222  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss    10000  avgt    3   61.498 ±   0.819  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss   100000  avgt    3   48.630 ±   0.127  ns/op
+SetMapJavaVsScalaBenchmarks.scalaMutableSetMiss  1000000  avgt    3   57.713 ±   1.170  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetHit             1000  avgt    3  253.448 ±   4.359  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetHit            10000  avgt    3  333.881 ±  22.523  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetHit           100000  avgt    3  392.889 ±  17.035  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetHit          1000000  avgt    3  477.840 ±  65.137  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetMiss            1000  avgt    3  191.383 ±  30.768  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetMiss           10000  avgt    3  272.486 ±  41.934  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetMiss          100000  avgt    3  333.106 ±  42.113  ns/op
+SetMapJavaVsScalaBenchmarks.scalaSetMiss         1000000  avgt    3  414.700 ± 101.260  ns/op
+*/
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
