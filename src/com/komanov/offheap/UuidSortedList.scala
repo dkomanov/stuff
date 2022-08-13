@@ -62,7 +62,7 @@ object UuidSortedList {
     new Netty5UuidSet(buf, list.size)
   }
 
-  def heap(list: Seq[UUID]): ArrayBasedUuidSet = {
+  def heapLong(list: Seq[UUID]): SortedLongArrayUuidSet = {
     val array = new Array[Long](list.size * 2)
     var index = 0
     list.sorted.foreach { uuid =>
@@ -70,6 +70,9 @@ object UuidSortedList {
       array.update(index + 1, uuid.getLeastSignificantBits)
       index += 2
     }
-    new ArrayBasedUuidSet(array)
+    new SortedLongArrayUuidSet(array)
   }
+
+  def heapUuid(list: Seq[UUID]): SortedUuidArray =
+    new SortedUuidArray(list.sorted.toArray)
 }

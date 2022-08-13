@@ -3,11 +3,11 @@ package com.komanov.offheap;
 import java.util.Iterator;
 import java.util.UUID;
 
-public class ArrayBasedUuidSet extends java.util.AbstractSet<UUID> {
+public class SortedLongArrayUuidSet extends java.util.AbstractSet<UUID> {
     private final long[] array;
     private final int size;
 
-    public ArrayBasedUuidSet(long[] array) {
+    public SortedLongArrayUuidSet(long[] array) {
         if (array.length % 2 != 0) {
             throw new IllegalArgumentException("array should be of even length");
         }
