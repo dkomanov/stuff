@@ -130,6 +130,18 @@ maven_install(
 )
 
 maven_install(
+    name = "offheap_maven",
+    artifacts = [
+        "io.netty:netty-common:4.1.79.Final",
+        "io.netty:netty-buffer:4.1.79.Final",
+        "io.netty:netty5-common:5.0.0.Alpha4",
+        "io.netty:netty5-buffer:5.0.0.Alpha4",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "scala_serialization_maven",
     artifacts = [
         "org.slf4j:slf4j-api:1.7.25",

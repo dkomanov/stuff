@@ -12,4 +12,5 @@ java_library(
     deps = [
         "@io_bazel_rules_scala_scala_library",
     ],
+    visibility = ["//visibility:public"],
 )
