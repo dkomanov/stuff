@@ -6,7 +6,7 @@ set -o pipefail
 TARGET=$1
 NAME=$2
 
-if [ ${TARGET} = "" || ${NAME} = "" ]
+if [ "${TARGET}" = "" ] || [ "${NAME}" = "" ]
 then
   echo "Usage: $0 //src/com/komanov/target/jmh:jmh my-benchmark"
   exit 1
