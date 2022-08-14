@@ -8,7 +8,7 @@ import com.komanov.serialization.domain.protos.Site.EntryPointPb._
 import com.komanov.serialization.domain.protos.Site.PageComponentDataPb._
 import com.komanov.serialization.domain.protos.Site._
 
-import scala.collection.convert.ImplicitConversions._
+import scala.jdk.CollectionConverters._
 import scala.language.existentials
 import scala.reflect.ClassTag
 
@@ -21,7 +21,7 @@ object JavaPbConverter extends MyConverter {
       .setOwnerId(ProtobufConversionUtils.uuidToBytes(site.ownerId))
       .setRevision(site.revision)
       .setSiteType(toSiteTypePb(site.siteType))
-      .addAllFlags(site.flags.map(toSiteFlagPb))
+      .addAllFlags(site.flags.map(toSiteFlagPb).asJava)
       .setName(site.name)
       .setDescription(site.description)
       .addAllDomains(site.domains.map(d =>
@@ -29,17 +29,17 @@ object JavaPbConverter extends MyConverter {
           .setName(d.name)
           .setPrimary(d.primary)
           .build()
-      ))
-      .addAllDefaultMetaTags(site.defaultMetaTags.map(toMetaTagPb))
+      ).asJava)
+      .addAllDefaultMetaTags(site.defaultMetaTags.map(toMetaTagPb).asJava)
       .addAllPages(site.pages.map { p =>
         PagePb.newBuilder()
           .setName(p.name)
           .setPath(p.path)
-          .addAllMetaTags(p.metaTags.map(toMetaTagPb))
-          .addAllComponents(p.components.map(toComponentPb))
+          .addAllMetaTags(p.metaTags.map(toMetaTagPb).asJava)
+          .addAllComponents(p.components.map(toComponentPb).asJava)
           .build()
-      })
-      .addAllEntryPoints(site.entryPoints.map(toEntryPointPb).toSeq)
+      }.asJava)
+      .addAllEntryPoints(site.entryPoints.map(toEntryPointPb).asJava)
       .setPublished(site.published)
       .setDateCreated(ConversionUtils.instantToLong(site.dateCreated))
       .setDateUpdated(ConversionUtils.instantToLong(site.dateUpdated))
@@ -53,15 +53,15 @@ object JavaPbConverter extends MyConverter {
       ProtobufConversionUtils.bytesToUuid(site.getOwnerId),
       site.getRevision,
       fromSiteTypePb(site.getSiteType),
-      site.getFlagsList.map(fromSiteFlagPb).toSeq,
+      site.getFlagsList.asScala.map(fromSiteFlagPb).toSeq,
       site.getName,
       site.getDescription,
-      site.getDomainsList.map(d => Domain(d.getName, d.getPrimary)).toSeq,
-      site.getDefaultMetaTagsList.map(fromMetaTagPb).toSeq,
-      site.getPagesList.map { p =>
-        Page(p.getName, p.getPath, p.getMetaTagsList.map(fromMetaTagPb).toSeq, p.getComponentsList.map(fromComponentPb).toSeq)
+      site.getDomainsList.asScala.map(d => Domain(d.getName, d.getPrimary)).toSeq,
+      site.getDefaultMetaTagsList.asScala.map(fromMetaTagPb).toSeq,
+      site.getPagesList.asScala.map { p =>
+        Page(p.getName, p.getPath, p.getMetaTagsList.asScala.map(fromMetaTagPb).toSeq, p.getComponentsList.asScala.map(fromComponentPb).toSeq)
       }.toSeq,
-      site.getEntryPointsList.map(fromEntryPointPb).toSeq,
+      site.getEntryPointsList.asScala.map(fromEntryPointPb).toSeq,
       site.getPublished,
       ConversionUtils.longToInstance(site.getDateCreated),
       ConversionUtils.longToInstance(site.getDateUpdated)
