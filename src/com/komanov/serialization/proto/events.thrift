@@ -1,5 +1,5 @@
 namespace java com.komanov.serialization.domain.thrift
-namespace scala com.komanov.serialization.domain.thriftscala
+//namespace scala com.komanov.serialization.domain.thriftscala
 
 enum SiteTypePb {
     UnknownSiteType = 0,

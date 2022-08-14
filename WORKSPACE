@@ -99,10 +99,6 @@ load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_
 
 scala_proto_register_toolchains()
 
-load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "twitter_scrooge")
-
-twitter_scrooge()
-
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_repositories = ["https://repo1.maven.org/maven2"]
@@ -144,21 +140,21 @@ maven_install(
 maven_install(
     name = "scala_serialization_maven",
     artifacts = [
-        "org.slf4j:slf4j-api:1.7.25",
-        "org.slf4j:slf4j-nop:1.7.25",
-        "com.fasterxml.jackson.core:jackson-databind:2.9.9",
-        "com.fasterxml.jackson.core:jackson-core:2.9.9",
-        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.9",
-        "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.9.9",
-        "com.fasterxml.jackson.module:jackson-module-scala_%s:2.9.9" % scala_version,
-        "io.suzaku:boopickle_%s:1.3.3" % scala_version,
-        "com.twitter:chill_%s:0.9.5" % scala_version,
-        "org.apache.thrift:libthrift:0.10.0",
-        "io.circe:circe-core_%s:0.14.2" % scala_version,
-        "io.circe:circe-generic_%s:0.14.2" % scala_version,
-        "io.circe:circe-parser_%s:0.14.2" % scala_version,
-        "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:2.13.38" % scala_version,
-        "com.google.protobuf:protobuf-java:3.10.0",
+        "org.slf4j:slf4j-api:1.7.36",
+        "org.slf4j:slf4j-nop:1.7.36",
+        "com.fasterxml.jackson.core:jackson-databind:2.13.3",
+        "com.fasterxml.jackson.core:jackson-core:2.13.3",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.13.3",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.13.3",
+        "com.fasterxml.jackson.module:jackson-module-scala_%s:2.13.3" % scala_version,
+        "io.suzaku:boopickle_%s:1.4.0" % scala_version,
+        "com.twitter:chill_%s:0.10.0" % scala_version,
+        "org.apache.thrift:libthrift:0.16.0",
+        "io.circe:circe-core_%s:0.15.0-M1" % scala_version,
+        "io.circe:circe-generic_%s:0.15.0-M1" % scala_version,
+        "io.circe:circe-parser_%s:0.15.0-M1" % scala_version,
+        "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:2.15.0" % scala_version,
+        "com.google.protobuf:protobuf-java:3.21.5",
         "javax.annotation:javax.annotation-api:1.3.2",
     ],
     fetch_sources = True,

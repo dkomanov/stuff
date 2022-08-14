@@ -9,7 +9,6 @@ all_converters = [
     ":jackson",
     ":jsoniter_scala",
     ":scala_pb",
-    ":scrooge",
 ]
 
 scala_library(
@@ -120,18 +119,6 @@ scala_macro_library(
         "//src/com/komanov/serialization/converters/api",
         "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_core_2_13",
         "@scala_serialization_maven//:com_github_plokhotnyuk_jsoniter_scala_jsoniter_scala_macros_2_13",
-    ],
-)
-
-scala_library(
-    name = "scrooge",
-    srcs = ["ScroogeConverter.scala"],
-    deps = [
-        ":conversion_utils",
-        ":reflection_utils",
-        "//src/com/komanov/serialization/converters/api",
-        "//src/com/komanov/serialization/proto:thrift_scrooge",
-        "@io_bazel_rules_scala_scrooge_core",
     ],
 )
 

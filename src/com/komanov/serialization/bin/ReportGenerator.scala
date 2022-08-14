@@ -4,7 +4,7 @@ import java.io.{ByteArrayOutputStream, File}
 import java.nio.file.{Files, StandardOpenOption}
 import java.util.zip.GZIPOutputStream
 
-import com.komanov.serialization.converters.{Converters, ScalaPbConverter, ScroogeConverter}
+import com.komanov.serialization.converters.{Converters, ScalaPbConverter}
 import com.komanov.serialization.io.IoUtils._
 import com.komanov.serialization.domain.testdata.TestData
 
@@ -37,7 +37,7 @@ object ReportGenerator extends App {
 
   val (raws, gzips) = (Seq.newBuilder[(String, Seq[Int])], Seq.newBuilder[(String, Seq[Int])])
 
-  for ((converterName, converter) <- Converters.all if converter ne ScalaPbConverter if converter ne ScroogeConverter) {
+  for ((converterName, converter) <- Converters.all if converter ne ScalaPbConverter) {
     val results = Seq.newBuilder[(Int, Int)]
     for ((name, site) <- TestData.sites) {
       val bytes = converter.toByteArray(site)

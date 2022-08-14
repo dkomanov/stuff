@@ -19,7 +19,6 @@ scala_specs2_junit(
         "//src/com/komanov/serialization/domain/testdata",
         "//src/com/komanov/serialization/proto:protos_java",
         "//src/com/komanov/serialization/proto:protos_scala",
-        "//src/com/komanov/serialization/proto:thrift_scrooge",
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_core",
         "@scala_serialization_maven//:com_fasterxml_jackson_core_jackson_databind",
         "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_13",

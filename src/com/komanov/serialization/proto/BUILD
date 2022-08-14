@@ -1,7 +1,6 @@
 # We don't use these rules anywhere else. If we will -- move it to prelude_bazel.
 load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scalapb_proto_library")
 load("@io_bazel_rules_scala//thrift:thrift.bzl", "thrift_library")
-load("@io_bazel_rules_scala//twitter_scrooge:twitter_scrooge.bzl", "scrooge_scala_library")
 
 java_proto_library(
     name = "protos_java",
@@ -28,13 +27,5 @@ thrift_library(
     srcs = [
         "events.thrift",
         "site.thrift",
-    ],
-)
-
-scrooge_scala_library(
-    name = "thrift_scrooge",
-    visibility = ["//src/com/komanov/serialization:__subpackages__"],
-    deps = [
-        ":thrift",
     ],
 )

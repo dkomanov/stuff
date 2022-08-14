@@ -11,7 +11,6 @@ object Converters {
     "ScalaPB" -> ScalaPbConverter,
     "Java PB" -> JavaPbConverter,
     "Java Thrift" -> JavaThriftConverter,
-    "Scrooge" -> ScroogeConverter,
     "Serializable" -> JavaSerializationConverter,
     "BooPickle" -> BoopickleConverter,
     "Chill" -> ChillConverter,

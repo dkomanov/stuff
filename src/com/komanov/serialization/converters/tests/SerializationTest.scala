@@ -40,26 +40,6 @@ class SerializationTest extends SpecificationWithJUnit {
     }
   }
 
-  "Scrooge and Java Thrift" should {
-    Fragments.foreach(TestData.sites) { case (name, site) =>
-      s"be interoperable for site of $name" in new ctx {
-        val javaMessage = JavaThriftConverter.toByteArray(site)
-        val scalaMessage = ScroogeConverter.toByteArray(site)
-        toHexDump(javaMessage) must be_===(toHexDump(scalaMessage))
-      }
-    }
-
-    Fragments.foreach(TestData.events) { case (name, events) =>
-      s"be interoperable events of $name" in new ctx {
-        for (SiteEventData(_, event, _) <- events) {
-          val javaMessage = JavaThriftConverter.toByteArray(event)
-          val scalaMessage = ScroogeConverter.toByteArray(event)
-          toHexDump(javaMessage) must be_===(toHexDump(scalaMessage))
-        }
-      }
-    }
-  }
-
   class ctx extends Scope
 
   def toHexDump(arr: Array[Byte]): String = {

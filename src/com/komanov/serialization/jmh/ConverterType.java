@@ -10,7 +10,6 @@ public enum ConverterType {
     SCALA_PB(ScalaPbConverter$.MODULE$),
     JAVA_PB(JavaPbConverter$.MODULE$),
     JAVA_THRIFT(JavaThriftConverter$.MODULE$),
-    SCROOGE(ScroogeConverter$.MODULE$),
     SERIALIZABLE(JavaSerializationConverter$.MODULE$),
     BOOPICKLE(BoopickleConverter$.MODULE$),
     CHILL(ChillConverter$.MODULE$),
