@@ -52,6 +52,9 @@ object EventProcessor {
       case (s, SiteEventData(_, PageAdded(path), _)) =>
         s.pages.find(_.path == path).fold(s.copy(pages = s.pages :+ Page(null, path, Nil, Nil)))(_ => s)
 
+      case (s, SiteEventData(_, PageRemoved(path), _)) =>
+        s.pages.find(_.path == path).fold(s.copy(pages = s.pages.filter(_.path != path)))(_ => s)
+
       case (s, SiteEventData(_, PageNameSet(path, name), _)) =>
         modifyPage(s, path, p => p.copy(name = name))
 
