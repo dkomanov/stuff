@@ -1,13 +1,11 @@
 package com.komanov.serialization.converters
 
-import java.nio.charset.StandardCharsets
-import java.time.Instant
-
 import com.komanov.serialization.converters.api.MyConverter
 import com.komanov.serialization.domain._
 import io.circe.parser._
 import io.circe.syntax._
 
+import java.nio.charset.StandardCharsets
 import scala.util.Try
 
 /** https://circe.github.io/circe/ */
@@ -21,13 +19,13 @@ object CirceConverter extends MyConverter {
   }
 
   override def fromByteArray(bytes: Array[Byte]): Site =
-    decode[Site](new String(bytes, StandardCharsets.UTF_8)).right.get
+    decode[Site](new String(bytes, StandardCharsets.UTF_8)).fold(throw _, identity)
 
   override def toByteArray(event: SiteEvent): Array[Byte] =
     event.asJson.noSpaces.getBytes(StandardCharsets.UTF_8)
 
   override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent =
-    decode[SiteEvent](new String(bytes, StandardCharsets.UTF_8)).right.get
+    decode[SiteEvent](new String(bytes, StandardCharsets.UTF_8)).fold(throw _, identity)
 
   private object CirceImplicits {
 
