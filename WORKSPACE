@@ -132,6 +132,7 @@ maven_install(
         "io.netty:netty-buffer:4.1.79.Final",
         "io.netty:netty5-common:5.0.0.Alpha4",
         "io.netty:netty5-buffer:5.0.0.Alpha4",
+        "io.lettuce:lettuce-core:6.2.0.RELEASE",
     ],
     fetch_sources = True,
     repositories = maven_repositories,
