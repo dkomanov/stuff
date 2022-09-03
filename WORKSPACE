@@ -114,6 +114,16 @@ maven_install(
 )
 
 maven_install(
+    name = "mysql_hashset_maven",
+    artifacts = [
+        "mysql:mysql-connector-java:8.0.30",
+        "com.zaxxer:HikariCP:5.0.1",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "mysql_streaming_maven",
     artifacts = [
         "org.drizzle.jdbc:drizzle-jdbc:1.4",
