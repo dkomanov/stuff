@@ -1,9 +1,9 @@
-package com.komanov.offheap
+package com.komanov.offheap.alloc
 
 import sun.misc.Unsafe
 
 object Allocator {
-  private val unsafe = {
+  val unsafe: Unsafe = {
     val field = classOf[Unsafe].getDeclaredField("theUnsafe")
     field.setAccessible(true)
     field.get(null).asInstanceOf[Unsafe]

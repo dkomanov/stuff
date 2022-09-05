@@ -8,6 +8,7 @@ scala_library(
         "//src/com/komanov/offheap:__subpackages__",
     ],
     deps = [
+        "//src/com/komanov/offheap/alloc",
         "@offheap_maven//:io_netty_netty5_buffer",
         "@offheap_maven//:io_netty_netty5_common",
         "@offheap_maven//:io_netty_netty_buffer",

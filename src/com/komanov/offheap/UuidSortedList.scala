@@ -1,5 +1,7 @@
 package com.komanov.offheap
 
+import com.komanov.offheap.alloc.Allocator
+
 import scala.jdk.CollectionConverters._
 import java.util.UUID
 
