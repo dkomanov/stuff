@@ -1,5 +1,7 @@
 package com.komanov.offheap;
 
+import com.komanov.offheap.alloc.Allocator;
+
 import java.util.AbstractSet;
 import java.util.Iterator;
 import java.util.UUID;
