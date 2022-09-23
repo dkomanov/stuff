@@ -193,6 +193,29 @@ rules_rust_dependencies()
 
 rust_register_toolchains(edition = "2021")
 
+# https://bazelbuild.github.io/rules_rust/crate_universe.html
 load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
 
 crate_universe_dependencies()
+
+# https://bazelbuild.github.io/rules_rust/crate_universe.html#direct-packages
+# https://github.com/bazelbuild/rules_rust/blob/main/examples/crate_universe/WORKSPACE.bazel
+load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository", "render_config")
+
+crates_repository(
+    name = "rs",
+    cargo_lockfile = "//:Cargo.Bazel.lock",
+    lockfile = "//:cargo-bazel-lock.json",
+    packages = {
+        "jni": crate.spec(
+            version = "0.19.0",
+        ),
+    },
+    render_config = render_config(
+        default_package_name = "",
+    ),
+)
+
+load("@rs//:defs.bzl", crate_index_repositories = "crate_repositories")
+
+crate_index_repositories()
