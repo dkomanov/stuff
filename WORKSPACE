@@ -149,6 +149,15 @@ maven_install(
 )
 
 maven_install(
+    name = "jwt",
+    artifacts = [
+        "commons-codec:commons-codec:1.15",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "scala_serialization_maven",
     artifacts = [
         "org.slf4j:slf4j-api:1.7.36",
