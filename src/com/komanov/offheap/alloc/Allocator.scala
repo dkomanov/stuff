@@ -13,6 +13,10 @@ object Allocator {
     unsafe.getLong(address)
   }
 
+  def getDouble(address: Long): Double = {
+    unsafe.getDouble(address);
+  }
+
   def setLong(address: Long, value: Long): Unit = {
     unsafe.putLong(address, value)
   }

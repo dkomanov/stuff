@@ -149,6 +149,18 @@ maven_install(
 )
 
 maven_install(
+    name = "nativeaccess",
+    artifacts = [
+        "com.github.jnr:jnr-ffi:2.2.12",
+        "org.bytedeco.javacpp-presets:systems-platform:1.4.4",
+        "net.java.dev.jna:jna-platform:5.12.1",
+        "com.nativelibs4java:bridj:0.7.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "jwt",
     artifacts = [
         "commons-codec:commons-codec:1.15",
@@ -216,6 +228,9 @@ crates_repository(
     cargo_lockfile = "//:Cargo.Bazel.lock",
     lockfile = "//:cargo-bazel-lock.json",
     packages = {
+        "libc": crate.spec(
+            version = "0.2.0",
+        ),
         "jni": crate.spec(
             version = "0.19.0",
         ),
