@@ -1,6 +1,6 @@
 package com.komanov.serialization.converters
 
-import java.nio.ByteBuffer
+import java.nio.{Buffer, ByteBuffer}
 import java.time.Instant
 import java.util.UUID
 
@@ -14,7 +14,11 @@ object ConversionUtils {
     val buffer = ByteBuffer.allocate(16)
     buffer.putLong(uuid.getMostSignificantBits)
     buffer.putLong(uuid.getLeastSignificantBits)
-    buffer.rewind()
+    // asInstanceOf is for JDK8 support: java.lang.NoSuchMethodError: java.nio.ByteBuffer.rewind()Ljava/nio/ByteBuffer;
+    // After JDK8 it was overridden to return ByteBuffer instead of Buffer.
+    // https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html#rewind()
+    // https://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html
+    buffer.asInstanceOf[Buffer].rewind()
     buffer
   }
 

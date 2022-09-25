@@ -1,18 +1,17 @@
 package com.komanov.serialization.jmh
 
-import java.util.concurrent.TimeUnit
-
-import com.komanov.serialization.converters._
 import com.komanov.serialization.converters.api.{EventConverter, SiteConverter}
 import com.komanov.serialization.domain.{EventProcessor, Site, SiteEvent}
 import org.openjdk.jmh.annotations._
+
+import java.util.concurrent.TimeUnit
 
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Fork(value = 1, jvmArgs = Array("-Xmx2G"))
 @Threads(2)
-@Measurement(iterations = 5, time = 5, timeUnit = TimeUnit.SECONDS)
-@Warmup(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 3, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 abstract class BenchmarkBase
 
 @State(Scope.Thread) // Kryo modifies bytes during parsing, see: https://github.com/EsotericSoftware/kryo#threading
