@@ -6,6 +6,7 @@ scala_specs2_junit(
         "--add-opens java.base/java.lang=ALL-UNNAMED",
         "--add-opens java.base/java.util=ALL-UNNAMED",
         "--add-opens java.base/java.lang.invoke=ALL-UNNAMED",
+        "-Dfile.encoding=UTF-8",
     ],
     runtime_deps = [
         "@scala_serialization_maven//:org_slf4j_slf4j_api",

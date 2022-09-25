@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Fork(value = 1, jvmArgs = Array("-Xmx2G"))
+@Fork(value = 1, jvmArgs = Array("-Xmx2G"), jvmArgsAppend = Array("-Dfile.encoding=UTF-8"))
 @Threads(2)
 @Measurement(iterations = 5, time = 3, timeUnit = TimeUnit.SECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)

@@ -15,6 +15,8 @@ public enum ConverterType {
     CHILL(ChillConverter$.MODULE$),
     JSONITER(JsoniterScalaConverter$.MODULE$),
     CIRCE(CirceConverter$.MODULE$),
+    UPICKLE_JSON(UpickleJsonConverter$.MODULE$),
+    UPICKLE_MSGPACK(UpickleMsgpackConverter$.MODULE$),
     /**/;
 
     public final MyConverter converter;

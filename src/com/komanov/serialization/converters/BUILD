@@ -9,6 +9,7 @@ all_converters = [
     ":jackson",
     ":jsoniter_scala",
     ":scala_pb",
+    ":upickle",
 ]
 
 scala_library(
@@ -109,6 +110,21 @@ scala_library(
         "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_cbor",
         "@scala_serialization_maven//:com_fasterxml_jackson_dataformat_jackson_dataformat_smile",
         "@scala_serialization_maven//:com_fasterxml_jackson_module_jackson_module_scala_2_13",
+    ],
+)
+
+scala_library(
+    name = "upickle",
+    srcs = ["UpickleConverter.scala"],
+    deps = [
+        ":conversion_utils",
+        "//src/com/komanov/serialization/converters/api",
+        "@scala_serialization_maven//:com_lihaoyi_geny_2_13",
+        "@scala_serialization_maven//:com_lihaoyi_ujson_2_13",
+        "@scala_serialization_maven//:com_lihaoyi_upack_2_13",
+        "@scala_serialization_maven//:com_lihaoyi_upickle_2_13",
+        "@scala_serialization_maven//:com_lihaoyi_upickle_core_2_13",
+        "@scala_serialization_maven//:com_lihaoyi_upickle_implicits_2_13",
     ],
 )
 
