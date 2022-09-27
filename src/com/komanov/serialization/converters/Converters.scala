@@ -17,7 +17,8 @@ object Converters {
     "Jsoniter" -> JsoniterScalaConverter,
     "Circe" -> CirceConverter,
     "uPickle" -> UpickleJsonConverter,
-    "uPickleMsgpack" -> UpickleMsgpackConverter,
+    "uPickle pooled" -> UpicklePooledJsonConverter,
+    "uPickle MsgPack" -> UpickleMsgpackConverter,
   )
 
 }
