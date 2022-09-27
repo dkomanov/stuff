@@ -1,5 +1,3 @@
-### Scala String Interpolation Performance [![Build Status](https://travis-ci.org/dkomanov/scala-string-format.svg?branch=master)](https://travis-ci.org/dkomanov/scala-string-format)
+Optimizations described in the blog post are adopted in [scala upstream](https://github.com/scala/scala/pull/6093). This code is just for history purposed.
 
-A source code for the article "Scala: String Interpolation Performance" at [medium](https://medium.com/@dkomanov/scala-string-interpolation-performance-21dc85e83afd).
-
-Recent charts for the article is at https://dkomanov.github.io/scala-string-format/.
+A source code for the article "Scala: String Interpolation Performance" at [medium]([https://medium.com/@dkomanov/scala-serialization-419d175c888a](https://medium.com/@dkomanov/scala-string-interpolation-performance-21dc85e83afd)). [Charts](https://komanov.com/charts/scala-string-format/).
