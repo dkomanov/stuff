@@ -26,7 +26,7 @@ object MacroConcat {
       case (e, index) =>
         val name = TermName("__local" + index)
         e.actualType match {
-          case tt if tt.typeSymbol.asClass.isPrimitive =>
+          case tt if tt.typeSymbol.isClass && tt.typeSymbol.asClass.isPrimitive =>
             val expr = q"val $name = $e.toString"
             (List(expr), List(name), Ident(name))
           case _ =>
@@ -34,7 +34,7 @@ object MacroConcat {
               q"""
                 val $name = {
                   val tmp = $e
-                  if (tmp eq null) "null" else tmp.toString
+                  if (tmp == null) "null" else tmp.toString
                }"""
             (List(expr), List(name), Ident(name))
         }
@@ -71,7 +71,7 @@ object MacroConcat {
       case (e, index) =>
         val name = TermName("__local" + index)
         e.actualType match {
-          case tt if tt.typeSymbol.asClass.isPrimitive =>
+          case tt if tt.typeSymbol.isClass && tt.typeSymbol.asClass.isPrimitive =>
             // A kind of optimization to not calculate primitive length in advance, let the StringBuilder
             // to deal with primitive toString (it's better than i.e. Int.toString static method).
             initialLength += 9
@@ -81,7 +81,7 @@ object MacroConcat {
               q"""
                 val $name = {
                   val tmp = $e
-                  if (tmp eq null) "null" else tmp
+                  if (tmp == null) "null" else tmp
                }"""
             (List(expr), List(name), Ident(name))
           case _ =>

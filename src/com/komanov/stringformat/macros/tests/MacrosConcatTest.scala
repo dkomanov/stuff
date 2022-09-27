@@ -25,7 +25,18 @@ class MacrosConcatTest extends SpecificationWithJUnit with Mockito {
 
     "support expressions" >> {
       sfi"${car.name}" must be_===(s"${car.name}")
+      sfi"${if (true) "1" else "0"}" must be_===(s"${if (true) "1" else "0"}")
     }
+
+    "support parametric types" >> {
+      testSfi(1) must be_===(testS(1))
+      testSfi('A') must be_===(testS('A'))
+      testSfi("A") must be_===(testS("A"))
+    }
+
+    def testSfi[A](a: A): String = sfi"$a"
+
+    def testS[A](a: A): String = s"$a"
 
     "don't call expression multiple times" >> {
       val m = mock[Something]
