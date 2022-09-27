@@ -17,5 +17,7 @@ scala_benchmark_jmh(
     srcs = glob(["*.scala"]),
     deps = [
         ":enums",
+        "//src/com/komanov/serialization/converters:scala_pb",
+        "//src/com/komanov/serialization/proto:protos_scala",
     ],
 )

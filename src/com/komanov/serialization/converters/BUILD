@@ -71,12 +71,14 @@ scala_library(
 scala_library(
     name = "scala_pb",
     srcs = ["ScalaPbConverter.scala"],
+    visibility = ["//src/com/komanov/serialization:__subpackages__"],
     deps = [
         ":conversion_utils",
         ":protobuf_conversion_utils",
         ":reflection_utils",
         "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_scala",
+        "@scala_proto_rules_scalapb_runtime",
     ],
 )
 

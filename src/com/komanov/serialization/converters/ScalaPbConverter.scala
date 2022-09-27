@@ -14,8 +14,30 @@ import scala.reflect.ClassTag
 /** https://github.com/trueaccord/ScalaPB */
 object ScalaPbConverter extends MyConverter {
 
-  override def toByteArray(site: Site): Array[Byte] = {
-    val proto = SitePb(
+  override def toByteArray(site: Site): Array[Byte] =
+    toProto(site).toByteArray
+
+  override def fromByteArray(bytes: Array[Byte]): Site =
+    siteFromProto(SitePb.parseFrom(bytes))
+
+  override def toByteArray(event: SiteEvent): Array[Byte] = {
+    val EventDescriptor(toMessage, _, _, _) = descriptorMap(event.getClass)
+
+    toMessage(event).toByteArray
+  }
+
+  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
+    val EventDescriptor(_, fromMessage, parse, _) = descriptorMap(clazz)
+    fromMessage(parse(bytes))
+  }
+
+  def toProto(ev: SiteEvent): SiteEventPb = {
+    val EventDescriptor(toMessage, _, _, toEventPb) = descriptorMap(ev.getClass)
+    toEventPb(toMessage(ev))
+  }
+
+  def toProto(site: Site): SitePb = {
+    SitePb(
       ProtobufConversionUtils.uuidToBytes(site.id),
       ProtobufConversionUtils.uuidToBytes(site.ownerId),
       site.revision,
@@ -33,11 +55,9 @@ object ScalaPbConverter extends MyConverter {
       ConversionUtils.instantToLong(site.dateCreated),
       ConversionUtils.instantToLong(site.dateUpdated)
     )
-    proto.toByteArray
   }
 
-  override def fromByteArray(bytes: Array[Byte]): Site = {
-    val site = SitePb.parseFrom(bytes)
+  def siteFromProto(site: SitePb): Site = {
     Site(
       ProtobufConversionUtils.bytesToUuid(site.id),
       ProtobufConversionUtils.bytesToUuid(site.ownerId),
@@ -67,20 +87,9 @@ object ScalaPbConverter extends MyConverter {
     )
   }
 
-  override def toByteArray(event: SiteEvent): Array[Byte] = {
-    val EventDescriptor(_, toMessage, _, _) = descriptorMap(event.getClass)
+  private def toMetaTagPb(mt: MetaTag): MetaTagPb = MetaTagPb(mt.name, mt.value)
 
-    toMessage(event).toByteArray
-  }
-
-  override def siteEventFromByteArray(clazz: Class[_], bytes: Array[Byte]): SiteEvent = {
-    val EventDescriptor(_, _, fromMessage, parse) = descriptorMap(clazz)
-    fromMessage(parse(bytes))
-  }
-
-  private def toMetaTagPb(mt: MetaTag) = MetaTagPb(mt.name, mt.value)
-
-  private def fromMetaTagPb(mt: MetaTagPb) = MetaTag(mt.name, mt.value)
+  private def fromMetaTagPb(mt: MetaTagPb): MetaTag = MetaTag(mt.name, mt.value)
 
   private def toComponentPb(pc: PageComponent) = PageComponentPb(
     ProtobufConversionUtils.uuidToBytes(pc.id),
@@ -175,141 +184,173 @@ object ScalaPbConverter extends MyConverter {
   type ToMessageF = SiteEvent => GeneratedMessage
   type FromMessageF = GeneratedMessage => SiteEvent
   type ParseF = Array[Byte] => GeneratedMessage
+  type ToEventPbF = GeneratedMessage => SiteEventPb
 
-  case class EventDescriptor(siteEventClass: Class[_],
-                             toMessage: ToMessageF,
+  case class EventDescriptor(toMessage: ToMessageF,
                              fromMessage: FromMessageF,
-                             parse: ParseF)
+                             parse: ParseF,
+                             toEventPb: ToEventPbF,
+                            )
 
-  private def createEventDescriptor[T: ClassTag, M <: GeneratedMessage with Message[M] : ClassTag](generator: T => M, extractor: M => T): EventDescriptor = {
+  private val empty = SiteEventPb()
+
+  private def createEventDescriptor[T: ClassTag, M <: GeneratedMessage with Message[M] : ClassTag](generator: T => M, extractor: M => T, toEventPb: M => SiteEventPb): (Class[_], EventDescriptor) = {
     val companion = ReflectionUtils.getCompanionObject(implicitly[ClassTag[M]].runtimeClass).asInstanceOf[GeneratedMessageCompanion[M]]
     val parseF = (ba: Array[Byte]) => companion.parseFrom(ba)
-    EventDescriptor(
-      implicitly[ClassTag[T]].runtimeClass,
+    implicitly[ClassTag[T]].runtimeClass -> EventDescriptor(
       generator.asInstanceOf[ToMessageF],
       extractor.asInstanceOf[FromMessageF],
-      parseF.asInstanceOf[ParseF]
+      parseF.asInstanceOf[ParseF],
+      toEventPb.asInstanceOf[ToEventPbF],
     )
   }
 
-  private val descriptorMap: Map[Class[_], EventDescriptor] = Seq[EventDescriptor](
+  private val descriptorMap: Map[Class[_], EventDescriptor] = Seq[(Class[_], EventDescriptor)](
     createEventDescriptor[SiteCreated, SiteCreatedPb](
       e => SiteCreatedPb(ProtobufConversionUtils.uuidToBytes(e.id), ProtobufConversionUtils.uuidToBytes(e.ownerId), toSiteTypePb(e.siteType)),
-      e => SiteCreated(ProtobufConversionUtils.bytesToUuid(e.id), ProtobufConversionUtils.bytesToUuid(e.ownerId), fromSiteTypePb(e.siteType))
+      e => SiteCreated(ProtobufConversionUtils.bytesToUuid(e.id), ProtobufConversionUtils.bytesToUuid(e.ownerId), fromSiteTypePb(e.siteType)),
+      empty.withSiteCreatedPb,
     ),
     createEventDescriptor[SiteNameSet, SiteNameSetPb](
       e => SiteNameSetPb(e.name),
-      e => SiteNameSet(e.name)
+      e => SiteNameSet(e.name),
+      empty.withSiteNameSetPb,
     ),
     createEventDescriptor[SiteDescriptionSet, SiteDescriptionSetPb](
       e => SiteDescriptionSetPb(e.description),
-      e => SiteDescriptionSet(e.description)
+      e => SiteDescriptionSet(e.description),
+      empty.withSiteDescriptionSetPb,
     ),
     createEventDescriptor[SiteRevisionSet, SiteRevisionSetPb](
       e => SiteRevisionSetPb(e.revision),
-      e => SiteRevisionSet(e.revision)
+      e => SiteRevisionSet(e.revision),
+      empty.withSiteRevisionSetPb,
     ),
     createEventDescriptor[SitePublished, SitePublishedPb](
       _ => SitePublishedPb(),
-      _ => SitePublished()
+      _ => SitePublished(),
+      empty.withSitePublishedPb,
     ),
     createEventDescriptor[SiteUnpublished, SiteUnpublishedPb](
       _ => SiteUnpublishedPb(),
-      _ => SiteUnpublished()
+      _ => SiteUnpublished(),
+      empty.withSiteUnpublishedPb,
     ),
     createEventDescriptor[SiteFlagAdded, SiteFlagAddedPb](
       e => SiteFlagAddedPb(toSiteFlagPb(e.siteFlag)),
-      e => SiteFlagAdded(fromSiteFlagPb(e.siteFlag))
+      e => SiteFlagAdded(fromSiteFlagPb(e.siteFlag)),
+      empty.withSiteFlagAddedPb,
     ),
     createEventDescriptor[SiteFlagRemoved, SiteFlagRemovedPb](
       e => SiteFlagRemovedPb(toSiteFlagPb(e.siteFlag)),
-      e => SiteFlagRemoved(fromSiteFlagPb(e.siteFlag))
+      e => SiteFlagRemoved(fromSiteFlagPb(e.siteFlag)),
+      empty.withSiteFlagRemovedPb,
     ),
     createEventDescriptor[DomainAdded, DomainAddedPb](
       e => DomainAddedPb(e.name),
-      e => DomainAdded(e.name)
+      e => DomainAdded(e.name),
+      empty.withDomainAddedPb,
     ),
     createEventDescriptor[DomainRemoved, DomainRemovedPb](
       e => DomainRemovedPb(e.name),
-      e => DomainRemoved(e.name)
+      e => DomainRemoved(e.name),
+      empty.withDomainRemovedPb,
     ),
     createEventDescriptor[PrimaryDomainSet, PrimaryDomainSetPb](
       e => PrimaryDomainSetPb(e.name),
-      e => PrimaryDomainSet(e.name)
+      e => PrimaryDomainSet(e.name),
+      empty.withPrimaryDomainSetPb,
     ),
     createEventDescriptor[DefaultMetaTagAdded, DefaultMetaTagAddedPb](
       e => DefaultMetaTagAddedPb(e.name, e.value),
-      e => DefaultMetaTagAdded(e.name, e.value)
+      e => DefaultMetaTagAdded(e.name, e.value),
+      empty.withDefaultMetaTagAddedPb,
     ),
     createEventDescriptor[DefaultMetaTagRemoved, DefaultMetaTagRemovedPb](
       e => DefaultMetaTagRemovedPb(e.name),
-      e => DefaultMetaTagRemoved(e.name)
+      e => DefaultMetaTagRemoved(e.name),
+      empty.withDefaultMetaTagRemovedPb,
     ),
     createEventDescriptor[PageAdded, PageAddedPb](
       e => PageAddedPb(e.path),
-      e => PageAdded(e.path)
+      e => PageAdded(e.path),
+      empty.withPageAddedPb,
     ),
     createEventDescriptor[PageRemoved, PageRemovedPb](
       e => PageRemovedPb(e.path),
-      e => PageRemoved(e.path)
+      e => PageRemoved(e.path),
+      empty.withPageRemovedPb,
     ),
     createEventDescriptor[PageNameSet, PageNameSetPb](
       e => PageNameSetPb(e.path, e.name),
-      e => PageNameSet(e.path, e.name)
+      e => PageNameSet(e.path, e.name),
+      empty.withPageNameSetPb,
     ),
     createEventDescriptor[PageMetaTagAdded, PageMetaTagAddedPb](
       e => PageMetaTagAddedPb(e.path, e.name, e.value),
-      e => PageMetaTagAdded(e.path, e.name, e.value)
+      e => PageMetaTagAdded(e.path, e.name, e.value),
+      empty.withPageMetaTagAddedPb,
     ),
     createEventDescriptor[PageMetaTagRemoved, PageMetaTagRemovedPb](
       e => PageMetaTagRemovedPb(e.path, e.name),
-      e => PageMetaTagRemoved(e.path, e.name)
+      e => PageMetaTagRemoved(e.path, e.name),
+      empty.withPageMetaTagRemovedPb,
     ),
     createEventDescriptor[PageComponentAdded, PageComponentAddedPb](
       e => PageComponentAddedPb(e.pagePath, ProtobufConversionUtils.uuidToBytes(e.id), toPageComponentTypePb(e.componentType)),
-      e => PageComponentAdded(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id), fromPageComponentTypePb(e.componentType))
+      e => PageComponentAdded(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id), fromPageComponentTypePb(e.componentType)),
+      empty.withPageComponentAddedPb,
     ),
     createEventDescriptor[PageComponentRemoved, PageComponentRemovedPb](
       e => PageComponentRemovedPb(e.pagePath, ProtobufConversionUtils.uuidToBytes(e.id)),
-      e => PageComponentRemoved(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id))
+      e => PageComponentRemoved(e.pagePath, ProtobufConversionUtils.bytesToUuid(e.id)),
+      empty.withPageComponentRemovedPb,
     ),
     createEventDescriptor[PageComponentPositionSet, PageComponentPositionSetPb](
       e => PageComponentPositionSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.position.x, e.position.y),
-      e => PageComponentPositionSet(ProtobufConversionUtils.bytesToUuid(e.id), PageComponentPosition(e.x, e.y))
+      e => PageComponentPositionSet(ProtobufConversionUtils.bytesToUuid(e.id), PageComponentPosition(e.x, e.y)),
+      empty.withPageComponentPositionSetPb,
     ),
     createEventDescriptor[PageComponentPositionReset, PageComponentPositionResetPb](
       e => PageComponentPositionResetPb(ProtobufConversionUtils.uuidToBytes(e.id)),
-      e => PageComponentPositionReset(ProtobufConversionUtils.bytesToUuid(e.id))
+      e => PageComponentPositionReset(ProtobufConversionUtils.bytesToUuid(e.id)),
+      empty.withPageComponentPositionResetPb,
     ),
     createEventDescriptor[TextComponentDataSet, TextComponentDataSetPb](
       e => TextComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.text),
-      e => TextComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.text)
+      e => TextComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.text),
+      empty.withTextComponentDataSetPb,
     ),
     createEventDescriptor[ButtonComponentDataSet, ButtonComponentDataSetPb](
       e => ButtonComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.name, e.text, ProtobufConversionUtils.uuidToBytes(e.action)),
-      e => ButtonComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.text, ProtobufConversionUtils.bytesToUuid(e.action))
+      e => ButtonComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.text, ProtobufConversionUtils.bytesToUuid(e.action)),
+      empty.withButtonComponentDataSetPb,
     ),
     createEventDescriptor[BlogComponentDataSet, BlogComponentDataSetPb](
       e => BlogComponentDataSetPb(ProtobufConversionUtils.uuidToBytes(e.id), e.name, e.rss, e.tags),
-      e => BlogComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.rss, e.tags)
+      e => BlogComponentDataSet(ProtobufConversionUtils.bytesToUuid(e.id), e.name, e.rss, e.tags),
+      empty.withBlogComponentDataSetPb,
     ),
     createEventDescriptor[DomainEntryPointAdded, DomainEntryPointAddedPb](
       e => DomainEntryPointAddedPb(e.domain),
-      e => DomainEntryPointAdded(e.domain)
+      e => DomainEntryPointAdded(e.domain),
+      empty.withDomainEntryPointAddedPb,
     ),
     createEventDescriptor[FreeEntryPointAdded, FreeEntryPointAddedPb](
       e => FreeEntryPointAddedPb(e.userName, e.siteName),
-      e => FreeEntryPointAdded(e.userName, e.siteName)
+      e => FreeEntryPointAdded(e.userName, e.siteName),
+      empty.withFreeEntryPointAddedPb,
     ),
     createEventDescriptor[EntryPointRemoved, EntryPointRemovedPb](
       e => EntryPointRemovedPb(e.lookupKey),
-      e => EntryPointRemoved(e.lookupKey)
+      e => EntryPointRemoved(e.lookupKey),
+      empty.withEntryPointRemovedPb,
     ),
     createEventDescriptor[PrimaryEntryPointSet, PrimaryEntryPointSetPb](
       e => PrimaryEntryPointSetPb(e.lookupKey),
-      e => PrimaryEntryPointSet(e.lookupKey)
+      e => PrimaryEntryPointSet(e.lookupKey),
+      empty.withPrimaryEntryPointSetPb,
     )
   )
-    .map(d => d.siteEventClass -> d)
     .toMap
 }
