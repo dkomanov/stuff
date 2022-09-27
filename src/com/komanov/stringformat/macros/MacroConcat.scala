@@ -133,7 +133,7 @@ object MacroConcat {
     }
 
     rawParts.map {
-      case Literal(Constant(rawPart: String)) => StringContext.treatEscapes(rawPart)
+      case Literal(Constant(rawPart: String)) => StringContext.processEscapes(rawPart)
     }
   }
 
