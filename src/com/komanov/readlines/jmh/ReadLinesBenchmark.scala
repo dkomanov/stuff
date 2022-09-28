@@ -1,16 +1,14 @@
 package com.komanov.readlines.jmh
 
-import java.nio.charset.StandardCharsets
-import java.nio.file.{Files, Path, Paths}
-import java.util.concurrent.TimeUnit
-import java.util.function.Consumer
-
 import com.komanov.readlines.{ReadLinesJavaStreams, ReadLinesUtils}
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
 
-import scala.collection.JavaConverters._
-import scala.util.Random
+import java.nio.charset.StandardCharsets
+import java.nio.file.{Files, Path, Paths}
+import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
+import scala.jdk.CollectionConverters._
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
