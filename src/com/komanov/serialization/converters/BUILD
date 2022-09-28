@@ -1,6 +1,7 @@
 all_converters = [
     "//src/com/komanov/serialization/converters/api",
     ":boopickle",
+    ":capnproto",
     ":chill",
     ":circe",
     ":java_pb",
@@ -127,6 +128,16 @@ scala_library(
         "@scala_serialization_maven//:com_lihaoyi_upickle_2_13",
         "@scala_serialization_maven//:com_lihaoyi_upickle_core_2_13",
         "@scala_serialization_maven//:com_lihaoyi_upickle_implicits_2_13",
+    ],
+)
+
+scala_library(
+    name = "capnproto",
+    srcs = ["CapnprotoConverter.scala"],
+    deps = [
+        "//src/com/komanov/serialization/converters/api",
+        "//src/com/komanov/serialization/domain/capnproto",
+        "@scala_serialization_maven//:org_capnproto_runtime",
     ],
 )
 

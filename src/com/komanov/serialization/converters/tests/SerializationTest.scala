@@ -69,7 +69,7 @@ class SerializationTest extends SpecificationWithJUnit {
         s"serialize-parse site of $name" in new ctx {
           val bytes = converter.toByteArray(site)
           val parsed = converter.fromByteArray(bytes)
-          parsed must be_===(site)
+          parsed mustEqual site
         }
 
         s"work normally with multi-threading for serialization site of $name" in new ctx {

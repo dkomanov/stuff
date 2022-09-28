@@ -19,6 +19,8 @@ object Converters {
     "uPickle" -> UpickleJsonConverter,
     "uPickle pooled" -> UpicklePooledJsonConverter,
     "uPickle MsgPack" -> UpickleMsgpackConverter,
+    "Cap'n Proto" -> CapnprotoConverter,
+    "Cap'n Proto pooled" -> CapnprotoPooledConverter,
   )
 
 }

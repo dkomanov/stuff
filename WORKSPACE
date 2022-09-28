@@ -187,6 +187,7 @@ maven_install(
         "io.circe:circe-parser_%s:0.15.0-M1" % scala_version,
         "javax.annotation:javax.annotation-api:1.3.2",
         "org.apache.thrift:libthrift:0.16.0",
+        "org.capnproto:runtime:0.1.14",
         "org.slf4j:slf4j-api:1.7.36",
         "org.slf4j:slf4j-nop:1.7.36",
     ],

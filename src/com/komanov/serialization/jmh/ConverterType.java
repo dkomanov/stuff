@@ -18,6 +18,8 @@ public enum ConverterType {
     UPICKLE_JSON(UpickleJsonConverter$.MODULE$),
     UPICKLE_POOLED_JSON(UpicklePooledJsonConverter$.MODULE$),
     UPICKLE_MSGPACK(UpickleMsgpackConverter$.MODULE$),
+    CAP_N_PROTO(CapnprotoConverter$.MODULE$),
+    CAP_N_PROTO_POOLED(CapnprotoPooledConverter$.MODULE$),
     /**/;
 
     public final MyConverter converter;
