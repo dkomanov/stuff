@@ -1,14 +1,13 @@
 package com.komanov.readlines
 
-import java.nio.charset.StandardCharsets
-import java.nio.file.{Files, Path}
-import java.util.function.Consumer
-
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.core.Fragments
 import org.specs2.specification.{After, Scope}
 
-import scala.collection.JavaConverters._
+import java.nio.charset.StandardCharsets
+import java.nio.file.{Files, Path}
+import java.util.function.Consumer
+import scala.jdk.CollectionConverters._
 
 class ReadLinesUtilsTest extends SpecificationWithJUnit {
 
