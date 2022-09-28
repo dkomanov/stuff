@@ -8,9 +8,11 @@ import scala.jdk.CollectionConverters._
 
 package object bin {
   val skip = new util.IdentityHashMap[MyConverter, Boolean](Seq(
-    ScalaPbConverter,
-    JsoniterScalaConverter,
-    UpicklePooledJsonConverter,
     CapnprotoPooledConverter,
+    CirceConverter,
+    JsoniterScalaConverter,
+    ScalaPbConverter,
+    UpickleJsonConverter,
+    UpicklePooledJsonConverter,
   ).map(_ -> true).toMap.asJava)
 }
