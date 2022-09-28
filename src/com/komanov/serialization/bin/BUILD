@@ -1,3 +1,11 @@
+scala_library(
+    name = "common",
+    srcs = ["package.scala"],
+    deps = [
+        "//src/com/komanov/serialization/converters",
+    ],
+)
+
 scala_binary(
     name = "report-generator",
     srcs = ["ReportGenerator.scala"],
@@ -9,6 +17,7 @@ scala_binary(
     ],
     main_class = "com.komanov.serialization.bin.ReportGenerator",
     deps = [
+        ":common",
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
         "//src/com/komanov/serialization/io",
@@ -26,6 +35,7 @@ scala_binary(
     ],
     main_class = "com.komanov.serialization.bin.EventsReportGenerator",
     deps = [
+        ":common",
         "//src/com/komanov/serialization/converters",
         "//src/com/komanov/serialization/domain/testdata",
         "//src/com/komanov/serialization/io",

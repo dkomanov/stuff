@@ -1,12 +1,12 @@
 package com.komanov.serialization.bin
 
+import com.komanov.serialization.converters._
+import com.komanov.serialization.domain.testdata.TestData
+import com.komanov.serialization.io.IoUtils._
+
 import java.io.{ByteArrayOutputStream, File}
 import java.nio.file.{Files, StandardOpenOption}
 import java.util.zip.GZIPOutputStream
-
-import com.komanov.serialization.converters.{Converters, ScalaPbConverter}
-import com.komanov.serialization.io.IoUtils._
-import com.komanov.serialization.domain.testdata.TestData
 
 /*
 Data Sizes (raw)
@@ -15,34 +15,28 @@ JSON,1060,2076,4043,8173,65835
 CBOR,877,1737,3246,6120,49689
 Smile,843,1563,2604,4342,34259
 Java PB,554,1175,1930,3058,27111
-Java Thrift,561,1175,1937,3076,26807
+Java Thrift,561,1175,1937,3077,26813
 Serializable,2592,3717,4989,7191,42607
 BooPickle,555,1165,1917,3047,25769
-Chill,819,1606,2414,3518,26089
-Jsoniter,1017,2046,3981,7743,64493
+Chill,819,1606,2414,3519,26089
 Circe,1086,2105,4135,8473,67907
 uPickle,1126,2246,4523,9165,72435
-uPickle pooled,1126,2246,4523,9165,72435
 uPickle MsgPack,988,1979,3917,7799,60323
-Cap'n Proto,638,1316,2218,3733,33621
-Cap'n Proto pooled,638,1316,2218,3733,33621
+Cap'n Proto,638,1316,2218,3734,33624
 Data Sizes (gzip)
 Converter,1k,2k,4k,8k,64k
-JSON,681,1136,1637,2676,11706
-CBOR,638,1079,1531,2412,9940
-Smile,655,1104,1562,2419,9773
-Java PB,489,898,1338,2181,9381
-Java Thrift,483,887,1301,2147,9358
-Serializable,1299,1859,2336,3167,10353
-BooPickle,467,856,1268,2087,9155
-Chill,560,984,1414,2215,9066
-Jsoniter,658,1124,1625,2651,11639
-Circe,680,1143,1644,2822,12666
-uPickle,703,1160,1666,2709,11783
-uPickle pooled,703,1160,1666,2709,11783
-uPickle MsgPack,696,1169,1689,2753,12008
-Cap'n Proto,559,1007,1544,2471,10281
-Cap'n Proto pooled,559,1007,1544,2471,10281
+JSON,679,1137,1633,2668,11671
+CBOR,636,1074,1525,2408,9918
+Smile,656,1099,1557,2427,9749
+Java PB,488,894,1336,2181,9381
+Java Thrift,485,883,1299,2144,9364
+Serializable,1301,1859,2338,3164,10338
+BooPickle,467,852,1266,2082,9159
+Chill,562,986,1416,2221,9065
+Circe,681,1142,1637,2802,12625
+uPickle,701,1160,1659,2700,11752
+uPickle MsgPack,698,1170,1684,2764,11988
+Cap'n Proto,556,1004,1541,2463,10276
  */
 object ReportGenerator extends App {
 
@@ -53,7 +47,7 @@ object ReportGenerator extends App {
 
   val (raws, gzips) = (Seq.newBuilder[(String, Seq[Int])], Seq.newBuilder[(String, Seq[Int])])
 
-  for ((converterName, converter) <- Converters.all if converter ne ScalaPbConverter) {
+  for ((converterName, converter) <- Converters.all if !skip.containsKey(converter)) {
     val results = Seq.newBuilder[(Int, Int)]
     for ((name, site) <- TestData.sites) {
       val bytes = converter.toByteArray(site)
