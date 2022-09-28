@@ -1,6 +1,6 @@
 use jni::JNIEnv;
 use jni::objects::JClass;
-use jni::sys::{jint, jlong};
+use jni::sys::jint;
 use libc::getloadavg;
 
 #[no_mangle]
