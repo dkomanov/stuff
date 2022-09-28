@@ -46,7 +46,7 @@ Cap'n Proto pooled,559,1007,1544,2471,10281
  */
 object ReportGenerator extends App {
 
-  val flush = true
+  val flush = false
 
   val dir = new File(System.getProperty("user.home"), "123")
   require(!flush || dir.exists() || dir.mkdirs())
