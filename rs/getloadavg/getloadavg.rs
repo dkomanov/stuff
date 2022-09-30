@@ -13,3 +13,11 @@ pub extern "system" fn Java_com_komanov_nativeaccess_JniHelper_getloadavg(_env: 
         return getloadavg(input, num);
     }
 }
+
+#[no_mangle]
+pub extern "system" fn Java_com_komanov_nativeaccess_JniHelper_foo(_env: JNIEnv,
+                                                                   _class: JClass,
+                                                                   num: jint)
+                                                                   -> jint {
+    return num;
+}

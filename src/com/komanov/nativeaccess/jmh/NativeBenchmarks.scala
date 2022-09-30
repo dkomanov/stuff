@@ -9,13 +9,14 @@ import java.util.concurrent.TimeUnit
 Results for openjdk-17:
 <code>
 Benchmark                    Mode  Cnt     Score      Error  Units
-NativeBenchmarks.bridj       avgt    5  2540.730 ± 1705.722  ns/op
-NativeBenchmarks.javaCpp     avgt    5   769.480 ±   20.045  ns/op
-NativeBenchmarks.javaMxBean  avgt    5  1893.771 ±   34.289  ns/op
-NativeBenchmarks.jna         avgt    5  2601.693 ±   38.039  ns/op
-NativeBenchmarks.jnaDirect   avgt    5  1026.631 ±   56.638  ns/op
-NativeBenchmarks.jni         avgt    5   798.595 ±   36.098  ns/op
-NativeBenchmarks.jnr         avgt    5   815.336 ±    1.678  ns/op
+NativeBenchmarks.bridj       avgt    5  2426.297 ± 1066.761  ns/op
+NativeBenchmarks.javaCpp     avgt    5   741.889 ±   19.378  ns/op
+NativeBenchmarks.javaMxBean  avgt    5  1833.716 ±   40.433  ns/op
+NativeBenchmarks.jna         avgt    5  2611.944 ±  241.992  ns/op
+NativeBenchmarks.jnaDirect   avgt    5   994.327 ±   51.901  ns/op
+NativeBenchmarks.jni         avgt    5   763.334 ±   26.880  ns/op
+NativeBenchmarks.jniEmpty    avgt    5    22.771 ±    1.305  ns/op
+NativeBenchmarks.jnr         avgt    5   777.021 ±   23.250  ns/op
 </code>
  */
 @State(Scope.Benchmark)
@@ -43,6 +44,9 @@ class NativeBenchmarks {
 
   @Benchmark
   def jni: Double = JniHelper.getLoadAverage
+
+  @Benchmark
+  def jniEmpty: Int = JniHelper.emptyJniCall(1)
 
   @Benchmark
   def jnr: Double = JnrHelper.getLoadAverage

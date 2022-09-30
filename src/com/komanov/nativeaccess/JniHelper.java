@@ -14,6 +14,8 @@ public abstract class JniHelper {
 
     private static native int getloadavg(long address, int num);
 
+    private static native int foo(int num);
+
     public static double getLoadAverage() {
         long address = Allocator.alloc(24);
         try {
@@ -22,5 +24,9 @@ public abstract class JniHelper {
         } finally {
             Allocator.release(address);
         }
+    }
+
+    public static int emptyJniCall(int num) {
+        return foo(num);
     }
 }
