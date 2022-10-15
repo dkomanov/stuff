@@ -1,6 +1,6 @@
 use base64;
 use jni::JNIEnv;
-use jni::objects::{JClass, JObject, ReleaseMode};
+use jni::objects::{JClass, ReleaseMode};
 use jni::sys::jbyteArray;
 use std;
 
