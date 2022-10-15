@@ -227,14 +227,20 @@ load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository", "rend
 
 crates_repository(
     name = "rs",
+    annotations = {
+        "base64": [crate.annotation(rustc_flags = ["-O"])],
+    },
     cargo_lockfile = "//:Cargo.Bazel.lock",
     lockfile = "//:cargo-bazel-lock.json",
     packages = {
-        "libc": crate.spec(
-            version = "0.2.0",
+        "base64": crate.spec(
+            version = "0.13.0",
         ),
         "jni": crate.spec(
             version = "0.19.0",
+        ),
+        "libc": crate.spec(
+            version = "0.2.0",
         ),
     },
     render_config = render_config(

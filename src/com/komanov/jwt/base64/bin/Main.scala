@@ -1,9 +1,6 @@
 package com.komanov.jwt.base64.bin
 
-import com.komanov.jwt.base64.Base64Helper
-
-import java.nio.charset.StandardCharsets
-import scala.util.Random
+import com.komanov.jwt.base64.PayloadGenerator
 
 object Main extends App {
   printOfLength(1)
@@ -15,15 +12,8 @@ object Main extends App {
   printOfLength(10000)
 
 
-  def printOfLength(initialLength: Int): Unit = {
-    var s = "="
-    var len = initialLength
-    while (s.endsWith("=")) {
-      val payload = Random.alphanumeric.take(len).mkString
-      val encoded = Base64Helper.Jdk.encode(payload.getBytes(StandardCharsets.US_ASCII))
-      s = new String(encoded, StandardCharsets.US_ASCII)
-      len += 1
-    }
-    println(s"$initialLength -> \"$s\", // ${len - 1}")
+  def printOfLength(len: Int): Unit = {
+    val s = PayloadGenerator(len)
+    println(s"$len -> \"$s\",")
   }
 }

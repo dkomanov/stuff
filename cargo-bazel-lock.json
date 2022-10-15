@@ -1,6 +1,46 @@
 {
-  "checksum": "c7d839928f663b3a9e56c40cfc502e1aa12aefa52b4d57a4f088e8e552ab70d7",
+  "checksum": "91c9939331c4a32f96c8e706e83fb6076cdd32fb579566783d78f2aec0ff129f",
   "crates": {
+    "base64 0.13.0": {
+      "name": "base64",
+      "version": "0.13.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/base64/0.13.0/download",
+          "sha256": "904dfeac50f3cdaba28fc6f57fdcddb75f49ed61346676a78c4ffe55877802fd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "base64",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "base64",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2018",
+        "rustc_flags": [
+          "-O"
+        ],
+        "version": "0.13.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
     "bytes 1.2.1": {
       "name": "bytes",
       "version": "1.2.1",
@@ -182,11 +222,15 @@
         "deps": {
           "common": [
             {
+              "id": "base64 0.13.0",
+              "target": "base64"
+            },
+            {
               "id": "jni 0.19.0",
               "target": "jni"
             },
             {
-              "id": "libc 0.2.133",
+              "id": "libc 0.2.134",
               "target": "libc"
             }
           ],
@@ -263,7 +307,7 @@
               "target": "log"
             },
             {
-              "id": "thiserror 1.0.35",
+              "id": "thiserror 1.0.37",
               "target": "thiserror"
             }
           ],
@@ -325,13 +369,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.133": {
+    "libc 0.2.134": {
       "name": "libc",
-      "version": "0.2.133",
+      "version": "0.2.134",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.133/download",
-          "sha256": "c0f80d65747a3e43d1596c7c5492d95d5edddaabd45a7fcdb02b95f644164966"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.134/download",
+          "sha256": "329c933548736bc49fd575ee68c89e8be4d260064184389a5b77517cddd99ffb"
         }
       },
       "targets": [
@@ -372,14 +416,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.133",
+              "id": "libc 0.2.134",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.133"
+        "version": "0.2.134"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -513,13 +557,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "proc-macro2 1.0.43": {
+    "proc-macro2 1.0.46": {
       "name": "proc-macro2",
-      "version": "1.0.43",
+      "version": "1.0.46",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.43/download",
-          "sha256": "0a2ca2c61bc9f3d74d2886294ab7b9853abd9c1ad903a3ac7815c58989bb7bab"
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.46/download",
+          "sha256": "94e2ef8dbfc347b10c094890f778ee2e36ca9bb4262e86dc99cd217e35f3470b"
         }
       },
       "targets": [
@@ -560,18 +604,18 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.43",
+              "id": "proc-macro2 1.0.46",
               "target": "build_script_build"
             },
             {
-              "id": "unicode-ident 1.0.4",
+              "id": "unicode-ident 1.0.5",
               "target": "unicode_ident"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.43"
+        "version": "1.0.46"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -627,7 +671,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.43",
+              "id": "proc-macro2 1.0.46",
               "target": "proc_macro2"
             },
             {
@@ -691,13 +735,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "syn 1.0.100": {
+    "syn 1.0.102": {
       "name": "syn",
-      "version": "1.0.100",
+      "version": "1.0.102",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.100/download",
-          "sha256": "52205623b1b0f064a4e71182c3b18ae902267282930c6d5462c91b859668426e"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.102/download",
+          "sha256": "3fcd952facd492f9be3ef0d0b7032a6e442ee9b361d4acc2b1d0c4aaa5f613a1"
         }
       },
       "targets": [
@@ -743,7 +787,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.43",
+              "id": "proc-macro2 1.0.46",
               "target": "proc_macro2"
             },
             {
@@ -751,18 +795,18 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.100",
+              "id": "syn 1.0.102",
               "target": "build_script_build"
             },
             {
-              "id": "unicode-ident 1.0.4",
+              "id": "unicode-ident 1.0.5",
               "target": "unicode_ident"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.100"
+        "version": "1.0.102"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -771,13 +815,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "thiserror 1.0.35": {
+    "thiserror 1.0.37": {
       "name": "thiserror",
-      "version": "1.0.35",
+      "version": "1.0.37",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/thiserror/1.0.35/download",
-          "sha256": "c53f98874615aea268107765aa1ed8f6116782501d18e53d08b471733bea6c85"
+          "url": "https://crates.io/api/v1/crates/thiserror/1.0.37/download",
+          "sha256": "10deb33631e3c9018b9baf9dcbbc4f737320d2b576bac10f6aefa048fa407e3e"
         }
       },
       "targets": [
@@ -814,7 +858,7 @@
         "deps": {
           "common": [
             {
-              "id": "thiserror 1.0.35",
+              "id": "thiserror 1.0.37",
               "target": "build_script_build"
             }
           ],
@@ -824,13 +868,13 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "thiserror-impl 1.0.35",
+              "id": "thiserror-impl 1.0.37",
               "target": "thiserror_impl"
             }
           ],
           "selects": {}
         },
-        "version": "1.0.35"
+        "version": "1.0.37"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -839,13 +883,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "thiserror-impl 1.0.35": {
+    "thiserror-impl 1.0.37": {
       "name": "thiserror-impl",
-      "version": "1.0.35",
+      "version": "1.0.37",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/thiserror-impl/1.0.35/download",
-          "sha256": "f8b463991b4eab2d801e724172285ec4195c650e8ec79b149e6c2a8e6dd3f783"
+          "url": "https://crates.io/api/v1/crates/thiserror-impl/1.0.37/download",
+          "sha256": "982d17546b47146b28f7c22e3d08465f6b8903d0ea13c1660d9d84a6e7adcdbb"
         }
       },
       "targets": [
@@ -870,7 +914,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.43",
+              "id": "proc-macro2 1.0.46",
               "target": "proc_macro2"
             },
             {
@@ -878,24 +922,24 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.100",
+              "id": "syn 1.0.102",
               "target": "syn"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.35"
+        "version": "1.0.37"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "unicode-ident 1.0.4": {
+    "unicode-ident 1.0.5": {
       "name": "unicode-ident",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/unicode-ident/1.0.4/download",
-          "sha256": "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
+          "url": "https://crates.io/api/v1/crates/unicode-ident/1.0.5/download",
+          "sha256": "6ceab39d59e4c9499d4e5a8ee0e2735b891bb7308ac83dfb4e80cad195c9f6f3"
         }
       },
       "targets": [
@@ -918,7 +962,7 @@
           "**"
         ],
         "edition": "2018",
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
     },

@@ -1,15 +1,13 @@
 package com.komanov.jwt.base64.tests
 
-import com.komanov.jwt.base64.Base64Helper.Jdk
-import com.komanov.jwt.base64.Base64Helper.Commons
+import com.komanov.jwt.base64.Base64Helper.{Commons, Jdk}
 import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.core.Fragments
 
 import java.nio.charset.StandardCharsets
-import scala.util.Random
 
 class Base64HelperTest extends SpecificationWithJUnit {
-  Fragments.foreach(Seq(
+  Fragments.foreach[(String, String)](Seq(
     "" -> "",
     "a" -> "YQ==",
     "abcd" -> "YWJjZA==",
@@ -30,7 +28,7 @@ class Base64HelperTest extends SpecificationWithJUnit {
     }
   }
 
-  Fragments.foreach(Seq(
+  Fragments.foreach[(String, String)](Seq(
     "" -> "",
     "a" -> "YQ",
     "abcd" -> "YWJjZA",
