@@ -22,7 +22,7 @@ NativeBenchmarks.jnr         avgt    5   777.021 ±   23.250  ns/op
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Fork(value = 1, jvmArgs = Array("-Xmx2G"))
+@Fork(value = 1, jvmArgs = Array("-Xmx2G", "-Djava.library.path=bazel-bin/rs/getloadavg:rs/getloadavg"))
 @Threads(2)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
