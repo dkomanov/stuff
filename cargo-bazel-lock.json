@@ -1,5 +1,5 @@
 {
-  "checksum": "91c9939331c4a32f96c8e706e83fb6076cdd32fb579566783d78f2aec0ff129f",
+  "checksum": "90643a5d4b0f1a68208666f8333282619641e6dbfcca9b0b4c25d5b0cc8d3905",
   "crates": {
     "base64 0.13.0": {
       "name": "base64",
@@ -35,11 +35,66 @@
         ],
         "edition": "2018",
         "rustc_flags": [
-          "-O"
+          "--codegen=opt-level=3"
         ],
         "version": "0.13.0"
       },
       "license": "MIT/Apache-2.0"
+    },
+    "base64-simd 0.8.0-dev": {
+      "name": "base64-simd",
+      "version": "0.8.0-dev",
+      "repository": {
+        "Git": {
+          "remote": "https://github.com/Nugine/simd",
+          "commitish": {
+            "Rev": "4d6b948a921083e420b3465933b20dee9356cb78"
+          },
+          "strip_prefix": "crates/base64-simd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "base64_simd",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "base64_simd",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "alloc",
+          "default",
+          "detect",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "outref 0.3.0",
+              "target": "outref"
+            },
+            {
+              "id": "vsimd 0.1.0-dev",
+              "target": "vsimd"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2021",
+        "version": "0.8.0-dev"
+      },
+      "license": "MIT"
     },
     "bytes 1.2.1": {
       "name": "bytes",
@@ -74,6 +129,9 @@
           "std"
         ],
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.2.1"
       },
       "license": "MIT"
@@ -107,6 +165,9 @@
           "**"
         ],
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.1.0"
       },
       "license": "Apache-2.0/MIT"
@@ -140,6 +201,9 @@
           "**"
         ],
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.0"
       },
       "license": "MIT/Apache-2.0"
@@ -192,6 +256,9 @@
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "4.6.6"
       },
       "license": "MIT"
@@ -226,17 +293,24 @@
               "target": "base64"
             },
             {
+              "id": "base64-simd 0.8.0-dev",
+              "target": "base64_simd"
+            },
+            {
               "id": "jni 0.19.0",
               "target": "jni"
             },
             {
-              "id": "libc 0.2.134",
+              "id": "libc 0.2.135",
               "target": "libc"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.0.1"
       },
       "license": null
@@ -314,6 +388,9 @@
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.19.0"
       },
       "build_script_attrs": {
@@ -365,17 +442,20 @@
           "**"
         ],
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.3.0"
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.134": {
+    "libc 0.2.135": {
       "name": "libc",
-      "version": "0.2.134",
+      "version": "0.2.135",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.134/download",
-          "sha256": "329c933548736bc49fd575ee68c89e8be4d260064184389a5b77517cddd99ffb"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.135/download",
+          "sha256": "68783febc7782c6c5cb401fbda4de5a9898be1762314da0bb2c10ced61f18b0c"
         }
       },
       "targets": [
@@ -416,14 +496,17 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.134",
+              "id": "libc 0.2.135",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.134"
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
+        "version": "0.2.135"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -486,6 +569,9 @@
           "selects": {}
         },
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.4.17"
       },
       "build_script_attrs": {
@@ -548,6 +634,9 @@
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "2.5.0"
       },
       "build_script_attrs": {
@@ -557,13 +646,49 @@
       },
       "license": "Unlicense/MIT"
     },
-    "proc-macro2 1.0.46": {
-      "name": "proc-macro2",
-      "version": "1.0.46",
+    "outref 0.3.0": {
+      "name": "outref",
+      "version": "0.3.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.46/download",
-          "sha256": "94e2ef8dbfc347b10c094890f778ee2e36ca9bb4262e86dc99cd217e35f3470b"
+          "url": "https://crates.io/api/v1/crates/outref/0.3.0/download",
+          "sha256": "61ad0f4c35dc77cbf74bc263d6354cb13a9c02dae3e057fdc7d56d2ddda76a93"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "outref",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "outref",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2021",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
+        "version": "0.3.0"
+      },
+      "license": "MIT"
+    },
+    "proc-macro2 1.0.47": {
+      "name": "proc-macro2",
+      "version": "1.0.47",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.47/download",
+          "sha256": "5ea3d908b0e36316caf9e9e2c4625cdde190a7e6f440d794667ed17a1855e725"
         }
       },
       "targets": [
@@ -604,7 +729,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.46",
+              "id": "proc-macro2 1.0.47",
               "target": "build_script_build"
             },
             {
@@ -615,7 +740,10 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.46"
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
+        "version": "1.0.47"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -671,7 +799,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.46",
+              "id": "proc-macro2 1.0.47",
               "target": "proc_macro2"
             },
             {
@@ -682,6 +810,9 @@
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.21"
       },
       "build_script_attrs": {
@@ -731,17 +862,20 @@
           }
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.6"
       },
       "license": "Unlicense/MIT"
     },
-    "syn 1.0.102": {
+    "syn 1.0.103": {
       "name": "syn",
-      "version": "1.0.102",
+      "version": "1.0.103",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.102/download",
-          "sha256": "3fcd952facd492f9be3ef0d0b7032a6e442ee9b361d4acc2b1d0c4aaa5f613a1"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.103/download",
+          "sha256": "a864042229133ada95abf3b54fdc62ef5ccabe9515b64717bcb9a1919e59445d"
         }
       },
       "targets": [
@@ -787,7 +921,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.46",
+              "id": "proc-macro2 1.0.47",
               "target": "proc_macro2"
             },
             {
@@ -795,7 +929,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.102",
+              "id": "syn 1.0.103",
               "target": "build_script_build"
             },
             {
@@ -806,7 +940,10 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.102"
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
+        "version": "1.0.103"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -874,6 +1011,9 @@
           ],
           "selects": {}
         },
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.37"
       },
       "build_script_attrs": {
@@ -914,7 +1054,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.46",
+              "id": "proc-macro2 1.0.47",
               "target": "proc_macro2"
             },
             {
@@ -922,13 +1062,16 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.102",
+              "id": "syn 1.0.103",
               "target": "syn"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.37"
       },
       "license": "MIT OR Apache-2.0"
@@ -962,9 +1105,53 @@
           "**"
         ],
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "1.0.5"
       },
       "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+    },
+    "vsimd 0.1.0-dev": {
+      "name": "vsimd",
+      "version": "0.1.0-dev",
+      "repository": {
+        "Git": {
+          "remote": "https://github.com/Nugine/simd",
+          "commitish": {
+            "Rev": "4d6b948a921083e420b3465933b20dee9356cb78"
+          },
+          "strip_prefix": "crates/vsimd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "vsimd",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "vsimd",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "alloc",
+          "detect",
+          "std"
+        ],
+        "edition": "2021",
+        "version": "0.1.0-dev"
+      },
+      "license": "MIT"
     },
     "walkdir 2.3.2": {
       "name": "walkdir",
@@ -1015,6 +1202,9 @@
           }
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "2.3.2"
       },
       "license": "Unlicense/MIT"
@@ -1094,6 +1284,9 @@
           }
         },
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.3.9"
       },
       "build_script_attrs": {
@@ -1153,6 +1346,9 @@
           "selects": {}
         },
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.4.0"
       },
       "build_script_attrs": {
@@ -1202,6 +1398,9 @@
           }
         },
         "edition": "2018",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.1.5"
       },
       "license": "Unlicense/MIT"
@@ -1256,6 +1455,9 @@
           "selects": {}
         },
         "edition": "2015",
+        "rustc_flags": [
+          "--codegen=opt-level=3"
+        ],
         "version": "0.4.0"
       },
       "build_script_attrs": {

@@ -214,7 +214,7 @@ load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_regi
 
 rules_rust_dependencies()
 
-rust_register_toolchains(edition = "2021")
+rust_register_toolchains(edition = "2021", version = "nightly", iso_date = "2022-10-15")
 
 # https://bazelbuild.github.io/rules_rust/crate_universe.html
 load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
@@ -228,13 +228,18 @@ load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository", "rend
 crates_repository(
     name = "rs",
     annotations = {
-        "base64": [crate.annotation(rustc_flags = ["-O"])],
+        "*": [crate.annotation(rustc_flags = ["--codegen=opt-level=3"])],
     },
     cargo_lockfile = "//:Cargo.Bazel.lock",
+    cargo_config = "//:Cargo.toml",
     lockfile = "//:cargo-bazel-lock.json",
     packages = {
         "base64": crate.spec(
             version = "0.13.0",
+        ),
+        "base64-simd": crate.spec(
+            git = "https://github.com/Nugine/simd",
+            rev = "4d6b948a921083e420b3465933b20dee9356cb78",
         ),
         "jni": crate.spec(
             version = "0.19.0",

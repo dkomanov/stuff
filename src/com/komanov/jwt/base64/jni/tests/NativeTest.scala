@@ -1,52 +1,66 @@
 package com.komanov.jwt.base64.jni.tests
 
-import com.komanov.jwt.base64.jni.Native
+import com.komanov.jwt.base64.jni
 import org.specs2.mutable.SpecWithJUnit
 
-class NativeTest extends SpecWithJUnit {
+class NativeBazelTest extends NativeTestBase(jni.NativeBazel.INSTANCE)
+
+// To do actual test we need to put proper path to library.path
+class NativeCargoTest extends NativeTestBase(jni.NativeCargo.INSTANCE)
+
+abstract class NativeTestBase(lib: jni.Native) extends SpecWithJUnit {
 
   private val encoded = "YWJj".getBytes()
   private val decoded = "abc".getBytes()
 
   "encode" >> {
     "succeed encodeConfigUrlSafe" >> {
-      Native.encodeConfigUrlSafe(decoded) mustEqual encoded
+      lib.encodeConfigUrlSafe(decoded) mustEqual encoded
     }
     "succeed encodeConfigSlice1NoCache" >> {
-      Native.encodeConfigSlice1NoCache(decoded) mustEqual encoded
+      lib.encodeConfigSlice1NoCache(decoded) mustEqual encoded
     }
     "succeed encodeConfigSlice1Cache" >> {
-      Native.encodeConfigSlice1Cache(decoded) mustEqual encoded
+      lib.encodeConfigSlice1Cache(decoded) mustEqual encoded
     }
     "succeed encodeConfigSlice2CacheInputOutput" >> {
-      Native.encodeConfigSlice1Cache(decoded) mustEqual encoded
+      lib.encodeConfigSlice1Cache(decoded) mustEqual encoded
+    }
+    "succeed encodeSimd" >> {
+      lib.encodeSimd(decoded) mustEqual encoded
     }
   }
 
   "decode" >> {
     "succeed decodeConfigUrlSafe1" >> {
-      Native.decodeConfigUrlSafe1(encoded) mustEqual decoded
+      lib.decodeConfigUrlSafe1(encoded) mustEqual decoded
     }
     "succeed decodeConfigUrlSafe2" >> {
-      Native.decodeConfigUrlSafe2(encoded) mustEqual decoded
+      lib.decodeConfigUrlSafe2(encoded) mustEqual decoded
     }
     "succeed decodeConfigUrlSafe3" >> {
-      Native.decodeConfigUrlSafe3(encoded, encoded.length) mustEqual decoded
+      lib.decodeConfigUrlSafe3(encoded, encoded.length) mustEqual decoded
     }
     "succeed decodeConfigUrlSafe4" >> {
-      Native.decodeConfigUrlSafe4(encoded, encoded.length) mustEqual decoded
+      lib.decodeConfigUrlSafe4(encoded, encoded.length) mustEqual decoded
     }
     "succeed decodeConfigSliceUrlSafe1" >> {
-      Native.decodeConfigSliceUrlSafe1(encoded, encoded.length) mustEqual decoded
+      lib.decodeConfigSliceUrlSafe1(encoded, encoded.length) mustEqual decoded
     }
     "succeed decodeConfigSliceUrlSafe2NoCache" >> {
-      Native.decodeConfigSliceUrlSafe2NoCache(encoded) mustEqual decoded
+      lib.decodeConfigSliceUrlSafe2NoCache(encoded) mustEqual decoded
     }
     "succeed decodeConfigSliceUrlSafe2Cache" >> {
-      Native.decodeConfigSliceUrlSafe2Cache(encoded) mustEqual decoded
+      lib.decodeConfigSliceUrlSafe2Cache(encoded) mustEqual decoded
     }
     "succeed decodeConfigSliceUrlSafe3CacheInputOutput" >> {
-      Native.decodeConfigSliceUrlSafe3CacheInputOutput(encoded) mustEqual decoded
+      lib.decodeConfigSliceUrlSafe3CacheInputOutput(encoded) mustEqual decoded
+    }
+    "succeed decodeSimd" >> {
+      lib.decodeSimd(encoded) mustEqual decoded
+    }
+    "succeed decodeSimdInPlace" >> {
+      lib.decodeSimdInPlace(encoded) mustEqual decoded
     }
   }
 }

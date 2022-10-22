@@ -1,15 +1,14 @@
-load("@rules_rust//rust:defs.bzl", "rust_library", "rust_shared_library")
+load("@rules_rust//rust:defs.bzl", "rust_shared_library")
 
 rust_shared_library(
     name = "rust_lib",
     srcs = [
         "base64.rs",
     ],
-    rustc_flags = [
-        "-O",
-    ],
+    rustc_flags = ["--codegen=opt-level=3"],
     deps = [
         "@rs//:base64",
+        "@rs//:base64-simd",
         "@rs//:jni",
     ],
 )

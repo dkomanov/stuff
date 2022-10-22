@@ -1,121 +1,46 @@
 package com.komanov.jwt.base64.jni;
 
-import com.komanov.offheap.alloc.Allocator;
-import sun.misc.Unsafe;
+public interface Native {
+    // base64::encode_config
 
-public abstract class Native {
-    static {
-        System.loadLibrary("base64_lib");
-    }
+    byte[] encodeConfigUrlSafe(byte[] payload);
 
-    private Native() {
-    }
+    // base64::decode_config
 
-    public static native byte[] encodeConfigUrlSafe(byte[] payload);
-
-    private static native int encodeConfigSlice1(byte[] encoded, int size, long address, int outputSize);
-
-    private static native int encodeConfigSlice2(long inputAddress, int inputSize, long outputAddress, int outputSize);
-
-    public static native byte[] decodeConfigUrlSafe1(byte[] encoded);
+    byte[] decodeConfigUrlSafe1(byte[] encoded);
 
     // get_byte_array_elements instead of convert_byte_array
-    public static native byte[] decodeConfigUrlSafe2(byte[] encoded);
+    byte[] decodeConfigUrlSafe2(byte[] encoded);
 
     // pass size instead of JNI get array length
-    public static native byte[] decodeConfigUrlSafe3(byte[] encoded, int size);
+    byte[] decodeConfigUrlSafe3(byte[] encoded, int size);
 
     // get_primitive_array_critical instead of get_byte_array_elements
-    public static native byte[] decodeConfigUrlSafe4(byte[] encoded, int size);
+    byte[] decodeConfigUrlSafe4(byte[] encoded, int size);
 
-    public static native byte[] decodeConfigSliceUrlSafe1(byte[] encoded, int size);
+    // base64::decode_config_slice
 
-    private static native int decodeConfigSliceUrlSafe2(byte[] encoded, int size, long address, int outputSize);
-    private static native int decodeConfigSliceUrlSafe3(long inputAddress, int inputSize, long outputAddress, int outputSize);
+    byte[] decodeConfigSliceUrlSafe1(byte[] encoded, int size);
 
-    public static byte[] decodeConfigSliceUrlSafe2NoCache(byte[] encoded) {
-        int inputSize = encoded.length;
-        int outputSize = sizeForDecode(inputSize);
-        long address = Allocator.alloc(outputSize);
-        try {
-            int written = decodeConfigSliceUrlSafe2(encoded, inputSize, address, outputSize);
-            assert written == outputSize;
-            return toByteArray(address, outputSize);
-        } finally {
-            Allocator.release(address);
-        }
-    }
+    byte[] decodeConfigSliceUrlSafe2NoCache(byte[] encoded);
 
-    public static byte[] decodeConfigSliceUrlSafe2Cache(byte[] encoded) {
-        int inputSize = encoded.length;
-        int outputSize = sizeForDecode(inputSize);
-        long address = DirectBuffer.getOutputBuffer(outputSize);
-        int written = decodeConfigSliceUrlSafe2(encoded, inputSize, address, outputSize);
-        assert written == outputSize;
-        return toByteArray(address, outputSize);
-    }
+    byte[] decodeConfigSliceUrlSafe2Cache(byte[] encoded);
 
-    public static byte[] decodeConfigSliceUrlSafe3CacheInputOutput(byte[] encoded) {
-        int inputSize = encoded.length;
-        long inputAddress = DirectBuffer.getInputBuffer(inputSize);
-        copyFromByteArray(inputAddress, encoded, inputSize);
+    byte[] decodeConfigSliceUrlSafe3CacheInputOutput(byte[] encoded);
 
-        int outputSize = sizeForDecode(inputSize);
-        long address = DirectBuffer.getOutputBuffer(outputSize);
-        int written = decodeConfigSliceUrlSafe3(inputAddress, inputSize, address, outputSize);
-        assert written == outputSize;
-        return toByteArray(address, outputSize);
-    }
+    // base64::encode_config_slice
 
-    public static byte[] encodeConfigSlice1NoCache(byte[] payload) {
-        int inputSize = payload.length;
-        int outputSize = sizeForEncode(inputSize);
-        long address = Allocator.alloc(outputSize);
-        try {
-            int written = encodeConfigSlice1(payload, inputSize, address, outputSize);
-            assert written >= outputSize - 4;
-            return toByteArray(address, written);
-        } finally {
-            Allocator.release(address);
-        }
-    }
+    byte[] encodeConfigSlice1NoCache(byte[] payload);
 
-    public static byte[] encodeConfigSlice1Cache(byte[] encoded) {
-        int inputSize = encoded.length;
-        int outputSize = sizeForEncode(inputSize);
-        long address = DirectBuffer.getOutputBuffer(outputSize);
-        int written = encodeConfigSlice1(encoded, inputSize, address, outputSize);
-        assert written >= outputSize - 4;
-        return toByteArray(address, written);
-    }
+    byte[] encodeConfigSlice1Cache(byte[] encoded);
 
-    public static byte[] encodeConfigSlice2CacheInputOutput(byte[] encoded) {
-        int inputSize = encoded.length;
-        long inputAddress = DirectBuffer.getInputBuffer(inputSize);
-        copyFromByteArray(inputAddress, encoded, inputSize);
-        int outputSize = sizeForEncode(inputSize);
-        long outputAddress = DirectBuffer.getOutputBuffer(outputSize);
-        int written = encodeConfigSlice2(inputAddress, inputSize, outputAddress, outputSize);
-        assert written >= outputSize - 4;
-        return toByteArray(outputAddress, written);
-    }
+    byte[] encodeConfigSlice2CacheInputOutput(byte[] encoded);
 
-    private static byte[] toByteArray(long address, int length) {
-        byte[] result = new byte[length];
-        Allocator.unsafe().copyMemory(null, address, result, Unsafe.ARRAY_BYTE_BASE_OFFSET, length);
-        return result;
-    }
+    // base64-simd
 
-    private static void copyFromByteArray(long address, byte[] input, int inputSize) {
-        Allocator.unsafe().copyMemory(input, Unsafe.ARRAY_BYTE_BASE_OFFSET, null, address, inputSize);
-    }
+    byte[] encodeSimd(byte[] payload);
 
-    private static int sizeForEncode(int inputSize) {
-        return inputSize * 4 / 3 + 4;
-    }
+    byte[] decodeSimd(byte[] encoded);
 
-    private static int sizeForDecode(int inputSize) {
-        // No need to add 4, because it's without padding!
-        return inputSize * 3 / 4;
-    }
+    byte[] decodeSimdInPlace(byte[] encoded);
 }
