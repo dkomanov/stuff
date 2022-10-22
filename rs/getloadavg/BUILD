@@ -5,6 +5,7 @@ rust_shared_library(
     srcs = [
         "getloadavg.rs",
     ],
+    rustc_flags = ["--codegen=opt-level=3"],
     deps = [
         "@rs//:jni",
         "@rs//:libc",

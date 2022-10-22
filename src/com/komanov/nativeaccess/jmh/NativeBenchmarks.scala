@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit
 Results for openjdk-17:
 <code>
 Benchmark                    Mode  Cnt     Score      Error  Units
-NativeBenchmarks.bridj       avgt    5  2426.297 ± 1066.761  ns/op
-NativeBenchmarks.javaCpp     avgt    5   741.889 ±   19.378  ns/op
-NativeBenchmarks.javaMxBean  avgt    5  1833.716 ±   40.433  ns/op
-NativeBenchmarks.jna         avgt    5  2611.944 ±  241.992  ns/op
-NativeBenchmarks.jnaDirect   avgt    5   994.327 ±   51.901  ns/op
-NativeBenchmarks.jni         avgt    5   763.334 ±   26.880  ns/op
-NativeBenchmarks.jniEmpty    avgt    5    22.771 ±    1.305  ns/op
-NativeBenchmarks.jnr         avgt    5   777.021 ±   23.250  ns/op
+NativeBenchmarks.bridj       avgt    5  2675.218 ± 1670.966  ns/op
+NativeBenchmarks.javaCpp     avgt    5   798.700 ±   13.667  ns/op
+NativeBenchmarks.javaMxBean  avgt    5  1963.496 ±  230.775  ns/op
+NativeBenchmarks.jna         avgt    5  2653.977 ±   75.761  ns/op
+NativeBenchmarks.jnaDirect   avgt    5  1068.356 ±   53.749  ns/op
+NativeBenchmarks.jni         avgt    5   834.159 ±   40.013  ns/op
+NativeBenchmarks.jniEmpty    avgt    5    22.249 ±    0.395  ns/op
+NativeBenchmarks.jnr         avgt    5   826.690 ±   27.833  ns/op
 </code>
  */
 @State(Scope.Benchmark)
