@@ -19,6 +19,15 @@ scala_benchmark_jmh(
     ],
 )
 
+scala_benchmark_jmh(
+    name = "direct_buffer",
+    srcs = ["DirectBufferBenchmarks.scala"],
+    deps = [
+        "//src/com/komanov/jwt/base64/jmh:jmh_base",
+        "//src/com/komanov/jwt/base64/jni",
+    ],
+)
+
 java_library(
     name = "native_lib",
     srcs = ["NativeLib.java"],

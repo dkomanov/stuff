@@ -3,7 +3,7 @@ package com.komanov.jwt.base64.jni;
 import com.komanov.offheap.alloc.Allocator;
 import sun.misc.Unsafe;
 
-abstract class NativeHelper {
+public abstract class NativeHelper {
     private NativeHelper() {
     }
 
