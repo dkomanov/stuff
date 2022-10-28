@@ -148,6 +148,13 @@ maven_install(
     repositories = maven_repositories,
 )
 
+http_archive(
+    name = "apangin_nalim_repo",
+    build_file = "@//:nalim.bazel",
+    type = "zip",
+    url = "https://github.com/apangin/nalim/archive/293eb4ee47918fdfd9e7540d13ba762ff47fa1e1.zip",
+)
+
 maven_install(
     name = "nativeaccess",
     artifacts = [
@@ -214,7 +221,11 @@ load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_regi
 
 rules_rust_dependencies()
 
-rust_register_toolchains(edition = "2021", version = "nightly", iso_date = "2022-10-15")
+rust_register_toolchains(
+    edition = "2021",
+    iso_date = "2022-10-15",
+    version = "nightly",
+)
 
 # https://bazelbuild.github.io/rules_rust/crate_universe.html
 load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
@@ -230,8 +241,8 @@ crates_repository(
     annotations = {
         "*": [crate.annotation(rustc_flags = ["--codegen=opt-level=3"])],
     },
-    cargo_lockfile = "//:Cargo.Bazel.lock",
     cargo_config = "//:Cargo.toml",
+    cargo_lockfile = "//:Cargo.Bazel.lock",
     lockfile = "//:cargo-bazel-lock.json",
     packages = {
         "base64": crate.spec(

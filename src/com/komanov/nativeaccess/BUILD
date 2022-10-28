@@ -7,6 +7,7 @@ java_library(
     deps = [
         "//rs/getloadavg:getloadavg_lib",
         "//src/com/komanov/offheap/alloc",
+        "@apangin_nalim_repo//:nalim",
         "@nativeaccess//:com_github_jnr_jnr_ffi",
         "@nativeaccess//:com_nativelibs4java_bridj",
         "@nativeaccess//:net_java_dev_jna_jna",
