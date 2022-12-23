@@ -1,12 +1,17 @@
 package com.komanov.jwt.base64.jni;
 
 import com.komanov.offheap.alloc.Allocator;
+import one.nalim.Link;
+import one.nalim.Linker;
+
+import java.util.Arrays;
 
 import static com.komanov.jwt.base64.jni.NativeHelper.*;
 
 public abstract class NativeBazel {
     static {
         System.loadLibrary("base64_lib");
+        NalimLib.encodeSimd_NativeBazel(new byte[0], 0, new byte[0], 0); // trigger initialization
     }
 
     public static final Native INSTANCE = new NativeBazelImpl();
@@ -175,6 +180,74 @@ public abstract class NativeBazel {
             copyFromByteArray(inputAddress, encoded, inputSize);
             int written = decodeSimdInPlaceNative(inputAddress, inputSize);
             return toByteArray(inputAddress, written);
+        }
+
+        @Override
+        public byte[] encodeConfigSliceNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForEncode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.encodeConfigSlice_NativeBazel(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] encodeSimdNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForEncode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.encodeSimd_NativeBazel(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeConfigSliceNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForDecode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.decodeConfigSlice_NativeBazel(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeSimdNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForDecode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.decodeSimd_NativeBazel(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeSimdInPlaceNalim(byte[] input) {
+            byte[] inputCopy = Arrays.copyOf(input, input.length);
+            int written = NalimLib.decodeSimdInPlace_NativeBazel(inputCopy, input.length);
+            return Arrays.copyOf(inputCopy, written);
+        }
+    }
+
+    private static class NalimLib {
+        @Link
+        private static native int encodeConfigSlice_NativeBazel(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int encodeSimd_NativeBazel(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeConfigSlice_NativeBazel(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeSimd_NativeBazel(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeSimdInPlace_NativeBazel(byte[] input, int inputSize);
+
+        static {
+            Linker.linkClass(NalimLib.class);
         }
     }
 }

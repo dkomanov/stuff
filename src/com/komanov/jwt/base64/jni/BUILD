@@ -7,5 +7,6 @@ java_library(
     deps = [
         "//rs/base64:base64_lib",
         "//src/com/komanov/offheap/alloc",
+        "@apangin_nalim_repo//:nalim",
     ],
 )

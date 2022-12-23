@@ -357,4 +357,19 @@ class Base64JniBenchmarks extends Base64BenchmarkBase {
 
   @Benchmark
   def jni_url_decodeSimdInPlaceCargo: Array[Byte] = NativeCargo.INSTANCE.decodeSimdInPlace(urlEncoded)
+
+  @Benchmark
+  def nalim_url_encodeConfigSlice: Array[Byte] = NativeCargo.INSTANCE.encodeConfigSliceNalim(data)
+
+  @Benchmark
+  def nalim_url_decodeConfigSlice: Array[Byte] = NativeCargo.INSTANCE.decodeConfigSliceNalim(urlEncoded)
+
+  @Benchmark
+  def nalim_url_encodeSimd: Array[Byte] = NativeCargo.INSTANCE.encodeSimdNalim(data)
+
+  @Benchmark
+  def nalim_url_decodeSimd: Array[Byte] = NativeCargo.INSTANCE.decodeSimdNalim(urlEncoded)
+
+  @Benchmark
+  def nalim_url_decodeSimdInPlace: Array[Byte] = NativeCargo.INSTANCE.decodeSimdInPlaceNalim(urlEncoded)
 }

@@ -43,4 +43,14 @@ public interface Native {
     byte[] decodeSimd(byte[] encoded);
 
     byte[] decodeSimdInPlace(byte[] encoded);
+
+    byte[] encodeConfigSliceNalim(byte[] input);
+
+    byte[] encodeSimdNalim(byte[] input);
+
+    byte[] decodeConfigSliceNalim(byte[] input);
+
+    byte[] decodeSimdNalim(byte[] input);
+
+    byte[] decodeSimdInPlaceNalim(byte[] input);
 }

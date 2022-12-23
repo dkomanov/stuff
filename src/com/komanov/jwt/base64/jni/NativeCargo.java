@@ -1,6 +1,10 @@
 package com.komanov.jwt.base64.jni;
 
 import com.komanov.offheap.alloc.Allocator;
+import one.nalim.Link;
+import one.nalim.Linker;
+
+import java.util.Arrays;
 
 import static com.komanov.jwt.base64.jni.NativeHelper.*;
 
@@ -11,6 +15,7 @@ public class NativeCargo {
         boolean success;
         try {
             System.loadLibrary("base64_jni");
+            NalimLib.encodeSimd_NativeCargo(new byte[0], 0, new byte[0], 0); // trigger initialization
             success = true;
         } catch (Throwable e) {
             success = false;
@@ -190,6 +195,74 @@ public class NativeCargo {
             copyFromByteArray(inputAddress, encoded, inputSize);
             int written = decodeSimdInPlaceNative(inputAddress, inputSize);
             return toByteArray(inputAddress, written);
+        }
+
+        @Override
+        public byte[] encodeConfigSliceNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForEncode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.encodeConfigSlice_NativeCargo(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] encodeSimdNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForEncode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.encodeSimd_NativeCargo(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeConfigSliceNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForDecode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.decodeConfigSlice_NativeCargo(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeSimdNalim(byte[] input) {
+            int inputSize = input.length;
+            int outputSize = NativeHelper.sizeForDecode(inputSize);
+            byte[] output = new byte[outputSize];
+            int written = NalimLib.decodeSimd_NativeCargo(input, inputSize, output, outputSize);
+            assert written == outputSize;
+            return output;
+        }
+
+        @Override
+        public byte[] decodeSimdInPlaceNalim(byte[] input) {
+            byte[] inputCopy = Arrays.copyOf(input, input.length);
+            int written = NalimLib.decodeSimdInPlace_NativeCargo(inputCopy, input.length);
+            return Arrays.copyOf(inputCopy, written);
+        }
+    }
+
+    private static class NalimLib {
+        @Link
+        private static native int encodeConfigSlice_NativeCargo(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int encodeSimd_NativeCargo(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeConfigSlice_NativeCargo(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeSimd_NativeCargo(byte[] input, int inputSize, byte[] output, int outputSize);
+
+        @Link
+        private static native int decodeSimdInPlace_NativeCargo(byte[] input, int inputSize);
+
+        static {
+            Linker.linkClass(NalimLib.class);
         }
     }
 }

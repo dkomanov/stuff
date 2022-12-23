@@ -29,6 +29,12 @@ abstract class NativeTestBase(lib: jni.Native) extends SpecWithJUnit {
     "succeed encodeSimd" >> {
       lib.encodeSimd(decoded) mustEqual encoded
     }
+    "succeed encodeConfigSliceNalim" >> {
+      lib.encodeConfigSliceNalim(decoded) mustEqual encoded
+    }
+    "succeed encodeSimdNalim" >> {
+      lib.encodeSimdNalim(decoded) mustEqual encoded
+    }
   }
 
   "decode" >> {
@@ -61,6 +67,15 @@ abstract class NativeTestBase(lib: jni.Native) extends SpecWithJUnit {
     }
     "succeed decodeSimdInPlace" >> {
       lib.decodeSimdInPlace(encoded) mustEqual decoded
+    }
+    "succeed decodeConfigSliceNalim" >> {
+      lib.decodeConfigSliceNalim(encoded) mustEqual decoded
+    }
+    "succeed decodeSimdNalim" >> {
+      lib.decodeSimdNalim(encoded) mustEqual decoded
+    }
+    "succeed decodeSimdInPlaceNalim" >> {
+      lib.decodeSimdInPlaceNalim(encoded) mustEqual decoded
     }
   }
 }

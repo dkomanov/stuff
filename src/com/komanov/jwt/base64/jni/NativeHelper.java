@@ -18,7 +18,8 @@ public abstract class NativeHelper {
     }
 
     public static int sizeForEncode(int inputSize) {
-        return inputSize * 4 / 3 + 4;
+        int mod = inputSize % 3;
+        return inputSize * 4 / 3 + (mod == 1 ? 2 : (mod == 2 ? 3 : 0)); // we don't use padding
     }
 
     public static int sizeForDecode(int inputSize) {

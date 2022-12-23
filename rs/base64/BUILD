@@ -4,6 +4,8 @@ rust_shared_library(
     name = "rust_lib",
     srcs = [
         "base64.rs",
+        "lib.rs",
+        "nalim.rs",
     ],
     rustc_flags = ["--codegen=opt-level=3"],
     deps = [
