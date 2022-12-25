@@ -114,6 +114,16 @@ maven_install(
 )
 
 maven_install(
+    name = "mysql_blob_maven",
+    artifacts = [
+        "mysql:mysql-connector-java:8.0.30",
+        "org.lz4:lz4-java:1.8.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "mysql_hashset_maven",
     artifacts = [
         "mysql:mysql-connector-java:8.0.30",
