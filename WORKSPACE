@@ -114,6 +114,21 @@ maven_install(
 )
 
 maven_install(
+    name = "compression",
+    artifacts = [
+        "org.lz4:lz4-java:1.8.0",
+        "com.github.luben:zstd-jni:1.5.2-5",
+        "org.apache.commons:commons-compress:1.22",
+        "org.xerial.snappy:snappy-java:1.1.8.4",
+        "com.aayushatharva.brotli4j:brotli4j:1.9.0",
+        "com.aayushatharva.brotli4j:native-linux-x86_64:1.9.0",
+        "org.apache.commons:commons-lang3:3.12.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "mysql_blob_maven",
     artifacts = [
         "mysql:mysql-connector-java:8.0.30",
