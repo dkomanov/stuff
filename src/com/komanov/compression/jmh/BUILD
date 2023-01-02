@@ -4,7 +4,6 @@ scala_benchmark_jmh(
     deps = [
         ":input",
         "//src/com/komanov/compression",
-        "//src/com/komanov/mysql/blob",
     ],
 )
 

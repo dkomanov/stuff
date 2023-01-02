@@ -1,6 +1,7 @@
 package com.komanov.mysql.blob.bin
 
-import com.komanov.mysql.blob.{BlobCompressionRatio, BlobGenerator, Lz4Utils, Mysql}
+import com.komanov.compression.BlobCompressionRatio
+import com.komanov.mysql.blob.{BlobGenerator, Lz4Utils, Mysql}
 
 import scala.jdk.CollectionConverters._
 

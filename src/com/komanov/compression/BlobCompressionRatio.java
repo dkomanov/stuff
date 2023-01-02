@@ -1,4 +1,4 @@
-package com.komanov.mysql.blob;
+package com.komanov.compression;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;

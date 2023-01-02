@@ -1,8 +1,7 @@
 package com.komanov.compression.bin
 
 import com.komanov.compression.jmh.InputData
-import com.komanov.compression.{CompressionAlgorithms, Lengths}
-import com.komanov.mysql.blob.BlobCompressionRatio
+import com.komanov.compression.{BlobCompressionRatio, CompressionAlgorithms, Lengths}
 
 import java.nio.file.Files
 

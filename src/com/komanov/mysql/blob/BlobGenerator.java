@@ -1,5 +1,7 @@
 package com.komanov.mysql.blob;
 
+import com.komanov.compression.BlobCompressionRatio;
+
 import java.util.*;
 
 public class BlobGenerator {

@@ -1,6 +1,7 @@
 package com.komanov.mysql.blob.jmh
 
-import com.komanov.mysql.blob.{BlobCompressionRatio, Lz4Utils, Mysql}
+import com.komanov.compression.BlobCompressionRatio
+import com.komanov.mysql.blob.{Lz4Utils, Mysql}
 import org.openjdk.jmh.annotations._
 
 import java.sql.{Connection, DriverManager}

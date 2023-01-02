@@ -5,6 +5,7 @@ import org.specs2.mutable.SpecificationWithJUnit
 import org.specs2.specification.core.Fragments
 
 import java.util
+import scala.collection.immutable.ArraySeq
 import scala.util.Random
 
 class CompressionTest extends SpecificationWithJUnit {
@@ -13,7 +14,7 @@ class CompressionTest extends SpecificationWithJUnit {
 
   "encode/decode" >> {
     Fragments.foreach(for {
-      method <- CompressionAlgorithms.values()
+      method <- ArraySeq.unsafeWrapArray(CompressionAlgorithms.values())
       data <- Seq(
         "".getBytes(),
         "a".getBytes(),
@@ -25,7 +26,9 @@ class CompressionTest extends SpecificationWithJUnit {
     } yield (method, data)) { case (method, data) =>
       s"work 2 way for ${data.length} bytes [${method.name}]" >> {
         val encoded = method.encode(util.Arrays.copyOf(data, data.length))
-        encoded mustNotEqual data
+        if (data.length > 0) {
+          encoded mustNotEqual data
+        }
         method.decode(encoded) mustEqual data
       }
     }

@@ -5,6 +5,5 @@ scala_binary(
     deps = [
         "//src/com/komanov/compression",
         "//src/com/komanov/compression/jmh:input",
-        "//src/com/komanov/mysql/blob",
     ],
 )

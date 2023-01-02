@@ -1,7 +1,6 @@
 package com.komanov.compression.jmh
 
-import com.komanov.compression.CompressionAlgorithms
-import com.komanov.mysql.blob.BlobCompressionRatio
+import com.komanov.compression.{BlobCompressionRatio, CompressionAlgorithms}
 import org.openjdk.jmh.annotations._
 
 import java.nio.file.Files

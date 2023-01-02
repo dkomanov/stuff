@@ -9,12 +9,19 @@ import static org.apache.commons.lang3.Conversion.intToByteArray;
 
 class DeflatePlusSize implements CompressionAlgorithm {
     public static final DeflatePlusSize INSTANCE = new DeflatePlusSize();
+    private static final byte[] EMPTY = new byte[0];
 
     private DeflatePlusSize() {
     }
 
     @Override
     public byte[] encode(byte[] data) {
+        if (data.length == 0) {
+            // Inspired by https://stackoverflow.com/questions/39460906/java-emulation-of-mysql-comress-decompress-functions
+            // https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_compress
+            return EMPTY;
+        }
+
         Deflater deflater = new Deflater();
         try {
             deflater.setInput(data);
@@ -40,6 +47,10 @@ class DeflatePlusSize implements CompressionAlgorithm {
 
     @Override
     public byte[] decode(byte[] encoded) throws Throwable {
+        if (encoded.length == 0) {
+            return EMPTY;
+        }
+
         int size = byteArrayToInt(encoded, 0, 0, 0, 4);
         byte[] result = new byte[size];
 
