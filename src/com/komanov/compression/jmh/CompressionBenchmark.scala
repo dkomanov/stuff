@@ -15,8 +15,6 @@ import java.util.concurrent.TimeUnit
 @Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
 class StubDataCompressionBenchmark {
   @Param(Array(
-    "128",
-    "512",
     "1024",
     "2048",
     "3072",
@@ -48,25 +46,17 @@ class StubDataCompressionBenchmark {
 
   @Setup
   def setup(): Unit = {
-    val blob = compressionRatio.generateBlob(length)
-
-    data = blob
-    encoded = algorithm.encode(blob)
+    data = compressionRatio.generateBlob(length)
+    encoded = algorithm.encode(data)
   }
 
   @Benchmark
-  def encode(counters: Counters): Array[Byte] = {
-    val r = algorithm.encode(data)
-    counters.increment(data, r)
-    r
-  }
+  def encode(counters: Counters): Array[Byte] =
+    Utils.encode(algorithm, data, counters)
 
   @Benchmark
-  def decode(counters: Counters): Array[Byte] = {
-    val r = algorithm.decode(encoded)
-    counters.increment(encoded, r)
-    r
-  }
+  def decode(counters: Counters): Array[Byte] =
+    Utils.decode(algorithm, encoded, counters)
 }
 
 @State(Scope.Benchmark)
@@ -78,49 +68,49 @@ class StubDataCompressionBenchmark {
 @Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
 class RealDataCompressionBenchmark {
   @Param(Array(
-    "298",
-//    "319",
-//    "320",
-//    "326",
-//    "366",
-//    "372",
-    "420",
-//    "459",
-//    "479",
-    "531",
-    "538",
-//    "562",
-//    "648",
-//    "665",
-    "686",
+    //    "298",
+    //    "319",
+    //    "320",
+    //    "326",
+    //    "366",
+    //    "372",
+    //    "420",
+    //    "459",
+    //    "479",
+    //    "531",
+    //    "538",
+    //    "562",
+    //    "648",
+    //    "665",
+    //    "686",
     "34011",
-//    "35578",
+    //    "35578",
     "42223",
     "51771",
-//    "52928",
-//    "59448",
-//    "59617",
+    //    "52928",
+    //    "59448",
+    //    "59617",
     "62830",
-//    "67071",
-//    "67872",
-//    "68118",
-//    "68230",
-//    "79107",
+    //    "67071",
+    //    "67872",
+    //    "68118",
+    //    "68230",
+    //    "79107",
     "81207",
-//    "88114",
+    //    "88114",
     "94417",
     "607930",
-//    "668462",
+    //    "668462",
     "751048",
-//    "773419",
+    //    "773419",
     "781196",
-//    "791173",
+    //    "791173",
     "866049",
     "904172",
-//    "989390",
+    //    "989390",
     "1075724",
     "1293080",
-//    "1356567",
+    //    "1356567",
     "1448911",
     "1599048",
     "4072805",
@@ -142,18 +132,12 @@ class RealDataCompressionBenchmark {
   }
 
   @Benchmark
-  def encode(counters: Counters): Array[Byte] = {
-    val r = algorithm.encode(data)
-    counters.increment(data, r)
-    r
-  }
+  def encode(counters: Counters): Array[Byte] =
+    Utils.encode(algorithm, data, counters)
 
   @Benchmark
-  def decode(counters: Counters): Array[Byte] = {
-    val r = algorithm.decode(encoded)
-    counters.increment(encoded, r)
-    r
-  }
+  def decode(counters: Counters): Array[Byte] =
+    Utils.decode(algorithm, encoded, counters)
 }
 
 @AuxCounters(AuxCounters.Type.EVENTS)
@@ -165,5 +149,19 @@ class Counters {
   def increment(input: Array[Byte], output: Array[Byte]): Unit = {
     totalInputBytes += input.length
     totalOutputBytes += output.length
+  }
+}
+
+object Utils {
+  def encode(algorithm: CompressionAlgorithms, data: Array[Byte], counters: Counters): Array[Byte] = {
+    val r = algorithm.encode(data)
+    counters.increment(data, r)
+    r
+  }
+
+  def decode(algorithm: CompressionAlgorithms, encoded: Array[Byte], counters: Counters): Array[Byte] = {
+    val r = algorithm.decode(encoded)
+    counters.increment(encoded, r)
+    r
   }
 }

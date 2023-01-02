@@ -5,8 +5,6 @@ public abstract class Lengths {
     }
 
     public static final int[] JavaCompressionLengths = new int[]{
-            128,
-            512,
             1024,
             2048,
             3072,
