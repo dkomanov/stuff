@@ -10,11 +10,11 @@ import static org.apache.commons.lang3.Conversion.byteArrayToInt;
 import static org.apache.commons.lang3.Conversion.intToByteArray;
 
 class Lz4 implements CompressionAlgorithm {
-    private static final LZ4FastDecompressor decompressor = LZ4Factory.fastestInstance().fastDecompressor();
+    private static final LZ4FastDecompressor decompressor = LZ4Factory.nativeInstance().fastDecompressor();
 
-    public static Lz4 FAST = new Lz4(LZ4Factory.fastestInstance().fastCompressor());
-    public static Lz4 HIGH_9 = new Lz4(LZ4Factory.fastestInstance().highCompressor());
-    public static Lz4 HIGH_17 = new Lz4(LZ4Factory.fastestInstance().highCompressor(17));
+    public static Lz4 FAST = new Lz4(LZ4Factory.nativeInstance().fastCompressor());
+    public static Lz4 HIGH_9 = new Lz4(LZ4Factory.nativeInstance().highCompressor());
+    public static Lz4 HIGH_17 = new Lz4(LZ4Factory.nativeInstance().highCompressor(17));
 
     private final LZ4Compressor compressor;
 
