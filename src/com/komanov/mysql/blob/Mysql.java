@@ -1,6 +1,6 @@
 package com.komanov.mysql.blob;
 
-import com.komanov.compression.CompressionAlgorithms;
+import com.komanov.compression.DeflatePlusSize;
 
 import java.util.zip.DataFormatException;
 
@@ -11,7 +11,7 @@ public class Mysql {
 
     public static byte[] mysqlCompress(byte[] arr) {
         try {
-            return CompressionAlgorithms.deflateWithSize.encode(arr);
+            return DeflatePlusSize.INSTANCE.encode(arr);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -19,7 +19,7 @@ public class Mysql {
 
     public static byte[] mysqlDecompress(byte[] arr) throws DataFormatException {
         try {
-            return CompressionAlgorithms.deflateWithSize.decode(arr);
+            return DeflatePlusSize.INSTANCE.decode(arr);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

@@ -1,7 +1,7 @@
 package com.komanov.mysql.blob.jmh
 
 import com.komanov.compression.jmh.InputData
-import com.komanov.compression.{BlobCompressionRatio, CompressionAlgorithms}
+import com.komanov.compression.{BlobCompressionRatio, CompressionAlgorithms, DeflatePlusSize}
 import com.komanov.mysql.blob.Mysql
 import org.openjdk.jmh.annotations._
 
@@ -266,7 +266,7 @@ abstract class UncompressBenchmarkBase extends MysqlBlobBenchmarksBase {
   var algorithm: String = _
 
   override protected def customSetup(blob: Array[Byte]): Unit = {
-    val encoded = CompressionAlgorithms.deflateWithSize.encode(blob)
+    val encoded = DeflatePlusSize.INSTANCE.encode(blob)
     insertInto("uncompressed_blobs", lengthParam, encoded)
     require(java.util.Arrays.equals(fetch(new Counters()), blob))
   }

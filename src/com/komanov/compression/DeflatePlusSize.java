@@ -7,7 +7,7 @@ import java.util.zip.Inflater;
 import static org.apache.commons.lang3.Conversion.byteArrayToInt;
 import static org.apache.commons.lang3.Conversion.intToByteArray;
 
-class DeflatePlusSize implements CompressionAlgorithm {
+public class DeflatePlusSize implements CompressionAlgorithm {
     public static final DeflatePlusSize INSTANCE = new DeflatePlusSize();
     private static final byte[] EMPTY = new byte[0];
 
