@@ -24,16 +24,6 @@ CREATE TABLE compressed_blobs (
   id INT NOT NULL PRIMARY KEY,
   data MEDIUMBLOB NOT NULL
 ) ENGINE=InnoDB ROW_FORMAT=COMPRESSED;
-
-CREATE TABLE app_compressed_blobs (
-  id INT NOT NULL PRIMARY KEY,
-  data MEDIUMBLOB NOT NULL
-) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
-
-CREATE TABLE lz4_compressed_blobs (
-  id INT NOT NULL PRIMARY KEY,
-  data MEDIUMBLOB NOT NULL
-) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 ```
 
 * https://dev.mysql.com/doc/refman/8.0/en/innodb-row-format.html

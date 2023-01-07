@@ -3,6 +3,7 @@ scala_benchmark_jmh(
     srcs = ["MysqlBlobBenchmarks.scala"],
     deps = [
         "//src/com/komanov/compression",
+        "//src/com/komanov/compression/jmh:input",
         "//src/com/komanov/mysql/blob",
         "@mysql_blob_maven//:mysql_mysql_connector_java",
     ],

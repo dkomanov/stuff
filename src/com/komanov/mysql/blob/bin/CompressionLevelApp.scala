@@ -13,14 +13,14 @@ object CompressionLevelApp extends App {
     (r, duration / 1000)
   }
 
-  for (sz <- BlobGenerator.Lengths.asScala) {
+  for (sz <- BlobGenerator.Lengths) {
     println(s"\"$sz\",")
   }
 
   println()
   println(s"Length\t${BlobCompressionRatio.values.mkString("\t\t\t\t\t\t")}")
   println(s"\t${BlobCompressionRatio.values.map(_ => "zlib size\tzlib ratio\tzlib duration\tlz4 size\tlz4 ratio\tlz4 duration").mkString("\t")}")
-  for (sz <- BlobGenerator.Lengths.asScala) {
+  for (sz <- BlobGenerator.Lengths) {
     val rr = BlobCompressionRatio.values.map { ratio =>
       val blob = ratio.generateBlob(sz)
       val (zlibed, zlibDuration) = measured(Mysql.mysqlCompress(blob))

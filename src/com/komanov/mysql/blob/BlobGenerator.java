@@ -1,19 +1,15 @@
 package com.komanov.mysql.blob;
 
-import com.komanov.compression.BlobCompressionRatio;
-
-import java.util.*;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class BlobGenerator {
-    public static List<Integer> Lengths = allLengths();
+    public static int[] Lengths = allLengths();
 
-    public static byte[] randomBlob(int length) {
-        return BlobCompressionRatio.LOW_COMPRESSION_1_3.generateBlob(length);
-    }
-
-    private static List<Integer> allLengths() {
+    private static int[] allLengths() {
         SortedSet<Integer> list = new TreeSet<>();
-        for (int kb = 1; kb <= 99; ++kb) {
+        list.add(1024);
+        for (int kb = 5; kb < 100; kb += 5) {
             list.add(kb * 1024);
         }
 
@@ -26,6 +22,7 @@ public class BlobGenerator {
             }
         }
         list.add(5 * 1024 * 1024);
-        return Collections.unmodifiableList(new ArrayList<>(list));
+
+        return list.stream().mapToInt(v -> v).toArray();
     }
 }

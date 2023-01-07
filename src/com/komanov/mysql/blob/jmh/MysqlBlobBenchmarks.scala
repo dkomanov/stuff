@@ -1,120 +1,89 @@
 package com.komanov.mysql.blob.jmh
 
-import com.komanov.compression.BlobCompressionRatio
-import com.komanov.mysql.blob.{Lz4Utils, Mysql}
+import com.komanov.compression.jmh.InputData
+import com.komanov.compression.{BlobCompressionRatio, CompressionAlgorithms}
+import com.komanov.mysql.blob.Mysql
 import org.openjdk.jmh.annotations._
 
+import java.nio.file.Files
 import java.sql.{Connection, DriverManager}
 import java.util.concurrent.TimeUnit
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(value = 1, jvmArgs = Array("-Xmx2G"))
 @Threads(1)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
-class MysqlBlobBenchmarks {
+abstract class MysqlBlobBenchmarksBase {
+  protected var conn: Connection = _
+
+  protected def customSetup(blob: Array[Byte]): Unit
+
+  protected def generateBlob(): Array[Byte]
+
+  protected def lengthParam: Int
+
+  @Setup
+  def setup(): Unit = {
+    conn = DriverManager.getConnection(Mysql.URL, Mysql.USER, Mysql.PASSWORD)
+    val blob = generateBlob()
+    customSetup(blob)
+  }
+
+  @TearDown
+  def destroy(): Unit = {
+    conn.close()
+  }
+
+  protected def insertInto(tableName: String, len: Int, blob: Array[Byte]): Unit = {
+    val st = conn.prepareStatement(s"INSERT INTO $tableName (id, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = ?")
+    st.setInt(1, len)
+    st.setBytes(2, blob)
+    st.setBytes(3, blob)
+    val rn = st.executeUpdate()
+    require(rn > 0, s"returned $rn")
+    st.close()
+  }
+
+  protected def selectData(tableName: String, field: String): Array[Byte] = {
+    val st = conn.prepareStatement(s"SELECT $field FROM $tableName WHERE id = ?")
+    st.setInt(1, lengthParam)
+    require(st.execute())
+    val rs = st.getResultSet
+    require(rs.next())
+    val result = rs.getBytes(1)
+    rs.close()
+    st.close()
+    result
+  }
+}
+
+trait StubDataBenchmark {
+  self: MysqlBlobBenchmarksBase =>
+
   @Param(Array(
     "1024",
-    "2048",
-    "3072",
-    "4096",
     "5120",
-    "6144",
-    "7168",
-    "8192",
-    "9216",
     "10240",
-    "11264",
-    "12288",
-    "13312",
-    "14336",
     "15360",
-    "16384",
-    "17408",
-    "18432",
-    "19456",
     "20480",
-    "21504",
-    "22528",
-    "23552",
-    "24576",
     "25600",
-    "26624",
-    "27648",
-    "28672",
-    "29696",
     "30720",
-    "31744",
-    "32768",
-    "33792",
-    "34816",
     "35840",
-    "36864",
-    "37888",
-    "38912",
-    "39936",
     "40960",
-    "41984",
-    "43008",
-    "44032",
-    "45056",
     "46080",
-    "47104",
-    "48128",
-    "49152",
-    "50176",
     "51200",
-    "52224",
-    "53248",
-    "54272",
-    "55296",
     "56320",
-    "57344",
-    "58368",
-    "59392",
-    "60416",
     "61440",
-    "62464",
-    "63488",
-    "64512",
-    "65536",
     "66560",
-    "67584",
-    "68608",
-    "69632",
-    "70656",
     "71680",
-    "72704",
-    "73728",
-    "74752",
-    "75776",
     "76800",
-    "77824",
-    "78848",
-    "79872",
-    "80896",
     "81920",
-    "82944",
-    "83968",
-    "84992",
-    "86016",
     "87040",
-    "88064",
-    "89088",
-    "90112",
-    "91136",
     "92160",
-    "93184",
-    "94208",
-    "95232",
-    "96256",
     "97280",
-    "98304",
-    "99328",
-    "100352",
-    "101376",
     "102400",
     "204800",
     "307200",
@@ -170,89 +139,143 @@ class MysqlBlobBenchmarks {
   @Param
   var compressionRatio: BlobCompressionRatio = _
 
-  private var conn: Connection = _
+  override protected def lengthParam: Int = length
 
-  @Setup
-  def setup(): Unit = {
-    conn = DriverManager.getConnection(Mysql.URL, Mysql.USER, Mysql.PASSWORD)
+  override def generateBlob(): Array[Byte] =
+    compressionRatio.generateBlob(self.length)
+}
 
-    val blob = compressionRatio.generateBlob(length)
+trait RealDataBenchmark {
+  self: MysqlBlobBenchmarksBase =>
 
-    insertInto("uncompressed_blobs", length, blob)
-    insertInto("compressed_blobs", length, blob)
-    insertInto("app_compressed_blobs", length, Mysql.mysqlCompress(blob))
-    insertInto("lz4_compressed_blobs", length, Lz4Utils.compress(blob))
+  @Param(Array(
+    //    "298",
+    //    "319",
+    //    "320",
+    //    "326",
+    //    "366",
+    //    "372",
+    //    "420",
+    //    "459",
+    //    "479",
+    //    "531",
+    //    "538",
+    //    "562",
+    //    "648",
+    //    "665",
+    //    "686",
+    "34011",
+    //    "35578",
+    "42223",
+    "51771",
+    //    "52928",
+    //    "59448",
+    //    "59617",
+    "62830",
+    //    "67071",
+    //    "67872",
+    //    "68118",
+    //    "68230",
+    //    "79107",
+    "81207",
+    //    "88114",
+    "94417",
+    "607930",
+    //    "668462",
+    "751048",
+    //    "773419",
+    "781196",
+    //    "791173",
+    "866049",
+    "904172",
+    //    "989390",
+    "1075724",
+    "1293080",
+    //    "1356567",
+    "1448911",
+    "1599048",
+    "4072805",
+    "4287156",
+  ))
+  var length: Int = _
 
-    val bytes = uncompressed(new Counters)
-    require(java.util.Arrays.equals(blob, bytes))
-    require(java.util.Arrays.equals(bytes, compressed(new Counters)))
-    require(java.util.Arrays.equals(bytes, app_compressed_in_java(new Counters)))
-    require(java.util.Arrays.equals(bytes, app_compressed_in_mysql(new Counters)))
-    require(java.util.Arrays.equals(bytes, lz4_compressed(new Counters)))
-  }
+  override protected def lengthParam: Int = length
 
-  @TearDown
-  def destroy(): Unit = {
-    conn.close()
+  override def generateBlob(): Array[Byte] =
+    InputData.values()
+      .find(_.name.contains(length.toString))
+      .map(id => Files.readAllBytes(id.path))
+      .getOrElse(throw new IllegalStateException("unknown length"))
+}
+
+abstract class AlgorithmBenchmarkBase extends MysqlBlobBenchmarksBase {
+  @Param
+  var algorithm: CompressionAlgorithms = _
+
+  override protected def customSetup(blob: Array[Byte]): Unit = {
+    val encoded = algorithm.encode(blob)
+    insertInto("uncompressed_blobs", lengthParam, encoded)
+    require(java.util.Arrays.equals(fetch(new Counters()), blob))
   }
 
   @Benchmark
-  def uncompressed(counters: Counters): Array[Byte] = {
+  def fetch(counters: Counters): Array[Byte] = {
+    val r = selectData("uncompressed_blobs", "data")
+    val decoded = algorithm.decode(r)
+    counters.increment(r, decoded)
+    decoded
+  }
+}
+
+abstract class NotCompressedBenchmarkBase extends MysqlBlobBenchmarksBase {
+  @Param(Array("uncompressed"))
+  var algorithm: String = _
+
+  override protected def customSetup(blob: Array[Byte]): Unit = {
+    insertInto("uncompressed_blobs", lengthParam, blob)
+    require(java.util.Arrays.equals(fetch(new Counters()), blob))
+  }
+
+  @Benchmark
+  def fetch(counters: Counters): Array[Byte] = {
     val r = selectData("uncompressed_blobs", "data")
     counters.increment(r, r)
     r
   }
+}
+
+abstract class CompressedBenchmarkBase extends MysqlBlobBenchmarksBase {
+  @Param(Array("auto_mysql"))
+  var algorithm: String = _
+
+  override protected def customSetup(blob: Array[Byte]): Unit = {
+    insertInto("compressed_blobs", lengthParam, blob)
+    require(java.util.Arrays.equals(fetch(new Counters()), blob))
+  }
 
   @Benchmark
-  def compressed(counters: Counters): Array[Byte] = {
+  def fetch(counters: Counters): Array[Byte] = {
     val r = selectData("compressed_blobs", "data")
     counters.increment(r, r)
     r
   }
+}
 
-  @Benchmark
-  def app_compressed_in_java(counters: Counters): Array[Byte] = {
-    val r = selectData("app_compressed_blobs", "data")
-    val finalBytes = Mysql.mysqlDecompress(r)
-    counters.increment(r, finalBytes)
-    finalBytes
+abstract class UncompressBenchmarkBase extends MysqlBlobBenchmarksBase {
+  @Param(Array("explicit_mysql"))
+  var algorithm: String = _
+
+  override protected def customSetup(blob: Array[Byte]): Unit = {
+    val encoded = CompressionAlgorithms.deflateWithSize.encode(blob)
+    insertInto("uncompressed_blobs", lengthParam, encoded)
+    require(java.util.Arrays.equals(fetch(new Counters()), blob))
   }
 
   @Benchmark
-  def app_compressed_in_mysql(counters: Counters): Array[Byte] = {
-    val r = selectData("app_compressed_blobs", "UNCOMPRESS(data)")
+  def fetch(counters: Counters): Array[Byte] = {
+    val r = selectData("uncompressed_blobs", "UNCOMPRESS(data)")
     counters.increment(r, r)
     r
-  }
-
-  @Benchmark
-  def lz4_compressed(counters: Counters): Array[Byte] = {
-    val r = selectData("lz4_compressed_blobs", "data")
-    val finalBytes = Lz4Utils.decompress(r)
-    counters.increment(r, finalBytes)
-    finalBytes
-  }
-
-  private def insertInto(tableName: String, len: Int, blob: Array[Byte]): Unit = {
-    val st = conn.prepareStatement(s"INSERT INTO $tableName (id, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = ?")
-    st.setInt(1, len)
-    st.setBytes(2, blob)
-    st.setBytes(3, blob)
-    val rn = st.executeUpdate()
-    require(rn > 0, s"returned $rn")
-    st.close()
-  }
-
-  private def selectData(tableName: String, field: String): Array[Byte] = {
-    val st = conn.prepareStatement(s"SELECT $field FROM $tableName WHERE id = ?")
-    st.setInt(1, length)
-    require(st.execute())
-    val rs = st.getResultSet
-    require(rs.next())
-    val result = rs.getBytes(1)
-    rs.close()
-    st.close()
-    result
   }
 }
 
@@ -267,3 +290,19 @@ class Counters {
     totalBytesReturned += finalBytes.length
   }
 }
+
+class StubDataAlgorithmBenchmark extends AlgorithmBenchmarkBase with StubDataBenchmark
+
+class RealDataAlgorithmBenchmark extends AlgorithmBenchmarkBase with RealDataBenchmark
+
+class StubDataNotCompressedBenchmark extends NotCompressedBenchmarkBase with StubDataBenchmark
+
+class RealDataNotCompressedBenchmark extends NotCompressedBenchmarkBase with RealDataBenchmark
+
+class StubDataCompressedBenchmark extends CompressedBenchmarkBase with StubDataBenchmark
+
+class RealDataCompressedBenchmark extends CompressedBenchmarkBase with RealDataBenchmark
+
+class StubDataUncompressBenchmark extends UncompressBenchmarkBase with StubDataBenchmark
+
+class RealDataUncompressBenchmark extends UncompressBenchmarkBase with RealDataBenchmark
