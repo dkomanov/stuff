@@ -4,7 +4,7 @@ scala_version = "2.13"
 
 scala_full_version = "%s.6" % scala_version
 
-rules_scala_version = "972fdf2b3bda64138db34a630a9910eee96b4d8a"
+rules_scala_version = "22f0a807a0fcca827cc70fdff320e3bb1f5ff5df"
 
 rules_jvm_external_tag = "3.2"
 
