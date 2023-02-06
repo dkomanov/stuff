@@ -10,7 +10,7 @@ use jni::sys::jstring;
 
 #[no_mangle]
 pub extern "system" fn Java_com_komanov_jni_rs_bin_Native_greet(env: JNIEnv,
-                                                                class: JClass,
+                                                                _class: JClass,
                                                                 input: JString)
                                                                 -> jstring {
     // First, we have to get the string out of Java. Check out the `strings`
