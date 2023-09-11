@@ -1,6 +1,7 @@
 package com.komanov.ver;
 
 public abstract class ParseVersionUtil {
+
     private ParseVersionUtil() {
     }
 
@@ -294,5 +295,45 @@ public abstract class ParseVersionUtil {
 
     public static int parseIntSafeEmpty(String s, int from, int to) {
         return from >= to ? -1 : Integer.parseUnsignedInt(s, from, to, 10);
+    }
+
+    /*value*/ public static class ValueVersion {
+        private final long value;
+
+        public static final ValueVersion INVALID = new ValueVersion(1L << (3 * 14 + 1));
+
+        private ValueVersion(long value) {
+            this.value = value;
+        }
+
+        public ValueVersion(int major, int minor, int fix) {
+            this(asValue(major, minor, fix));
+        }
+
+        public static ValueVersion fromString(String v) {
+            return new ValueVersion(VersionNoAlloc.parseOptimized6(v));
+        }
+
+        public boolean isInvalid() {
+            return value == INVALID.value;
+        }
+
+        public int major() {
+            return (int) ((value >> 28) & 16383);
+        }
+
+        public int minor() {
+            return (int) ((value >> 14) & 16383);
+        }
+
+        public int fix() {
+            return (int) (value & 16383);
+        }
+
+        private static long asValue(int major, int minor, int fix) {
+            return (((long) (major & 16383)) << 28) |
+                    (((long) (minor & 16383)) << 14) |
+                    ((long) (fix & 16383));
+        }
     }
 }

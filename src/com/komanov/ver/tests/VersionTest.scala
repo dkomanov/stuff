@@ -1,5 +1,6 @@
 package com.komanov.ver.tests
 
+import com.komanov.ver.ParseVersionUtil.ValueVersion
 import com.komanov.ver.Version.MaxVersionSize
 import com.komanov.ver.{Version, VersionNoAlloc}
 import org.specs2.mutable.SpecificationWithJUnit
@@ -108,6 +109,18 @@ class VersionTest extends SpecificationWithJUnit {
     s"VersionNoAlloc parse/serialize for '$expected''" >> {
       VersionNoAlloc.toVersionGeneric(VersionNoAlloc.fromVersionGeneric(expected)) mustEqual expected
       VersionNoAlloc.toVersionInlined(VersionNoAlloc.fromVersionInlined(expected)) mustEqual expected
+    }
+
+    s"ValueVersion works for '$expected''" >> {
+      val vv = ValueVersion.fromString(s)
+      expected.map { v =>
+        vv.isInvalid must beFalse
+        vv.major mustEqual v.major
+        vv.minor mustEqual v.minor
+        vv.fix mustEqual v.fix
+      }.getOrElse {
+        vv.isInvalid must beTrue
+      }
     }
   }
 
