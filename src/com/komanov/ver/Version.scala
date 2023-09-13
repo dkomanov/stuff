@@ -195,6 +195,56 @@ object Version {
   def parseOptimized6(v: String): Option[Version] =
     Option(ParseVersionUtil.parseHardCore3SingleLoop(v))
 
+  def parseOptimized6Scala(v: String): Option[Version] = {
+    val len = v.length
+
+    var major = 0
+    var minor = 0
+
+    var current = 0
+    var dots = 0
+    var lastDotIndex = -1
+
+    for (i <- 0 until len) {
+      val ch = v.charAt(i)
+      val digit = ch - 48
+      if (digit == -2) {
+        if (lastDotIndex + 1 == i) {
+          return None
+        }
+        if (current < 0 || current > MaxVersionSize) {
+          return None
+        }
+
+        dots match {
+          case 0 =>
+            major = current
+            dots = 1
+
+          case 1 =>
+            minor = current
+            dots = 2
+
+          case _ =>
+            return None
+        }
+        lastDotIndex = i
+        current = 0
+      } else if (digit < 0 || digit > 9) {
+        return None
+      } else { // overflow is possible!
+        current = current * 10 + digit
+      }
+    }
+
+    if (dots != 2 || lastDotIndex == len - 1)
+      None
+    else if (current < 0 || current > MaxVersionSize)
+      None
+    else
+      Some(Version(major, minor, current))
+  }
+
   private[ver] def isNumber(s: String, from: Int, to: Int): Boolean = {
     // length of MaxVersionSize
     val len = to - from

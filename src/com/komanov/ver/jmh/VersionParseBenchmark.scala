@@ -964,4 +964,7 @@ class VersionParseBenchmark {
 
   @Benchmark
   def optimized6: Option[Version] = Version.parseOptimized6(encoded)
+
+  @Benchmark
+  def optimized6Scala: Option[Version] = Version.parseOptimized6Scala(encoded)
 }

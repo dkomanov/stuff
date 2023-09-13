@@ -936,4 +936,269 @@ class VersionParseNoAllocBenchmark {
 
   @Benchmark
   def optimized6: Long = VersionNoAlloc.parseOptimized6(encoded)
+
+  @Benchmark
+  def optimized6Scala: Long = VersionNoAlloc.parseOptimized6Scala(encoded)
 }
+
+/*
+Benchmark                                                                 (encoded)  Mode  Cnt     Score      Error   Units
+VersionParseBenchmark.optimized6                                                     avgt    5     2.094 ±    0.080   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                                      avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                                 avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6:·gc.count                                           avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                                200  avgt    5    14.342 ±    3.177   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                                 200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                            200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6:·gc.count                                      200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                               200.  avgt    5    16.047 ±    0.725   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                                200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                           200.  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6:·gc.count                                     200.  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                            200.200  avgt    5    24.023 ±    1.062   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                             200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                        200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                                  200.200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                           200.200.  avgt    5    28.466 ±    0.904   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                            200.200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                       200.200.  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                                 200.200.  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                          a.200.200  avgt    5     3.067 ±    0.152   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                           a.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                      a.200.200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6:·gc.count                                a.200.200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                          200.a.200  avgt    5    16.808 ±    0.724   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                           200.a.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                      200.a.200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6:·gc.count                                200.a.200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                          200.200.a  avgt    5    30.338 ±    1.188   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                           200.200.a  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                      200.200.a  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                                200.200.a  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                    200.200.200.200  avgt    5    35.715 ±    1.431   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                     200.200.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                200.200.200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                          200.200.200.200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                      200.200.99999  avgt    5    37.943 ±    1.183   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                       200.200.99999  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                  200.200.99999  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                            200.200.99999  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                       200.200.-200  avgt    5    29.643 ±    1.555   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                        200.200.-200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                   200.200.-200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6:·gc.count                             200.200.-200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6                                              1.0.0  avgt    5    22.995 ±    1.303   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                               1.0.0  avgt    5  3317.120 ±  188.961  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                          1.0.0  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6:·gc.count                                    1.0.0  avgt    5    91.000             counts
+VersionParseBenchmark.optimized6:·gc.time                                     1.0.0  avgt    5    51.000                 ms
+VersionParseBenchmark.optimized6                                        200.200.200  avgt    5    38.147 ±    1.223   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                         200.200.200  avgt    5  1999.293 ±   62.924  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                    200.200.200  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6:·gc.count                              200.200.200  avgt    5    69.000             counts
+VersionParseBenchmark.optimized6:·gc.time                               200.200.200  avgt    5    34.000                 ms
+VersionParseBenchmark.optimized6                                    10000.9876.5432  avgt    5    53.286 ±    0.848   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                     10000.9876.5432  avgt    5  1431.195 ±   22.027  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm                10000.9876.5432  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6:·gc.count                          10000.9876.5432  avgt    5    49.000             counts
+VersionParseBenchmark.optimized6:·gc.time                           10000.9876.5432  avgt    5    28.000                 ms
+VersionParseBenchmark.optimized6                                  10000.10000.10000  avgt    5    60.070 ±    3.753   ns/op
+VersionParseBenchmark.optimized6:·gc.alloc.rate                   10000.10000.10000  avgt    5  1269.809 ±   79.389  MB/sec
+VersionParseBenchmark.optimized6:·gc.alloc.rate.norm              10000.10000.10000  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6:·gc.count                        10000.10000.10000  avgt    5    44.000             counts
+VersionParseBenchmark.optimized6:·gc.time                         10000.10000.10000  avgt    5    23.000                 ms
+VersionParseBenchmark.optimized6Scala                                                avgt    5     2.186 ±    0.291   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                                 avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                            avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                                      avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                           200  avgt    5    11.686 ±    9.336   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                            200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                       200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                                 200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                          200.  avgt    5    18.464 ±    3.432   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                           200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                      200.  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                                200.  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                       200.200  avgt    5    27.653 ±    3.373   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                        200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                   200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                             200.200  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                      200.200.  avgt    5    30.054 ±    3.691   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                       200.200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                  200.200.  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                            200.200.  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                     a.200.200  avgt    5    29.221 ±   12.069   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                      a.200.200  avgt    5  4212.774 ± 1578.632  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                 a.200.200  avgt    5    64.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                           a.200.200  avgt    5   111.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                            a.200.200  avgt    5    79.000                 ms
+VersionParseBenchmark.optimized6Scala                                     200.a.200  avgt    5    54.828 ±    2.636   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                      200.a.200  avgt    5  3896.671 ±  177.185  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                 200.a.200  avgt    5   112.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                           200.a.200  avgt    5   117.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                            200.a.200  avgt    5    62.000                 ms
+VersionParseBenchmark.optimized6Scala                                     200.200.a  avgt    5    75.869 ±   20.514   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                      200.200.a  avgt    5  2827.066 ±  758.184  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                 200.200.a  avgt    5   112.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                           200.200.a  avgt    5    98.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                            200.200.a  avgt    5    55.000                 ms
+VersionParseBenchmark.optimized6Scala                               200.200.200.200  avgt    5    80.682 ±    2.769   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                200.200.200.200  avgt    5  2647.065 ±   90.100  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm           200.200.200.200  avgt    5   112.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                     200.200.200.200  avgt    5    91.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                      200.200.200.200  avgt    5    48.000                 ms
+VersionParseBenchmark.optimized6Scala                                 200.200.99999  avgt    5    39.785 ±    4.243   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                  200.200.99999  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm             200.200.99999  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                       200.200.99999  avgt    5       ≈ 0             counts
+VersionParseBenchmark.optimized6Scala                                  200.200.-200  avgt    5    69.419 ±   13.048   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                   200.200.-200  avgt    5  3083.203 ±  574.359  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm              200.200.-200  avgt    5   112.000 ±    0.002    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                        200.200.-200  avgt    5   106.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                         200.200.-200  avgt    5    55.000                 ms
+VersionParseBenchmark.optimized6Scala                                         1.0.0  avgt    5    24.780 ±    3.820   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                          1.0.0  avgt    5  3081.765 ±  489.186  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm                     1.0.0  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                               1.0.0  avgt    5    92.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                                1.0.0  avgt    5    52.000                 ms
+VersionParseBenchmark.optimized6Scala                                   200.200.200  avgt    5    39.085 ±    5.505   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                    200.200.200  avgt    5  1953.159 ±  263.227  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm               200.200.200  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                         200.200.200  avgt    5    67.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                          200.200.200  avgt    5    35.000                 ms
+VersionParseBenchmark.optimized6Scala                               10000.9876.5432  avgt    5    50.285 ±   10.446   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate                10000.9876.5432  avgt    5  1520.076 ±  302.523  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm           10000.9876.5432  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                     10000.9876.5432  avgt    5    52.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                      10000.9876.5432  avgt    5    26.000                 ms
+VersionParseBenchmark.optimized6Scala                             10000.10000.10000  avgt    5    60.828 ±   27.522   ns/op
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate              10000.10000.10000  avgt    5  1266.738 ±  527.402  MB/sec
+VersionParseBenchmark.optimized6Scala:·gc.alloc.rate.norm         10000.10000.10000  avgt    5    40.000 ±    0.001    B/op
+VersionParseBenchmark.optimized6Scala:·gc.count                   10000.10000.10000  avgt    5    43.000             counts
+VersionParseBenchmark.optimized6Scala:·gc.time                    10000.10000.10000  avgt    5    25.000                 ms
+VersionParseNoAllocBenchmark.optimized6                                              avgt    5     2.170 ±    0.210   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                               avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                          avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                                    avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                         200  avgt    5    12.837 ±    0.886   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                          200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                     200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                               200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                        200.  avgt    5    16.306 ±    2.154   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                         200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                    200.  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                              200.  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                     200.200  avgt    5    24.488 ±    2.187   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                      200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                 200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                           200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                    200.200.  avgt    5    28.900 ±    3.222   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                     200.200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                200.200.  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                          200.200.  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                   a.200.200  avgt    5     3.260 ±    0.714   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                    a.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm               a.200.200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                         a.200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                   200.a.200  avgt    5    17.408 ±    1.988   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                    200.a.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm               200.a.200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                         200.a.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                   200.200.a  avgt    5    34.270 ±   15.272   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                    200.200.a  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm               200.200.a  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                         200.200.a  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                             200.200.200.200  avgt    5    35.278 ±    2.077   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate              200.200.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm         200.200.200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                   200.200.200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                               200.200.99999  avgt    5    37.836 ±    4.646   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                200.200.99999  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm           200.200.99999  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                     200.200.99999  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                200.200.-200  avgt    5    30.266 ±    2.153   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                 200.200.-200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm            200.200.-200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                      200.200.-200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                       1.0.0  avgt    5    21.713 ±    2.534   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                        1.0.0  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm                   1.0.0  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                             1.0.0  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                                 200.200.200  avgt    5    34.549 ±    3.886   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate                  200.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm             200.200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                       200.200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                             10000.9876.5432  avgt    5    43.605 ±    2.496   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate              10000.9876.5432  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm         10000.9876.5432  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                   10000.9876.5432  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6                           10000.10000.10000  avgt    5    48.535 ±    1.351   ns/op
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate            10000.10000.10000  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6:·gc.alloc.rate.norm       10000.10000.10000  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6:·gc.count                 10000.10000.10000  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                                         avgt    5     2.787 ±    2.294   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                          avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm                     avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                               avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                                    200  avgt    5     9.520 ±    0.911   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                     200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm                200  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                          200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                                   200.  avgt    5    17.818 ±    1.221   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                    200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm               200.  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                         200.  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                                200.200  avgt    5    25.614 ±    0.370   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                 200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm            200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                      200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                               200.200.  avgt    5    28.800 ±    0.718   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                200.200.  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm           200.200.  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                     200.200.  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                              a.200.200  avgt    5    25.086 ±    3.730   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate               a.200.200  avgt    5  5478.470 ±  818.357  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm          a.200.200  avgt    5    72.000 ±    0.001    B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                    a.200.200  avgt    5   188.000             counts
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.time                     a.200.200  avgt    5    94.000                 ms
+VersionParseNoAllocBenchmark.optimized6Scala                              200.a.200  avgt    5    50.205 ±    5.659   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate               200.a.200  avgt    5  4560.092 ±  497.933  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm          200.a.200  avgt    5   120.000 ±    0.001    B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                    200.a.200  avgt    5   157.000             counts
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.time                     200.a.200  avgt    5    74.000                 ms
+VersionParseNoAllocBenchmark.optimized6Scala                              200.200.a  avgt    5    67.515 ±   10.637   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate               200.200.a  avgt    5  3393.441 ±  518.004  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm          200.200.a  avgt    5   120.000 ±    0.001    B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                    200.200.a  avgt    5   116.000             counts
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.time                     200.200.a  avgt    5    55.000                 ms
+VersionParseNoAllocBenchmark.optimized6Scala                        200.200.200.200  avgt    5    85.486 ±   21.295   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate         200.200.200.200  avgt    5  2685.662 ±  661.524  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm    200.200.200.200  avgt    5   120.000 ±    0.001    B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count              200.200.200.200  avgt    5    92.000             counts
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.time               200.200.200.200  avgt    5    51.000                 ms
+VersionParseNoAllocBenchmark.optimized6Scala                          200.200.99999  avgt    5    37.121 ±    0.427   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate           200.200.99999  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm      200.200.99999  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                200.200.99999  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                           200.200.-200  avgt    5    67.954 ±    3.230   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate            200.200.-200  avgt    5  3367.372 ±  156.865  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm       200.200.-200  avgt    5   120.000 ±    0.001    B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                 200.200.-200  avgt    5   115.000             counts
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.time                  200.200.-200  avgt    5    58.000                 ms
+VersionParseNoAllocBenchmark.optimized6Scala                                  1.0.0  avgt    5    20.101 ±    1.469   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate                   1.0.0  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm              1.0.0  avgt    5    ≈ 10⁻⁵               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                        1.0.0  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                            200.200.200  avgt    5    35.409 ±    1.381   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate             200.200.200  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm        200.200.200  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count                  200.200.200  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                        10000.9876.5432  avgt    5    44.355 ±    1.419   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate         10000.9876.5432  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm    10000.9876.5432  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count              10000.9876.5432  avgt    5       ≈ 0             counts
+VersionParseNoAllocBenchmark.optimized6Scala                      10000.10000.10000  avgt    5    48.259 ±    1.484   ns/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate       10000.10000.10000  avgt    5     0.003 ±    0.018  MB/sec
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.alloc.rate.norm  10000.10000.10000  avgt    5    ≈ 10⁻⁴               B/op
+VersionParseNoAllocBenchmark.optimized6Scala:·gc.count            10000.10000.10000  avgt    5       ≈ 0             counts
+ */
