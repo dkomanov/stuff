@@ -213,6 +213,15 @@ maven_install(
 )
 
 maven_install(
+    name = "metrics",
+    artifacts = [
+        "io.dropwizard.metrics:metrics-core:4.2.19",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven_install(
     name = "scala_serialization_maven",
     artifacts = [
         "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:2.15.0" % scala_version,
