@@ -8,6 +8,8 @@ directories:
 targets:
   //...
 
+java_language_level: 11
+
 additional_languages:
   scala
 
