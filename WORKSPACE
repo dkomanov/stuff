@@ -4,11 +4,11 @@ scala_version = "2.13"
 
 scala_full_version = "%s.6" % scala_version
 
-rules_scala_version = "22f0a807a0fcca827cc70fdff320e3bb1f5ff5df"
+rules_scala_version = "b17e9e0580ba28f95559676dd88cd99ec4f08195"
 
-rules_jvm_external_tag = "3.2"
+rules_jvm_external_tag = "4.5"
 
-rules_jvm_external_sha = "82262ff4223c5fda6fb7ff8bd63db8131b51b413d26eb49e3131037e79e324af"
+rules_jvm_external_sha = "b17d7388feb9bfa7f2fa09031b32707df529f26c91ab9e5d909eb1676badd9a6"
 
 protobuf_version = "204f99488ce1ef74565239cf3963111ae4c774b7"
 
@@ -54,13 +54,15 @@ http_archive(
     url = "https://github.com/protocolbuffers/protobuf/archive/%s.tar.gz" % protobuf_version,
 )
 
-skylib_version = "1.0.3"
+skylib_version = "1.4.1"
 
 http_archive(
     name = "bazel_skylib",
-    sha256 = "1c531376ac7e5a180e0237938a2536de0c54d93f5c278634818e0efc952dd56c",
-    type = "tar.gz",
-    url = "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
+    sha256 = "b8a1527901774180afc798aeb28c4634bdccf19c4d98e7bdd1ce79d1fe9aaad7",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
+    ],
 )
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
@@ -73,9 +75,11 @@ load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
 
 scala_config(scala_version = scala_full_version)
 
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+load("@io_bazel_rules_scala//scala:scala.bzl", "rules_scala_setup", "rules_scala_toolchain_deps_repositories")
 
-scala_repositories(fetch_sources = True)
+rules_scala_setup()
+
+rules_scala_toolchain_deps_repositories(fetch_sources = True)
 
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
 
@@ -98,6 +102,14 @@ scala_proto_repositories()
 load("@io_bazel_rules_scala//scala_proto:toolchains.bzl", "scala_proto_register_toolchains")
 
 scala_proto_register_toolchains()
+
+load("@rules_jvm_external//:repositories.bzl", "rules_jvm_external_deps")
+
+rules_jvm_external_deps()
+
+load("@rules_jvm_external//:setup.bzl", "rules_jvm_external_setup")
+
+rules_jvm_external_setup()
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
