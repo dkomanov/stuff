@@ -1,4 +1,4 @@
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_specs2_junit_test")
+load("@rules_scala//scala:scala.bzl", "scala_specs2_junit_test")
 
 def scala_specs2_junit(
         name,

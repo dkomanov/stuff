@@ -1,0 +1,222 @@
+
+bazel_dep(name = "rules_java", version = "9.7.0")
+bazel_dep(name = "rules_jvm_external", version = "7.1")
+bazel_dep(name = "protobuf", version = "33.4", repo_name = "com_google_protobuf")
+bazel_dep(name = "rules_scala", version = "7.2.6")
+bazel_dep(name = "rules_rust", version = "0.72.0")
+bazel_dep(name = "rules_rs", version = "0.0.26")
+bazel_dep(name = "rules_cc", version = "0.2.22")
+
+## SCALA
+
+scala_config = use_extension("@rules_scala//scala/extensions:config.bzl", "scala_config")
+scala_config.settings(scala_version = "2.13.18")
+scala_deps = use_extension("@rules_scala//scala/extensions:deps.bzl", "scala_deps")
+scala_deps.scala()
+scala_deps.scala_proto()
+scala_deps.jmh()
+scala_deps.junit()
+scala_deps.specs2()
+scala_protoc = use_extension("@rules_scala//scala/extensions:protoc.bzl", "scala_protoc", dev_dependency = True)
+use_repo(scala_protoc, "rules_scala_protoc_toolchains")
+register_toolchains("@rules_scala_protoc_toolchains//...:all", dev_dependency = True)
+
+use_repo(
+    scala_deps,
+    "io_bazel_rules_scala_scala_library",
+    "io_bazel_rules_scala_scala_reflect",
+    "io_bazel_rules_scala_org_openjdk_jmh_jmh_core",
+    "scala_proto_rules_scalapb_runtime",
+    "com_google_protobuf_protobuf_java"
+)
+
+
+## RUST
+
+rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
+rust.toolchain(edition = "2021", versions = ["nightly/2026-06-01"])
+
+crate = use_extension("@rules_rs//rs:extensions.bzl", "crate")
+crate.from_cargo(
+    name = "crates",
+    cargo_lock = "//:Cargo.lock",
+    cargo_toml = "//:Cargo.toml",
+    platform_triples = [
+        "x86_64-unknown-linux-gnu",
+    ],
+)
+use_repo(crate, "crates")
+use_repo(rust, "rust_toolchains")
+register_toolchains("@rust_toolchains//:all")
+
+rs = use_extension("@rules_rust//crate_universe:extensions.bzl", "crate")
+rs.spec(package = "base64", version = "0.13.0")
+rs.spec(package = "jni", version = "0.19.0")
+rs.spec(package = "libc", version = "0.2.0")
+rs.spec(package = "base64-simd", git = "https://github.com/Nugine/simd", rev = "4d6b948a921083e420b3465933b20dee9356cb78")
+rs.from_specs(name = "rs")
+use_repo(rs, "rs")
+
+## DEPENDENCIES
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
+scala_version = "2.13"
+scala_full_version = "%s.6" % scala_version
+maven_repositories = ["https://repo1.maven.org/maven2"]
+
+maven.install(
+    artifacts = [
+        "org.specs2:specs2-mock_%s:4.6.0" % scala_version,
+        "org.slf4j:slf4j-api:1.7.25",
+        "org.scala-lang.modules:scala-async_%s:0.10.0" % scala_version,
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+maven.install(
+    name = "compression",
+    artifacts = [
+        "org.lz4:lz4-java:1.8.0",
+        "com.github.luben:zstd-jni:1.5.2-5",
+        "org.apache.commons:commons-compress:1.22",
+        "org.xerial.snappy:snappy-java:1.1.8.4",
+        "com.aayushatharva.brotli4j:brotli4j:1.9.0",
+        "com.aayushatharva.brotli4j:native-linux-x86_64:1.9.0",
+        "org.apache.commons:commons-lang3:3.12.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "mysql_blob_maven",
+    artifacts = [
+        "mysql:mysql-connector-java:8.0.30",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "mysql_hashset_maven",
+    artifacts = [
+        "mysql:mysql-connector-java:8.0.30",
+        "com.zaxxer:HikariCP:5.0.1",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "mysql_streaming_maven",
+    artifacts = [
+        "org.drizzle.jdbc:drizzle-jdbc:1.4",
+        "org.mariadb.jdbc:mariadb-java-client:2.2.0",
+        "mysql:mysql-connector-java:6.0.6",
+        "com.wix:wix-embedded-mysql:4.2.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "offheap_maven",
+    artifacts = [
+        "io.netty:netty-common:4.1.79.Final",
+        "io.netty:netty-buffer:4.1.79.Final",
+        "io.netty:netty5-common:5.0.0.Alpha4",
+        "io.netty:netty5-buffer:5.0.0.Alpha4",
+        "io.lettuce:lettuce-core:6.2.0.RELEASE",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+
+maven.install(
+    name = "jmh",
+    artifacts = [
+        "org.openjdk.jmh:jmh-core:1.36",
+        "org.openjdk.jmh:jmh-generator-annprocess:1.36",
+    ],
+    repositories = maven_repositories,
+)
+
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "apangin_nalim_repo",
+    build_file = "@//:nalim.bazel",
+    type = "zip",
+    url = "https://github.com/apangin/nalim/archive/293eb4ee47918fdfd9e7540d13ba762ff47fa1e1.zip",
+)
+
+maven.install(
+    name = "nativeaccess",
+    artifacts = [
+        "com.github.jnr:jnr-ffi:2.2.12",
+        "org.bytedeco.javacpp-presets:systems-platform:1.4.4",
+        "net.java.dev.jna:jna-platform:5.12.1",
+        "com.nativelibs4java:bridj:0.7.0",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "jwt",
+    artifacts = [
+        "commons-codec:commons-codec:1.15",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "metrics",
+    artifacts = [
+        "io.dropwizard.metrics:metrics-core:4.2.19",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+maven.install(
+    name = "scala_serialization_maven",
+    artifacts = [
+        "com.github.plokhotnyuk.jsoniter-scala:jsoniter-scala-macros_%s:2.15.0" % scala_version,
+        "com.google.protobuf:protobuf-java:3.21.5",
+        "com.fasterxml.jackson.core:jackson-databind:2.13.3",
+        "com.fasterxml.jackson.core:jackson-core:2.13.3",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.13.3",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.13.3",
+        "com.fasterxml.jackson.module:jackson-module-scala_%s:2.13.3" % scala_version,
+        "com.lihaoyi:upickle_%s:2.0.0" % scala_version,
+        "com.twitter:chill_%s:0.10.0" % scala_version,
+        "io.suzaku:boopickle_%s:1.4.0" % scala_version,
+        "io.circe:circe-core_%s:0.15.0-M1" % scala_version,
+        "io.circe:circe-generic_%s:0.15.0-M1" % scala_version,
+        "io.circe:circe-parser_%s:0.15.0-M1" % scala_version,
+        "javax.annotation:javax.annotation-api:1.3.2",
+        "org.apache.thrift:libthrift:0.16.0",
+        "org.capnproto:runtime:0.1.14",
+        "org.slf4j:slf4j-api:1.7.36",
+        "org.slf4j:slf4j-nop:1.7.36",
+    ],
+    fetch_sources = True,
+    repositories = maven_repositories,
+)
+
+use_repo(maven, "compression")
+use_repo(maven, "mysql_blob_maven")
+use_repo(maven, "mysql_hashset_maven")
+use_repo(maven, "mysql_streaming_maven")
+use_repo(maven, "nativeaccess")
+use_repo(maven, "maven")
+use_repo(maven, "jmh")
+use_repo(maven, "offheap_maven")
+use_repo(maven, "jwt")
+use_repo(maven, "metrics")
+use_repo(maven, "scala_serialization_maven")
+
+#register_toolchains("//tools/toolchains:all")

@@ -1,4 +1,5 @@
 load("@rules_rust//rust:defs.bzl", "rust_shared_library")
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
 
 rust_shared_library(
     name = "rust_lib",

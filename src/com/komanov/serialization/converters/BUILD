@@ -65,7 +65,7 @@ scala_library(
         ":protobuf_conversion_utils",
         "//src/com/komanov/serialization/converters/api",
         "//src/com/komanov/serialization/proto:protos_java",
-        "@scala_serialization_maven//:com_google_protobuf_protobuf_java",
+        "@com_google_protobuf_protobuf_java",
     ],
 )
 

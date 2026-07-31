@@ -4,3 +4,4 @@ bazel-*
 .idea
 site
 .ijwb
+.bazelbsp

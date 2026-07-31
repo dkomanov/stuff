@@ -8,6 +8,6 @@ scala_benchmark_jmh(
 
 java_library(
     name = "enums",
-    srcs = glob(["*.java"]),
+    srcs = ["QueueType.java"],
     visibility = ["//src/com/komanov/blockingqueue/jmh:__subpackages__"],
 )
